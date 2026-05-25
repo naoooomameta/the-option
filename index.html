@@ -507,6 +507,23 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .float-stat .text .t { font-size: 13px; color: var(--fg-0); font-weight: 600; }
 .float-stat .text .s { font-size: 11px; color: var(--fg-2); font-family: var(--font-mono); }
 
+/* === Easy / beginner steps === */
+.easy-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.easy-step { background: var(--bg-1); border: 1px solid var(--line); border-radius: 16px; padding: 28px 24px; text-align: center; position: relative; }
+.easy-step .n { width: 40px; height: 40px; border-radius: 50%; background: var(--up); color: #03110a; font-family: var(--font-display); font-weight: 800; font-size: 20px; display: grid; place-items: center; margin: 0 auto 16px; }
+.easy-step .ttl { font-family: var(--font-display); font-size: 18px; font-weight: 700; color: var(--fg-0); margin-bottom: 16px; letter-spacing: -0.01em; }
+.easy-step p { margin: 14px 0 0; font-size: 14px; color: var(--fg-2); line-height: 1.6; }
+.easy-step .hl-demo { display: flex; align-items: center; justify-content: center; gap: 10px; }
+.easy-step .hl-demo span.up { background: var(--up); color: #03110a; font-weight: 700; padding: 10px 16px; border-radius: 10px; }
+.easy-step .hl-demo span.down { background: var(--down); color: #fff; font-weight: 700; padding: 10px 16px; border-radius: 10px; }
+.easy-step .hl-demo .or { color: var(--fg-3); font-family: var(--font-mono); font-size: 12px; }
+.easy-step .chips { display: flex; gap: 8px; justify-content: center; }
+.easy-step .chips span { font-family: var(--font-mono); font-size: 15px; color: var(--fg-0); background: var(--bg-2); border: 1px solid var(--line-strong); border-radius: 8px; padding: 10px 14px; }
+.easy-step .result { font-family: var(--font-display); font-size: 16px; color: var(--fg-1); }
+.easy-step .result .win { background: rgba(0,224,138,0.14); color: var(--up); font-weight: 700; padding: 4px 10px; border-radius: 8px; }
+.easy-step:not(:last-child)::after { content: "\2192"; position: absolute; right: -13px; top: 50%; transform: translateY(-50%); color: var(--fg-3); font-size: 18px; z-index: 2; }
+@media (max-width: 900px) { .easy-steps { grid-template-columns: 1fr; } .easy-step:not(:last-child)::after { content: "\2193"; right: auto; left: 50%; top: auto; bottom: -13px; transform: translateX(-50%); } }
+
 /* === LP appeal sections === */
 .lp-reasons { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
 .lp-reason { background: var(--bg-1); border: 1px solid var(--line); border-radius: 16px; padding: 30px 26px; transition: border-color 0.2s, transform 0.2s; }
@@ -1785,6 +1802,41 @@ body::after {
       </div>
     </div>
   </div>
+
+  <!-- ============================================================ EASY 3 STEPS -->
+  <section class="section" id="easy">
+    <div class="container">
+      <div class="section-head reveal" style="text-align:center;margin-left:auto;margin-right:auto;">
+        <span class="section-tag">かんたん</span>
+        <h2>むずかしい知識は、<em>いりません</em>。</h2>
+        <p class="section-lead" style="margin-left:auto;margin-right:auto;">やることは「上がる」か「下がる」を選ぶだけ。チャートが読めなくても、まずはデモで感覚をつかめます。</p>
+      </div>
+      <div class="easy-steps reveal">
+        <div class="easy-step">
+          <div class="n">1</div>
+          <div class="ttl">「上がる」か「下がる」を選ぶ</div>
+          <div class="hl-demo"><span class="up">▲ 上がる</span><span class="or">or</span><span class="down">▼ 下がる</span></div>
+          <p>これから価格が上か下か。むずかしい分析がなくても選べます。</p>
+        </div>
+        <div class="easy-step">
+          <div class="n">2</div>
+          <div class="ttl">金額と時間を決める</div>
+          <div class="chips"><span>¥1,000〜</span><span>30秒〜</span></div>
+          <p>少額・短時間から。無理のない範囲で始められます。</p>
+        </div>
+        <div class="easy-step">
+          <div class="n">3</div>
+          <div class="ttl">結果を待つだけ</div>
+          <div class="result"><span class="win">当たり</span> なら最大 +100%</div>
+          <p>予想が当たれば利益、外れた場合は投資額が損失になります。</p>
+        </div>
+      </div>
+      <div class="section-cta">
+        <a href="the-option.html" class="btn-primary lg">まずは無料デモで試す</a>
+        <div class="note">登録不要・お金はかかりません。取引には投資元本を失うリスクがあります。</div>
+      </div>
+    </div>
+  </section>
 
   <!-- ============================================================ WHY / REASONS -->
   <section class="section" id="reasons">
