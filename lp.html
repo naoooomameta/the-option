@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>無料デモで体験 — High か Low か | the option</title>
+  <meta name="description" content="入金不要・登録不要の無料デモで、the optionのバイナリーオプション取引を体験。画面の見やすさと操作感を確認してから、納得して口座開設へ。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="assets/site.css">
+  <style>
+    /* ============================================================
+       lp.html — demo-first CRO landing page
+       Reuses tokens, nav, risk-banner & footer from site.css.
+       Only LP-specific sections are styled below (.lp- prefix).
+       ============================================================ */
+
+    .lp-eyebrow {
+      display: inline-flex; align-items: center; gap: 9px;
+      font-size: 13px; font-weight: 700;
+      color: var(--accent); background: var(--accent-soft);
+      border: 1px solid var(--accent-line);
+      padding: 7px 13px; border-radius: 999px; margin-bottom: 20px;
+    }
+    .lp-eyebrow::before {
+      content: ""; width: 8px; height: 8px; border-radius: 50%;
+      background: var(--accent); box-shadow: 0 0 0 5px var(--accent-soft);
+    }
+
+    /* === Hero === */
+    .lp-hero { position: relative; padding: 72px 0 64px; overflow: hidden; }
+    .lp-hero::before {
+      content: ""; position: absolute; inset: auto -10% -30% -10%; height: 280px;
+      background: linear-gradient(90deg, transparent, rgba(31,217,142,.14), transparent);
+      filter: blur(60px); pointer-events: none;
+    }
+    .lp-hero-grid {
+      display: grid; grid-template-columns: 1.02fr .98fr; gap: 48px;
+      align-items: center; position: relative; z-index: 1;
+    }
+    .lp-hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(40px, 6vw, 74px); line-height: 1.0;
+      letter-spacing: -0.04em; font-weight: 800; margin: 0 0 20px; color: var(--fg-0);
+    }
+    .lp-grad {
+      background: linear-gradient(135deg, #ffffff 0%, #c8fbe6 48%, var(--accent) 100%);
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+    }
+    .lp-lead {
+      font-size: clamp(16px, 2vw, 20px); line-height: 1.85;
+      color: var(--fg-1); margin: 0 0 28px; max-width: 620px;
+    }
+    .lp-hero-actions { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; margin-bottom: 20px; }
+    .lp-hero-actions .btn-primary, .lp-hero-actions .btn-ghost { min-height: 56px; padding-inline: 26px; font-size: 16px; }
+    .lp-micro { display: flex; flex-wrap: wrap; gap: 10px 20px; color: var(--fg-2); font-size: 13.5px; }
+    .lp-micro span { display: inline-flex; align-items: center; gap: 7px; }
+    .lp-check {
+      width: 19px; height: 19px; border-radius: 50%; flex: none;
+      background: var(--accent-soft); color: var(--accent);
+      display: grid; place-items: center; font-weight: 800; font-size: 12px;
+    }
+    .lp-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 26px; max-width: 620px; }
+    .lp-stat {
+      border: 1px solid var(--line); background: var(--bg-1);
+      border-radius: 16px; padding: 16px 16px 14px;
+    }
+    .lp-stat b { display: block; font-family: var(--font-display); font-size: 26px; letter-spacing: -0.03em; color: var(--fg-0); margin-bottom: 4px; }
+    .lp-stat small { color: var(--fg-3); line-height: 1.5; font-size: 12.5px; }
+
+    /* === Terminal / trade mockup === */
+    .lp-terminal-wrap { position: relative; }
+    .lp-terminal-wrap::before {
+      content: ""; position: absolute; inset: 30px -6px -10px 36px; border-radius: 32px;
+      background: rgba(31,217,142,.16); filter: blur(34px); pointer-events: none;
+    }
+    .lp-terminal {
+      position: relative; border: 1px solid var(--line-strong); border-radius: 26px; overflow: hidden;
+      background: linear-gradient(180deg, var(--bg-2), var(--bg-1));
+      box-shadow: 0 32px 80px -30px rgba(0,0,0,.8);
+    }
+    .lp-term-top { display: flex; align-items: center; justify-content: space-between; padding: 16px 18px; border-bottom: 1px solid var(--line); }
+    .lp-dots { display: flex; gap: 7px; }
+    .lp-dots i { width: 9px; height: 9px; border-radius: 50%; background: #2c4a40; }
+    .lp-dots i:nth-child(2) { background: #3a7a64; }
+    .lp-dots i:nth-child(3) { background: var(--accent); }
+    .lp-url { font-family: var(--font-mono); color: var(--fg-3); font-size: 12px; background: var(--bg-0); padding: 5px 11px; border-radius: 999px; }
+    .lp-term-body { display: grid; grid-template-columns: .82fr 1.18fr; gap: 16px; padding: 16px; }
+    .lp-markets { display: flex; flex-direction: column; gap: 9px; }
+    .lp-market { display: flex; align-items: center; justify-content: space-between; border: 1px solid var(--line); background: var(--bg-2); border-radius: 13px; padding: 11px 12px; }
+    .lp-market b { font-size: 13px; color: var(--fg-0); }
+    .lp-market small { display: block; color: var(--fg-3); font-size: 10.5px; margin-top: 3px; font-family: var(--font-mono); letter-spacing: .04em; }
+    .lp-market .pct { font-family: var(--font-mono); font-size: 13px; font-weight: 600; }
+    .lp-trade { border: 1px solid var(--line-strong); background: var(--bg-0); border-radius: 20px; padding: 16px; display: flex; flex-direction: column; gap: 13px; }
+    .lp-pair { display: flex; justify-content: space-between; align-items: flex-start; }
+    .lp-pair h3 { margin: 0; font-size: 18px; color: var(--fg-0); font-family: var(--font-display); }
+    .lp-pay { font-family: var(--font-mono); font-size: 12px; font-weight: 700; color: #04130c; background: var(--accent); border-radius: 999px; padding: 5px 10px; }
+    .lp-price { font-family: var(--font-mono); font-size: 44px; line-height: 1; letter-spacing: -0.04em; font-weight: 700; color: var(--fg-0); }
+    .lp-price small { font-size: 14px; letter-spacing: 0; margin-left: 4px; }
+    .lp-chart {
+      height: 116px; border-radius: 16px; position: relative; overflow: hidden;
+      border: 1px solid var(--line);
+      background:
+        linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px) 0 0/100% 25%,
+        linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px) 0 0/20% 100%,
+        var(--bg-2);
+    }
+    .lp-chart svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+    .lp-chips { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+    .lp-chip { border: 1px solid var(--line); border-radius: 11px; padding: 9px; text-align: center; color: var(--fg-2); font-size: 12px; font-family: var(--font-mono); background: var(--bg-2); }
+    .lp-chip.on { background: var(--accent-soft); border-color: var(--accent-line); color: var(--fg-0); }
+    .lp-trade-btns { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .lp-high, .lp-low { border-radius: 14px; padding: 14px 10px; font-weight: 800; font-size: 15px; letter-spacing: .02em; text-align: center; }
+    .lp-high { background: var(--up); color: #04130c; }
+    .lp-low { background: var(--down); color: #fff; }
+    .lp-demo-line { display: flex; align-items: center; justify-content: space-between; color: var(--fg-3); font-size: 11.5px; border-top: 1px solid var(--line); padding-top: 11px; font-family: var(--font-mono); letter-spacing: .06em; }
+    .lp-demo-line .tag { color: var(--accent); font-weight: 600; }
+
+    /* === Generic LP section === */
+    .lp-section { padding: 72px 0; border-top: 1px solid var(--line); scroll-margin-top: 84px; }
+    .lp-sec-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 28px; margin-bottom: 30px; }
+    .lp-label { font-family: var(--font-mono); color: var(--accent); font-weight: 600; font-size: 12px; letter-spacing: .16em; text-transform: uppercase; margin-bottom: 12px; }
+    .lp-sec-head h2 { font-family: var(--font-display); font-size: clamp(28px, 4vw, 46px); letter-spacing: -0.03em; line-height: 1.1; margin: 0; color: var(--fg-0); }
+    .lp-sec-head p { margin: 0; color: var(--fg-2); line-height: 1.8; max-width: 430px; font-size: 15px; }
+
+    /* === Worries === */
+    .lp-worries { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .lp-worry { background: var(--bg-1); border: 1px solid var(--line); border-radius: 18px; padding: 24px; position: relative; overflow: hidden; }
+    .lp-worry::after { content: ""; position: absolute; right: -26px; top: -26px; width: 84px; height: 84px; border-radius: 50%; background: var(--accent-soft); }
+    .lp-q { display: inline-grid; place-items: center; width: 38px; height: 38px; border-radius: 12px; background: var(--accent-soft); color: var(--accent); font-family: var(--font-display); font-weight: 800; margin-bottom: 15px; }
+    .lp-worry h3 { margin: 0 0 9px; font-size: 19px; color: var(--fg-0); font-family: var(--font-display); letter-spacing: -0.02em; }
+    .lp-worry p { margin: 0; color: var(--fg-2); line-height: 1.8; font-size: 14px; }
+    .lp-worry strong { color: var(--fg-0); }
+
+    /* === Funnel === */
+    .lp-funnel { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; position: relative; }
+    .lp-funnel-card {
+      background: var(--bg-1); border: 1px solid var(--line); border-radius: 20px; padding: 24px;
+      min-height: 196px; display: flex; flex-direction: column; justify-content: space-between; position: relative;
+    }
+    .lp-funnel-card:not(:last-child)::before {
+      content: "→"; position: absolute; right: -21px; top: 42%; z-index: 2;
+      font-size: 30px; color: var(--accent-line);
+    }
+    .lp-step { font-family: var(--font-mono); color: var(--accent); font-weight: 600; font-size: 12px; letter-spacing: .1em; }
+    .lp-funnel-card h3 { font-family: var(--font-display); font-size: 22px; margin: 13px 0 9px; letter-spacing: -0.03em; color: var(--fg-0); }
+    .lp-funnel-card p { color: var(--fg-2); line-height: 1.75; margin: 0; font-size: 14px; }
+    .lp-mini { height: 64px; border-radius: 14px; background: var(--bg-2); border: 1px solid var(--line); display: grid; place-items: center; color: var(--accent); font-family: var(--font-mono); font-weight: 600; font-size: 13px; margin-top: 18px; letter-spacing: .04em; }
+    .lp-center-cta { text-align: center; margin-top: 30px; }
+
+    /* === Options note === */
+    .lp-opt-foot { margin: 22px 0 0; color: var(--fg-3); font-size: 13px; line-height: 1.7; }
+    .lp-opt-foot a { color: var(--accent); }
+
+    /* === Trust === */
+    .lp-trust { display: grid; grid-template-columns: .92fr 1.08fr; gap: 22px; align-items: stretch; }
+    .lp-trust-panel {
+      border: 1px solid var(--line); border-radius: 22px; padding: 28px;
+      background: radial-gradient(70% 60% at 30% 10%, var(--accent-soft), transparent 60%), var(--bg-1);
+      display: flex; flex-direction: column; justify-content: space-between; min-height: 320px;
+    }
+    .lp-badge {
+      width: 132px; height: 132px; border-radius: 30px; margin-bottom: 20px;
+      border: 1px solid var(--accent-line);
+      background: radial-gradient(circle at 35% 25%, var(--accent-soft), transparent 65%), var(--bg-2);
+      display: grid; place-items: center; color: var(--accent);
+      font-family: var(--font-display); font-weight: 800; font-size: 40px; letter-spacing: -0.04em;
+    }
+    .lp-trust-panel h3 { font-family: var(--font-display); font-size: 26px; letter-spacing: -0.03em; margin: 0 0 11px; color: var(--fg-0); }
+    .lp-trust-panel p { color: var(--fg-2); line-height: 1.85; margin: 0; font-size: 14.5px; }
+    .lp-trust-note { margin-top: 16px !important; color: var(--fg-3) !important; font-size: 12.5px !important; }
+    .lp-trust-list { display: flex; flex-direction: column; gap: 12px; }
+    .lp-trust-item { display: grid; grid-template-columns: 50px 1fr; gap: 15px; border: 1px solid var(--line); background: var(--bg-1); border-radius: 16px; padding: 17px; align-items: center; }
+    .lp-trust-ic { width: 50px; height: 50px; border-radius: 14px; background: var(--accent-soft); display: grid; place-items: center; color: var(--accent); }
+    .lp-trust-item h4 { margin: 0 0 5px; font-size: 16px; color: var(--fg-0); font-family: var(--font-display); }
+    .lp-trust-item p { margin: 0; color: var(--fg-2); line-height: 1.65; font-size: 13px; }
+    .lp-trust-item a { color: var(--accent); }
+
+    /* === Platform === */
+    .lp-platform { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .lp-plat-card { border: 1px solid var(--line); border-radius: 22px; background: var(--bg-1); padding: 26px; display: grid; grid-template-columns: 84px 1fr; gap: 22px; align-items: center; }
+    .lp-phone { width: 84px; height: 152px; border: 6px solid var(--bg-3); border-radius: 22px; background: linear-gradient(180deg, var(--bg-2), var(--bg-0)); padding: 10px; box-shadow: inset 0 0 0 1px var(--line); }
+    .lp-phone .l { height: 8px; border-radius: 99px; background: var(--accent-line); margin-bottom: 8px; }
+    .lp-phone .b { height: 22px; border-radius: 7px; background: var(--bg-3); margin-bottom: 8px; }
+    .lp-plat-card h3 { font-family: var(--font-display); font-size: 21px; letter-spacing: -0.02em; margin: 0 0 9px; color: var(--fg-0); }
+    .lp-plat-card p { color: var(--fg-2); line-height: 1.75; margin: 0; font-size: 14px; }
+    .lp-app-icons { display: flex; gap: 9px; margin-top: 14px; }
+    .lp-app-icons span { border: 1px solid var(--line); border-radius: 9px; padding: 7px 11px; font-size: 12px; color: var(--fg-1); background: var(--bg-2); font-family: var(--font-mono); }
+
+    /* === Final === */
+    .lp-final { padding: 80px 0 96px; border-top: 1px solid var(--line); }
+    .lp-final-box {
+      border: 1px solid var(--accent-line); border-radius: 28px; padding: 52px 44px; text-align: center;
+      background: radial-gradient(60% 90% at 50% 0%, var(--accent-soft), transparent 55%), var(--bg-1);
+      box-shadow: 0 32px 80px -40px rgba(0,0,0,.8);
+    }
+    .lp-final-box h2 { font-family: var(--font-display); font-size: clamp(28px, 4vw, 44px); letter-spacing: -0.03em; line-height: 1.12; margin: 14px auto 16px; max-width: 720px; color: var(--fg-0); }
+    .lp-final-box > p { color: var(--fg-1); line-height: 1.85; max-width: 640px; margin: 0 auto 28px; }
+    .lp-final-actions { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; }
+    .lp-final-actions .btn-primary, .lp-final-actions .btn-ghost { min-height: 56px; padding-inline: 28px; font-size: 16px; }
+    .lp-fineprint { color: var(--fg-3); font-size: 12.5px; line-height: 1.8; max-width: 720px; margin: 26px auto 0; }
+
+    /* === Sticky mobile CTA === */
+    .lp-sticky {
+      display: none; position: fixed; z-index: 80; left: 12px; right: 12px; bottom: 12px;
+      background: rgba(8,11,16,.92); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
+      border: 1px solid var(--line-strong); border-radius: 18px; padding: 10px; gap: 10px;
+      box-shadow: 0 20px 50px -16px rgba(0,0,0,.8);
+    }
+    .lp-sticky .btn-primary, .lp-sticky .btn-ghost { flex: 1; min-height: 46px; font-size: 13.5px; padding-inline: 10px; justify-content: center; }
+
+    /* === Responsive === */
+    @media (max-width: 900px) {
+      .lp-hero-grid, .lp-trust, .lp-platform { grid-template-columns: 1fr; }
+      .lp-terminal-wrap { max-width: 560px; margin-inline: auto; }
+      .lp-funnel { grid-template-columns: 1fr; }
+      .lp-funnel-card:not(:last-child)::before { content: "↓"; right: auto; left: 50%; transform: translateX(-50%); top: auto; bottom: -22px; }
+      .lp-sec-head { display: block; }
+      .lp-sec-head p { margin-top: 14px; }
+    }
+    @media (max-width: 620px) {
+      .lp-hero { padding: 44px 0 48px; }
+      .lp-section { padding: 56px 0; }
+      .lp-hero-actions { display: grid; grid-template-columns: 1fr; width: 100%; }
+      .lp-hero-actions .btn-primary, .lp-hero-actions .btn-ghost { width: 100%; justify-content: center; }
+      .lp-stats, .lp-worries { grid-template-columns: 1fr; }
+      .lp-term-body { grid-template-columns: 1fr; }
+      .lp-markets { display: grid; grid-template-columns: 1fr 1fr; }
+      .lp-price { font-size: 38px; }
+      .lp-final-box { padding: 34px 18px; border-radius: 22px; }
+      .lp-sticky { display: flex; }
+      .footer { padding-bottom: 92px; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">本文へスキップ</a>
+
+  <nav class="nav">
+    <div class="container nav-inner">
+      <a href="index.html" class="brand">
+        <span class="dot"></span>
+        <span><span class="opt">the</span>option</span>
+      </a>
+      <div class="nav-links">
+        <a href="trading-options.html">取引オプション</a>
+        <a href="payouts.html">ペイアウト</a>
+        <a href="trading-hours.html">取引時間</a>
+        <a href="accounts.html">口座開設</a>
+        <a href="help.html">ヘルプ</a>
+        <a href="company.html">会社情報</a>
+      </div>
+      <div class="nav-cta">
+        <a href="the-option.html" class="btn-ghost">クイックデモ</a>
+        <a href="accounts.html" class="btn-primary">口座開設</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="risk-banner">
+    <div class="container">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v4M12 17h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg>
+      <p><b>リスク警告：</b>バイナリーオプション取引は投資元本の全額を失う可能性があります。本ページはサービス紹介であり、利益を保証するものではありません。<a href="risk-disclosure.html">くわしく</a></p>
+    </div>
+  </div>
+
+  <main id="main">
+
+    <!-- 1. ファーストビュー -->
+    <section class="lp-hero">
+      <div class="container lp-hero-grid">
+        <div class="lp-hero-copy">
+          <span class="lp-eyebrow">入金不要でデモ体験 · まずは操作感だけ確認</span>
+          <h1>選ぶのは、<br><span class="lp-grad">High か Low か。</span></h1>
+          <p class="lp-lead">価格が上がるか、下がるか。the option は、はじめての方でもスマホで直感的に試せるバイナリーオプション取引プラットフォームです。まずは仮想資金のデモで、画面の見やすさと操作感を確認してください。</p>
+          <div class="lp-hero-actions">
+            <a class="btn-primary lg" href="the-option.html">クイックデモを試す（登録不要）<span aria-hidden="true">→</span></a>
+            <a class="btn-ghost" href="accounts.html">無料で口座開設</a>
+          </div>
+          <div class="lp-micro" aria-label="安心材料">
+            <span><i class="lp-check" aria-hidden="true">✓</i>デモは自己資金リスクなし</span>
+            <span><i class="lp-check" aria-hidden="true">✓</i>投資額を超える損失なし</span>
+            <span><i class="lp-check" aria-hidden="true">✓</i>スマホで完結</span>
+          </div>
+          <div class="lp-stats">
+            <div class="lp-stat"><b>30秒〜</b><small>短時間の判定にも対応</small></div>
+            <div class="lp-stat"><b>3.2h</b><small>平均出金処理時間の記載あり</small></div>
+            <div class="lp-stat"><b>4種</b><small>HighLow / Turbo など</small></div>
+          </div>
+        </div>
+
+        <div class="lp-terminal-wrap" aria-label="取引画面イメージ">
+          <div class="lp-terminal">
+            <div class="lp-term-top">
+              <div class="lp-dots" aria-hidden="true"><i></i><i></i><i></i></div>
+              <div class="lp-url">app.theoption.com/trade</div>
+            </div>
+            <div class="lp-term-body">
+              <div class="lp-markets">
+                <div class="lp-market"><div><b>USD/JPY</b><small>FX</small></div><span class="pct up">+88%</span></div>
+                <div class="lp-market"><div><b>EUR/USD</b><small>FX</small></div><span class="pct up">+86%</span></div>
+                <div class="lp-market"><div><b>BTC/USD</b><small>CRYPTO</small></div><span class="pct up">+78%</span></div>
+                <div class="lp-market"><div><b>XAU/USD</b><small>GOLD</small></div><span class="pct up">+84%</span></div>
+                <div class="lp-market"><div><b>N225</b><small>INDEX</small></div><span class="pct up">+80%</span></div>
+              </div>
+              <div class="lp-trade">
+                <div class="lp-pair"><h3>USD/JPY</h3><span class="lp-pay">PAYOUT +88%</span></div>
+                <div class="lp-price mono" id="lp-price">156.234<small class="up" id="lp-delta">▲ +0.08%</small></div>
+                <div class="lp-chart" aria-hidden="true">
+                  <svg viewBox="0 0 440 130" preserveAspectRatio="none">
+                    <path d="M0 96 C48 82, 62 102, 106 75 S178 82, 218 58 S290 37, 334 55 S392 32, 440 18" fill="none" stroke="#1fd98e" stroke-width="4" stroke-linecap="round"/>
+                    <path d="M0 96 C48 82, 62 102, 106 75 S178 82, 218 58 S290 37, 334 55 S392 32, 440 18 L440 130 L0 130 Z" fill="rgba(31,217,142,.1)"/>
+                  </svg>
+                </div>
+                <div class="lp-chips"><div class="lp-chip on">30s</div><div class="lp-chip">1m</div><div class="lp-chip">5m</div></div>
+                <div class="lp-chips"><div class="lp-chip">投資額</div><div class="lp-chip on" style="grid-column: span 2;">¥10,000</div></div>
+                <div class="lp-trade-btns"><span class="lp-high">▲ HIGH</span><span class="lp-low">▼ LOW</span></div>
+                <div class="lp-demo-line"><span class="tag">DEMO</span><span>仮想資金で体験</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. 不安解消バー -->
+    <section class="lp-section" id="worries">
+      <div class="container">
+        <div class="lp-sec-head">
+          <div>
+            <div class="lp-label">Before you start</div>
+            <h2>はじめる前の不安を、<br>先に解消。</h2>
+          </div>
+          <p>金融系サービスで迷いやすいポイントを、最初に回収します。説明を探して離脱する前に、まずはデモで確かめられます。</p>
+        </div>
+        <div class="lp-worries">
+          <article class="lp-worry">
+            <div class="lp-q">Q</div>
+            <h3>出金できる？</h3>
+            <p>本人確認済み口座の出金処理について、公式サイトでは<strong>平均3.2時間</strong>の実績値を記載しています。最新の条件は<a href="fees.html">入出金ページ</a>でご確認ください。</p>
+          </article>
+          <article class="lp-worry">
+            <div class="lp-q">Q</div>
+            <h3>最低いくらから？</h3>
+            <p>取引は<strong>1回 ¥1,000 から</strong>。いきなり入金せず、まずは仮想資金のデモで操作感を確認できます（初回最低入金は ¥5,000）。</p>
+          </article>
+          <article class="lp-worry">
+            <div class="lp-q">Q</div>
+            <h3>借金になる？</h3>
+            <p>投資額を超える損失は発生しません。ただし、<strong>投資した元本の全額を失う可能性</strong>があります。余裕資金の範囲でご判断ください。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. 体験 → 登録ファネル -->
+    <section class="lp-section" id="flow">
+      <div class="container">
+        <div class="lp-sec-head">
+          <div>
+            <div class="lp-label">Demo-first funnel</div>
+            <h2>「できそう」を作ってから、<br>口座開設へ。</h2>
+          </div>
+          <p>いきなり登録を迫らず、無料デモで操作を理解してから本命の口座開設へ。このページの主CTAもデモ優先にしています。</p>
+        </div>
+        <div class="lp-funnel">
+          <article class="lp-funnel-card">
+            <div>
+              <div class="lp-step">STEP 01</div>
+              <h3>デモを起動</h3>
+              <p>入金前に、取引画面・銘柄選択・判定時間の見え方を確認。</p>
+            </div>
+            <div class="lp-mini">Quick Demo</div>
+          </article>
+          <article class="lp-funnel-card">
+            <div>
+              <div class="lp-step">STEP 02</div>
+              <h3>1取引を体験</h3>
+              <p>High / Low を選ぶだけの流れを、仮想資金で一度試す。</p>
+            </div>
+            <div class="lp-mini">HIGH or LOW</div>
+          </article>
+          <article class="lp-funnel-card">
+            <div>
+              <div class="lp-step">STEP 03</div>
+              <h3>納得して開設</h3>
+              <p>操作感・リスク・入出金条件を確認してから口座開設へ。</p>
+            </div>
+            <div class="lp-mini">Create Account</div>
+          </article>
+        </div>
+        <div class="lp-center-cta"><a class="btn-primary lg" href="the-option.html">この流れをデモで試す →</a></div>
+      </div>
+    </section>
+
+    <!-- 4. 取引オプション（4種） -->
+    <section class="lp-section" id="options">
+      <div class="container">
+        <div class="lp-sec-head">
+          <div>
+            <div class="lp-label">Trading options</div>
+            <h2>戦略に合わせて選べる、<br>4つの取引オプション。</h2>
+          </div>
+          <p>倍率は最初から出しすぎず、操作を理解したあとに提示します。期待感とリスク理解の順番を崩さない構成です。</p>
+        </div>
+        <div class="opt-grid">
+          <article class="opt-card">
+            <span class="opt-tag">中期 · 15分〜1日</span>
+            <h3 class="opt-name">HighLow</h3>
+            <div class="opt-payout">〜1.95<small> 倍</small></div>
+            <p>スタート価格と判定価格を比較する、基本のオプション。はじめての方にも理解しやすいタイプです。</p>
+            <div class="opt-meta"><span class="chip">15分</span><span class="chip">1時間</span><span class="chip">1日</span></div>
+          </article>
+          <article class="opt-card">
+            <span class="opt-tag">中期 · スプレッド</span>
+            <h3 class="opt-name">HighLow スプレッド</h3>
+            <div class="opt-payout">〜2.00<small> 倍</small></div>
+            <p>価格帯を超える必要があるぶん、ペイアウトが高いタイプ。そのぶん条件は厳しくなります。</p>
+            <div class="opt-meta"><span class="chip">15分</span><span class="chip">1時間</span><span class="chip">1日</span></div>
+          </article>
+          <article class="opt-card">
+            <span class="opt-tag">短期 · 30秒〜5分</span>
+            <h3 class="opt-name">Turbo</h3>
+            <div class="opt-payout">〜1.95<small> 倍</small></div>
+            <p>短時間で結果が出る、スピード重視のオプション。短期の判断に向いています。</p>
+            <div class="opt-meta"><span class="chip">30秒</span><span class="chip">1分</span><span class="chip">3分</span><span class="chip">5分</span></div>
+          </article>
+          <article class="opt-card">
+            <span class="opt-tag">短期 · スプレッド</span>
+            <h3 class="opt-name">Turbo スプレッド</h3>
+            <div class="opt-payout">〜2.30<small> 倍</small></div>
+            <p>高ペイアウトだが条件が厳しい、リスク理解が前提のタイプ。慣れてから検討を。</p>
+            <div class="opt-meta"><span class="chip">30秒</span><span class="chip">1分</span><span class="chip">3分</span><span class="chip">5分</span></div>
+          </article>
+        </div>
+        <p class="lp-opt-foot">※ペイアウト率は相場状況により変動します。各オプションの詳細は<a href="trading-options.html">取引オプション</a>・<a href="payouts.html">ペイアウト</a>をご確認ください。</p>
+      </div>
+    </section>
+
+    <!-- 5. 信頼の物量 -->
+    <section class="lp-section" id="trust">
+      <div class="container">
+        <div class="lp-sec-head">
+          <div>
+            <div class="lp-label">Trust &amp; security</div>
+            <h2>警戒心の強い商材ほど、<br>信頼情報を厚く。</h2>
+          </div>
+          <p>金融サービスでは「よさそう」より先に「大丈夫そう」が必要です。会社情報・資金管理・通信保護・リスク開示を、見える位置に置いています。</p>
+        </div>
+        <div class="lp-trust">
+          <article class="lp-trust-panel">
+            <div>
+              <div class="lp-badge">IFSC</div>
+              <h3>運営情報を明示。</h3>
+              <p>当社は IFSC（国際金融サービス委員会・ベリーズ）のライセンス IFSC/60/468/TS/19 のもとで運営しています。登録地・リスク開示への導線を用意し、不安を抱いた方が確認できるようにしています。</p>
+            </div>
+            <p class="lp-trust-note">※ライセンスや分別管理は、取引で利益が出ること・損失が生じないことを保証するものではありません。</p>
+          </article>
+          <div class="lp-trust-list">
+            <article class="lp-trust-item">
+              <div class="lp-trust-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 9h.01M15 9h.01M9 13h.01M15 13h.01"/></svg></div>
+              <div><h4>運営会社・ライセンス・所在地</h4><p>会社概要、登録地、ライセンス番号など判断材料を集約。<a href="company.html">会社情報</a>へ。</p></div>
+            </article>
+            <article class="lp-trust-item">
+              <div class="lp-trust-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="11" width="16" height="9" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></div>
+              <div><h4>分別管理・SSL・2FA</h4><p>資金管理とログイン保護の方針を確認できます。<a href="aml-kyc.html">AML / KYC</a>へ。</p></div>
+            </article>
+            <article class="lp-trust-item">
+              <div class="lp-trust-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
+              <div><h4>出金処理スピード</h4><p>平均処理時間など具体情報は、注意書きつきで提示。<a href="fees.html">入出金</a>へ。</p></div>
+            </article>
+            <article class="lp-trust-item">
+              <div class="lp-trust-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l2.5 5.5L20 9l-4 4 1 6-5-3-5 3 1-6-4-4 5.5-.5z"/></svg></div>
+              <div><h4>利用者の声・リスク開示</h4><p>成果保証に見えないよう個人の感想である旨を添えて掲載。<a href="risk-disclosure.html">リスク開示</a>へ。</p></div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. プラットフォーム -->
+    <section class="lp-section" id="platform">
+      <div class="container">
+        <div class="lp-sec-head">
+          <div>
+            <div class="lp-label">Platform</div>
+            <h2>スマホでも、PCでも。<br>同じ体験を。</h2>
+          </div>
+          <p>実際の利用シーンを想像しやすいように。スマホ最適化・アプリ対応を明示して、行動のハードルを下げます。</p>
+        </div>
+        <div class="lp-platform">
+          <article class="lp-plat-card">
+            <div class="lp-phone" aria-hidden="true"><div class="l"></div><div class="b"></div><div class="b"></div><div class="b"></div><div class="l" style="width:60%;margin:12px auto 0;"></div></div>
+            <div><h3>スマホ最適UI</h3><p>銘柄選択、判定時間、High / Low の操作をスマホ画面で完結。すきま時間でも確認しやすい設計です。</p></div>
+          </article>
+          <article class="lp-plat-card">
+            <div class="lp-phone" aria-hidden="true"><div class="b" style="height:42px;"></div><div class="l"></div><div class="l"></div><div class="b" style="height:32px;"></div></div>
+            <div><h3>iOS / Android</h3><p>ブラウザ版に加えてアプリ導線も。通知・判定結果・価格アラートなどの利用イメージを補強します。</p><div class="lp-app-icons"><span>iOS App</span><span>Android</span></div></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. 最終CTA -->
+    <section class="lp-final" id="cta">
+      <div class="container">
+        <div class="lp-final-box">
+          <div class="lp-label">Start with demo</div>
+          <h2>まずは無料デモで、<br>High / Low の操作感だけ試す。</h2>
+          <p>口座開設の前に、画面の見やすさ、判定時間、銘柄の選び方を確認できます。納得してから次のステップへ進んでください。</p>
+          <div class="lp-final-actions">
+            <a class="btn-primary lg" href="the-option.html">クイックデモを試す →</a>
+            <a class="btn-ghost" href="accounts.html">無料で口座開設</a>
+          </div>
+          <p class="lp-fineprint">バイナリーオプション取引は、投資元本を全額失う可能性があります。デモ体験は実際の利益を保証するものではありません。取引前に、ご自身の財務状況・投資経験・リスク許容度をご確認ください。本サービスは米国・カナダ・EU加盟国・英国・イスラエルなど一部の国・地域の居住者にはご利用いただけません。</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="col footer-brand">
+          <a href="index.html" class="brand"><span class="dot"></span><span><span class="opt">the</span>option</span></a>
+          <p>ハイロー（バイナリー）オプションを、もっとわかりやすく。透明性と使いやすさを大切にしています。</p>
+          <div class="footer-social">
+            <a href="#" aria-label="X"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="m17 3-5.2 6.5L17.5 21H14l-3.6-5.5L5.5 21H2l5.5-7L2 3h3.5l3.2 4.8L13 3z"/></svg></a>
+            <a href="#" aria-label="YouTube"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 0 1-10 10v-7l4-3-4-3V2a10 10 0 0 1 10 10z"/></svg></a>
+          </div>
+        </div>
+        <div class="col">
+          <h4>取引</h4>
+          <a href="trading-options.html">取引オプション</a>
+          <a href="trading-options.html#highlow">HighLow</a>
+          <a href="trading-options.html#turbo">Turbo</a>
+          <a href="payouts.html">ペイアウト</a>
+          <a href="trading-hours.html">取引時間</a>
+        </div>
+        <div class="col">
+          <h4>口座・入出金</h4>
+          <a href="accounts.html">口座開設</a>
+          <a href="the-option.html">クイックデモ</a>
+          <a href="fees.html">入出金</a>
+          <a href="fees.html">手数料</a>
+        </div>
+        <div class="col">
+          <h4>サポート</h4>
+          <a href="help.html">ヘルプ</a>
+          <a href="start.html">はじめての方へ</a>
+          <a href="help.html#faq">よくある質問</a>
+          <a href="contact.html">お問い合わせ</a>
+        </div>
+        <div class="col">
+          <h4>会社・法的情報</h4>
+          <a href="company.html">会社概要</a>
+          <a href="risk-disclosure.html">リスク開示</a>
+          <a href="terms.html">利用規約</a>
+          <a href="privacy.html">プライバシー</a>
+          <a href="aml-kyc.html">AML / KYC</a>
+        </div>
+      </div>
+      <div class="footer-disclaim">
+        <b>リスク開示：</b>バイナリーオプション取引は元本を失うリスクを伴います。投資した資金の全額を失う可能性があります。取引を行う前に、ご自身の財務状況・投資経験・リスク許容度を十分にご検討ください。本サービスは、米国・カナダ・EU加盟国・英国・イスラエル・北朝鮮など一部の国・地域の居住者にはご利用いただけません。当社は IFSC（国際金融サービス委員会、ベリーズ）のライセンス（IFSC/60/468/TS/19）のもとで運営しています。
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 The Option Trading Ltd. All rights reserved.</span>
+        <div class="links">
+          <a href="terms.html">利用規約</a>
+          <a href="privacy.html">プライバシー</a>
+          <a href="privacy.html#cookie">Cookie</a>
+          <a href="aml-kyc.html">AML / KYC</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <div class="lp-sticky" aria-label="モバイル固定CTA">
+    <a class="btn-primary" href="the-option.html">デモを試す</a>
+    <a class="btn-ghost" href="accounts.html">口座開設</a>
+  </div>
+
+  <script>
+    (function () {
+      var priceEl = document.getElementById('lp-price');
+      var deltaEl = document.getElementById('lp-delta');
+      if (!priceEl || !deltaEl) return;
+      var base = 156.234;
+      var media = window.matchMedia('(prefers-reduced-motion: reduce)');
+      if (media.matches) return;
+      setInterval(function () {
+        base += (Math.random() - 0.47) * 0.012;
+        var diff = base - 156.234;
+        var up = diff >= 0;
+        priceEl.firstChild.nodeValue = base.toFixed(3);
+        deltaEl.className = up ? 'up' : 'down';
+        deltaEl.textContent = (up ? '▲ +' : '▼ ') + diff.toFixed(3) + '%';
+      }, 1800);
+    })();
+  </script>
+</body>
+</html>
