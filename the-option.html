@@ -3,445 +3,612 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>デモ取引（仮想資金） — the option</title>
-  <meta name="description" content="仮想資金でバイナリーオプションの仕組みを体験できる無料のデモ取引。お金は一切かかりません。学習用シミュレーションです。">
+  <title>デモトレード画面（仮想資金） — the option</title>
+  <meta name="description" content="3ペイン構成のトレード画面デモ。仮想資金でHighLow・Turboの取引体験ができます。実際のお金は動きません。">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap">
   <link rel="stylesheet" href="assets/site.css">
   <style>
-    .demo-wrap { display: grid; grid-template-columns: minmax(0,1fr) 320px; gap: 20px; align-items: start; }
-    .demo-panel { background: var(--bg-1); border: 1px solid var(--line); border-radius: 16px; overflow: hidden; }
-    .demo-head {
-      display: flex; align-items: center; gap: 14px; flex-wrap: wrap;
-      padding: 14px 18px; border-bottom: 1px solid var(--line); background: var(--bg-2);
+    body { overflow: hidden; }
+    .app {
+      height: 100vh; display: grid;
+      grid-template-columns: 280px minmax(0,1fr) 340px;
+      grid-template-rows: auto 58px minmax(0,1fr) 232px;
+      grid-template-areas: "bar bar bar" "top top top" "rail chart panel" "rail pos panel";
     }
-    .demo-head .pair { display: flex; gap: 8px; }
-    .demo-head select {
-      font: inherit; font-size: 15px; color: var(--fg-0); background: var(--bg-1);
-      border: 1px solid var(--line-strong); border-radius: 8px; padding: 8px 12px;
+    /* Demo banner */
+    .demo-bar { grid-area: bar; display: flex; align-items: center; gap: 10px;
+      padding: 8px 18px; font-size: 13px; color: var(--fg-1);
+      background: var(--warn-soft); border-bottom: 1px solid var(--warn-line); }
+    .demo-bar svg { color: var(--warn); flex-shrink: 0; }
+    .demo-bar b { color: var(--fg-0); }
+    .demo-bar a { color: var(--warn); font-weight: 600; }
+    .demo-bar .spacer { margin-left: auto; }
+    .demo-bar .home { color: var(--fg-2); }
+    /* Top bar */
+    .top { grid-area: top; display: flex; align-items: center; gap: 18px;
+      padding: 0 18px; border-bottom: 1px solid var(--line); background: var(--bg-1); overflow-x: auto; }
+    .top .brand { font-size: 17px; }
+    .kpis { display: flex; gap: 22px; margin-left: 8px; }
+    .kpi { display: flex; flex-direction: column; line-height: 1.25; white-space: nowrap; }
+    .kpi .l { font-size: 10px; color: var(--fg-3); letter-spacing: 0.04em; }
+    .kpi .v { font-family: var(--font-mono); font-size: 15px; color: var(--fg-0); font-weight: 600; }
+    .kpi .v.up { color: var(--up); } .kpi .v.down { color: var(--down); }
+    .top .right { margin-left: auto; display: flex; align-items: center; gap: 10px; }
+    .mode { display: inline-flex; border: 1px solid var(--line-strong); border-radius: 8px; overflow: hidden; }
+    .mode button { padding: 7px 12px; font-size: 12.5px; font-weight: 700; color: var(--fg-2); font-family: var(--font-mono); }
+    .mode button.on { background: var(--accent); color: #04130c; }
+    .icon-btn { width: 36px; height: 36px; border: 1px solid var(--line); border-radius: 8px; display: grid; place-items: center; color: var(--fg-2); }
+    .icon-btn:hover { color: var(--fg-0); border-color: var(--line-strong); }
+    .avatar { width: 34px; height: 34px; border-radius: 50%; background: linear-gradient(135deg,var(--accent),#0a8f5a); color:#04130c; display: grid; place-items: center; font-weight: 800; font-size: 13px; }
+    /* Rail */
+    .rail { grid-area: rail; border-right: 1px solid var(--line); background: var(--bg-1); display: flex; flex-direction: column; min-height: 0; }
+    .rail .cats { display: flex; gap: 4px; padding: 12px 12px 8px; flex-wrap: wrap; }
+    .rail .cats button { font-size: 12px; padding: 5px 10px; border-radius: 999px; color: var(--fg-2); border: 1px solid var(--line); }
+    .rail .cats button.on { color: var(--accent); border-color: var(--accent-line); background: var(--accent-soft); }
+    .rail .search { padding: 0 12px 8px; }
+    .rail .search input { width: 100%; font: inherit; font-size: 13px; color: var(--fg-0); background: var(--bg-2); border: 1px solid var(--line-strong); border-radius: 8px; padding: 8px 10px; }
+    .rail .list { flex: 1; overflow-y: auto; padding: 4px 8px 8px; }
+    .rail-item { width: 100%; display: grid; grid-template-columns: 1fr auto; gap: 4px 8px; align-items: center;
+      padding: 9px 10px 9px 12px; border-radius: 9px; position: relative; text-align: left; }
+    .rail-item:hover { background: var(--bg-2); }
+    .rail-item.on { background: var(--bg-2); }
+    .rail-item.on::before { content: ""; position: absolute; left: 0; top: 8px; bottom: 8px; width: 2px; border-radius: 2px; background: var(--accent); }
+    .rail-item .nm { font-family: var(--font-mono); font-size: 13px; color: var(--fg-0); }
+    .rail-item .cat { font-size: 9px; color: var(--fg-3); letter-spacing: 0.06em; }
+    .rail-item .px { font-family: var(--font-mono); font-size: 13px; color: var(--fg-1); text-align: right; }
+    .rail-item .chg { font-family: var(--font-mono); font-size: 10.5px; text-align: right; }
+    .rail-item .chg.up { color: var(--up); } .rail-item .chg.down { color: var(--down); }
+    .rail .live { padding: 9px 14px; border-top: 1px solid var(--line); font-family: var(--font-mono); font-size: 11px; color: var(--fg-3); display: flex; align-items: center; gap: 7px; }
+    .rail .live .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 8px var(--accent); animation: blink 1.4s infinite; }
+    @keyframes blink { 50% { opacity: .35; } }
+    /* Chart pane */
+    .chart-pane { grid-area: chart; display: flex; flex-direction: column; min-width: 0; min-height: 0; }
+    .ch-head { display: flex; align-items: center; gap: 16px; padding: 12px 18px; border-bottom: 1px solid var(--line); flex-wrap: wrap; }
+    .ch-head .nm { font-family: var(--font-mono); font-size: 15px; color: var(--fg-1); }
+    .ch-head .px { font-family: var(--font-mono); font-size: 30px; font-weight: 700; color: var(--fg-0); letter-spacing: -0.01em; }
+    .ch-head .px.up { color: var(--up); } .ch-head .px.down { color: var(--down); }
+    .ch-head .chg { font-family: var(--font-mono); font-size: 13px; padding: 3px 9px; border-radius: 6px; }
+    .ch-head .chg.up { color: var(--up); background: var(--accent-soft); } .ch-head .chg.down { color: var(--down); background: rgba(255,82,119,.12); }
+    .ch-head .stats { margin-left: auto; display: flex; gap: 18px; flex-wrap: wrap; }
+    .ch-head .stats .s { display: flex; flex-direction: column; line-height: 1.2; }
+    .ch-head .stats .s .l { font-size: 9px; color: var(--fg-3); letter-spacing: .06em; }
+    .ch-head .stats .s .v { font-family: var(--font-mono); font-size: 13px; color: var(--fg-1); }
+    .ch-head .stats .s .v.gold { color: var(--accent); }
+    .ch-tools { display: flex; align-items: center; gap: 14px; padding: 8px 18px; border-bottom: 1px solid var(--line); flex-wrap: wrap; }
+    .pillset { display: inline-flex; gap: 4px; }
+    .pillset button { font-family: var(--font-mono); font-size: 12px; padding: 5px 11px; border-radius: 7px; color: var(--fg-2); border: 1px solid var(--line); }
+    .pillset button.on { color: var(--accent); border-color: var(--accent-line); background: var(--accent-soft); }
+    .ch-tools .sep { width: 1px; height: 20px; background: var(--line); }
+    .styleset { display: inline-flex; gap: 4px; margin-left: auto; }
+    .styleset button { width: 34px; height: 30px; border-radius: 7px; border: 1px solid var(--line); color: var(--fg-2); display: grid; place-items: center; }
+    .styleset button.on { color: var(--accent); border-color: var(--accent-line); background: var(--accent-soft); }
+    .chart-area { flex: 1; position: relative; min-height: 0; background:
+      linear-gradient(rgba(255,255,255,.015) 1px, transparent 1px) 0 0/46px 46px,
+      linear-gradient(90deg, rgba(255,255,255,.015) 1px, transparent 1px) 0 0/46px 46px, var(--bg-0); }
+    .chart-area canvas { display: block; width: 100%; height: 100%; }
+    /* Trade panel */
+    .panel { grid-area: panel; border-left: 1px solid var(--line); background: var(--bg-1); overflow-y: auto; padding: 16px; display: flex; flex-direction: column; gap: 16px; }
+    .panel h2 { font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--fg-3); margin: 0 0 8px; }
+    .stepper { display: grid; grid-template-columns: 44px 1fr 44px; gap: 8px; }
+    .stepper button { border: 1px solid var(--line-strong); border-radius: 8px; font-size: 20px; color: var(--fg-1); background: var(--bg-2); }
+    .stepper input { font: inherit; font-family: var(--font-mono); font-size: 18px; text-align: center; color: var(--fg-0); background: var(--bg-2); border: 1px solid var(--line-strong); border-radius: 8px; width: 100%; }
+    .quick { display: flex; gap: 6px; margin-top: 8px; flex-wrap: wrap; }
+    .quick button { font-family: var(--font-mono); font-size: 12px; color: var(--fg-2); border: 1px solid var(--line); border-radius: 6px; padding: 5px 9px; background: var(--bg-2); }
+    .exp-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 6px; }
+    .exp-grid button { font-family: var(--font-mono); font-size: 13px; padding: 9px 0; border: 1px solid var(--line); border-radius: 8px; color: var(--fg-1); background: var(--bg-2); }
+    .exp-grid button.on { border-color: var(--accent); color: var(--accent); background: var(--accent-soft); }
+    .summary { border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; background: var(--bg-2); display: flex; flex-direction: column; gap: 7px; }
+    .summary .row { display: flex; justify-content: space-between; font-size: 13px; color: var(--fg-2); }
+    .summary .row b { font-family: var(--font-mono); color: var(--fg-0); }
+    .summary .row b.up { color: var(--up); }
+    .hl { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .hl button { font-weight: 800; font-size: 17px; padding: 16px 0; border-radius: 12px; display: flex; flex-direction: column; gap: 2px; align-items: center; }
+    .hl .high { background: var(--up); color: #04130c; box-shadow: 0 10px 24px -10px rgba(31,217,142,.7); }
+    .hl .low { background: var(--down); color: #fff; box-shadow: 0 10px 24px -10px rgba(255,82,119,.7); }
+    .hl button small { font-family: var(--font-mono); font-size: 11px; font-weight: 600; opacity: .85; }
+    .hl button:hover { filter: brightness(1.07); }
+    .hl button:active { transform: translateY(1px); }
+    /* AI gauge */
+    .ai { border: 1px solid var(--line); border-radius: 10px; padding: 14px; background: var(--bg-2); text-align: center; }
+    .ai svg { width: 160px; height: 86px; }
+    .ai .needle { transition: transform .5s cubic-bezier(.2,.7,.2,1); transform-origin: 80px 80px; }
+    .ai .label { font-family: var(--font-display); font-weight: 800; font-size: 18px; margin-top: 4px; }
+    .ai .sub { font-size: 11px; color: var(--fg-3); }
+    /* Positions */
+    .pos { grid-area: pos; border-top: 1px solid var(--line); background: var(--bg-1); display: flex; flex-direction: column; min-height: 0; }
+    .pos-head { display: flex; align-items: center; gap: 14px; padding: 10px 18px; border-bottom: 1px solid var(--line); flex-wrap: wrap; }
+    .pos-tabs { display: inline-flex; gap: 4px; }
+    .pos-tabs button { font-size: 13px; font-weight: 600; padding: 6px 12px; border-radius: 7px; color: var(--fg-2); border: 1px solid transparent; }
+    .pos-tabs button.on { color: var(--fg-0); background: var(--bg-2); border-color: var(--line); }
+    .pos-tabs .pill { font-family: var(--font-mono); font-size: 10px; margin-left: 6px; padding: 1px 6px; border-radius: 999px; background: var(--bg-3); color: var(--fg-2); }
+    .pos-stats { margin-left: auto; display: flex; gap: 16px; font-size: 12px; color: var(--fg-3); }
+    .pos-stats b { font-family: var(--font-mono); color: var(--fg-1); margin-left: 4px; }
+    .pos-stats b.up { color: var(--up); } .pos-stats b.down { color: var(--down); }
+    .pos-body { flex: 1; overflow-y: auto; }
+    table.pt { width: 100%; border-collapse: collapse; font-size: 12.5px; }
+    table.pt th { position: sticky; top: 0; background: var(--bg-2); color: var(--fg-3); font-size: 10.5px; letter-spacing: .04em; text-transform: uppercase; text-align: left; padding: 8px 14px; font-weight: 700; }
+    table.pt td { padding: 9px 14px; border-bottom: 1px solid var(--line); font-family: var(--font-mono); color: var(--fg-1); white-space: nowrap; }
+    table.pt .dir.high { color: var(--up); } table.pt .dir.low { color: var(--down); }
+    table.pt .pnl.up { color: var(--up); } table.pt .pnl.down { color: var(--down); }
+    .respill { font-family: var(--font-mono); font-size: 10.5px; font-weight: 700; padding: 2px 8px; border-radius: 999px; }
+    .respill.win { color: var(--up); background: var(--accent-soft); } .respill.lose { color: var(--down); background: rgba(255,82,119,.12); }
+    .cd { display: flex; flex-direction: column; gap: 4px; min-width: 92px; }
+    .cd .bar { height: 4px; border-radius: 2px; background: var(--bg-3); overflow: hidden; }
+    .cd .bar span { display: block; height: 100%; background: var(--accent); width: 100%; }
+    .pos-empty { color: var(--fg-3); font-size: 13px; text-align: center; padding: 22px; }
+    /* Toast */
+    .toasts { position: fixed; bottom: 18px; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; gap: 8px; z-index: 100; align-items: center; }
+    .toast { background: var(--bg-3); border: 1px solid var(--line-strong); border-radius: 10px; padding: 11px 16px; font-size: 13px; color: var(--fg-0); box-shadow: 0 16px 40px -12px rgba(0,0,0,.7); display: flex; align-items: center; gap: 9px; max-width: 92vw; }
+    .toast.win { border-color: var(--accent-line); } .toast.lose { border-color: var(--down); }
+    .toast .ic { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
+    .toast.lose .ic { background: var(--down); }
+    /* Responsive */
+    @media (max-width: 1080px) {
+      body { overflow: auto; }
+      .app { height: auto; grid-template-columns: 1fr; grid-template-rows: none;
+        grid-template-areas: "bar" "top" "rail" "chart" "panel" "pos"; }
+      .rail { border-right: 0; border-bottom: 1px solid var(--line); }
+      .rail .list { max-height: 230px; }
+      .chart-area { height: 360px; }
+      .panel { border-left: 0; border-bottom: 1px solid var(--line); }
+      .pos-body { max-height: 320px; }
+      .ch-head .px { font-size: 26px; }
     }
-    .demo-head .price { font-family: var(--font-mono); font-size: 26px; font-weight: 600; color: var(--fg-0); }
-    .demo-head .chg { font-family: var(--font-mono); font-size: 13px; padding: 3px 8px; border-radius: 6px; }
-    .demo-head .chg.up { color: var(--up); background: rgba(31,217,142,0.12); }
-    .demo-head .chg.down { color: var(--down); background: rgba(255,82,119,0.12); }
-    .demo-head .payout { margin-left: auto; font-family: var(--font-mono); font-size: 14px; color: var(--accent); border: 1px solid var(--accent-line); background: var(--accent-soft); padding: 5px 10px; border-radius: 999px; }
-    .demo-chart { position: relative; height: 360px; background:
-      linear-gradient(rgba(255,255,255,0.018) 1px, transparent 1px) 0 0/44px 44px,
-      linear-gradient(90deg, rgba(255,255,255,0.018) 1px, transparent 1px) 0 0/44px 44px,
-      var(--bg-0); }
-    .demo-chart canvas { display: block; width: 100%; height: 100%; }
-    .demo-controls { display: flex; flex-direction: column; gap: 16px; }
-    .ctrl-card { background: var(--bg-1); border: 1px solid var(--line); border-radius: 16px; padding: 18px; }
-    .ctrl-card h2 { font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--fg-3); margin: 0 0 12px; }
-    .balance { font-family: var(--font-mono); font-size: 30px; font-weight: 700; color: var(--fg-0); }
-    .balance-sub { font-size: 13px; color: var(--fg-3); margin-top: 2px; }
-    .seg { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; }
-    .seg button { font-family: var(--font-mono); font-size: 13px; padding: 9px 0; border: 1px solid var(--line); border-radius: 8px; color: var(--fg-1); background: var(--bg-2); }
-    .seg button.active { border-color: var(--accent); color: var(--accent); background: var(--accent-soft); }
-    .amount-row { display: flex; align-items: center; gap: 8px; }
-    .amount-row input { font: inherit; font-family: var(--font-mono); font-size: 18px; color: var(--fg-0); background: var(--bg-2); border: 1px solid var(--line-strong); border-radius: 8px; padding: 10px 12px; width: 100%; }
-    .amount-quick { display: flex; gap: 6px; margin-top: 8px; flex-wrap: wrap; }
-    .amount-quick button { font-family: var(--font-mono); font-size: 12px; color: var(--fg-2); border: 1px solid var(--line); border-radius: 6px; padding: 5px 9px; background: var(--bg-2); }
-    .trade-btns { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-    .trade-btns button { font-weight: 700; font-size: 16px; padding: 16px 0; border-radius: 12px; color: #04130c; }
-    .trade-btns .high { background: var(--up); box-shadow: 0 8px 22px -8px rgba(31,217,142,0.6); }
-    .trade-btns .low { background: var(--down); color: #fff; box-shadow: 0 8px 22px -8px rgba(255,82,119,0.6); }
-    .trade-btns button:hover { filter: brightness(1.08); }
-    .positions { display: flex; flex-direction: column; gap: 8px; }
-    .pos { display: grid; grid-template-columns: auto 1fr auto; gap: 10px; align-items: center; font-size: 13px; padding: 10px 12px; border: 1px solid var(--line); border-radius: 9px; background: var(--bg-2); }
-    .pos .tag { font-family: var(--font-mono); font-weight: 700; padding: 2px 7px; border-radius: 5px; font-size: 11px; }
-    .pos .tag.high { color: var(--up); background: rgba(31,217,142,0.14); }
-    .pos .tag.low { color: var(--down); background: rgba(255,82,119,0.14); }
-    .pos .info { color: var(--fg-2); font-family: var(--font-mono); }
-    .pos .res { font-family: var(--font-mono); font-weight: 600; }
-    .pos .res.win { color: var(--up); }
-    .pos .res.lose { color: var(--down); }
-    .pos .res.open { color: var(--fg-3); }
-    .empty { color: var(--fg-3); font-size: 13px; text-align: center; padding: 12px 0; }
-    .demo-foot { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin-top: 14px; }
-    .stat-pill { font-size: 12px; color: var(--fg-2); font-family: var(--font-mono); }
-    .stat-pill b { color: var(--fg-0); margin-left: 4px; }
-    @media (max-width: 860px) { .demo-wrap { grid-template-columns: 1fr; } }
+    @media (prefers-reduced-motion: reduce) {
+      .ai .needle { transition: none; }
+      .cd .bar span { transition: none !important; }
+      .rail .live .dot { animation: none; }
+    }
   </style>
 </head>
 <body>
-  <a class="skip-link" href="#main">本文へスキップ</a>
-
-  <nav class="nav">
-    <div class="container nav-inner">
-      <a href="index.html" class="brand">
-        <span class="dot"></span>
-        <span><span class="opt">the</span>option</span>
-      </a>
-      <div class="nav-links">
-        <a href="trading-options.html">取引オプション</a>
-        <a href="payouts.html">ペイアウト</a>
-        <a href="trading-hours.html">取引時間</a>
-        <a href="accounts.html">口座開設</a>
-        <a href="help.html">ヘルプ</a>
-        <a href="company.html">会社情報</a>
-      </div>
-      <div class="nav-cta">
-        <a href="the-option.html" class="btn-ghost">クイックデモ</a>
-        <a href="accounts.html" class="btn-primary">口座開設</a>
-      </div>
+  <div class="app">
+    <!-- Demo banner -->
+    <div class="demo-bar">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v4M12 17h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg>
+      <span><b>これはデモ画面です。</b>仮想資金による学習用シミュレーションで、実際のお金は動きません。</span>
+      <span class="spacer"></span>
+      <a href="risk-disclosure.html">リスク開示</a>
+      <a class="home" href="index.html">← サイトトップ</a>
     </div>
-  </nav>
 
-  <div class="risk-banner">
-    <div class="container">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v4M12 17h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg>
-      <p><b>これはデモです：</b>仮想資金を使った学習用シミュレーションで、実際のお金は一切動きません。実取引には元本全額を失うリスクがあります。<a href="risk-disclosure.html">リスク開示を読む →</a></p>
-    </div>
+    <!-- Top bar -->
+    <header class="top">
+      <a href="index.html" class="brand"><span class="dot"></span><span><span class="opt">the</span>option</span></a>
+      <div class="kpis">
+        <div class="kpi"><span class="l">残高</span><span class="v" id="k-balance">¥1,000,000</span></div>
+        <div class="kpi"><span class="l">純資産</span><span class="v" id="k-equity">¥1,000,000</span></div>
+        <div class="kpi"><span class="l">本日損益</span><span class="v" id="k-pnl">±¥0</span></div>
+        <div class="kpi"><span class="l">保有中</span><span class="v" id="k-open">0</span></div>
+      </div>
+      <div class="right">
+        <div class="mode" role="group" aria-label="口座モード">
+          <button id="mode-demo" class="on" aria-pressed="true">デモ</button>
+          <button id="mode-real" aria-pressed="false">リアル</button>
+        </div>
+        <button class="icon-btn" id="btn-bell" aria-label="通知">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9M13.7 21a2 2 0 0 1-3.4 0"/></svg>
+        </button>
+        <button class="icon-btn" id="btn-reset" aria-label="デモ残高をリセット" title="デモ残高をリセット">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 1 0 3-6.7L3 8M3 3v5h5"/></svg>
+        </button>
+        <a href="accounts.html" class="btn-primary" style="padding:8px 14px;font-size:13.5px;">入金</a>
+        <span class="avatar" aria-hidden="true">D</span>
+      </div>
+    </header>
+
+    <!-- Asset rail -->
+    <aside class="rail" aria-label="銘柄リスト">
+      <div class="cats" id="cats" role="group" aria-label="カテゴリ">
+        <button class="on" data-cat="all">全て</button>
+        <button data-cat="FX">FX</button>
+        <button data-cat="暗号資産">暗号資産</button>
+        <button data-cat="商品">商品</button>
+        <button data-cat="指数">指数</button>
+      </div>
+      <div class="search"><input type="search" id="search" placeholder="銘柄を検索" aria-label="銘柄を検索"></div>
+      <div class="list" id="rail-list"></div>
+      <div class="live"><span class="dot"></span> LIVE · デモ価格（シミュレーション）</div>
+    </aside>
+
+    <!-- Chart pane -->
+    <section class="chart-pane" aria-label="チャート">
+      <div class="ch-head">
+        <div>
+          <div class="nm" id="ch-name">USD/JPY</div>
+          <div class="px" id="ch-price">156.234</div>
+        </div>
+        <span class="chg up" id="ch-chg">+0.00%</span>
+        <div class="stats">
+          <div class="s"><span class="l">高値</span><span class="v" id="ch-hi">—</span></div>
+          <div class="s"><span class="l">安値</span><span class="v" id="ch-lo">—</span></div>
+          <div class="s"><span class="l">ペイアウト</span><span class="v gold" id="ch-payout">+88%</span></div>
+        </div>
+      </div>
+      <div class="ch-tools">
+        <div class="pillset" id="tfset" role="group" aria-label="時間軸">
+          <button data-tf="1m" class="on">1分</button>
+          <button data-tf="5m">5分</button>
+          <button data-tf="15m">15分</button>
+          <button data-tf="1h">1時間</button>
+          <button data-tf="1d">1日</button>
+        </div>
+        <span class="sep"></span>
+        <div class="styleset" id="styleset" role="group" aria-label="チャート種類">
+          <button data-style="candle" class="on" aria-label="ローソク足" title="ローソク足"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 4v4M7 16v4M17 6v3M17 15v3"/><rect x="4" y="8" width="6" height="8" rx="1"/><rect x="14" y="9" width="6" height="6" rx="1"/></svg></button>
+          <button data-style="line" aria-label="ライン" title="ライン"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 17l5-6 4 3 8-9"/></svg></button>
+          <button data-style="area" aria-label="エリア" title="エリア"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 17l5-6 4 3 8-9v15H3z"/></svg></button>
+        </div>
+      </div>
+      <div class="chart-area"><canvas id="chart"></canvas></div>
+    </section>
+
+    <!-- Trade panel -->
+    <aside class="panel" aria-label="取引パネル">
+      <div>
+        <h2>投資額</h2>
+        <div class="stepper">
+          <button id="amt-minus" aria-label="投資額を減らす">−</button>
+          <input type="number" id="amount" value="10000" min="1000" max="1000000" step="1000" inputmode="numeric" aria-label="投資額（円）">
+          <button id="amt-plus" aria-label="投資額を増やす">+</button>
+        </div>
+        <div class="quick" id="quick">
+          <button data-set="1000">¥1,000</button>
+          <button data-set="5000">¥5,000</button>
+          <button data-set="10000">¥10,000</button>
+          <button data-set="50000">¥50,000</button>
+        </div>
+      </div>
+      <div>
+        <h2>判定時間</h2>
+        <div class="exp-grid" id="expset" role="group" aria-label="判定時間">
+          <button data-sec="30">30秒</button>
+          <button data-sec="60" class="on">1分</button>
+          <button data-sec="180">3分</button>
+          <button data-sec="300">5分</button>
+          <button data-sec="900">15分</button>
+          <button data-sec="3600">1時間</button>
+        </div>
+      </div>
+      <div class="summary">
+        <div class="row"><span>ペイアウト</span><b id="sm-payout">+88%（1.88倍）</b></div>
+        <div class="row"><span>予想利益（的中時）</span><b class="up" id="sm-profit">+¥8,800</b></div>
+        <div class="row"><span>損失（外れ時）</span><b id="sm-loss">−¥10,000</b></div>
+      </div>
+      <div class="hl">
+        <button class="high" id="btn-high">▲ HIGH<small id="hl-h">上昇に投資</small></button>
+        <button class="low" id="btn-low">▼ LOW<small id="hl-l">下降に投資</small></button>
+      </div>
+      <div class="ai">
+        <h2 style="margin-bottom:6px;">AI シグナル</h2>
+        <svg viewBox="0 0 160 92" aria-hidden="true">
+          <path d="M14 80 A66 66 0 0 1 146 80" fill="none" stroke="#243042" stroke-width="10" stroke-linecap="round"/>
+          <path id="ai-arc" d="M14 80 A66 66 0 0 1 146 80" fill="none" stroke="var(--accent)" stroke-width="10" stroke-linecap="round" stroke-dasharray="207" stroke-dashoffset="104"/>
+          <line class="needle" id="ai-needle" x1="80" y1="80" x2="80" y2="26" stroke="var(--fg-0)" stroke-width="3" stroke-linecap="round"/>
+          <circle cx="80" cy="80" r="5" fill="var(--fg-1)"/>
+        </svg>
+        <div class="label" id="ai-label">中立</div>
+        <div class="sub">直近の値動きから算出（判断の補助・的中保証なし）</div>
+      </div>
+    </aside>
+
+    <!-- Positions -->
+    <section class="pos" aria-label="ポジション・履歴">
+      <div class="pos-head">
+        <div class="pos-tabs" id="pos-tabs">
+          <button data-tab="open" class="on">建玉<span class="pill" id="cnt-open">0</span></button>
+          <button data-tab="history">履歴<span class="pill" id="cnt-hist">0</span></button>
+        </div>
+        <div class="pos-stats">
+          <span>勝率<b id="st-rate">—</b></span>
+          <span>勝/負<b id="st-wl">0 / 0</b></span>
+          <span>合計損益<b id="st-pnl">±¥0</b></span>
+        </div>
+      </div>
+      <div class="pos-body" id="pos-body"></div>
+    </section>
   </div>
 
-  <header class="page-head">
-    <div class="container">
-      <nav class="breadcrumb" aria-label="パンくず">
-        <a href="index.html">ホーム</a><span class="sep">/</span><span>デモ取引</span>
-      </nav>
-      <span class="page-eyebrow">DEMO · 仮想資金 ¥1,000,000</span>
-      <h1>デモ取引で仕組みを体験</h1>
-      <p class="lead">リスクなくバイナリーオプションの流れを試せます。銘柄と方向（HIGH / LOW）、判定時間、金額を選んで取引してみましょう。結果は仮想残高に反映されます。</p>
-    </div>
-  </header>
-
-  <main class="page-main" id="main">
-    <div class="container">
-      <div class="demo-wrap">
-        <!-- Chart panel -->
-        <div class="demo-panel">
-          <div class="demo-head">
-            <div class="pair">
-              <select id="inst" aria-label="銘柄">
-                <option value="USD/JPY" data-price="156.234" data-vol="0.05" data-payout="88">USD/JPY</option>
-                <option value="EUR/USD" data-price="1.0846" data-vol="0.0006" data-payout="86">EUR/USD</option>
-                <option value="BTC/USD" data-price="71240" data-vol="45" data-payout="78">BTC/USD</option>
-                <option value="XAU/USD" data-price="2342.6" data-vol="0.6" data-payout="84">XAU/USD</option>
-              </select>
-            </div>
-            <span class="price" id="price">156.234</span>
-            <span class="chg up" id="chg">+0.00%</span>
-            <span class="payout">ペイアウト <span id="payout">88</span>%</span>
-          </div>
-          <div class="demo-chart"><canvas id="chart"></canvas></div>
-          <div class="container" style="padding:14px 18px;">
-            <p class="muted" style="margin:0;font-size:13px;">※ 価格はデモ用に生成したシミュレーションです。実際の市場価格ではありません。</p>
-          </div>
-        </div>
-
-        <!-- Controls -->
-        <div class="demo-controls">
-          <div class="ctrl-card">
-            <h2>デモ残高（仮想）</h2>
-            <div class="balance" id="balance">¥1,000,000</div>
-            <div class="balance-sub" id="balance-sub">本日の損益: ±¥0</div>
-            <div class="demo-foot">
-              <span class="stat-pill">取引数<b id="stat-count">0</b></span>
-              <span class="stat-pill">的中<b id="stat-win">0</b></span>
-              <button class="btn-ghost" id="reset" style="margin-left:auto;padding:6px 12px;font-size:13px;">残高をリセット</button>
-            </div>
-          </div>
-
-          <div class="ctrl-card">
-            <h2>判定時間</h2>
-            <div class="seg" id="expiry">
-              <button data-sec="30">30秒</button>
-              <button data-sec="60" class="active">1分</button>
-              <button data-sec="180">3分</button>
-            </div>
-            <h2 style="margin-top:16px;">投資額</h2>
-            <div class="amount-row">
-              <span class="mono" style="color:var(--fg-2);">¥</span>
-              <input type="number" id="amount" value="10000" min="1000" max="1000000" step="1000" inputmode="numeric">
-            </div>
-            <div class="amount-quick">
-              <button data-add="5000">+5千</button>
-              <button data-add="10000">+1万</button>
-              <button data-add="50000">+5万</button>
-              <button data-set="10000">リセット</button>
-            </div>
-          </div>
-
-          <div class="ctrl-card">
-            <div class="trade-btns">
-              <button class="high" id="btn-high">▲ HIGH</button>
-              <button class="low" id="btn-low">▼ LOW</button>
-            </div>
-            <p id="trade-msg" role="status" aria-live="polite" style="font-size:13px;color:var(--fg-3);margin:12px 0 0;min-height:18px;"></p>
-          </div>
-
-          <div class="ctrl-card">
-            <h2>ポジション・履歴</h2>
-            <div class="positions" id="positions"><div class="empty">まだ取引がありません。HIGH / LOW を押して始めましょう。</div></div>
-          </div>
-        </div>
-      </div>
-
-      <div class="callout info" style="margin-top:32px;max-width:none;">
-        <div class="callout-title">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 16v-4M12 8h.01"/></svg>
-          デモで気づいてほしいこと
-        </div>
-        <p>何度か取引すると分かりますが、判定が外れれば投資額は全額失われます。ペイアウト率が100%未満である以上、勝率が五分でも資金は徐々に減っていきます。これは運の問題ではなく、商品の構造によるものです。実際の取引を始める前に、<a href="risk-disclosure.html">リスク開示</a>を必ずお読みください。</p>
-      </div>
-    </div>
-  </main>
-
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-grid">
-        <div class="col footer-brand">
-          <a href="index.html" class="brand"><span class="dot"></span><span><span class="opt">the</span>option</span></a>
-          <p>ハイロー（バイナリー）オプションを、もっとわかりやすく。透明性と使いやすさを大切にしています。</p>
-          <div class="footer-social">
-            <a href="#" aria-label="X"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="m17 3-5.2 6.5L17.5 21H14l-3.6-5.5L5.5 21H2l5.5-7L2 3h3.5l3.2 4.8L13 3z"/></svg></a>
-            <a href="#" aria-label="YouTube"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 0 1-10 10v-7l4-3-4-3V2a10 10 0 0 1 10 10z"/></svg></a>
-          </div>
-        </div>
-        <div class="col">
-          <h4>取引</h4>
-          <a href="trading-options.html">取引オプション</a>
-          <a href="trading-options.html#highlow">HighLow</a>
-          <a href="trading-options.html#turbo">Turbo</a>
-          <a href="payouts.html">ペイアウト</a>
-          <a href="trading-hours.html">取引時間</a>
-          <a href="index.html#assets">取扱銘柄</a>
-        </div>
-        <div class="col">
-          <h4>口座・入出金</h4>
-          <a href="accounts.html">口座開設</a>
-          <a href="the-option.html">クイックデモ</a>
-          <a href="fees.html">入出金</a>
-          <a href="fees.html">手数料</a>
-        </div>
-        <div class="col">
-          <h4>サポート</h4>
-          <a href="help.html">ヘルプ</a>
-          <a href="help.html#faq">よくある質問</a>
-          <a href="help.html#glossary">用語集</a>
-          <a href="contact.html">お問い合わせ</a>
-        </div>
-        <div class="col">
-          <h4>会社・法的情報</h4>
-          <a href="company.html">会社概要</a>
-          <a href="risk-disclosure.html">リスク開示</a>
-          <a href="terms.html">利用規約</a>
-          <a href="privacy.html">プライバシー</a>
-          <a href="aml-kyc.html">AML / KYC</a>
-        </div>
-      </div>
-      <div class="footer-disclaim">
-        <b>リスク開示：</b>バイナリーオプション取引は元本を失うリスクを伴います。投資した資金の全額を失う可能性があります。取引を行う前に、ご自身の財務状況・投資経験・リスク許容度を十分にご検討ください。本サービスは、米国・カナダ・EU加盟国・英国・イスラエル・北朝鮮など一部の国・地域の居住者にはご利用いただけません。当社は IFSC（国際金融サービス委員会、ベリーズ）のライセンス（IFSC/60/468/TS/19）のもとで運営しています。
-      </div>
-      <div class="footer-bottom">
-        <span>© 2026 The Option Trading Ltd. All rights reserved.</span>
-        <div class="links">
-          <a href="terms.html">利用規約</a>
-          <a href="privacy.html">プライバシー</a>
-          <a href="privacy.html#cookie">Cookie</a>
-          <a href="aml-kyc.html">AML / KYC</a>
-        </div>
-      </div>
-    </div>
-  </footer>
+  <div class="toasts" id="toasts" aria-live="polite"></div>
 
   <script>
   (function () {
     "use strict";
-    var yen = function (n) { return "¥" + Math.round(n).toLocaleString("ja-JP"); };
+    var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    var yen = function (n) { var s = n < 0 ? "−" : ""; return s + "¥" + Math.round(Math.abs(n)).toLocaleString("ja-JP"); };
+    var $ = function (id) { return document.getElementById(id); };
 
-    var inst = document.getElementById("inst");
-    var priceEl = document.getElementById("price");
-    var chgEl = document.getElementById("chg");
-    var payoutEl = document.getElementById("payout");
-    var balanceEl = document.getElementById("balance");
-    var balanceSub = document.getElementById("balance-sub");
-    var statCount = document.getElementById("stat-count");
-    var statWin = document.getElementById("stat-win");
-    var amountInput = document.getElementById("amount");
-    var positionsEl = document.getElementById("positions");
-    var tradeMsg = document.getElementById("trade-msg");
-    var canvas = document.getElementById("chart");
-    var ctx = canvas.getContext("2d");
+    var ASSETS = [
+      { id: "USDJPY", name: "USD/JPY", cat: "FX", price: 156.234, vol: 0.05, dec: 3, payout: 88 },
+      { id: "EURUSD", name: "EUR/USD", cat: "FX", price: 1.0846, vol: 0.0006, dec: 4, payout: 86 },
+      { id: "GBPJPY", name: "GBP/JPY", cat: "FX", price: 198.34, vol: 0.06, dec: 3, payout: 84 },
+      { id: "AUDJPY", name: "AUD/JPY", cat: "FX", price: 101.78, vol: 0.04, dec: 3, payout: 82 },
+      { id: "BTCUSD", name: "BTC/USD", cat: "暗号資産", price: 71240, vol: 48, dec: 1, payout: 78 },
+      { id: "ETHUSD", name: "ETH/USD", cat: "暗号資産", price: 3812, vol: 6, dec: 1, payout: 76 },
+      { id: "XAUUSD", name: "XAU/USD", cat: "商品", price: 2342.6, vol: 0.6, dec: 1, payout: 84 },
+      { id: "WTI", name: "WTI原油", cat: "商品", price: 78.42, vol: 0.08, dec: 2, payout: 80 },
+      { id: "N225", name: "N225", cat: "指数", price: 38420, vol: 14, dec: 1, payout: 80 },
+      { id: "SPX500", name: "SPX500", cat: "指数", price: 5286.4, vol: 2.4, dec: 1, payout: 82 },
+      { id: "NDX100", name: "NDX100", cat: "指数", price: 18632, vol: 7, dec: 1, payout: 81 }
+    ];
+    var byId = {}; ASSETS.forEach(function (a) { byId[a.id] = a; });
 
-    var START_BALANCE = 1000000;
     var state = {
-      balance: START_BALANCE,
-      dayPnl: 0,
-      count: 0,
-      wins: 0,
-      expiry: 60,
-      candles: [],
-      base: 156.234,
-      vol: 0.05,
-      payout: 88,
-      decimals: 3,
-      positions: []
+      mode: "demo", balanceDemo: 1000000, balanceReal: 0, dayPnl: 0,
+      amount: 10000, expiry: 60, sel: "USDJPY", tf: "1m", style: "candle",
+      cat: "all", q: "", tab: "open", positions: [], history: [], series: {},
+      wins: 0, losses: 0
     };
 
-    function decimalsFor(v) { return v >= 1000 ? 1 : (v >= 100 ? 3 : 4); }
-
-    function seed(price, vol, n) {
-      var out = [], p = price;
-      for (var i = 0; i < n; i++) {
-        var o = p;
-        p = p + (Math.random() - 0.5) * vol;
-        out.push({ o: o, h: Math.max(o, p) + Math.random() * vol * 0.4, l: Math.min(o, p) - Math.random() * vol * 0.4, c: p });
-      }
-      return out;
+    function seed(a) {
+      var arr = [], p = a.price;
+      for (var i = 0; i < 90; i++) { var o = p; p = +(p + (Math.random() - 0.5) * a.vol).toFixed(a.dec);
+        arr.push({ o: o, h: Math.max(o, p) + Math.random() * a.vol * 0.4, l: Math.min(o, p) - Math.random() * a.vol * 0.4, c: p }); }
+      return arr;
     }
+    ASSETS.forEach(function (a) { state.series[a.id] = seed(a); });
 
-    function loadInstrument() {
-      var opt = inst.options[inst.selectedIndex];
-      state.base = parseFloat(opt.dataset.price);
-      state.vol = parseFloat(opt.dataset.vol);
-      state.payout = parseInt(opt.dataset.payout, 10);
-      state.decimals = decimalsFor(state.base);
-      state.candles = seed(state.base, state.vol, 60);
-      state.positions = state.positions.filter(function (p) { return p.settled; }); // keep history, drop open on switch
-      payoutEl.textContent = state.payout;
-      draw();
-      render();
-    }
+    function asset() { return byId[state.sel]; }
+    function bal() { return state.mode === "demo" ? state.balanceDemo : state.balanceReal; }
+    function setBal(v) { if (state.mode === "demo") state.balanceDemo = v; else state.balanceReal = v; }
+    function last(id) { var s = state.series[id]; return s[s.length - 1].c; }
+    function fmt(a, v) { return v.toLocaleString("ja-JP", { minimumFractionDigits: a.dec, maximumFractionDigits: a.dec }); }
+    function tfCount() { return ({ "1m": 60, "5m": 50, "15m": 42, "1h": 36, "1d": 30 })[state.tf] || 60; }
+    function openOn(id) { return state.positions.filter(function (p) { return !p.settled && p.assetId === id; }); }
 
-    function fmtPrice(v) { return v.toLocaleString("ja-JP", { minimumFractionDigits: state.decimals, maximumFractionDigits: state.decimals }); }
-
+    // ---- Chart ----
+    var canvas = $("chart"), ctx = canvas.getContext("2d");
     function draw() {
-      var dpr = window.devicePixelRatio || 1;
-      var w = canvas.clientWidth, h = canvas.clientHeight;
+      var a = asset(), full = state.series[a.id], cs = full.slice(-tfCount());
+      var dpr = window.devicePixelRatio || 1, w = canvas.clientWidth, h = canvas.clientHeight;
+      if (!w || !h) return;
       if (canvas.width !== w * dpr || canvas.height !== h * dpr) { canvas.width = w * dpr; canvas.height = h * dpr; }
-      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      ctx.clearRect(0, 0, w, h);
-      var cs = state.candles, padT = 16, padB = 16, padL = 8, padR = 64;
-      var iw = w - padL - padR, ih = h - padT - padB;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0); ctx.clearRect(0, 0, w, h);
+      var padT = 14, padB = 16, padL = 8, padR = 70, iw = w - padL - padR, ih = h - padT - padB;
       var min = Infinity, max = -Infinity;
       cs.forEach(function (c) { if (c.l < min) min = c.l; if (c.h > max) max = c.h; });
-      var pad = (max - min) * 0.18 || 0.01; min -= pad; max += pad;
-      var yFor = function (p) { return padT + (1 - (p - min) / (max - min)) * ih; };
-      var xFor = function (i) { return padL + (i + 0.5) * (iw / cs.length); };
-      var cw = Math.max(1.5, Math.min(9, (iw / cs.length) * 0.62));
-      for (var i = 0; i < cs.length; i++) {
-        var c = cs[i], up = c.c >= c.o, x = xFor(i);
-        ctx.strokeStyle = up ? "#1fd98e" : "#ff5277"; ctx.fillStyle = up ? "#1fd98e" : "#ff5277"; ctx.lineWidth = 1;
-        ctx.beginPath(); ctx.moveTo(x, yFor(c.h)); ctx.lineTo(x, yFor(c.l)); ctx.stroke();
-        var yo = yFor(c.o), yc = yFor(c.c);
-        ctx.fillRect(x - cw / 2, Math.min(yo, yc), cw, Math.max(1, Math.abs(yc - yo)));
+      openOn(a.id).forEach(function (p) { min = Math.min(min, p.entry); max = Math.max(max, p.entry); });
+      var pad = (max - min) * 0.12 || 0.01; min -= pad; max += pad;
+      var X = function (i) { return padL + (i + 0.5) * (iw / cs.length); };
+      var Y = function (v) { return padT + (1 - (v - min) / (max - min)) * ih; };
+      ctx.strokeStyle = "rgba(255,255,255,0.05)"; ctx.fillStyle = "#7e8a98";
+      ctx.font = "10px 'JetBrains Mono', monospace"; ctx.textBaseline = "middle"; ctx.lineWidth = 1;
+      for (var g = 0; g <= 5; g++) { var yy = padT + ih * g / 5;
+        ctx.beginPath(); ctx.moveTo(padL, yy); ctx.lineTo(padL + iw, yy); ctx.stroke();
+        ctx.fillText(fmt(a, max - (max - min) * g / 5), padL + iw + 6, yy); }
+      if (state.style === "candle") {
+        var cw = Math.max(1.5, Math.min(9, (iw / cs.length) * 0.62));
+        for (var i = 0; i < cs.length; i++) { var c = cs[i], up = c.c >= c.o, x = X(i);
+          ctx.strokeStyle = up ? "#1fd98e" : "#ff5277"; ctx.fillStyle = up ? "#1fd98e" : "#ff5277";
+          ctx.beginPath(); ctx.moveTo(x, Y(c.h)); ctx.lineTo(x, Y(c.l)); ctx.stroke();
+          var yo = Y(c.o), yc = Y(c.c); ctx.fillRect(x - cw / 2, Math.min(yo, yc), cw, Math.max(1, Math.abs(yc - yo))); }
+      } else {
+        if (state.style === "area") {
+          var grad = ctx.createLinearGradient(0, padT, 0, padT + ih);
+          grad.addColorStop(0, "rgba(31,217,142,0.30)"); grad.addColorStop(1, "rgba(31,217,142,0)");
+          ctx.fillStyle = grad; ctx.beginPath(); ctx.moveTo(X(0), padT + ih);
+          for (var j = 0; j < cs.length; j++) ctx.lineTo(X(j), Y(cs[j].c));
+          ctx.lineTo(X(cs.length - 1), padT + ih); ctx.closePath(); ctx.fill();
+        }
+        ctx.strokeStyle = "#1fd98e"; ctx.lineWidth = 1.6; ctx.beginPath();
+        for (var k = 0; k < cs.length; k++) { var xx = X(k), yv = Y(cs[k].c); if (k === 0) ctx.moveTo(xx, yv); else ctx.lineTo(xx, yv); }
+        ctx.stroke();
       }
-      var last = cs[cs.length - 1].c, ly = yFor(last);
-      // entry lines for open positions
-      state.positions.forEach(function (p) {
-        if (p.settled) return;
-        var ey = yFor(p.entry);
-        ctx.strokeStyle = p.dir === "HIGH" ? "rgba(31,217,142,0.6)" : "rgba(255,82,119,0.6)";
+      // open position strike lines
+      openOn(a.id).forEach(function (p) { var ey = Y(p.entry);
+        ctx.strokeStyle = p.dir === "HIGH" ? "rgba(31,217,142,0.7)" : "rgba(255,82,119,0.7)";
         ctx.setLineDash([4, 4]); ctx.beginPath(); ctx.moveTo(padL, ey); ctx.lineTo(padL + iw, ey); ctx.stroke(); ctx.setLineDash([]);
-      });
-      // last price tag
+        ctx.fillStyle = p.dir === "HIGH" ? "#1fd98e" : "#ff5277"; ctx.textBaseline = "middle";
+        ctx.fillText(p.dir === "HIGH" ? "▲" : "▼", padL + 2, ey - 7); });
+      // last price flag
+      var lp = cs[cs.length - 1].c, ly = Y(lp);
       ctx.fillStyle = "#1fd98e"; ctx.fillRect(padL + iw + 4, ly - 9, padR - 8, 18);
-      ctx.fillStyle = "#04130c"; ctx.font = "600 11px 'JetBrains Mono', monospace"; ctx.textBaseline = "middle";
-      ctx.fillText(fmtPrice(last), padL + iw + 8, ly);
+      ctx.fillStyle = "#04130c"; ctx.font = "600 11px 'JetBrains Mono', monospace"; ctx.fillText(fmt(a, lp), padL + iw + 8, ly);
     }
 
-    function tick() {
-      var cs = state.candles, last = cs[cs.length - 1], o = last.c;
-      var c = o + (Math.random() - 0.5) * state.vol;
-      cs.push({ o: o, h: Math.max(o, c) + Math.random() * state.vol * 0.3, l: Math.min(o, c) - Math.random() * state.vol * 0.3, c: c });
-      if (cs.length > 60) cs.shift();
-      priceEl.textContent = fmtPrice(c);
-      var diff = (c - state.base) / state.base * 100;
-      chgEl.textContent = (diff >= 0 ? "+" : "") + diff.toFixed(2) + "%";
-      chgEl.className = "chg " + (diff >= 0 ? "up" : "down");
-      checkPositions(c);
-      draw();
+    // ---- Rail ----
+    function renderRail() {
+      var list = $("rail-list"), html = "";
+      ASSETS.filter(function (a) {
+        return (state.cat === "all" || a.cat === state.cat) &&
+          (!state.q || a.name.toLowerCase().indexOf(state.q.toLowerCase()) >= 0);
+      }).forEach(function (a) {
+        var s = state.series[a.id], cur = s[s.length - 1].c, diff = (cur - a.price) / a.price * 100;
+        var cls = diff >= 0 ? "up" : "down";
+        html += '<button class="rail-item' + (a.id === state.sel ? " on" : "") + '" data-id="' + a.id + '" aria-pressed="' + (a.id === state.sel) + '">' +
+          '<span class="nm">' + a.name + '</span>' +
+          '<span class="px" data-px="' + a.id + '">' + fmt(a, cur) + '</span>' +
+          '<span class="cat">' + a.cat + '</span>' +
+          '<span class="chg ' + cls + '" data-chg="' + a.id + '">' + (diff >= 0 ? "+" : "") + diff.toFixed(2) + '%</span>' +
+          '</button>';
+      });
+      list.innerHTML = html || '<div class="pos-empty">該当する銘柄がありません</div>';
+    }
+    function updateRailPrices() {
+      ASSETS.forEach(function (a) {
+        var s = state.series[a.id], cur = s[s.length - 1].c, diff = (cur - a.price) / a.price * 100;
+        var pe = document.querySelector('[data-px="' + a.id + '"]'); if (pe) pe.textContent = fmt(a, cur);
+        var ce = document.querySelector('[data-chg="' + a.id + '"]');
+        if (ce) { ce.textContent = (diff >= 0 ? "+" : "") + diff.toFixed(2) + "%"; ce.className = "chg " + (diff >= 0 ? "up" : "down"); }
+      });
     }
 
-    function checkPositions(price) {
+    // ---- Chart header / summary / AI ----
+    var prevPrice = 0;
+    function renderHeader() {
+      var a = asset(), s = state.series[a.id], cur = s[s.length - 1].c;
+      $("ch-name").textContent = a.name;
+      var pe = $("ch-price"); pe.textContent = fmt(a, cur);
+      pe.className = "px " + (cur >= prevPrice ? "up" : "down"); prevPrice = cur;
+      var diff = (cur - a.price) / a.price * 100;
+      var ce = $("ch-chg"); ce.textContent = (diff >= 0 ? "+" : "") + diff.toFixed(2) + "%"; ce.className = "chg " + (diff >= 0 ? "up" : "down");
+      var win = s.slice(-tfCount()), hi = -Infinity, lo = Infinity;
+      win.forEach(function (c) { if (c.h > hi) hi = c.h; if (c.l < lo) lo = c.l; });
+      $("ch-hi").textContent = fmt(a, hi); $("ch-lo").textContent = fmt(a, lo);
+      $("ch-payout").textContent = "+" + a.payout + "%";
+    }
+    function renderSummary() {
+      var a = asset(), profit = Math.round(state.amount * a.payout / 100);
+      $("sm-payout").textContent = "+" + a.payout + "%（" + (1 + a.payout / 100).toFixed(2) + "倍）";
+      $("sm-profit").textContent = "+" + yen(profit).replace("−", "");
+      $("sm-loss").textContent = "−" + yen(state.amount).replace("−", "");
+      var aria = state.amount.toLocaleString("ja-JP") + "円・" + (state.expiry >= 60 ? (state.expiry / 60) + "分" : state.expiry + "秒") + "後判定";
+      $("btn-high").setAttribute("aria-label", "HIGH（上昇）に " + aria);
+      $("btn-low").setAttribute("aria-label", "LOW（下降）に " + aria);
+    }
+    function renderAI() {
+      var s = state.series[state.sel], n = Math.min(16, s.length - 1), upc = 0;
+      for (var i = s.length - n; i < s.length; i++) { if (s[i].c >= s[i].o) upc++; }
+      var pct = Math.round(upc / n * 100); // 0..100 bullish
+      var ang = (pct - 50) / 50 * 90; // -90..90 deg
+      $("ai-needle").setAttribute("transform", "rotate(" + ang + " 80 80)");
+      var off = 207 - (pct / 100) * 207; $("ai-arc").setAttribute("stroke-dashoffset", off);
+      var lbl = pct >= 62 ? "強気" : pct <= 38 ? "弱気" : "中立";
+      var el = $("ai-label"); el.textContent = lbl + "（" + pct + "%）";
+      el.style.color = pct >= 62 ? "var(--up)" : pct <= 38 ? "var(--down)" : "var(--fg-1)";
+      $("ai-arc").setAttribute("stroke", pct >= 62 ? "var(--up)" : pct <= 38 ? "var(--down)" : "var(--accent)");
+    }
+
+    // ---- KPIs ----
+    function renderKpis() {
+      var lockedOpen = state.positions.filter(function (p) { return !p.settled; }).reduce(function (s, p) { return s + p.amount; }, 0);
+      $("k-balance").textContent = yen(bal());
+      $("k-equity").textContent = yen(bal() + lockedOpen);
+      var pe = $("k-pnl"); pe.textContent = (state.dayPnl > 0 ? "+" : state.dayPnl < 0 ? "−" : "±") + "¥" + Math.abs(Math.round(state.dayPnl)).toLocaleString("ja-JP");
+      pe.className = "v " + (state.dayPnl > 0 ? "up" : state.dayPnl < 0 ? "down" : "");
+      $("k-open").textContent = state.positions.filter(function (p) { return !p.settled; }).length;
+    }
+
+    // ---- Positions ----
+    function renderPositions() {
+      var open = state.positions.filter(function (p) { return !p.settled; });
+      $("cnt-open").textContent = open.length;
+      $("cnt-hist").textContent = state.history.length;
+      var total = state.wins + state.losses;
+      $("st-rate").textContent = total ? Math.round(state.wins / total * 100) + "%" : "—";
+      $("st-wl").textContent = state.wins + " / " + state.losses;
+      var pe = $("st-pnl"); pe.textContent = (state.dayPnl > 0 ? "+" : state.dayPnl < 0 ? "−" : "±") + "¥" + Math.abs(Math.round(state.dayPnl)).toLocaleString("ja-JP");
+      pe.className = state.dayPnl > 0 ? "up" : state.dayPnl < 0 ? "down" : "";
+      var body = $("pos-body"), now = Date.now();
+      if (state.tab === "open") {
+        if (!open.length) { body.innerHTML = '<div class="pos-empty">建玉はありません。HIGH / LOW で取引を開始できます。</div>'; return; }
+        var h = '<table class="pt"><thead><tr><th>時刻</th><th>銘柄</th><th>方向</th><th>エントリー</th><th>現値</th><th>投資額</th><th>残り</th></tr></thead><tbody>';
+        open.slice().reverse().forEach(function (p) {
+          var a = byId[p.assetId], cur = last(p.assetId);
+          var remain = Math.max(0, (p.expiresAt - now) / 1000), prog = Math.max(0, Math.min(1, remain / p.expirySec));
+          h += '<tr><td>' + p.t + '</td><td>' + a.name + '</td><td class="dir ' + p.dir.toLowerCase() + '">' + (p.dir === "HIGH" ? "▲ HIGH" : "▼ LOW") + '</td>' +
+            '<td>' + fmt(a, p.entry) + '</td><td>' + fmt(a, cur) + '</td><td>' + yen(p.amount) + '</td>' +
+            '<td><div class="cd"><span>' + Math.ceil(remain) + 's</span><div class="bar"><span style="width:' + (prog * 100).toFixed(1) + '%;' + (reduce ? '' : 'transition:width 1s linear;') + '"></span></div></div></td></tr>';
+        });
+        body.innerHTML = h + '</tbody></table>';
+      } else {
+        if (!state.history.length) { body.innerHTML = '<div class="pos-empty">履歴はまだありません。</div>'; return; }
+        var hh = '<table class="pt"><thead><tr><th>時刻</th><th>銘柄</th><th>方向</th><th>エントリー</th><th>判定値</th><th>投資額</th><th>結果</th><th>損益</th></tr></thead><tbody>';
+        state.history.slice(0, 40).forEach(function (p) {
+          var a = byId[p.assetId];
+          hh += '<tr><td>' + p.t + '</td><td>' + a.name + '</td><td class="dir ' + p.dir.toLowerCase() + '">' + (p.dir === "HIGH" ? "▲" : "▼") + '</td>' +
+            '<td>' + fmt(a, p.entry) + '</td><td>' + fmt(a, p.exit) + '</td><td>' + yen(p.amount) + '</td>' +
+            '<td><span class="respill ' + (p.win ? "win" : "lose") + '">' + (p.win ? "WIN" : "LOSS") + '</span></td>' +
+            '<td class="pnl ' + (p.win ? "up" : "down") + '">' + (p.win ? "+" + yen(p.delta).replace("−", "") : "−" + yen(Math.abs(p.delta)).replace("−", "")) + '</td></tr>';
+        });
+        body.innerHTML = hh + '</tbody></table>';
+      }
+    }
+
+    // ---- Trade ----
+    function toast(msg, type) {
+      var t = document.createElement("div"); t.className = "toast" + (type ? " " + type : "");
+      t.innerHTML = '<span class="ic"></span><span>' + msg + '</span>';
+      $("toasts").appendChild(t);
+      setTimeout(function () { t.style.opacity = "0"; t.style.transition = "opacity .4s"; setTimeout(function () { t.remove(); }, 400); }, 3200);
+    }
+    function place(dir) {
+      if (state.mode === "real") { toast("リアル取引には口座開設・入金が必要です。", "lose"); return; }
+      var amt = parseInt($("amount").value, 10);
+      if (isNaN(amt) || amt < 1000) { toast("投資額は¥1,000以上で入力してください。", "lose"); return; }
+      if (amt > 1000000) { amt = 1000000; $("amount").value = "1000000"; state.amount = amt; }
+      if (amt > bal()) { toast("デモ残高が不足しています。", "lose"); return; }
+      var a = asset(), now = new Date();
+      setBal(bal() - amt);
+      var pos = { id: Date.now() + "" + Math.random(), assetId: a.id, dir: dir, amount: amt,
+        entry: last(a.id), expirySec: state.expiry, expiresAt: Date.now() + state.expiry * 1000,
+        t: ("0" + now.getHours()).slice(-2) + ":" + ("0" + now.getMinutes()).slice(-2) + ":" + ("0" + now.getSeconds()).slice(-2),
+        settled: false };
+      state.positions.push(pos);
+      toast(dir + " " + a.name + " · " + yen(amt) + " · " + (state.expiry >= 60 ? state.expiry / 60 + "分" : state.expiry + "秒") + "後判定");
+      renderKpis(); renderPositions(); draw();
+    }
+    function settle() {
       var now = Date.now(), changed = false;
       state.positions.forEach(function (p) {
         if (p.settled || now < p.expiresAt) return;
         p.settled = true; changed = true;
-        var win = (p.dir === "HIGH" && price > p.entry) || (p.dir === "LOW" && price < p.entry);
-        p.exit = price; p.win = win;
-        state.count++;
-        if (win) {
-          var profit = p.amount * (state.payout / 100);
-          state.balance += profit; state.dayPnl += profit; state.wins++;
-          p.delta = profit;
-        } else {
-          state.balance -= p.amount; state.dayPnl -= p.amount; p.delta = -p.amount;
-        }
+        var a = byId[p.assetId], cur = last(p.assetId); p.exit = cur;
+        var win = (p.dir === "HIGH" && cur > p.entry) || (p.dir === "LOW" && cur < p.entry);
+        p.win = win;
+        if (win) { var profit = Math.round(p.amount * a.payout / 100); setBal(bal() + p.amount + profit); state.dayPnl += profit; state.wins++; p.delta = profit;
+          toast(a.name + " " + p.dir + " 的中 +" + yen(profit).replace("−", ""), "win"); }
+        else { state.dayPnl -= p.amount; state.losses++; p.delta = -p.amount;
+          toast(a.name + " " + p.dir + " 外れ −" + yen(p.amount).replace("−", ""), "lose"); }
+        state.history.unshift(p);
       });
-      if (changed) render();
+      if (changed) { renderKpis(); renderPositions(); }
     }
 
-    function render() {
-      balanceEl.textContent = yen(state.balance);
-      balanceSub.textContent = "本日の損益: " + (state.dayPnl >= 0 ? "+" : "−") + "¥" + Math.round(Math.abs(state.dayPnl)).toLocaleString("ja-JP");
-      balanceSub.style.color = state.dayPnl > 0 ? "var(--up)" : (state.dayPnl < 0 ? "var(--down)" : "var(--fg-3)");
-      statCount.textContent = state.count;
-      statWin.textContent = state.wins;
-      if (!state.positions.length) {
-        positionsEl.innerHTML = '<div class="empty">まだ取引がありません。HIGH / LOW を押して始めましょう。</div>';
-        return;
-      }
-      var html = "";
-      state.positions.slice().reverse().slice(0, 8).forEach(function (p) {
-        var tag = '<span class="tag ' + p.dir.toLowerCase() + '">' + (p.dir === "HIGH" ? "▲" : "▼") + " " + p.dir + "</span>";
-        var info = '<span class="info">' + p.inst + " · " + yen(p.amount) + "</span>";
-        var res;
-        if (!p.settled) {
-          var remain = Math.max(0, Math.ceil((p.expiresAt - Date.now()) / 1000));
-          res = '<span class="res open">判定まで ' + remain + 's</span>';
-        } else {
-          res = '<span class="res ' + (p.win ? "win" : "lose") + '">' + (p.win ? "的中 +¥" + Math.round(p.delta).toLocaleString("ja-JP") : "外れ −¥" + Math.round(Math.abs(p.delta)).toLocaleString("ja-JP")) + "</span>";
-        }
-        html += '<div class="pos">' + tag + info + res + "</div>";
+    // ---- Tick loop ----
+    function tickAll() {
+      ASSETS.forEach(function (a) {
+        var s = state.series[a.id], o = s[s.length - 1].c, c = +(o + (Math.random() - 0.5) * a.vol).toFixed(a.dec);
+        s.push({ o: o, h: Math.max(o, c) + Math.random() * a.vol * 0.3, l: Math.min(o, c) - Math.random() * a.vol * 0.3, c: c });
+        if (s.length > 90) s.shift();
       });
-      positionsEl.innerHTML = html;
+      updateRailPrices(); renderHeader(); renderAI(); settle(); draw();
+      if (state.tab === "open") renderPositions();
     }
 
-    function place(dir) {
-      var amount = parseInt(amountInput.value, 10);
-      if (isNaN(amount) || amount < 1000) { tradeMsg.textContent = "投資額は¥1,000以上で入力してください。"; tradeMsg.style.color = "var(--down)"; return; }
-      if (amount > 1000000) { amount = 1000000; amountInput.value = "1000000"; }
-      if (amount > state.balance) { tradeMsg.textContent = "デモ残高が不足しています。残高をリセットできます。"; tradeMsg.style.color = "var(--down)"; return; }
-      var price = state.candles[state.candles.length - 1].c;
-      state.positions.push({
-        inst: inst.value, dir: dir, amount: amount, entry: price,
-        expiresAt: Date.now() + state.expiry * 1000, settled: false
-      });
-      tradeMsg.style.color = "var(--fg-3)";
-      tradeMsg.textContent = dir + " で " + yen(amount) + " を発注しました（判定 " + state.expiry + "秒）。";
-      render(); draw();
-    }
+    // ---- Events ----
+    function selectAsset(id) { state.sel = id; renderRail();
+      document.querySelectorAll(".rail-item").forEach(function (b) { var on = b.dataset.id === id; b.classList.toggle("on", on); b.setAttribute("aria-pressed", on); });
+      renderHeader(); renderSummary(); renderAI(); draw(); }
 
-    // Events
-    inst.addEventListener("change", loadInstrument);
-    document.getElementById("expiry").addEventListener("click", function (e) {
-      var b = e.target.closest("button"); if (!b) return;
-      this.querySelectorAll("button").forEach(function (x) { x.classList.remove("active"); });
-      b.classList.add("active"); state.expiry = parseInt(b.dataset.sec, 10);
-    });
-    document.querySelector(".amount-quick").addEventListener("click", function (e) {
-      var b = e.target.closest("button"); if (!b) return;
-      var cur = parseInt(amountInput.value, 10) || 0;
-      if (b.dataset.add) amountInput.value = Math.min(1000000, cur + parseInt(b.dataset.add, 10));
-      if (b.dataset.set) amountInput.value = parseInt(b.dataset.set, 10);
-    });
-    document.getElementById("btn-high").addEventListener("click", function () { place("HIGH"); });
-    document.getElementById("btn-low").addEventListener("click", function () { place("LOW"); });
-    document.getElementById("reset").addEventListener("click", function () {
-      state.balance = START_BALANCE; state.dayPnl = 0; state.count = 0; state.wins = 0; state.positions = [];
-      tradeMsg.textContent = "デモ残高をリセットしました。"; tradeMsg.style.color = "var(--accent)";
-      render();
+    $("rail-list").addEventListener("click", function (e) { var b = e.target.closest(".rail-item"); if (b) selectAsset(b.dataset.id); });
+    $("cats").addEventListener("click", function (e) { var b = e.target.closest("button"); if (!b) return;
+      this.querySelectorAll("button").forEach(function (x) { x.classList.remove("on"); }); b.classList.add("on"); state.cat = b.dataset.cat; renderRail(); });
+    $("search").addEventListener("input", function () { state.q = this.value; renderRail(); });
+    $("tfset").addEventListener("click", function (e) { var b = e.target.closest("button"); if (!b) return;
+      this.querySelectorAll("button").forEach(function (x) { x.classList.remove("on"); }); b.classList.add("on"); state.tf = b.dataset.tf; renderHeader(); draw(); });
+    $("styleset").addEventListener("click", function (e) { var b = e.target.closest("button"); if (!b) return;
+      this.querySelectorAll("button").forEach(function (x) { x.classList.remove("on"); }); b.classList.add("on"); state.style = b.dataset.style; draw(); });
+    $("expset").addEventListener("click", function (e) { var b = e.target.closest("button"); if (!b) return;
+      this.querySelectorAll("button").forEach(function (x) { x.classList.remove("on"); }); b.classList.add("on"); state.expiry = parseInt(b.dataset.sec, 10); renderSummary(); });
+    $("quick").addEventListener("click", function (e) { var b = e.target.closest("button"); if (!b) return; state.amount = parseInt(b.dataset.set, 10); $("amount").value = state.amount; renderSummary(); });
+    function clampAmt() { var v = parseInt($("amount").value, 10) || 0; state.amount = v; renderSummary(); }
+    $("amount").addEventListener("input", clampAmt);
+    $("amt-plus").addEventListener("click", function () { $("amount").value = Math.min(1000000, (parseInt($("amount").value, 10) || 0) + 1000); clampAmt(); });
+    $("amt-minus").addEventListener("click", function () { $("amount").value = Math.max(1000, (parseInt($("amount").value, 10) || 0) - 1000); clampAmt(); });
+    $("btn-high").addEventListener("click", function () { place("HIGH"); });
+    $("btn-low").addEventListener("click", function () { place("LOW"); });
+    $("pos-tabs").addEventListener("click", function (e) { var b = e.target.closest("button"); if (!b) return;
+      this.querySelectorAll("button").forEach(function (x) { x.classList.remove("on"); }); b.classList.add("on"); state.tab = b.dataset.tab; renderPositions(); });
+    function setMode(m) { state.mode = m;
+      $("mode-demo").classList.toggle("on", m === "demo"); $("mode-demo").setAttribute("aria-pressed", m === "demo");
+      $("mode-real").classList.toggle("on", m === "real"); $("mode-real").setAttribute("aria-pressed", m === "real");
+      if (m === "real") toast("リアルモードはデモ画面では取引できません。口座開設で開始できます。");
+      renderKpis(); }
+    $("mode-demo").addEventListener("click", function () { setMode("demo"); });
+    $("mode-real").addEventListener("click", function () { setMode("real"); });
+    $("btn-bell").addEventListener("click", function () { toast("通知はこのデモでは無効です。"); });
+    $("btn-reset").addEventListener("click", function () {
+      state.balanceDemo = 1000000; state.dayPnl = 0; state.wins = 0; state.losses = 0;
+      state.positions = []; state.history = []; renderKpis(); renderPositions(); draw(); toast("デモ残高をリセットしました。");
     });
 
-    // Boot
-    loadInstrument();
-    setInterval(tick, 1000);
-    setInterval(function () { if (state.positions.some(function (p) { return !p.settled; })) render(); }, 1000);
-    new ResizeObserver(draw).observe(canvas);
+    // ---- Boot ----
+    renderRail(); renderHeader(); renderSummary(); renderAI(); renderKpis(); renderPositions(); draw();
+    setInterval(tickAll, 1000);
+    if (window.ResizeObserver) new ResizeObserver(draw).observe(document.querySelector(".chart-area"));
   })();
   </script>
 </body>
