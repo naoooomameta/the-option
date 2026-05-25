@@ -195,6 +195,43 @@
     .lp-app-icons { display: flex; gap: 9px; margin-top: 14px; }
     .lp-app-icons span { border: 1px solid var(--line); border-radius: 9px; padding: 7px 11px; font-size: 12px; color: var(--fg-1); background: var(--bg-2); font-family: var(--font-mono); }
 
+    /* === App screen gallery === */
+    .lp-gallery { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; align-items: start; }
+    .lp-screen { display: flex; flex-direction: column; align-items: center; gap: 13px; }
+    .lp-device { width: 100%; max-width: 224px; aspect-ratio: 224 / 452; border: 8px solid #0d141c; border-radius: 30px; background: #0d141c; position: relative; overflow: hidden; box-shadow: 0 26px 60px -28px rgba(0,0,0,.85), inset 0 0 0 1px rgba(255,255,255,.05); }
+    .lp-device-notch { position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 80px; height: 17px; background: #0d141c; border-radius: 0 0 12px 12px; z-index: 3; }
+    .lp-scr { position: absolute; inset: 0; border-radius: 22px; overflow: hidden; background: linear-gradient(180deg, var(--bg-2), var(--bg-0)); display: flex; flex-direction: column; gap: 8px; padding: 24px 12px 14px; }
+    .lp-scr-top { display: flex; align-items: center; justify-content: space-between; color: var(--fg-2); font-size: 10.5px; }
+    .lp-scr-top b { color: var(--fg-0); font-size: 13px; font-family: var(--font-display); }
+    .lp-scr-demo { font-family: var(--font-mono); color: var(--accent); border: 1px solid var(--accent-line); border-radius: 999px; padding: 1px 7px; font-size: 9px; letter-spacing: .06em; }
+    .lp-scr-rows { display: flex; flex-direction: column; gap: 6px; }
+    .lp-scr-row, .lp-scr-hist { display: flex; align-items: center; justify-content: space-between; background: var(--bg-1); border: 1px solid var(--line); border-radius: 9px; padding: 8px 9px; }
+    .lp-scr-row b { color: var(--fg-0); font-size: 11px; font-weight: 600; }
+    .lp-scr-row .up { color: var(--up); font-family: var(--font-mono); font-size: 10.5px; }
+    .lp-scr-hist span:first-child { color: var(--fg-1); font-size: 9.5px; }
+    .lp-scr-hist .up { color: var(--up); font-family: var(--font-mono); font-size: 10px; }
+    .lp-scr-hist .down { color: var(--down); font-family: var(--font-mono); font-size: 10px; }
+    .lp-scr-price { font-family: var(--font-mono); font-size: 21px; font-weight: 700; color: var(--fg-0); letter-spacing: -.03em; }
+    .lp-scr-chart { height: 66px; border-radius: 10px; border: 1px solid var(--line); background: var(--bg-1); position: relative; overflow: hidden; }
+    .lp-scr-chart svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+    .lp-scr-times { display: grid; grid-template-columns: repeat(3, 1fr); gap: 5px; }
+    .lp-scr-times span { text-align: center; border: 1px solid var(--line); border-radius: 7px; padding: 5px 0; color: var(--fg-2); font-family: var(--font-mono); font-size: 10px; }
+    .lp-scr-times .on { background: var(--accent-soft); border-color: var(--accent-line); color: var(--fg-0); }
+    .lp-scr-amt { text-align: center; background: var(--bg-1); border: 1px solid var(--line); border-radius: 8px; padding: 7px; color: var(--fg-0); font-family: var(--font-mono); font-weight: 600; font-size: 13px; }
+    .lp-scr-btns { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-top: auto; }
+    .lp-scr-btns span { text-align: center; border-radius: 9px; padding: 9px 0; font-weight: 800; font-size: 11px; }
+    .lp-scr-btns .hi { background: var(--up); color: #04130c; }
+    .lp-scr-btns .lo { background: var(--down); color: #fff; }
+    .lp-scr-result { margin: auto 0; display: flex; flex-direction: column; align-items: center; gap: 7px; text-align: center; }
+    .lp-scr-badge { width: 50px; height: 50px; border-radius: 50%; background: var(--accent-soft); border: 1px solid var(--accent-line); color: var(--accent); display: grid; place-items: center; font-size: 24px; font-weight: 800; }
+    .lp-scr-win { font-family: var(--font-display); font-weight: 800; letter-spacing: .14em; color: var(--accent); font-size: 14px; }
+    .lp-scr-big { font-family: var(--font-mono); font-size: 25px; font-weight: 700; color: var(--up); letter-spacing: -.03em; }
+    .lp-scr-result p { margin: 0; color: var(--fg-3); font-size: 10px; }
+    .lp-scr-bal { font-family: var(--font-mono); font-size: 21px; font-weight: 700; color: var(--fg-0); letter-spacing: -.03em; }
+    .lp-screen figcaption { display: flex; align-items: center; gap: 8px; color: var(--fg-1); font-size: 13.5px; font-weight: 600; }
+    .lp-scr-n { width: 22px; height: 22px; border-radius: 50%; background: var(--accent-soft); color: var(--accent); display: grid; place-items: center; font-family: var(--font-display); font-weight: 800; font-size: 12px; flex: none; }
+    .lp-gallery-note { margin: 24px 0 0; color: var(--fg-3); font-size: 12.5px; line-height: 1.7; text-align: center; }
+
     /* === Final === */
     .lp-final { padding: 80px 0 96px; border-top: 1px solid var(--line); }
     .lp-final-box {
@@ -222,6 +259,7 @@
       .lp-hero-grid, .lp-trust, .lp-platform { grid-template-columns: 1fr; }
       .lp-terminal-wrap { max-width: 560px; margin-inline: auto; }
       .lp-funnel { grid-template-columns: 1fr; }
+      .lp-gallery { grid-template-columns: repeat(2, 1fr); gap: 22px 18px; }
       .lp-funnel-card:not(:last-child)::before { content: "↓"; right: auto; left: 50%; transform: translateX(-50%); top: auto; bottom: -22px; }
       .lp-sec-head { display: block; }
       .lp-sec-head p { margin-top: 14px; }
@@ -229,6 +267,8 @@
     @media (max-width: 620px) {
       .lp-hero { padding: 44px 0 48px; }
       .lp-section { padding: 56px 0; }
+      .lp-gallery { display: flex; grid-template-columns: none; overflow-x: auto; gap: 14px; padding-bottom: 12px; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; }
+      .lp-screen { min-width: 240px; scroll-snap-align: center; }
       .lp-hero-actions { display: grid; grid-template-columns: 1fr; width: 100%; }
       .lp-hero-actions .btn-primary, .lp-hero-actions .btn-ghost { width: 100%; justify-content: center; }
       .lp-stats, .lp-worries { grid-template-columns: 1fr; }
@@ -398,6 +438,83 @@
           </article>
         </div>
         <div class="lp-center-cta"><a class="btn-primary lg" href="the-option.html">デモ画面で流れを見る →</a></div>
+      </div>
+    </section>
+
+    <!-- アプリ画面ギャラリー -->
+    <section class="lp-section" id="screens">
+      <div class="container">
+        <div class="lp-sec-head">
+          <div>
+            <div class="lp-label">App preview</div>
+            <h2>登録の前に、<br>実際の画面を見てみる。</h2>
+          </div>
+          <p>銘柄えらびから取引、結果の確認まで。デモで触れる画面の一部を、入金前にそのまま確認できます。</p>
+        </div>
+        <div class="lp-gallery">
+          <figure class="lp-screen">
+            <div class="lp-device">
+              <span class="lp-device-notch"></span>
+              <div class="lp-scr">
+                <div class="lp-scr-top"><b>銘柄</b><span class="lp-scr-demo">DEMO</span></div>
+                <div class="lp-scr-rows">
+                  <div class="lp-scr-row"><b>USD/JPY</b><span class="up">+88%</span></div>
+                  <div class="lp-scr-row"><b>EUR/USD</b><span class="up">+86%</span></div>
+                  <div class="lp-scr-row"><b>XAU/USD</b><span class="up">+84%</span></div>
+                  <div class="lp-scr-row"><b>N225</b><span class="up">+80%</span></div>
+                  <div class="lp-scr-row"><b>BTC/USD</b><span class="up">+78%</span></div>
+                </div>
+              </div>
+            </div>
+            <figcaption><span class="lp-scr-n">1</span>銘柄をえらぶ</figcaption>
+          </figure>
+          <figure class="lp-screen">
+            <div class="lp-device">
+              <span class="lp-device-notch"></span>
+              <div class="lp-scr">
+                <div class="lp-scr-top"><b>USD/JPY</b><span class="lp-scr-demo">DEMO</span></div>
+                <div class="lp-scr-price">156.234</div>
+                <div class="lp-scr-chart"><svg viewBox="0 0 200 70" preserveAspectRatio="none"><path d="M0 56 C24 48 36 62 60 44 S110 46 134 30 S178 22 200 12" fill="none" stroke="#1fd98e" stroke-width="3" stroke-linecap="round"/><path d="M0 56 C24 48 36 62 60 44 S110 46 134 30 S178 22 200 12 L200 70 L0 70 Z" fill="rgba(31,217,142,.1)"/></svg></div>
+                <div class="lp-scr-times"><span class="on">30秒</span><span>1分</span><span>5分</span></div>
+                <div class="lp-scr-amt">¥10,000</div>
+                <div class="lp-scr-btns"><span class="hi">▲ HIGH</span><span class="lo">▼ LOW</span></div>
+              </div>
+            </div>
+            <figcaption><span class="lp-scr-n">2</span>High / Low で取引</figcaption>
+          </figure>
+          <figure class="lp-screen">
+            <div class="lp-device">
+              <span class="lp-device-notch"></span>
+              <div class="lp-scr">
+                <div class="lp-scr-top"><b>判定結果</b><span class="lp-scr-demo">DEMO</span></div>
+                <div class="lp-scr-result">
+                  <div class="lp-scr-badge">✓</div>
+                  <div class="lp-scr-win">WIN</div>
+                  <div class="lp-scr-big">+¥8,800</div>
+                  <p>USD/JPY · HIGH · 30秒</p>
+                </div>
+              </div>
+            </div>
+            <figcaption><span class="lp-scr-n">3</span>結果はその場で</figcaption>
+          </figure>
+          <figure class="lp-screen">
+            <div class="lp-device">
+              <span class="lp-device-notch"></span>
+              <div class="lp-scr">
+                <div class="lp-scr-top"><span>残高</span><span class="lp-scr-demo">DEMO</span></div>
+                <div class="lp-scr-bal">¥1,012,300</div>
+                <div class="lp-scr-rows">
+                  <div class="lp-scr-hist"><span>USD/JPY · HIGH</span><span class="up">+¥8,800</span></div>
+                  <div class="lp-scr-hist"><span>EUR/USD · LOW</span><span class="down">−¥5,000</span></div>
+                  <div class="lp-scr-hist"><span>XAU/USD · HIGH</span><span class="up">+¥7,800</span></div>
+                  <div class="lp-scr-hist"><span>BTC/USD · LOW</span><span class="down">−¥10,000</span></div>
+                </div>
+              </div>
+            </div>
+            <figcaption><span class="lp-scr-n">4</span>履歴・残高を確認</figcaption>
+          </figure>
+        </div>
+        <p class="lp-gallery-note">※画面はデモのイメージです。表示される価格・銘柄・ペイアウトは相場状況により変動します。</p>
       </div>
     </section>
 
