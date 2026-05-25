@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ペイアウト — the option</title>
+  <meta name="description" content="オプション種別・銘柄ごとのペイアウト率の目安と、その決まり方。ペイアウト率の意味とリスクを分かりやすく説明します。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">本文へスキップ</a>
+
+  <nav class="nav">
+    <div class="container nav-inner">
+      <a href="index.html" class="brand">
+        <span class="dot"></span>
+        <span><span class="opt">the</span>option</span>
+      </a>
+      <div class="nav-links">
+        <a href="trading-options.html">取引オプション</a>
+        <a href="payouts.html" aria-current="page">ペイアウト</a>
+        <a href="trading-hours.html">取引時間</a>
+        <a href="accounts.html">口座開設</a>
+        <a href="help.html">ヘルプ</a>
+        <a href="company.html">会社情報</a>
+      </div>
+      <div class="nav-cta">
+        <a href="the-option.html" class="btn-ghost">クイックデモ</a>
+        <a href="accounts.html" class="btn-primary">口座開設</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="risk-banner">
+    <div class="container">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v4M12 17h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg>
+      <p><b>リスク警告：</b>ペイアウト率の高さは「儲かりやすさ」を意味しません。外れれば投資額は全額損失です。<a href="risk-disclosure.html">リスク開示を読む →</a></p>
+    </div>
+  </div>
+
+  <header class="page-head">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="パンくず">
+        <a href="index.html">ホーム</a><span class="sep">/</span><span>ペイアウト</span>
+      </nav>
+      <span class="page-eyebrow">PAYOUTS · 数字の意味から</span>
+      <h1>ペイアウト</h1>
+      <p class="lead">的中したときに、投資額に対していくら受け取れるか。その割合がペイアウト率です。数値の目安と、必ず知っておきたい仕組みをまとめました。</p>
+    </div>
+  </header>
+
+  <main class="page-main" id="main">
+    <div class="container">
+      <div class="layout">
+        <aside class="toc" aria-label="目次">
+          <h2>目次</h2>
+          <ol>
+            <li><a href="#how">ペイアウト率とは</a></li>
+            <li><a href="#by-option">オプション別の目安</a></li>
+            <li><a href="#by-asset">銘柄別の目安</a></li>
+            <li><a href="#vary">変動する理由</a></li>
+            <li><a href="#truth">知っておくべきこと</a></li>
+          </ol>
+        </aside>
+
+        <article class="prose">
+          <section id="how">
+            <h2><span class="num-prefix">01</span>ペイアウト率とは</h2>
+            <p>ペイアウト率は、的中時に投資額に対して受け取れる金額の倍率です。たとえばペイアウト率 1.90倍（+90%）のとき、¥10,000 の取引が的中すると <strong>¥19,000</strong>（投資額 ¥10,000 ＋ 利益 ¥9,000）になります。外れた場合は <strong>¥10,000 全額が損失</strong>です。</p>
+            <div class="callout info">
+              <div class="callout-title">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 16v-4M12 8h.01"/></svg>
+                計算例（投資額 ¥10,000）
+              </div>
+              <p>ペイアウト 1.90倍 → 的中で +¥9,000 / 外れで −¥10,000<br>ペイアウト 2.00倍 → 的中で +¥10,000 / 外れで −¥10,000<br>ペイアウト 2.30倍 → 的中で +¥13,000 / 外れで −¥10,000</p>
+            </div>
+          </section>
+
+          <section id="by-option">
+            <h2><span class="num-prefix">02</span>オプション別の目安</h2>
+            <div class="table-wrap">
+              <table class="data">
+                <thead><tr><th>オプション</th><th>判定時間</th><th>ペイアウト最大（目安）</th></tr></thead>
+                <tbody>
+                  <tr><td>HighLow</td><td>15分 / 1時間 / 1日</td><td class="accent">〜1.95倍</td></tr>
+                  <tr><td>HighLowスプレッド</td><td>15分 / 1時間 / 1日</td><td class="accent">〜2.00倍</td></tr>
+                  <tr><td>Turbo</td><td>30秒 / 1分 / 3分 / 5分</td><td class="accent">〜1.95倍</td></tr>
+                  <tr><td>Turboスプレッド</td><td>30秒 / 1分 / 3分 / 5分</td><td class="accent">〜2.30倍</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="muted">各オプションの的中条件は<a href="trading-options.html">取引オプション</a>をご覧ください。</p>
+          </section>
+
+          <section id="by-asset">
+            <h2><span class="num-prefix">03</span>銘柄別の目安</h2>
+            <p>同じオプションでも、銘柄によってペイアウト率は異なります。下記は HighLow の代表的な目安レンジです（変動します）。</p>
+            <div class="table-wrap">
+              <table class="data">
+                <thead><tr><th>カテゴリ</th><th>代表銘柄</th><th>ペイアウト目安</th></tr></thead>
+                <tbody>
+                  <tr><td>FX（通貨ペア）</td><td>USD/JPY, EUR/USD, GBP/JPY</td><td class="accent">1.85〜1.95倍</td></tr>
+                  <tr><td>株価指数</td><td>N225, SPX500, NDX100</td><td class="accent">1.80〜1.90倍</td></tr>
+                  <tr><td>商品</td><td>XAU/USD（金）, 原油</td><td class="accent">1.80〜1.90倍</td></tr>
+                  <tr><td>暗号資産</td><td>BTC/USD, ETH/USD</td><td class="accent">1.75〜1.88倍</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <section id="vary">
+            <h2><span class="num-prefix">04</span>変動する理由</h2>
+            <p>ペイアウト率は固定ではなく、次のような要因で変動します。取引の直前に、取引画面で必ず最新の数値をご確認ください。</p>
+            <ul>
+              <li><strong>銘柄の流動性</strong>：取引が活発な銘柄ほど安定しやすい傾向。</li>
+              <li><strong>ボラティリティ（変動の大きさ）</strong>：相場が荒れているときは変動しやすい。</li>
+              <li><strong>時間帯</strong>：主要市場の開いている時間帯かどうか。</li>
+              <li><strong>オプション種別</strong>：スプレッド付きは条件が厳しいぶん高め。</li>
+            </ul>
+          </section>
+
+          <section id="truth">
+            <h2><span class="num-prefix">05</span>知っておくべきこと</h2>
+            <div class="callout warn">
+              <div class="callout-title">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v4M12 17h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg>
+                ペイアウト率と勝率の関係
+              </div>
+              <p>ペイアウト率が 2.00倍 未満であるということは、勝率がちょうど50%でも、長期的には資金が減っていくことを意味します。たとえばペイアウト 1.90倍・勝率50%なら、100回の取引で平均して資金は目減りします。ペイアウト率の高さは「儲かりやすさ」を保証するものではありません。</p>
+            </div>
+            <p>この構造を理解した上で、無理のない金額で取引してください。仕組みは<a href="the-option.html">クイックデモ</a>で実際に体験できます。</p>
+            <div class="cta-block">
+              <h2>仕組みをデモで確かめる</h2>
+              <p>仮想資金なら、ペイアウトと損益の関係をリスクなく体験できます。</p>
+              <div class="row">
+                <a href="the-option.html" class="btn-primary lg">クイックデモを開く</a>
+                <a href="trading-options.html" class="btn-ghost">取引オプションを見る</a>
+              </div>
+            </div>
+          </section>
+        </article>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="col footer-brand">
+          <a href="index.html" class="brand"><span class="dot"></span><span><span class="opt">the</span>option</span></a>
+          <p>ハイロー（バイナリー）オプションを、もっとわかりやすく。透明性と使いやすさを大切にしています。</p>
+          <div class="footer-social">
+            <a href="#" aria-label="X"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="m17 3-5.2 6.5L17.5 21H14l-3.6-5.5L5.5 21H2l5.5-7L2 3h3.5l3.2 4.8L13 3z"/></svg></a>
+            <a href="#" aria-label="YouTube"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 0 1-10 10v-7l4-3-4-3V2a10 10 0 0 1 10 10z"/></svg></a>
+          </div>
+        </div>
+        <div class="col">
+          <h4>取引</h4>
+          <a href="trading-options.html">取引オプション</a>
+          <a href="trading-options.html#highlow">HighLow</a>
+          <a href="trading-options.html#turbo">Turbo</a>
+          <a href="payouts.html">ペイアウト</a>
+          <a href="trading-hours.html">取引時間</a>
+          <a href="index.html#assets">取扱銘柄</a>
+        </div>
+        <div class="col">
+          <h4>口座・入出金</h4>
+          <a href="accounts.html">口座開設</a>
+          <a href="the-option.html">クイックデモ</a>
+          <a href="fees.html">入出金</a>
+          <a href="fees.html">手数料</a>
+        </div>
+        <div class="col">
+          <h4>サポート</h4>
+          <a href="help.html">ヘルプ</a>
+          <a href="help.html#faq">よくある質問</a>
+          <a href="help.html#glossary">用語集</a>
+          <a href="contact.html">お問い合わせ</a>
+        </div>
+        <div class="col">
+          <h4>会社・法的情報</h4>
+          <a href="company.html">会社概要</a>
+          <a href="risk-disclosure.html">リスク開示</a>
+          <a href="terms.html">利用規約</a>
+          <a href="privacy.html">プライバシー</a>
+          <a href="aml-kyc.html">AML / KYC</a>
+        </div>
+      </div>
+      <div class="footer-disclaim">
+        <b>リスク開示：</b>バイナリーオプション取引は元本を失うリスクを伴います。投資した資金の全額を失う可能性があります。取引を行う前に、ご自身の財務状況・投資経験・リスク許容度を十分にご検討ください。本サービスは、米国・カナダ・EU加盟国・英国・イスラエル・北朝鮮など一部の国・地域の居住者にはご利用いただけません。当社は IFSC（国際金融サービス委員会、ベリーズ）のライセンス（IFSC/60/468/TS/19）のもとで運営しています。
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 The Option Trading Ltd. All rights reserved.</span>
+        <div class="links">
+          <a href="terms.html">利用規約</a>
+          <a href="privacy.html">プライバシー</a>
+          <a href="privacy.html#cookie">Cookie</a>
+          <a href="aml-kyc.html">AML / KYC</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

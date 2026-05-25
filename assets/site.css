@@ -396,6 +396,54 @@ table.data .accent { color: var(--accent); font-family: var(--font-mono); font-w
 .cta-block p { color: var(--fg-1); margin: 0 auto 24px; max-width: 520px; }
 .cta-block .row { display: inline-flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
 
+/* === Option-type cards (HighLow / Turbo etc.) === */
+.opt-grid {
+  display: grid; gap: 16px; margin: 0 0 28px;
+  grid-template-columns: repeat(auto-fit, minmax(248px, 1fr));
+}
+.opt-card {
+  background: var(--bg-1); border: 1px solid var(--line); border-radius: 16px;
+  padding: 24px; display: flex; flex-direction: column; gap: 12px;
+}
+.opt-card:hover { border-color: var(--line-strong); }
+.opt-card .opt-tag {
+  align-self: flex-start; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.08em;
+  color: var(--accent); background: var(--accent-soft); border: 1px solid var(--accent-line);
+  padding: 3px 9px; border-radius: 999px;
+}
+.opt-card .opt-name {
+  font-family: var(--font-display); font-size: 22px; font-weight: 800;
+  color: var(--fg-0); letter-spacing: -0.02em; margin: 0;
+}
+.opt-card .opt-payout { font-family: var(--font-mono); font-size: 30px; font-weight: 700; color: var(--accent); }
+.opt-card .opt-payout small { font-size: 13px; color: var(--fg-3); font-weight: 500; }
+.opt-card p { margin: 0; font-size: 14.5px; color: var(--fg-2); line-height: 1.65; }
+.opt-card .opt-meta { display: flex; flex-wrap: wrap; gap: 8px; margin-top: auto; padding-top: 4px; }
+.opt-card .opt-meta .chip {
+  font-family: var(--font-mono); font-size: 12px; color: var(--fg-1);
+  background: var(--bg-2); border: 1px solid var(--line); border-radius: 6px; padding: 4px 8px;
+}
+
+/* === Numbered flow steps === */
+.flow { display: grid; gap: 14px; margin: 0 0 28px; }
+.flow .flow-step {
+  display: grid; grid-template-columns: 44px 1fr; gap: 16px; align-items: start;
+  background: var(--bg-1); border: 1px solid var(--line); border-radius: 12px; padding: 18px 20px;
+}
+.flow .flow-num {
+  width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center;
+  font-family: var(--font-display); font-weight: 800; font-size: 18px;
+  color: var(--accent); background: var(--accent-soft); border: 1px solid var(--accent-line);
+}
+.flow .flow-step h3 { margin: 0 0 5px; font-size: 18px; color: var(--fg-0); font-family: var(--font-display); letter-spacing: -0.01em; }
+.flow .flow-step p { margin: 0; color: var(--fg-2); font-size: 14.5px; line-height: 1.65; }
+
+.badge-soft {
+  display: inline-block; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.06em;
+  color: var(--accent); background: var(--accent-soft); border: 1px solid var(--accent-line);
+  padding: 3px 9px; border-radius: 999px;
+}
+
 /* === Footer === */
 .footer {
   border-top: 1px solid var(--line);

@@ -587,6 +587,21 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   overflow: hidden;
 }
 
+/* === Trading options row (home) === */
+.opt-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+.opt-card2 {
+  background: var(--bg-1); border: 1px solid var(--line); border-radius: 16px;
+  padding: 24px; display: flex; flex-direction: column; gap: 10px;
+}
+.opt-card2 .k { font-family: var(--font-mono); font-size: 11px; color: var(--gold); letter-spacing: 0.08em; }
+.opt-card2 h3 { font-family: var(--font-display); font-size: 22px; margin: 0; letter-spacing: -0.02em; }
+.opt-card2 .pay { font-family: var(--font-mono); font-size: 26px; color: var(--up); font-weight: 700; }
+.opt-card2 .pay small { font-size: 12px; color: var(--fg-3); font-weight: 500; }
+.opt-card2 p { margin: 0; font-size: 13.5px; color: var(--fg-2); line-height: 1.6; }
+.opt-card2 .exp { margin-top: auto; font-family: var(--font-mono); font-size: 11px; color: var(--fg-3); }
+@media (max-width: 900px) { .opt-row { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 560px) { .opt-row { grid-template-columns: 1fr; } }
+
 /* === Stats === */
 .stats {
   display: grid;
@@ -1475,20 +1490,20 @@ body::after {
         <span><span class="opt">the</span><b>option</b></span>
       </a>
       <div class="nav-links">
-        <a href="#features">機能</a>
-        <a href="#platform">プラットフォーム</a>
-        <a href="#assets">銘柄</a>
-        <a href="fees.html">手数料</a>
+        <a href="trading-options.html">取引オプション</a>
+        <a href="payouts.html">ペイアウト</a>
+        <a href="trading-hours.html">取引時間</a>
+        <a href="accounts.html">口座開設</a>
+        <a href="help.html">ヘルプ</a>
         <a href="company.html">会社情報</a>
-        <a href="the-option.html">デモを試す <span class="new">LIVE</span></a>
       </div>
       <div class="nav-cta">
         <button class="lang">
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"></path></svg>
           JP
         </button>
-        <a href="#" class="btn-ghost">ログイン</a>
-        <a href="#" class="btn-primary">無料で口座開設</a>
+        <a href="the-option.html" class="btn-ghost">クイックデモ</a>
+        <a href="accounts.html" class="btn-primary">無料で口座開設</a>
       </div>
     </div>
   </nav>
@@ -1536,24 +1551,24 @@ body::after {
     <div class="container">
       <div class="hero-row">
         <div>
-          <span class="eyebrow"><span class="badge">NEW</span> AI シグナル v2.0 — 相場のセンチメントを可視化</span>
+          <span class="eyebrow"><span class="badge">無料</span> クイックデモは登録不要・最短30秒で体験</span>
           <h1>
-            判定は <span class="strike">複雑</span><br>
-            ではなく <span class="accent">直感的</span>に。
+            選ぶのは、<br>
+            <span class="accent">High か Low か。</span>
           </h1>
           <p class="hero-lead">
-            最短 30 秒から取引できる、次世代のバイナリーオプション。
-            最大ペイアウト <b class="gold mono">1.95倍</b>。
-            業界最速クラスの出金、24/7 サポート、初心者から熟練トレーダーまで選ばれるプラットフォーム。
+            ハイロー（バイナリー）オプションを、もっとわかりやすく。
+            最短 3 分で口座開設、最大ペイアウト <b class="gold mono">2.00倍</b>。
+            まずは仮想資金のデモから、リスクなく試せます。
           </p>
           <div class="hero-ctas">
-            <a href="#" class="btn-primary lg">
-              無料で始める
+            <a href="accounts.html" class="btn-primary lg">
+              無料で口座開設
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"></path></svg>
             </a>
             <a href="the-option.html" class="btn-ghost" style="padding:14px 22px;font-size:15px;">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 3l14 9-14 9V3z" fill="currentColor"></path></svg>
-              ライブデモを試す
+              クイックデモを試す
             </a>
           </div>
           <div class="hero-trust">
@@ -1664,6 +1679,48 @@ body::after {
     </div>
   </div>
 
+  <!-- ============================================================ TRADING OPTIONS -->
+  <section class="section alt" id="options">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="section-tag">TRADING OPTIONS</span>
+        <h2>選ぶのは、<em>High か Low</em> か。</h2>
+        <p class="section-lead">判定時間とリスクの異なる 4 つのオプション。基本の HighLow から、上級者向けの Turboスプレッドまで、戦略に合わせて選べます。</p>
+      </div>
+      <div class="opt-row reveal">
+        <div class="opt-card2">
+          <span class="k">/ 中期 · 15分〜1日</span>
+          <h3>HighLow</h3>
+          <div class="pay">〜1.95倍 <small>目安</small></div>
+          <p>スタート価格と判定価格を比較する、もっとも基本的なオプション。</p>
+          <div class="exp">15分 / 1時間 / 1日</div>
+        </div>
+        <div class="opt-card2">
+          <span class="k">/ 中期 · スプレッド</span>
+          <h3>HighLowスプレッド</h3>
+          <div class="pay">〜2.00倍 <small>目安</small></div>
+          <p>価格の帯（スプレッド）を超える必要があるぶん、ペイアウトが高い。</p>
+          <div class="exp">15分 / 1時間 / 1日</div>
+        </div>
+        <div class="opt-card2">
+          <span class="k">/ 短期 · 30秒〜5分</span>
+          <h3>Turbo</h3>
+          <div class="pay">〜1.95倍 <small>目安</small></div>
+          <p>短時間で結果が出る、スピード重視のオプション。</p>
+          <div class="exp">30秒 / 1分 / 3分 / 5分</div>
+        </div>
+        <div class="opt-card2">
+          <span class="k">/ 短期 · スプレッド</span>
+          <h3>Turboスプレッド</h3>
+          <div class="pay">〜2.30倍 <small>目安</small></div>
+          <p>もっともハイリスク・ハイリターン。リスクを理解した上級者向け。</p>
+          <div class="exp">30秒 / 1分 / 3分 / 5分</div>
+        </div>
+      </div>
+      <p class="inline-note" style="text-align:center;margin-left:auto;margin-right:auto;">ペイアウト率は目安で、銘柄・時間帯により変動します。スプレッド付きは条件が厳しいぶん高ペイアウトですが、その分外れやすさも高まります。<a href="trading-options.html">取引オプションを詳しく見る</a> · <a href="payouts.html">ペイアウト一覧</a></p>
+    </div>
+  </section>
+
   <!-- ============================================================ FEATURES -->
   <section class="section" id="features">
     <div class="container">
@@ -1681,8 +1738,8 @@ body::after {
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 18 9 12l4 4 8-10"></path><path d="M14 6h7v7"></path></svg>
           </div>
           <span class="num">/ 01</span>
-          <h3>最大ペイアウト <span class="gold mono">1.95倍</span><br>業界トップクラス。</h3>
-          <p>USD/JPY を含む主要 FX ペアで安定して 1.88 倍以上。流動性が高い時間帯は最大 1.95 倍まで上昇。同じ投資額で、より大きなリターンを狙えます。</p>
+          <h3>最大ペイアウト <span class="gold mono">2.00倍</span><br>業界最高水準。</h3>
+          <p>HighLow は最大 1.95 倍、HighLowスプレッドは最大 2.00 倍。短期の Turboスプレッドなら最大 2.30 倍まで。ペイアウト率は目安で、取引前に画面で確認できます。</p>
           <div class="visual" id="payout-visual">
             <div style="display:flex;align-items:flex-end;justify-content:space-around;height:100%;padding:14px;gap:8px;">
               <div style="display:flex;flex-direction:column;align-items:center;gap:6px;flex:1;height:100%;justify-content:flex-end;">
@@ -1697,7 +1754,7 @@ body::after {
               </div>
               <div style="display:flex;flex-direction:column;align-items:center;gap:6px;flex:1;height:100%;justify-content:flex-end;position:relative;">
                 <div style="position:absolute;top:-2px;right:-2px;background:var(--up);color:#03110a;font-size:9px;padding:2px 5px;border-radius:3px;font-weight:700;letter-spacing:0.08em;">BEST</div>
-                <span style="font-size:13px;color:var(--up);font-family:var(--font-mono);font-weight:700;">1.95<span style="font-size:10px;">倍</span></span>
+                <span style="font-size:13px;color:var(--up);font-family:var(--font-mono);font-weight:700;">2.00<span style="font-size:10px;">倍</span></span>
                 <div style="height:95%;width:100%;background:linear-gradient(180deg,#1bff9f,#00c074);border-radius:6px 6px 0 0;box-shadow:0 0 22px rgba(0,224,138,0.55);"></div>
                 <span style="font-size:10px;color:var(--up);font-family:var(--font-mono);font-weight:700;">theoption</span>
               </div>
@@ -1938,7 +1995,7 @@ body::after {
         <div class="step">
           <div class="n">/ STEP 02</div>
           <h3>判定時間と金額を設定。</h3>
-          <p>30秒・1分・3分・5分・15分・1時間から判定時間を選択。¥500 から ¥1,000,000 まで投資可能。</p>
+          <p>30秒・1分・3分・5分・15分・1時間から判定時間を選択。¥1,000 から ¥1,000,000 まで投資可能。</p>
           <div class="visual" style="padding:18px;display:grid;grid-template-columns:repeat(3,1fr);gap:8px;align-content:center;">
             <div style="padding:10px 0;text-align:center;font-family:var(--font-mono);font-size:13px;border:1px solid var(--line);border-radius:5px;color:var(--fg-2);">30s</div>
             <div style="padding:10px 0;text-align:center;font-family:var(--font-mono);font-size:13px;border:1px solid var(--gold);background:rgba(0,224,138,0.1);color:var(--gold);border-radius:5px;">1m</div>
@@ -1952,7 +2009,7 @@ body::after {
         <div class="step">
           <div class="n">/ STEP 03</div>
           <h3>結果を待って、利益確定。</h3>
-          <p>判定時刻に価格が予測通りなら投資額の最大 +95%。結果は自動で口座に反映、出金もワンタップで。</p>
+          <p>判定時刻に価格が予測通りなら投資額の最大 +100%。結果は自動で口座に反映、出金もワンタップで。</p>
           <div class="visual" style="padding:18px;display:flex;flex-direction:column;justify-content:center;gap:8px;">
             <div style="display:flex;justify-content:space-between;align-items:center;padding:10px;background:var(--bg-1);border:1px solid var(--line);border-radius:6px;">
               <span style="font-family:var(--font-mono);font-size:12px;color:var(--fg-1);">USD/JPY ▲HIGH</span>
@@ -2105,7 +2162,7 @@ body::after {
         </details>
         <details class="faq-item">
           <summary>最低投資額・最低入金額はいくらですか？</summary>
-          <div class="a">1 取引あたりの最低投資額は ¥500、最高は ¥1,000,000 です。初回最低入金額は ¥5,000 で、銀行振込・クレジットカード・暗号資産での入金に対応しています。</div>
+          <div class="a">1 取引あたりの最低取引額は ¥1,000、最高は ¥1,000,000 です。初回最低入金額は ¥5,000 で、銀行振込・クレジットカード・暗号資産での入金に対応しています。</div>
         </details>
         <details class="faq-item">
           <summary>出金にはどれくらい時間がかかりますか？</summary>
@@ -2167,35 +2224,35 @@ body::after {
           </div>
         </div>
         <div class="col">
-          <h4>プロダクト</h4>
-          <a href="#features">機能</a>
-          <a href="#platform">プラットフォーム</a>
+          <h4>取引</h4>
+          <a href="trading-options.html">取引オプション</a>
+          <a href="trading-options.html#highlow">HighLow</a>
+          <a href="trading-options.html#turbo">Turbo</a>
+          <a href="payouts.html">ペイアウト</a>
+          <a href="trading-hours.html">取引時間</a>
           <a href="#assets">取扱銘柄</a>
-          <a href="the-option.html">デモ取引</a>
-          <a href="fees.html">手数料・入出金</a>
         </div>
         <div class="col">
-          <h4>取引</h4>
-          <a href="#how">取引の流れ</a>
-          <a href="fees.html#payout">ペイアウトの仕組み</a>
-          <a href="fees.html">入出金方法</a>
-          <a href="risk-disclosure.html">リスク開示</a>
-          <a href="help.html#glossary">用語集</a>
+          <h4>口座・入出金</h4>
+          <a href="accounts.html">口座開設</a>
+          <a href="the-option.html">クイックデモ</a>
+          <a href="fees.html">入出金</a>
+          <a href="fees.html">手数料</a>
         </div>
         <div class="col">
           <h4>サポート</h4>
-          <a href="help.html">ヘルプセンター</a>
+          <a href="help.html">ヘルプ</a>
           <a href="help.html#faq">よくある質問</a>
           <a href="help.html#glossary">用語集</a>
           <a href="contact.html">お問い合わせ</a>
         </div>
         <div class="col">
-          <h4>会社情報</h4>
+          <h4>会社・法的情報</h4>
           <a href="company.html">会社概要</a>
-          <a href="company.html#license">規制・ライセンス</a>
-          <a href="company.html#security">セキュリティ</a>
-          <a href="company.html#audit">監査・コンプライアンス</a>
           <a href="risk-disclosure.html">リスク開示</a>
+          <a href="terms.html">利用規約</a>
+          <a href="privacy.html">プライバシー</a>
+          <a href="aml-kyc.html">AML / KYC</a>
         </div>
       </div>
 

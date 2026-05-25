@@ -75,15 +75,16 @@
         <span><span class="opt">the</span>option</span>
       </a>
       <div class="nav-links">
-        <a href="index.html#features">機能</a>
-        <a href="index.html#platform">プラットフォーム</a>
-        <a href="fees.html">手数料・入出金</a>
+        <a href="trading-options.html">取引オプション</a>
+        <a href="payouts.html">ペイアウト</a>
+        <a href="trading-hours.html">取引時間</a>
+        <a href="accounts.html">口座開設</a>
         <a href="help.html">ヘルプ</a>
         <a href="company.html">会社情報</a>
       </div>
       <div class="nav-cta">
-        <a href="contact.html" class="btn-ghost">お問い合わせ</a>
-        <a href="the-option.html" class="btn-primary" aria-current="page">デモを試す</a>
+        <a href="the-option.html" class="btn-ghost">クイックデモ</a>
+        <a href="accounts.html" class="btn-primary">口座開設</a>
       </div>
     </div>
   </nav>
@@ -153,7 +154,7 @@
             <h2 style="margin-top:16px;">投資額</h2>
             <div class="amount-row">
               <span class="mono" style="color:var(--fg-2);">¥</span>
-              <input type="number" id="amount" value="10000" min="500" max="1000000" step="500" inputmode="numeric">
+              <input type="number" id="amount" value="10000" min="1000" max="1000000" step="1000" inputmode="numeric">
             </div>
             <div class="amount-quick">
               <button data-add="5000">+5千</button>
@@ -193,40 +194,42 @@
       <div class="footer-grid">
         <div class="col footer-brand">
           <a href="index.html" class="brand"><span class="dot"></span><span><span class="opt">the</span>option</span></a>
-          <p>次世代のバイナリーオプション取引プラットフォーム。透明性と分かりやすさを大切にしています。</p>
+          <p>ハイロー（バイナリー）オプションを、もっとわかりやすく。透明性と使いやすさを大切にしています。</p>
           <div class="footer-social">
             <a href="#" aria-label="X"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="m17 3-5.2 6.5L17.5 21H14l-3.6-5.5L5.5 21H2l5.5-7L2 3h3.5l3.2 4.8L13 3z"/></svg></a>
             <a href="#" aria-label="YouTube"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 0 1-10 10v-7l4-3-4-3V2a10 10 0 0 1 10 10z"/></svg></a>
           </div>
         </div>
         <div class="col">
-          <h4>プロダクト</h4>
-          <a href="index.html#features">機能</a>
-          <a href="index.html#platform">プラットフォーム</a>
+          <h4>取引</h4>
+          <a href="trading-options.html">取引オプション</a>
+          <a href="trading-options.html#highlow">HighLow</a>
+          <a href="trading-options.html#turbo">Turbo</a>
+          <a href="payouts.html">ペイアウト</a>
+          <a href="trading-hours.html">取引時間</a>
           <a href="index.html#assets">取扱銘柄</a>
-          <a href="the-option.html">デモ取引</a>
-          <a href="fees.html">手数料・入出金</a>
+        </div>
+        <div class="col">
+          <h4>口座・入出金</h4>
+          <a href="accounts.html">口座開設</a>
+          <a href="the-option.html">クイックデモ</a>
+          <a href="fees.html">入出金</a>
+          <a href="fees.html">手数料</a>
         </div>
         <div class="col">
           <h4>サポート</h4>
-          <a href="help.html">ヘルプセンター</a>
+          <a href="help.html">ヘルプ</a>
           <a href="help.html#faq">よくある質問</a>
           <a href="help.html#glossary">用語集</a>
           <a href="contact.html">お問い合わせ</a>
         </div>
         <div class="col">
-          <h4>会社情報</h4>
+          <h4>会社・法的情報</h4>
           <a href="company.html">会社概要</a>
-          <a href="company.html#license">規制・ライセンス</a>
-          <a href="company.html#security">セキュリティ</a>
           <a href="risk-disclosure.html">リスク開示</a>
-        </div>
-        <div class="col">
-          <h4>法的情報</h4>
           <a href="terms.html">利用規約</a>
-          <a href="privacy.html">プライバシーポリシー</a>
-          <a href="privacy.html#cookie">Cookieポリシー</a>
-          <a href="aml-kyc.html">AML / KYCポリシー</a>
+          <a href="privacy.html">プライバシー</a>
+          <a href="aml-kyc.html">AML / KYC</a>
         </div>
       </div>
       <div class="footer-disclaim">
@@ -400,7 +403,7 @@
 
     function place(dir) {
       var amount = parseInt(amountInput.value, 10);
-      if (isNaN(amount) || amount < 500) { tradeMsg.textContent = "投資額は¥500以上で入力してください。"; tradeMsg.style.color = "var(--down)"; return; }
+      if (isNaN(amount) || amount < 1000) { tradeMsg.textContent = "投資額は¥1,000以上で入力してください。"; tradeMsg.style.color = "var(--down)"; return; }
       if (amount > 1000000) { amount = 1000000; amountInput.value = "1000000"; }
       if (amount > state.balance) { tradeMsg.textContent = "デモ残高が不足しています。残高をリセットできます。"; tradeMsg.style.color = "var(--down)"; return; }
       var price = state.candles[state.candles.length - 1].c;
