@@ -122,6 +122,8 @@
     .lp-low { background: var(--down); color: #fff; }
     .lp-demo-line { display: flex; align-items: center; justify-content: space-between; color: var(--fg-3); font-size: 11.5px; border-top: 1px solid var(--line); padding-top: 11px; font-family: var(--font-mono); letter-spacing: .06em; }
     .lp-demo-line .tag { color: var(--accent); font-weight: 600; }
+    .lp-hero-phone { position: absolute; left: -24px; bottom: -28px; width: 150px; z-index: 3; }
+    .lp-hero-phone .lp-device { max-width: none; box-shadow: 0 30px 68px -24px rgba(0,0,0,.92), inset 0 0 0 1px rgba(255,255,255,.06); }
 
     /* === Generic LP section === */
     .lp-section { padding: 72px 0; border-top: 1px solid var(--line); scroll-margin-top: 84px; }
@@ -266,6 +268,7 @@
     }
     @media (max-width: 620px) {
       .lp-hero { padding: 44px 0 48px; }
+      .lp-hero-phone { display: none; }
       .lp-section { padding: 56px 0; }
       .lp-gallery { display: flex; grid-template-columns: none; overflow-x: auto; gap: 14px; padding-bottom: 12px; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; }
       .lp-screen { min-width: 240px; scroll-snap-align: center; }
@@ -364,6 +367,18 @@
                 <div class="lp-chips"><div class="lp-chip">使う金額</div><div class="lp-chip on" style="grid-column: span 2;">¥10,000</div></div>
                 <div class="lp-trade-btns"><span class="lp-high">▲ 上がる HIGH</span><span class="lp-low">▼ 下がる LOW</span></div>
                 <div class="lp-demo-line"><span class="tag">DEMO</span><span>仮のお金で練習</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="lp-hero-phone" aria-hidden="true">
+            <div class="lp-device">
+              <span class="lp-device-notch"></span>
+              <div class="lp-scr">
+                <div class="lp-scr-top"><b>USD/JPY</b><span class="lp-scr-demo">DEMO</span></div>
+                <div class="lp-scr-price">156.234</div>
+                <div class="lp-scr-chart"><svg viewBox="0 0 200 70" preserveAspectRatio="none"><path d="M0 56 C24 48 36 62 60 44 S110 46 134 30 S178 22 200 12" fill="none" stroke="#1fd98e" stroke-width="3" stroke-linecap="round"/><path d="M0 56 C24 48 36 62 60 44 S110 46 134 30 S178 22 200 12 L200 70 L0 70 Z" fill="rgba(31,217,142,.1)"/></svg></div>
+                <div class="lp-scr-times"><span class="on">30秒</span><span>1分</span><span>5分</span></div>
+                <div class="lp-scr-btns"><span class="hi">▲ HIGH</span><span class="lo">▼ LOW</span></div>
               </div>
             </div>
           </div>
