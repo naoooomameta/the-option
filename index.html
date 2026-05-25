@@ -15,10 +15,10 @@
   --line: #1a212c;
   --line-strong: #283140;
 
-  --fg-0: #f4f7f9;
-  --fg-1: #c5cdd6;
-  --fg-2: #828d99;
-  --fg-3: #5a6470;
+  --fg-0: #f6f9fb;
+  --fg-1: #dde4ec;
+  --fg-2: #a8b3bf;
+  --fg-3: #7d8895;
 
   --up: #00e08a;
   --down: #ff3b6b;
@@ -39,8 +39,8 @@ body {
   font-family: var(--font-ui);
   background: var(--bg-0);
   color: var(--fg-0);
-  font-size: 15px;
-  line-height: 1.55;
+  font-size: 16px;
+  line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   font-feature-settings: "palt" 1;
   overflow-x: hidden;
@@ -555,7 +555,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   font-weight: 700;
   margin: 0;
 }
-.feature p { margin: 0; font-size: 14px; color: var(--fg-2); line-height: 1.55; }
+.feature p { margin: 0; font-size: 15px; color: var(--fg-2); line-height: 1.65; }
 .feature .ic {
   width: 44px; height: 44px;
   border-radius: 10px;
@@ -764,7 +764,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   font-weight: 700;
   margin: 0 0 12px;
 }
-.step p { color: var(--fg-2); font-size: 14px; margin: 0 0 20px; }
+.step p { color: var(--fg-2); font-size: 15px; margin: 0 0 20px; line-height: 1.65; }
 .step .visual {
   height: 140px;
   border: 1px solid var(--line);
@@ -801,7 +801,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   margin: 0 0 6px;
   letter-spacing: -0.01em;
 }
-.trust-point p { margin: 0; font-size: 13px; color: var(--fg-2); }
+.trust-point p { margin: 0; font-size: 14.5px; color: var(--fg-2); line-height: 1.6; }
 
 .trust-card {
   background:
@@ -832,7 +832,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   margin-bottom: 18px;
 }
 .trust-card h3 { margin: 0 0 8px; font-family: var(--font-display); font-size: 22px; }
-.trust-card p { color: var(--fg-2); margin: 0; font-size: 14px; }
+.trust-card p { color: var(--fg-2); margin: 0; font-size: 15px; line-height: 1.6; }
 .trust-card .row {
   display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
   margin-top: 28px;
@@ -857,7 +857,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   gap: 18px;
 }
 .quote .stars { color: var(--gold); letter-spacing: 2px; font-size: 13px; }
-.quote p { margin: 0; font-size: 15px; color: var(--fg-1); line-height: 1.55; }
+.quote p { margin: 0; font-size: 16px; color: var(--fg-1); line-height: 1.65; }
 .quote .who { display: grid; grid-template-columns: 32px 1fr; gap: 10px; align-items: center; }
 .quote .who .av {
   width: 32px; height: 32px;
@@ -899,7 +899,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 }
 .faq-item summary:hover::after { background: var(--bg-2); }
 .faq-item[open] summary::after { content: "−"; color: var(--gold); border-color: var(--gold); background: rgba(0,224,138,0.1); }
-.faq-item .a { margin-top: 14px; color: var(--fg-2); font-size: 14px; line-height: 1.6; max-width: 700px; }
+.faq-item .a { margin-top: 14px; color: var(--fg-1); font-size: 15px; line-height: 1.7; max-width: 720px; }
 
 /* === CTA banner === */
 .cta {
@@ -961,7 +961,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 }
 .footer-grid .col a {
   display: block;
-  font-size: 13px;
+  font-size: 14px;
   color: var(--fg-1);
   padding: 5px 0;
 }
@@ -986,11 +986,11 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   border: 1px solid var(--line);
   background: var(--bg-0);
   border-radius: 12px;
-  font-size: 11px;
-  color: var(--fg-3);
-  line-height: 1.6;
+  font-size: 13px;
+  color: var(--fg-2);
+  line-height: 1.7;
 }
-.footer-disclaim b { color: var(--fg-1); }
+.footer-disclaim b { color: var(--fg-0); }
 
 .footer-bottom {
   margin-top: 32px;
@@ -1023,10 +1023,10 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 
 :root {
   /* Glass surface tokens — overridden per tweak mode */
-  --surface: rgba(255, 255, 255, 0.045);
-  --surface-strong: rgba(255, 255, 255, 0.08);
-  --surface-border: rgba(255, 255, 255, 0.10);
-  --surface-border-strong: rgba(255, 255, 255, 0.16);
+  --surface: rgba(13, 18, 26, 0.72);
+  --surface-strong: rgba(20, 27, 36, 0.80);
+  --surface-border: rgba(255, 255, 255, 0.12);
+  --surface-border-strong: rgba(255, 255, 255, 0.20);
   --surface-blur: blur(22px) saturate(160%);
   --surface-shadow: 0 30px 80px -30px rgba(0, 0, 0, 0.45);
 
@@ -1063,7 +1063,7 @@ body::after {
     radial-gradient(circle at 25% 25%, rgba(255,255,255,0.02) 1px, transparent 1px),
     radial-gradient(circle at 75% 75%, rgba(255,255,255,0.015) 1px, transparent 1px);
   background-size: 3px 3px, 5px 5px;
-  opacity: 0.6;
+  opacity: 0.16;
 }
 @keyframes drift {
   0%   { transform: translate(0, 0) scale(1); }
@@ -1442,6 +1442,26 @@ body::after {
 [data-hero="minimal"] .hero-trust .item .v { font-size: 44px; letter-spacing: -0.02em; }
 [data-hero="minimal"] .hero-trust .item .l { font-size: 12px; }
 [data-hero="minimal"] .hero-trust .sep { height: 60px; }
+
+/* === Risk strip + inline transparency notes === */
+.risk-strip {
+  background: rgba(255, 179, 71, 0.10);
+  border-bottom: 1px solid rgba(255, 179, 71, 0.34);
+}
+.risk-strip .container {
+  display: flex; align-items: flex-start; gap: 10px;
+  padding-top: 11px; padding-bottom: 11px;
+}
+.risk-strip svg { flex-shrink: 0; color: #ffb347; margin-top: 3px; }
+.risk-strip p { margin: 0; font-size: 13.5px; line-height: 1.6; color: var(--fg-1); }
+.risk-strip b { color: var(--fg-0); }
+.risk-strip a { color: #ffb347; font-weight: 600; white-space: nowrap; }
+.inline-note {
+  margin: 24px 0 0; font-size: 13px; color: var(--fg-3); line-height: 1.7;
+  max-width: 760px;
+}
+.inline-note a { color: var(--fg-1); text-decoration: underline; }
+.quote-disclaim { margin: 22px 0 0; font-size: 12.5px; color: var(--fg-3); text-align: center; }
 </style>
 </head>
 <body>
@@ -1450,7 +1470,7 @@ body::after {
   <!-- ============================================================ NAV -->
   <nav class="nav">
     <div class="container nav-inner">
-      <a href="#" class="brand">
+      <a href="index.html" class="brand">
         <span class="dot"></span>
         <span><span class="opt">the</span><b>option</b></span>
       </a>
@@ -1458,8 +1478,8 @@ body::after {
         <a href="#features">機能</a>
         <a href="#platform">プラットフォーム</a>
         <a href="#assets">銘柄</a>
-        <a href="#how">取引の流れ</a>
-        <a href="#trust">信頼性</a>
+        <a href="fees.html">手数料</a>
+        <a href="company.html">会社情報</a>
         <a href="the-option.html">デモを試す <span class="new">LIVE</span></a>
       </div>
       <div class="nav-cta">
@@ -1498,6 +1518,14 @@ body::after {
       <div class="ticker-item"><span class="name">SPX500</span><span class="px mono" data-v="5286.4" data-vol="2.4">5,286.4</span><span class="chg up">+0.27%</span><span class="mono gold">+82%</span></div>
       <div class="ticker-item"><span class="name">AUD/JPY</span><span class="px mono" data-v="101.78" data-vol="0.04">101.780</span><span class="chg down">−0.08%</span><span class="mono gold">+82%</span></div>
       <div class="ticker-item"><span class="name">NDX100</span><span class="px mono" data-v="18632" data-vol="7">18,632.7</span><span class="chg up">+0.41%</span><span class="mono gold">+81%</span></div>
+    </div>
+  </div>
+
+  <!-- ============================================================ RISK STRIP -->
+  <div class="risk-strip">
+    <div class="container">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v4M12 17h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"></path></svg>
+      <p><b>リスク警告：</b>バイナリーオプション取引は短期間で投資元本の全額を失う可能性がある高リスクの金融商品で、すべての方に適しているわけではありません。<a href="risk-disclosure.html">リスク開示を読む →</a></p>
     </div>
   </div>
 
@@ -1549,17 +1577,17 @@ body::after {
         <!-- Hero device mockup -->
         <div class="hero-device">
           <div class="float-stat fs-1">
-            <div class="icon up">▲</div>
+            <div class="icon up">▶</div>
             <div class="text">
-              <span class="t">+¥18,800</span>
-              <span class="s">USD/JPY · HIGH · 60s</span>
+              <span class="t">無料デモで体験</span>
+              <span class="s">仮想資金で練習・登録は最短30秒</span>
             </div>
           </div>
           <div class="float-stat fs-2">
-            <div class="icon gold">★</div>
+            <div class="icon gold">✓</div>
             <div class="text">
-              <span class="t">5連勝中</span>
-              <span class="s">勝率 80% · 直近 24h</span>
+              <span class="t">資金は分別管理</span>
+              <span class="s">会社資産と分離・出金は本人確認後</span>
             </div>
           </div>
           <div class="frame">
@@ -1575,7 +1603,7 @@ body::after {
                 <div class="brand-mini"><span class="opt">the</span><b>option</b></div>
                 <span class="kpi">残高 <b>¥1,248,300</b></span>
                 <span class="kpi kpi-pnl">本日 <b>+¥24,200</b></span>
-                <span class="pill">REAL</span>
+                <span class="pill">DEMO</span>
               </div>
               <div class="rail">
                 <div class="item active"><div><div class="l">USD/JPY</div><div class="v">156.234</div></div><div class="c up">+0.08%</div></div>
@@ -1611,7 +1639,7 @@ body::after {
               <div class="bottom-row">
                 <span class="chip">LIVE</span>
                 <span class="stat">保有 <b>2</b></span>
-                <span class="stat">勝率 <b>80%</b></span>
+                <span class="stat">判定 <b>1m</b></span>
                 <span class="stat">ペイアウト <b style="color:var(--gold);">+88%</b></span>
               </div>
             </div>
@@ -1831,7 +1859,7 @@ body::after {
           <h2>50+ 銘柄。<em>一つのウォッチ</em>で。</h2>
           <p class="section-lead">FX、暗号資産、指数、商品。市場をまたいだ機会を逃しません。</p>
         </div>
-        <a href="#" class="btn-ghost">全銘柄を見る →</a>
+        <a href="the-option.html" class="btn-ghost">全銘柄を見る →</a>
       </div>
 
       <div class="asset-grid reveal">
@@ -2013,6 +2041,7 @@ body::after {
           </div>
         </div>
       </div>
+      <p class="inline-note">規制ライセンスや分別管理は事業運営の枠組みを示すものであり、取引で利益が出ること・損失が生じないことを保証するものではありません。詳しくは<a href="company.html#license">規制・ライセンス</a>および<a href="risk-disclosure.html">リスク開示</a>をご覧ください。</p>
     </div>
   </section>
 
@@ -2058,6 +2087,7 @@ body::after {
           </div>
         </div>
       </div>
+      <p class="quote-disclaim">※ 掲載されているお客様の声は個人の感想であり、利益や取引成果を保証するものではありません。</p>
     </div>
   </section>
 
@@ -2124,7 +2154,7 @@ body::after {
     <div class="container">
       <div class="footer-grid">
         <div class="col footer-brand">
-          <a href="#" class="brand">
+          <a href="index.html" class="brand">
             <span class="dot"></span>
             <span><span class="opt">the</span><b>option</b></span>
           </a>
@@ -2140,34 +2170,32 @@ body::after {
           <h4>プロダクト</h4>
           <a href="#features">機能</a>
           <a href="#platform">プラットフォーム</a>
-          <a href="#assets">銘柄一覧</a>
-          <a href="the-option.html">ライブデモ</a>
-          <a href="#">モバイルアプリ</a>
-          <a href="#">API</a>
+          <a href="#assets">取扱銘柄</a>
+          <a href="the-option.html">デモ取引</a>
+          <a href="fees.html">手数料・入出金</a>
         </div>
         <div class="col">
           <h4>取引</h4>
-          <a href="#">取引方法</a>
-          <a href="#">判定時間</a>
-          <a href="#">ペイアウト一覧</a>
-          <a href="#">入出金方法</a>
-          <a href="#">取引ボーナス</a>
+          <a href="#how">取引の流れ</a>
+          <a href="fees.html#payout">ペイアウトの仕組み</a>
+          <a href="fees.html">入出金方法</a>
+          <a href="risk-disclosure.html">リスク開示</a>
+          <a href="help.html#glossary">用語集</a>
         </div>
         <div class="col">
           <h4>サポート</h4>
-          <a href="#">ヘルプセンター</a>
-          <a href="#">24/7 チャット</a>
-          <a href="#">取引ガイド</a>
-          <a href="#">用語集</a>
-          <a href="#">お問い合わせ</a>
+          <a href="help.html">ヘルプセンター</a>
+          <a href="help.html#faq">よくある質問</a>
+          <a href="help.html#glossary">用語集</a>
+          <a href="contact.html">お問い合わせ</a>
         </div>
         <div class="col">
           <h4>会社情報</h4>
-          <a href="#">会社概要</a>
-          <a href="#">規制・ライセンス</a>
-          <a href="#">セキュリティ</a>
-          <a href="#">プレスリリース</a>
-          <a href="#">採用情報</a>
+          <a href="company.html">会社概要</a>
+          <a href="company.html#license">規制・ライセンス</a>
+          <a href="company.html#security">セキュリティ</a>
+          <a href="company.html#audit">監査・コンプライアンス</a>
+          <a href="risk-disclosure.html">リスク開示</a>
         </div>
       </div>
 
@@ -2178,10 +2206,10 @@ body::after {
       <div class="footer-bottom">
         <span>© 2026 The Option Trading Ltd. All rights reserved.</span>
         <div class="links">
-          <a href="#">利用規約</a>
-          <a href="#">プライバシー</a>
-          <a href="#">Cookie</a>
-          <a href="#">AML / KYC</a>
+          <a href="terms.html">利用規約</a>
+          <a href="privacy.html">プライバシー</a>
+          <a href="privacy.html#cookie">Cookie</a>
+          <a href="aml-kyc.html">AML / KYC</a>
         </div>
       </div>
     </div>
