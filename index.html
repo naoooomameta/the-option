@@ -285,6 +285,47 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .hero-trust .item .l { font-size: 11px; color: var(--fg-3); letter-spacing: 0.04em; }
 .hero-trust .sep { width: 1px; height: 36px; background: var(--line); }
 
+/* === Conversion blocks === */
+.hero-bullets { list-style: none; margin: 24px 0 0; padding: 0; display: grid; gap: 9px; }
+.hero-bullets li { display: flex; align-items: center; gap: 10px; font-size: 15px; color: var(--fg-1); }
+.hero-bullets li svg { flex-shrink: 0; color: var(--up); }
+.hero-bullets b { color: var(--fg-0); font-weight: 700; }
+
+.offer-band { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
+  background: radial-gradient(80% 140% at 15% 0%, rgba(0,224,138,0.12), transparent 60%), var(--bg-1); }
+.offer-band .inner { display: flex; align-items: center; gap: 20px; padding: 22px 0; flex-wrap: wrap; }
+.offer-band .gift { width: 48px; height: 48px; border-radius: 12px; display: grid; place-items: center;
+  background: rgba(0,224,138,0.15); color: var(--up); flex-shrink: 0; }
+.offer-band .copy { flex: 1; min-width: 240px; }
+.offer-band .copy .t { font-family: var(--font-display); font-size: clamp(20px, 2.6vw, 26px); font-weight: 800; letter-spacing: -0.02em; color: var(--fg-0); }
+.offer-band .copy .t .hl { color: var(--up); }
+.offer-band .copy .s { font-size: 13.5px; color: var(--fg-2); margin-top: 4px; }
+.offer-band .copy .s a { color: var(--fg-1); text-decoration: underline; }
+.offer-band .act { display: flex; gap: 10px; flex-wrap: wrap; }
+
+.section-cta { text-align: center; margin-top: 40px; }
+.section-cta .note { margin-top: 12px; font-size: 12.5px; color: var(--fg-3); }
+
+.sticky-cta { position: fixed; left: 0; right: 0; bottom: 0; z-index: 90;
+  transform: translateY(125%); transition: transform 0.3s ease; }
+.sticky-cta.show { transform: translateY(0); }
+.sticky-cta .bar { background: rgba(8,11,16,0.94); border-top: 1px solid var(--line-strong);
+  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+.sticky-cta .row { max-width: var(--max); margin: 0 auto;
+  padding: 12px 28px calc(12px + env(safe-area-inset-bottom, 0px)); display: flex; align-items: center; gap: 14px; }
+.sticky-cta .txt { flex: 1; min-width: 0; }
+.sticky-cta .txt .t { font-weight: 700; color: var(--fg-0); font-size: 14.5px; }
+.sticky-cta .txt .s { font-size: 12px; color: var(--fg-3); }
+.sticky-cta .act { display: flex; gap: 8px; flex-shrink: 0; }
+@media (max-width: 560px) {
+  .sticky-cta .txt { display: none; }
+  .sticky-cta .row { padding-left: 14px; padding-right: 14px; }
+  .sticky-cta .act { flex: 1; }
+  .sticky-cta .act .btn-primary, .sticky-cta .act .btn-ghost { flex: 1; justify-content: center; }
+  .offer-band .act { width: 100%; }
+  .offer-band .act .btn-primary, .offer-band .act .btn-ghost { flex: 1; justify-content: center; }
+}
+
 /* Hero device mockup */
 .hero-device {
   position: relative;
@@ -1592,7 +1633,7 @@ body::after {
     <div class="container">
       <div class="hero-row">
         <div>
-          <span class="eyebrow"><span class="badge">無料</span> クイックデモは登録不要・最短30秒で体験</span>
+          <span class="eyebrow"><span class="badge">特典</span> 新規口座開設で5,000円キャッシュバック・入金不要でデモ可</span>
           <h1>
             選ぶのは、<br>
             <span class="accent">High か Low か。</span>
@@ -1602,6 +1643,11 @@ body::after {
             最短 3 分で口座開設、最大ペイアウト <b class="gold mono">2.00倍</b>。
             まずは仮想資金のデモから、リスクなく試せます。
           </p>
+          <ul class="hero-bullets">
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M20 6 9 17l-5-5"></path></svg><span><b>最短3分</b>で口座開設・スマホで完結</span></li>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M20 6 9 17l-5-5"></path></svg><span><b>入金不要</b>で今すぐデモ体験（登録30秒）</span></li>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M20 6 9 17l-5-5"></path></svg><span>最大ペイアウト<b>2.00倍</b>・出金は平均3.2時間</span></li>
+          </ul>
           <div class="hero-ctas">
             <a href="accounts.html" class="btn-primary lg">
               無料で口座開設
@@ -1705,6 +1751,21 @@ body::after {
     </div>
   </section>
 
+  <!-- ============================================================ OFFER BAND -->
+  <div class="offer-band">
+    <div class="container inner">
+      <div class="gift"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 12v9H4v-9M2 7h20v5H2zM12 22V7M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7zM12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"></path></svg></div>
+      <div class="copy">
+        <div class="t">新規口座開設で <span class="hl">5,000円</span> キャッシュバック</div>
+        <div class="s">入金不要・最短3分・スマホで完結。まずはデモから試せます。<a href="accounts.html#cashback">適用条件はこちら</a></div>
+      </div>
+      <div class="act">
+        <a href="accounts.html" class="btn-primary lg">無料で口座開設</a>
+        <a href="the-option.html" class="btn-ghost" style="padding:14px 22px;">クイックデモ</a>
+      </div>
+    </div>
+  </div>
+
   <!-- ============================================================ LOGO STRIP -->
   <div class="logo-strip">
     <div class="container">
@@ -1759,6 +1820,10 @@ body::after {
         </div>
       </div>
       <p class="inline-note" style="text-align:center;margin-left:auto;margin-right:auto;">ペイアウト率は目安で、銘柄・時間帯により変動します。スプレッド付きは条件が厳しいぶん高ペイアウトですが、その分外れやすさも高まります。<a href="trading-options.html">取引オプションを詳しく見る</a> · <a href="payouts.html">ペイアウト一覧</a></p>
+      <div class="section-cta">
+        <a href="accounts.html" class="btn-primary lg">無料で口座開設する</a>
+        <div class="note">入金不要・最短3分。まずはデモでもOK。取引には元本を失うリスクがあります。</div>
+      </div>
     </div>
   </section>
 
@@ -2559,5 +2624,35 @@ body::after {
   });
 })();
 
+  </script>
+
+  <!-- Sticky conversion CTA -->
+  <div class="sticky-cta" id="sticky-cta">
+    <div class="bar">
+      <div class="row">
+        <div class="txt">
+          <div class="t">口座開設は最短3分・無料</div>
+          <div class="s">入金不要でデモも体験できます</div>
+        </div>
+        <div class="act">
+          <a href="the-option.html" class="btn-ghost">デモ</a>
+          <a href="accounts.html" class="btn-primary">無料で口座開設</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+  (function () {
+    var bar = document.getElementById("sticky-cta");
+    if (!bar) return;
+    var hero = document.querySelector(".hero");
+    var finalCta = document.querySelector(".cta");
+    var heroVisible = true, ctaVisible = false;
+    function update() { bar.classList.toggle("show", !heroVisible && !ctaVisible); }
+    if ("IntersectionObserver" in window && hero) {
+      new IntersectionObserver(function (e) { heroVisible = e[0].isIntersecting; update(); }, { threshold: 0 }).observe(hero);
+      if (finalCta) new IntersectionObserver(function (e) { ctaVisible = e[0].isIntersecting; update(); }, { threshold: 0 }).observe(finalCta);
+    }
+  })();
   </script>
 </body></html>
