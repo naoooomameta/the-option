@@ -437,14 +437,18 @@
       } else {
         if (state.style === "area") {
           var grad = ctx.createLinearGradient(0, padT, 0, padT + ih);
-          grad.addColorStop(0, "rgba(255,82,99,0.34)"); grad.addColorStop(1, "rgba(255,82,99,0)");
+          grad.addColorStop(0, "rgba(255,31,61,0.5)"); grad.addColorStop(0.55, "rgba(255,46,71,0.18)"); grad.addColorStop(1, "rgba(255,46,71,0)");
           ctx.fillStyle = grad; ctx.beginPath(); ctx.moveTo(X(0), padT + ih);
           for (var j = 0; j < cs.length; j++) ctx.lineTo(X(j), Y(cs[j].c));
           ctx.lineTo(X(cs.length - 1), padT + ih); ctx.closePath(); ctx.fill();
         }
-        ctx.strokeStyle = "#ff5263"; ctx.lineWidth = 1.8; ctx.lineJoin = "round"; ctx.beginPath();
+        ctx.save();
+        ctx.strokeStyle = "#ff1f3d"; ctx.lineWidth = 2; ctx.lineJoin = "round";
+        ctx.shadowColor = "rgba(255,31,61,0.6)"; ctx.shadowBlur = 9;
+        ctx.beginPath();
         for (var k = 0; k < cs.length; k++) { var xx = X(k), yv = Y(cs[k].c); if (k === 0) ctx.moveTo(xx, yv); else ctx.lineTo(xx, yv); }
         ctx.stroke();
+        ctx.restore();
       }
       var lp = cs[cs.length - 1].c, ly = Y(lp), xLast = X(cs.length - 1);
       // open position strike lines
@@ -471,7 +475,7 @@
       ctx.fillStyle = "rgba(255,255,255,0.16)"; ctx.beginPath(); ctx.arc(xLast, ly, 9, 0, Math.PI * 2); ctx.fill();
       ctx.fillStyle = "#fff"; ctx.beginPath(); ctx.arc(xLast, ly, 3.5, 0, Math.PI * 2); ctx.fill();
       // right-edge price flag
-      ctx.fillStyle = "#ff5263"; ctx.fillRect(padL + iw + 4, ly - 9, padR - 8, 18);
+      ctx.fillStyle = "#ff1f3d"; ctx.fillRect(padL + iw + 4, ly - 9, padR - 8, 18);
       ctx.fillStyle = "#fff"; ctx.font = "600 11px 'JetBrains Mono', monospace"; ctx.textBaseline = "middle"; ctx.fillText(fmt(a, lp), padL + iw + 8, ly);
     }
 
