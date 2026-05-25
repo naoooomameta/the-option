@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>はじめての方へ — 用語ゼロのスタートガイド | the option</title>
+  <meta name="description" content="投資や取引がはじめての方へ。むずかしい言葉を使わずに、このサービスでできることと、やさしい用語、はじめ方を説明します。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="assets/site.css">
+  <style>
+    .easy3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 0 0 24px; }
+    .easy3 .s { background: var(--bg-1); border: 1px solid var(--line); border-radius: 14px; padding: 22px 18px; text-align: center; }
+    .easy3 .s .n { width: 38px; height: 38px; border-radius: 50%; background: var(--accent); color: #04130c; font-family: var(--font-display); font-weight: 800; display: grid; place-items: center; margin: 0 auto 12px; }
+    .easy3 .s .pick { display: flex; gap: 8px; justify-content: center; margin: 10px 0; }
+    .easy3 .s .pick .up { background: var(--up); color: #04130c; font-weight: 700; padding: 8px 12px; border-radius: 9px; font-size: 14px; }
+    .easy3 .s .pick .down { background: var(--down); color: #fff; font-weight: 700; padding: 8px 12px; border-radius: 9px; font-size: 14px; }
+    .easy3 .s h3 { font-size: 16px; margin: 0 0 4px; color: var(--fg-0); }
+    .easy3 .s p { margin: 0; font-size: 13.5px; color: var(--fg-2); line-height: 1.6; }
+    @media (max-width: 720px) { .easy3 { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">本文へスキップ</a>
+
+  <nav class="nav">
+    <div class="container nav-inner">
+      <a href="index.html" class="brand">
+        <span class="dot"></span>
+        <span><span class="opt">the</span>option</span>
+      </a>
+      <div class="nav-links">
+        <a href="trading-options.html">取引オプション</a>
+        <a href="payouts.html">ペイアウト</a>
+        <a href="trading-hours.html">取引時間</a>
+        <a href="accounts.html">口座開設</a>
+        <a href="help.html">ヘルプ</a>
+        <a href="company.html">会社情報</a>
+      </div>
+      <div class="nav-cta">
+        <a href="the-option.html" class="btn-ghost">クイックデモ</a>
+        <a href="accounts.html" class="btn-primary">口座開設</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="risk-banner">
+    <div class="container">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v4M12 17h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg>
+      <p><b>大切なこと：</b>予想が外れると、使ったお金（投資額）はなくなります。なくなっても困らないお金で始めてください。<a href="risk-disclosure.html">くわしく</a></p>
+    </div>
+  </div>
+
+  <header class="page-head">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="パンくず">
+        <a href="index.html">ホーム</a><span class="sep">/</span><span>はじめての方へ</span>
+      </nav>
+      <span class="page-eyebrow">GUIDE · はじめての方へ</span>
+      <h1>用語ゼロの、スタートガイド</h1>
+      <p class="lead">投資や取引がはじめての方へ。むずかしい言葉はできるだけ使わずに、「何ができるのか」と「はじめ方」をやさしく説明します。</p>
+    </div>
+  </header>
+
+  <main class="page-main" id="main">
+    <div class="container">
+      <div class="layout">
+        <aside class="toc" aria-label="目次">
+          <h2>目次</h2>
+          <ol>
+            <li><a href="#what">これは何のサービス？</a></li>
+            <li><a href="#choose">取引は「えらぶ」だけ</a></li>
+            <li><a href="#words">やさしい用語じてん</a></li>
+            <li><a href="#start">はじめ方（4ステップ）</a></li>
+            <li><a href="#worry">よくある不安</a></li>
+            <li><a href="#try">まずは無料で</a></li>
+          </ol>
+        </aside>
+
+        <article class="prose">
+          <section id="what">
+            <h2><span class="num-prefix">01</span>これは何のサービス？</h2>
+            <p>かんたんに言うと、<strong>「これから価格が上がるか、下がるか」を予想する取引</strong>です。たとえば「ドル円（米ドルと日本円の交換レート）」が、1分後に今より上がっているか下がっているかを当てます。</p>
+            <p>当たれば、使ったお金が増えて戻ってきます。<strong>外れると、使ったお金（<span class="term" tabindex="0">投資額<span class="tip">1回の取引に使うお金のこと。</span></span>）はなくなります。</strong>むずかしい計算や知識がなくても操作できますが、お金が減ることもある、という点はしっかり知っておいてください。</p>
+            <div class="callout warn">
+              <div class="callout-title">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v4M12 17h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg>
+                いちばん大切なこと
+              </div>
+              <p>これは「必ず増えるもの」ではありません。外れれば使ったお金はゼロになります。生活のお金や借りたお金は使わず、<strong>なくなっても困らない範囲</strong>で。まずは無料のデモから試すのが安心です。</p>
+            </div>
+          </section>
+
+          <section id="choose">
+            <h2><span class="num-prefix">02</span>取引は「えらぶ」だけ</h2>
+            <p>やることは、つぎの3つだけです。スマホで指1本で操作できます。</p>
+            <div class="easy3">
+              <div class="s">
+                <div class="n">1</div>
+                <h3>上がる？下がる？</h3>
+                <div class="pick"><span class="up">▲ 上がる</span><span class="down">▼ 下がる</span></div>
+                <p>これからの値動きを、どちらか選びます。</p>
+              </div>
+              <div class="s">
+                <div class="n">2</div>
+                <h3>金額と時間</h3>
+                <p>いくら使うか（¥1,000〜）と、<span class="term" tabindex="0">判定時間<span class="tip">勝ち負けが決まるまでの時間。30秒〜1日などから選びます。</span></span>（30秒〜）を決めます。</p>
+              </div>
+              <div class="s">
+                <div class="n">3</div>
+                <h3>待つだけ</h3>
+                <p>時間がきたら自動で判定。当たりなら利益、外れなら投資額がなくなります。</p>
+              </div>
+            </div>
+            <p class="muted">「チャート（値動きのグラフ）」が読めなくても大丈夫。まずは<a href="the-option.html">無料デモ</a>で、画面を触って感覚をつかんでみてください。</p>
+          </section>
+
+          <section id="words">
+            <h2><span class="num-prefix">03</span>やさしい用語じてん</h2>
+            <p>サイトでよく出てくる言葉を、ふだんの言葉で説明します。</p>
+            <dl class="facts">
+              <div class="row"><dt>ハイロー / バイナリーオプション</dt><dd>「上がる・下がる」を予想する取引そのものの呼び方。</dd></div>
+              <div class="row"><dt>HIGH（ハイ）/ LOW（ロー）</dt><dd>「上がる」がHIGH、「下がる」がLOW。選ぶボタンの名前です。</dd></div>
+              <div class="row"><dt>判定時間（満期）</dt><dd>勝ち負けが決まるまでの時間。30秒・1分・15分・1日などから選びます。</dd></div>
+              <div class="row"><dt>ペイアウト（率）</dt><dd>当たったとき、使ったお金の何倍を受け取れるか。例：1.9倍なら、¥10,000が¥19,000に。</dd></div>
+              <div class="row"><dt>投資額</dt><dd>1回の取引に使うお金。外れるとこのお金がなくなります。</dd></div>
+              <div class="row"><dt>スプレッド</dt><dd>「ただ上がる/下がる」より少し条件がきびしい代わりに、もらえる倍率が高いタイプ。慣れてから。</dd></div>
+              <div class="row"><dt>デモ（口座）</dt><dd>本物のお金を使わず、仮のお金で練習できるモード。無料・登録不要。</dd></div>
+              <div class="row"><dt>出金</dt><dd>口座のお金を、自分の銀行口座などに引き出すこと。</dd></div>
+              <div class="row"><dt>本人確認（KYC）</dt><dd>出金の前に必要な、「本人ですよ」と確かめる手続き。身分証などを使います。</dd></div>
+            </dl>
+            <p class="muted">もっと一覧で見たい方は<a href="help.html#glossary">用語集</a>もどうぞ。</p>
+          </section>
+
+          <section id="start">
+            <h2><span class="num-prefix">04</span>はじめ方（4ステップ）</h2>
+            <div class="flow">
+              <div class="flow-step"><div class="flow-num">1</div><div><h3>まず無料デモで触ってみる</h3><p>登録もお金も不要。<a href="the-option.html">クイックデモ</a>で「選ぶ→待つ」の流れを体験できます。</p></div></div>
+              <div class="flow-step"><div class="flow-num">2</div><div><h3>口座をつくる（最短3分）</h3><p>メールとパスワードだけで始められます。<a href="accounts.html">口座開設の流れ</a>へ。</p></div></div>
+              <div class="flow-step"><div class="flow-num">3</div><div><h3>本人確認をする</h3><p>出金の前に必要です。身分証などをアップロードします。</p></div></div>
+              <div class="flow-step"><div class="flow-num">4</div><div><h3>入金して取引</h3><p>無理のない少額から。入出金の方法は<a href="fees.html">こちら</a>。</p></div></div>
+            </div>
+          </section>
+
+          <section id="worry">
+            <h2><span class="num-prefix">05</span>よくある不安</h2>
+            <div class="faq">
+              <details class="faq-item" open>
+                <summary>最初からお金はかかりますか？</summary>
+                <div class="a"><p>いいえ。デモは<strong>無料・登録不要</strong>で何度でも試せます。お金がかかるのは、リアル口座に入金してから取引したときだけです。</p></div>
+              </details>
+              <details class="faq-item">
+                <summary>むずかしくないですか？</summary>
+                <div class="a"><p>操作は「上がる／下がる」を選ぶだけで、とてもシンプルです。ただし、<strong>予想が外れればお金は減ります</strong>。簡単さと「儲かりやすさ」は別物です。まずはデモで感覚を確かめてください。</p></div>
+              </details>
+              <details class="faq-item">
+                <summary>必ず勝てる方法はありますか？</summary>
+                <div class="a"><p>ありません。「絶対に勝てる」「必勝法」をうたう情報や勧誘には十分ご注意ください。当社がそのような案内をすることもありません。くわしくは<a href="risk-disclosure.html">リスク開示</a>へ。</p></div>
+              </details>
+              <details class="faq-item">
+                <summary>いくらから始められますか？</summary>
+                <div class="a"><p>1回の取引は<strong>¥1,000から</strong>、初回の最低入金額は¥5,000です。少額・短時間から無理なく試せます。</p></div>
+              </details>
+              <details class="faq-item">
+                <summary>のめり込みそうで不安です。</summary>
+                <div class="a"><p>短時間で結果が出るぶん、のめり込みやすい一面があります。あらかじめ<strong>1日・1ヶ月の上限額や時間を決めて</strong>守ってください。難しいと感じたら、口座の利用制限・一時停止のご相談も承ります（<a href="contact.html">お問い合わせ</a>）。</p></div>
+              </details>
+            </div>
+          </section>
+
+          <section id="try">
+            <h2><span class="num-prefix">06</span>まずは無料で</h2>
+            <p>いきなりお金を使う必要はありません。まずはデモで、画面と流れに慣れることから始めましょう。</p>
+            <div class="cta-block">
+              <h2>無料・登録不要で試す</h2>
+              <p>仮のお金で、リスクなく「選ぶ→待つ」を体験できます。</p>
+              <div class="row">
+                <a href="the-option.html" class="btn-primary lg">クイックデモを開く</a>
+                <a href="help.html" class="btn-ghost">ヘルプを見る</a>
+              </div>
+            </div>
+          </section>
+        </article>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="col footer-brand">
+          <a href="index.html" class="brand"><span class="dot"></span><span><span class="opt">the</span>option</span></a>
+          <p>ハイロー（バイナリー）オプションを、もっとわかりやすく。透明性と使いやすさを大切にしています。</p>
+          <div class="footer-social">
+            <a href="#" aria-label="X"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="m17 3-5.2 6.5L17.5 21H14l-3.6-5.5L5.5 21H2l5.5-7L2 3h3.5l3.2 4.8L13 3z"/></svg></a>
+            <a href="#" aria-label="YouTube"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 0 1-10 10v-7l4-3-4-3V2a10 10 0 0 1 10 10z"/></svg></a>
+          </div>
+        </div>
+        <div class="col">
+          <h4>取引</h4>
+          <a href="trading-options.html">取引オプション</a>
+          <a href="trading-options.html#highlow">HighLow</a>
+          <a href="trading-options.html#turbo">Turbo</a>
+          <a href="payouts.html">ペイアウト</a>
+          <a href="trading-hours.html">取引時間</a>
+          <a href="index.html#assets">取扱銘柄</a>
+        </div>
+        <div class="col">
+          <h4>口座・入出金</h4>
+          <a href="accounts.html">口座開設</a>
+          <a href="the-option.html">クイックデモ</a>
+          <a href="fees.html">入出金</a>
+          <a href="fees.html">手数料</a>
+        </div>
+        <div class="col">
+          <h4>サポート</h4>
+          <a href="help.html">ヘルプ</a>
+          <a href="start.html">はじめての方へ</a>
+          <a href="help.html#faq">よくある質問</a>
+          <a href="help.html#glossary">用語集</a>
+          <a href="contact.html">お問い合わせ</a>
+        </div>
+        <div class="col">
+          <h4>会社・法的情報</h4>
+          <a href="company.html">会社概要</a>
+          <a href="risk-disclosure.html">リスク開示</a>
+          <a href="terms.html">利用規約</a>
+          <a href="privacy.html">プライバシー</a>
+          <a href="aml-kyc.html">AML / KYC</a>
+        </div>
+      </div>
+      <div class="footer-disclaim">
+        <b>リスク開示：</b>バイナリーオプション取引は元本を失うリスクを伴います。投資した資金の全額を失う可能性があります。取引を行う前に、ご自身の財務状況・投資経験・リスク許容度を十分にご検討ください。本サービスは、米国・カナダ・EU加盟国・英国・イスラエル・北朝鮮など一部の国・地域の居住者にはご利用いただけません。当社は IFSC（国際金融サービス委員会、ベリーズ）のライセンス（IFSC/60/468/TS/19）のもとで運営しています。
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 The Option Trading Ltd. All rights reserved.</span>
+        <div class="links">
+          <a href="terms.html">利用規約</a>
+          <a href="privacy.html">プライバシー</a>
+          <a href="privacy.html#cookie">Cookie</a>
+          <a href="aml-kyc.html">AML / KYC</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
