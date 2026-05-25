@@ -444,6 +444,18 @@ table.data .accent { color: var(--accent); font-family: var(--font-mono); font-w
   padding: 3px 9px; border-radius: 999px;
 }
 
+/* === Inline term tooltip (beginner-friendly) === */
+.term { position: relative; border-bottom: 1px dashed var(--fg-3); cursor: help; }
+.term > .tip {
+  position: absolute; bottom: calc(100% + 8px); left: 50%; transform: translateX(-50%) translateY(4px);
+  width: max-content; max-width: 260px; background: var(--bg-3); border: 1px solid var(--line-strong);
+  border-radius: 10px; padding: 9px 12px; font-size: 12.5px; line-height: 1.55; color: var(--fg-1); font-weight: 400;
+  box-shadow: 0 14px 36px -12px rgba(0,0,0,.7); opacity: 0; visibility: hidden;
+  transition: opacity .15s, transform .15s; z-index: 40; text-align: left; white-space: normal; pointer-events: none;
+}
+.term:hover > .tip, .term:focus > .tip, .term:focus-within > .tip { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
+.term:focus { outline: none; }
+
 /* === Footer === */
 .footer {
   border-top: 1px solid var(--line);

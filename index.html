@@ -507,6 +507,17 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .float-stat .text .t { font-size: 13px; color: var(--fg-0); font-weight: 600; }
 .float-stat .text .s { font-size: 11px; color: var(--fg-2); font-family: var(--font-mono); }
 
+/* === Beginner: term tooltip + hero helper === */
+.term { position: relative; border-bottom: 1px dashed var(--fg-3); cursor: help; }
+.term > .tip { position: absolute; bottom: calc(100% + 8px); left: 50%; transform: translateX(-50%) translateY(4px); width: max-content; max-width: 260px; background: var(--bg-3); border: 1px solid var(--line-strong); border-radius: 10px; padding: 9px 12px; font-size: 12.5px; line-height: 1.55; color: var(--fg-1); font-weight: 400; box-shadow: 0 14px 36px -12px rgba(0,0,0,.7); opacity: 0; visibility: hidden; transition: opacity .15s, transform .15s; z-index: 40; text-align: left; white-space: normal; pointer-events: none; }
+.term:hover > .tip, .term:focus > .tip, .term:focus-within > .tip { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
+.term:focus { outline: none; }
+.hero-helper { display: flex; align-items: center; gap: 13px; margin-top: 28px; padding: 13px 16px; border: 1px dashed var(--line-strong); border-radius: 14px; background: rgba(0,224,138,0.06); max-width: 560px; }
+.hero-helper .tap { width: 40px; height: 40px; border-radius: 11px; background: rgba(0,224,138,0.16); color: var(--up); display: grid; place-items: center; flex-shrink: 0; }
+.hero-helper .txt { font-size: 14px; color: var(--fg-1); line-height: 1.55; }
+.hero-helper .txt b { color: var(--fg-0); }
+.hero-helper .txt a { color: var(--up); font-weight: 700; }
+
 /* === Easy / beginner steps === */
 .easy-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
 .easy-step { background: var(--bg-1); border: 1px solid var(--line); border-radius: 16px; padding: 28px 24px; text-align: center; position: relative; }
@@ -1676,7 +1687,7 @@ body::after {
             <span class="accent">High か Low か。</span>
           </h1>
           <p class="hero-lead">
-            ハイロー（バイナリー）オプションを、もっとわかりやすく。
+            <span class="term" tabindex="0">ハイロー（バイナリー）オプション<span class="tip">為替や株価指数などの価格が、決められた時間後に「今より上か下か」を予想する取引。対象そのものは保有しません。</span></span>を、もっとわかりやすく。
             最短 3 分で口座開設、最大ペイアウト <b class="gold mono">2.00倍</b>。
             まずは仮想資金のデモから、リスクなく試せます。
           </p>
@@ -1710,6 +1721,10 @@ body::after {
               <span class="v">SSL × 2FA</span>
               <span class="l">分別保管・銀行水準セキュリティ</span>
             </div>
+          </div>
+          <div class="hero-helper">
+            <span class="tap"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11V6a2 2 0 0 1 4 0v5M9 11V9a2 2 0 0 0-4 0v4a7 7 0 0 0 7 7h1a6 6 0 0 0 6-6v-3a2 2 0 0 0-4 0M13 11V8a2 2 0 0 1 4 0v3"></path></svg></span>
+            <span class="txt">投資ははじめて？ <b>むずかしくありません。</b>指1本で「上がる／下がる」を選ぶだけ。<br><a href="start.html">はじめての方へ（用語ゼロのガイド）→</a></span>
           </div>
         </div>
 
@@ -2480,6 +2495,7 @@ body::after {
         <div class="col">
           <h4>サポート</h4>
           <a href="help.html">ヘルプ</a>
+          <a href="start.html">はじめての方へ</a>
           <a href="help.html#faq">よくある質問</a>
           <a href="help.html#glossary">用語集</a>
           <a href="contact.html">お問い合わせ</a>
