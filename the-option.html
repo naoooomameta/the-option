@@ -71,11 +71,21 @@
     .ch-head .px.up { color: var(--up); } .ch-head .px.down { color: var(--down); }
     .ch-head .chg { font-family: var(--font-mono); font-size: 13px; padding: 3px 9px; border-radius: 6px; }
     .ch-head .chg.up { color: var(--up); background: var(--accent-soft); } .ch-head .chg.down { color: var(--down); background: rgba(255,82,119,.12); }
-    .ch-head .stats { margin-left: auto; display: flex; gap: 18px; flex-wrap: wrap; }
+    .ch-head .stats { display: flex; gap: 18px; flex-wrap: wrap; }
     .ch-head .stats .s { display: flex; flex-direction: column; line-height: 1.2; }
     .ch-head .stats .s .l { font-size: 9px; color: var(--fg-3); letter-spacing: .06em; }
     .ch-head .stats .s .v { font-family: var(--font-mono); font-size: 13px; color: var(--fg-1); }
     .ch-head .stats .s .v.gold { color: var(--accent); }
+    .ch-title .sub { font-family: var(--font-mono); font-size: 12px; color: var(--fg-3); margin-top: 2px; }
+    .ch-pxwrap { margin-left: auto; display: flex; align-items: center; gap: 8px; }
+    .chart-area .ch-countdown { position: absolute; top: 12px; left: 50%; transform: translateX(-50%); z-index: 3;
+      display: inline-flex; align-items: center; gap: 7px; padding: 5px 12px; border-radius: 999px;
+      background: rgba(8,11,16,.72); border: 1px solid var(--line-strong); color: var(--fg-1);
+      font-family: var(--font-mono); font-size: 13px; backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); }
+    .chart-area .ch-countdown > svg { color: var(--fg-2); }
+    .chart-area .ch-countdown .ring { width: 11px; height: 11px; border-radius: 50%; border: 1.5px solid var(--accent); border-top-color: transparent; animation: cdspin 1.3s linear infinite; }
+    @keyframes cdspin { to { transform: rotate(360deg); } }
+    .chart-area .ch-lock { position: absolute; top: 12px; right: 14px; z-index: 3; color: var(--fg-3); opacity: .65; }
     .ch-tools { display: flex; align-items: center; gap: 14px; padding: 8px 18px; border-bottom: 1px solid var(--line); flex-wrap: wrap; }
     .pillset { display: inline-flex; gap: 4px; }
     .pillset button { font-family: var(--font-mono); font-size: 12px; padding: 5px 11px; border-radius: 7px; color: var(--fg-2); border: 1px solid var(--line); }
@@ -156,6 +166,36 @@
       .pos-body { max-height: 320px; }
       .ch-head .px { font-size: 26px; }
     }
+    @media (max-width: 760px) {
+      .top { gap: 10px; padding: 0 12px; }
+      .kpis { gap: 14px; margin-left: 4px; }
+      .top .kpi:nth-child(2), .top .kpi:nth-child(4) { display: none; }
+      .top .right { gap: 7px; }
+      .top .icon-btn { width: 32px; height: 32px; }
+      .rail .cats, .rail .search, .rail .live { display: none; }
+      .rail .list { display: flex; gap: 8px; overflow-x: auto; max-height: none; padding: 8px 12px; }
+      .rail-item { flex: 0 0 auto; width: auto; display: flex; align-items: center; gap: 8px; padding: 8px 12px; border: 1px solid var(--line); border-radius: 999px; }
+      .rail-item::before { display: none; }
+      .rail-item.on { border-color: var(--accent); background: var(--accent-soft); }
+      .rail-item .cat, .rail-item .chg { display: none; }
+      .rail-item .nm, .rail-item .px { font-size: 12.5px; }
+      .ch-head { padding: 12px 16px 8px; }
+      .ch-head .stats { display: none; }
+      .ch-head .nm { font-size: 17px; color: var(--fg-0); font-weight: 700; }
+      .ch-head .px { font-size: 24px; }
+      .chart-area { height: 300px; }
+      .ch-tools { padding: 6px 12px; }
+      .ch-tools .styleset, .ch-tools .sep { display: none; }
+      .panel { padding: 12px; gap: 12px; }
+      .panel .ai { display: none; }
+      .stepper input { font-size: 22px; }
+      .hl { position: fixed; left: 0; right: 0; bottom: 0; z-index: 80; margin: 0;
+        padding: 10px 12px calc(10px + env(safe-area-inset-bottom, 0px));
+        background: rgba(8,11,16,.96); border-top: 1px solid var(--line);
+        backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
+      .hl button { font-size: 16px; padding: 14px 0; }
+      body { padding-bottom: 96px; }
+    }
     @media (prefers-reduced-motion: reduce) {
       .ai .needle { transition: none; }
       .cd .bar span { transition: none !important; }
@@ -216,15 +256,18 @@
     <!-- Chart pane -->
     <section class="chart-pane" aria-label="チャート">
       <div class="ch-head">
-        <div>
+        <div class="ch-title">
           <div class="nm" id="ch-name">USD/JPY</div>
-          <div class="px" id="ch-price">156.234</div>
+          <div class="sub" id="ch-sub">HighLow // 1分</div>
         </div>
-        <span class="chg up" id="ch-chg">+0.00%</span>
         <div class="stats">
           <div class="s"><span class="l">高値</span><span class="v" id="ch-hi">—</span></div>
           <div class="s"><span class="l">安値</span><span class="v" id="ch-lo">—</span></div>
           <div class="s"><span class="l">ペイアウト</span><span class="v gold" id="ch-payout">+88%</span></div>
+        </div>
+        <div class="ch-pxwrap">
+          <div class="px" id="ch-price">156.234</div>
+          <span class="chg up" id="ch-chg">+0.00%</span>
         </div>
       </div>
       <div class="ch-tools">
@@ -242,7 +285,11 @@
           <button data-style="area" class="on" aria-label="エリア" title="エリア"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 17l5-6 4 3 8-9v15H3z"/></svg></button>
         </div>
       </div>
-      <div class="chart-area"><canvas id="chart"></canvas></div>
+      <div class="chart-area">
+        <div class="ch-countdown"><svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg><span id="cd-timer">5:00</span><span class="ring" aria-hidden="true"></span></div>
+        <div class="ch-lock" aria-hidden="true"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg></div>
+        <canvas id="chart"></canvas>
+      </div>
     </section>
 
     <!-- Trade panel -->
@@ -357,6 +404,9 @@
     function fmt(a, v) { return v.toLocaleString("ja-JP", { minimumFractionDigits: a.dec, maximumFractionDigits: a.dec }); }
     function tfCount() { return ({ "1m": 60, "5m": 50, "15m": 42, "1h": 36, "1d": 30 })[state.tf] || 60; }
     function openOn(id) { return state.positions.filter(function (p) { return !p.settled && p.assetId === id; }); }
+    function expLabel(sec) { return ({ 30: "30秒", 60: "1分", 180: "3分", 300: "5分", 900: "15分", 3600: "1時間" })[sec] || (sec + "秒"); }
+    function roundLen() { return Math.min(state.expiry, 300); }
+    function renderCountdown() { var el = $("cd-timer"); if (!el) return; var m = Math.floor(state.roundLeft / 60), s = state.roundLeft % 60; el.textContent = m + ":" + ("0" + s).slice(-2); }
 
     // ---- Chart ----
     var canvas = $("chart"), ctx = canvas.getContext("2d");
@@ -366,7 +416,7 @@
       if (!w || !h) return;
       if (canvas.width !== w * dpr || canvas.height !== h * dpr) { canvas.width = w * dpr; canvas.height = h * dpr; }
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0); ctx.clearRect(0, 0, w, h);
-      var padT = 14, padB = 16, padL = 8, padR = 70, iw = w - padL - padR, ih = h - padT - padB;
+      var padT = 14, padB = 22, padL = 8, padR = 70, iw = w - padL - padR, ih = h - padT - padB;
       var min = Infinity, max = -Infinity;
       cs.forEach(function (c) { if (c.l < min) min = c.l; if (c.h > max) max = c.h; });
       openOn(a.id).forEach(function (p) { min = Math.min(min, p.entry); max = Math.max(max, p.entry); });
@@ -387,25 +437,42 @@
       } else {
         if (state.style === "area") {
           var grad = ctx.createLinearGradient(0, padT, 0, padT + ih);
-          grad.addColorStop(0, "rgba(31,217,142,0.30)"); grad.addColorStop(1, "rgba(31,217,142,0)");
+          grad.addColorStop(0, "rgba(255,82,99,0.34)"); grad.addColorStop(1, "rgba(255,82,99,0)");
           ctx.fillStyle = grad; ctx.beginPath(); ctx.moveTo(X(0), padT + ih);
           for (var j = 0; j < cs.length; j++) ctx.lineTo(X(j), Y(cs[j].c));
           ctx.lineTo(X(cs.length - 1), padT + ih); ctx.closePath(); ctx.fill();
         }
-        ctx.strokeStyle = "#1fd98e"; ctx.lineWidth = 1.6; ctx.beginPath();
+        ctx.strokeStyle = "#ff5263"; ctx.lineWidth = 1.8; ctx.lineJoin = "round"; ctx.beginPath();
         for (var k = 0; k < cs.length; k++) { var xx = X(k), yv = Y(cs[k].c); if (k === 0) ctx.moveTo(xx, yv); else ctx.lineTo(xx, yv); }
         ctx.stroke();
       }
+      var lp = cs[cs.length - 1].c, ly = Y(lp), xLast = X(cs.length - 1);
       // open position strike lines
       openOn(a.id).forEach(function (p) { var ey = Y(p.entry);
         ctx.strokeStyle = p.dir === "HIGH" ? "rgba(31,217,142,0.7)" : "rgba(255,82,119,0.7)";
         ctx.setLineDash([4, 4]); ctx.beginPath(); ctx.moveTo(padL, ey); ctx.lineTo(padL + iw, ey); ctx.stroke(); ctx.setLineDash([]);
         ctx.fillStyle = p.dir === "HIGH" ? "#1fd98e" : "#ff5277"; ctx.textBaseline = "middle";
         ctx.fillText(p.dir === "HIGH" ? "▲" : "▼", padL + 2, ey - 7); });
-      // last price flag
-      var lp = cs[cs.length - 1].c, ly = Y(lp);
-      ctx.fillStyle = "#1fd98e"; ctx.fillRect(padL + iw + 4, ly - 9, padR - 8, 18);
-      ctx.fillStyle = "#04130c"; ctx.font = "600 11px 'JetBrains Mono', monospace"; ctx.fillText(fmt(a, lp), padL + iw + 8, ly);
+      // time axis (synthesized clock; expiry marker highlighted, HighLow-style)
+      var nowMs = Date.now(), stepMs = Math.max(60, Math.round(state.expiry / 3)) * 1000;
+      var markerX = padL + iw * 0.84, gap = (markerX - padL) / 4;
+      ctx.strokeStyle = "rgba(255,255,255,0.12)"; ctx.setLineDash([3, 3]); ctx.lineWidth = 1;
+      ctx.beginPath(); ctx.moveTo(markerX, padT); ctx.lineTo(markerX, padT + ih); ctx.stroke(); ctx.setLineDash([]);
+      ctx.font = "10px 'JetBrains Mono', monospace"; ctx.textBaseline = "alphabetic"; ctx.textAlign = "center";
+      for (var tt = 0; tt < 5; tt++) {
+        var d = new Date(nowMs + state.expiry * 1000 - tt * stepMs);
+        ctx.fillStyle = tt === 0 ? "#f5f8fb" : "#7e8a98";
+        ctx.fillText(("0" + d.getHours()).slice(-2) + ":" + ("0" + d.getMinutes()).slice(-2), markerX - tt * gap, h - 6);
+      }
+      ctx.textAlign = "start";
+      // current price dashed line + glowing dot (HighLow-style)
+      ctx.strokeStyle = "rgba(255,255,255,0.5)"; ctx.setLineDash([5, 4]); ctx.lineWidth = 1;
+      ctx.beginPath(); ctx.moveTo(padL, ly); ctx.lineTo(padL + iw, ly); ctx.stroke(); ctx.setLineDash([]);
+      ctx.fillStyle = "rgba(255,255,255,0.16)"; ctx.beginPath(); ctx.arc(xLast, ly, 9, 0, Math.PI * 2); ctx.fill();
+      ctx.fillStyle = "#fff"; ctx.beginPath(); ctx.arc(xLast, ly, 3.5, 0, Math.PI * 2); ctx.fill();
+      // right-edge price flag
+      ctx.fillStyle = "#ff5263"; ctx.fillRect(padL + iw + 4, ly - 9, padR - 8, 18);
+      ctx.fillStyle = "#fff"; ctx.font = "600 11px 'JetBrains Mono', monospace"; ctx.textBaseline = "middle"; ctx.fillText(fmt(a, lp), padL + iw + 8, ly);
     }
 
     // ---- Rail ----
@@ -448,6 +515,7 @@
       win.forEach(function (c) { if (c.h > hi) hi = c.h; if (c.l < lo) lo = c.l; });
       $("ch-hi").textContent = fmt(a, hi); $("ch-lo").textContent = fmt(a, lo);
       $("ch-payout").textContent = "+" + a.payout + "%";
+      $("ch-sub").textContent = (state.expiry <= 300 ? "Turbo" : "HighLow") + " // " + expLabel(state.expiry);
     }
     function renderSummary() {
       var a = asset(), profit = Math.round(state.amount * a.payout / 100);
@@ -564,6 +632,7 @@
         s.push({ o: o, h: Math.max(o, c) + Math.random() * a.vol * 0.3, l: Math.min(o, c) - Math.random() * a.vol * 0.3, c: c });
         if (s.length > 90) s.shift();
       });
+      state.roundLeft--; if (state.roundLeft < 0) state.roundLeft = roundLen(); renderCountdown();
       updateRailPrices(); renderHeader(); renderAI(); settle(); draw();
       if (state.tab === "open") renderPositions();
     }
@@ -582,7 +651,7 @@
     $("styleset").addEventListener("click", function (e) { var b = e.target.closest("button"); if (!b) return;
       this.querySelectorAll("button").forEach(function (x) { x.classList.remove("on"); }); b.classList.add("on"); state.style = b.dataset.style; draw(); });
     $("expset").addEventListener("click", function (e) { var b = e.target.closest("button"); if (!b) return;
-      this.querySelectorAll("button").forEach(function (x) { x.classList.remove("on"); }); b.classList.add("on"); state.expiry = parseInt(b.dataset.sec, 10); renderSummary(); });
+      this.querySelectorAll("button").forEach(function (x) { x.classList.remove("on"); }); b.classList.add("on"); state.expiry = parseInt(b.dataset.sec, 10); state.roundLeft = roundLen(); renderSummary(); renderHeader(); renderCountdown(); });
     $("quick").addEventListener("click", function (e) { var b = e.target.closest("button"); if (!b) return; state.amount = parseInt(b.dataset.set, 10); $("amount").value = state.amount; renderSummary(); });
     function clampAmt() { var v = parseInt($("amount").value, 10) || 0; state.amount = v; renderSummary(); }
     $("amount").addEventListener("input", clampAmt);
@@ -606,7 +675,8 @@
     });
 
     // ---- Boot ----
-    renderRail(); renderHeader(); renderSummary(); renderAI(); renderKpis(); renderPositions(); draw();
+    state.roundLeft = roundLen();
+    renderRail(); renderHeader(); renderSummary(); renderAI(); renderKpis(); renderPositions(); renderCountdown(); draw();
     setInterval(tickAll, 1000);
     if (window.ResizeObserver) new ResizeObserver(draw).observe(document.querySelector(".chart-area"));
   })();
