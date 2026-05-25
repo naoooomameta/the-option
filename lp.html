@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>無料デモで体験 — High か Low か | the option</title>
+  <title>入金なしで30秒、無料デモで体験 — the option</title>
   <meta name="description" content="登録不要・入金不要の無料デモで、the optionのバイナリーオプション取引を体験。「上がる・下がる」を選ぶだけのかんたん操作を確かめてから、納得して口座開設へ。">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
@@ -41,13 +41,19 @@
     }
     .lp-hero h1 {
       font-family: var(--font-display);
-      font-size: clamp(40px, 6vw, 74px); line-height: 1.0;
-      letter-spacing: -0.04em; font-weight: 800; margin: 0 0 20px; color: var(--fg-0);
+      font-size: clamp(36px, 5vw, 60px); line-height: 1.1;
+      letter-spacing: -0.04em; font-weight: 800; margin: 0 0 18px; color: var(--fg-0);
     }
     .lp-grad {
       background: linear-gradient(135deg, #ffffff 0%, #c8fbe6 48%, var(--accent) 100%);
       -webkit-background-clip: text; background-clip: text; color: transparent;
     }
+    .lp-hook {
+      display: block; font-family: var(--font-display);
+      font-size: clamp(20px, 2.8vw, 30px); font-weight: 800; letter-spacing: -0.03em;
+      line-height: 1.3; color: var(--fg-0); margin-top: 14px;
+    }
+    .lp-hook em { font-style: normal; color: var(--accent); }
     .lp-lead {
       font-size: clamp(16px, 2vw, 20px); line-height: 1.85;
       color: var(--fg-1); margin: 0 0 28px; max-width: 620px;
@@ -149,7 +155,8 @@
     .lp-mini { height: 64px; border-radius: 14px; background: var(--bg-2); border: 1px solid var(--line); display: grid; place-items: center; color: var(--accent); font-family: var(--font-mono); font-weight: 600; font-size: 13px; margin-top: 18px; letter-spacing: .04em; }
     .lp-center-cta { text-align: center; margin-top: 30px; }
 
-    /* === Options note === */
+    /* === Options === */
+    .opt-card .opt-payout { font-size: 22px; }
     .lp-opt-foot { margin: 22px 0 0; color: var(--fg-3); font-size: 13px; line-height: 1.7; }
     .lp-opt-foot a { color: var(--accent); }
 
@@ -271,17 +278,17 @@
     <section class="lp-hero">
       <div class="container lp-hero-grid">
         <div class="lp-hero-copy">
-          <span class="lp-eyebrow">登録不要・入金不要｜まずは無料で体験</span>
-          <h1>選ぶのは、<br><span class="lp-grad">High か Low か。</span></h1>
-          <p class="lp-lead">価格が「上がる」か「下がる」かを予想する、シンプルな取引（バイナリーオプション）です。はじめての方でも、スマホで直感的に試せます。まずはお金のかからない無料デモで、実際の画面を触って雰囲気をつかんでください。</p>
+          <span class="lp-eyebrow">登録不要・入金不要｜まずは30秒、無料で体験</span>
+          <h1><span class="lp-grad">上がるか、下がるか。</span><span class="lp-hook">まずは入金なしで、<em>30秒</em>だけ試してみる。</span></h1>
+          <p class="lp-lead">the option は、High / Low の操作感を無料デモで確認できる取引プラットフォームです。いきなり口座開設する前に、銘柄選択・判定時間・ペイアウトの見え方を、仮想資金で体験できます。</p>
           <div class="lp-hero-actions">
-            <a class="btn-primary lg" href="the-option.html">無料デモを試す（登録不要・30秒）<span aria-hidden="true">→</span></a>
-            <a class="btn-ghost" href="accounts.html">無料で口座をつくる</a>
+            <a class="btn-primary lg" href="the-option.html">無料デモを30秒で試す<span aria-hidden="true">→</span></a>
+            <a class="btn-ghost" href="accounts.html">口座開設はあとで確認する</a>
           </div>
           <div class="lp-micro" aria-label="安心材料">
-            <span><i class="lp-check" aria-hidden="true">✓</i>デモは自分のお金を使わない</span>
-            <span><i class="lp-check" aria-hidden="true">✓</i>使った額より多く損しない</span>
-            <span><i class="lp-check" aria-hidden="true">✓</i>スマホだけで完結</span>
+            <span><i class="lp-check" aria-hidden="true">✓</i>登録不要のデモあり</span>
+            <span><i class="lp-check" aria-hidden="true">✓</i>入金前に操作感を確認</span>
+            <span><i class="lp-check" aria-hidden="true">✓</i>投資額を超える損失なし</span>
           </div>
           <div class="lp-stats">
             <div class="lp-stat"><b>30秒〜</b><small>短い時間でも取引できる</small></div>
@@ -337,18 +344,18 @@
         <div class="lp-worries">
           <article class="lp-worry">
             <div class="lp-q">Q</div>
-            <h3>ちゃんと出金できる？</h3>
-            <p>本人確認が済んだ口座なら、出金はスピーディー。これまでの平均で<strong>約3.2時間</strong>で処理しています（混雑時は前後します）。くわしくは<a href="fees.html">入出金ページ</a>へ。</p>
+            <h3>出金できますか？</h3>
+            <p>本人確認の完了後、出金申請が可能です。公式サイトでは<strong>平均出金処理時間3.2時間</strong>の記載があります。条件は事前にご確認ください。<a href="fees.html">入出金ページ</a>へ。</p>
           </article>
           <article class="lp-worry">
             <div class="lp-q">Q</div>
-            <h3>いくらから始められる？</h3>
-            <p>まとまったお金は必要ありません。取引は<strong>1回 ¥1,000 から</strong>。しかも入金する前に、<strong>無料デモ</strong>で何度でも練習できます（口座への初回入金は ¥5,000 から）。</p>
+            <h3>いくらから試せますか？</h3>
+            <p>デモは<strong>入金不要</strong>。実際の取引は<strong>1回 1,000円から</strong>、初回の最低入金は<strong>5,000円から</strong>です。</p>
           </article>
           <article class="lp-worry">
             <div class="lp-q">Q</div>
-            <h3>負けたら借金になる？</h3>
-            <p>使った金額より多く損をすること（借金）はありません。ただし予想が外れると、<strong>その取引で使ったお金はなくなります</strong>。生活に必要なお金は使わないでください。</p>
+            <h3>借金になりますか？</h3>
+            <p>投資額を超える損失は発生しません。ただし、<strong>投資した資金を全額失う可能性</strong>はあります。</p>
           </article>
         </div>
       </div>
@@ -360,37 +367,37 @@
         <div class="lp-sec-head">
           <div>
             <div class="lp-label">How it works</div>
-            <h2>「できそう」と思えてから、<br>口座開設へ。</h2>
+            <h2>いきなり始めない。<br>流れを見てから、判断する。</h2>
           </div>
-          <p>いきなり始めなくて大丈夫。まずは無料デモで「これならできそう」と感じてから、口座をつくれます。流れは、たった3ステップです。</p>
+          <p>口座開設の前に、デモ画面で High / Low の選択、判定時間、ペイアウト表示を確認できます。仕組みを理解してから、自分に合うかどうかを判断してください。</p>
         </div>
         <div class="lp-funnel">
           <article class="lp-funnel-card">
             <div>
               <div class="lp-step">STEP 01</div>
-              <h3>まず無料デモ</h3>
-              <p>登録もお金も不要。本物そっくりの画面で、操作の流れをそのまま見てみましょう。</p>
+              <h3>デモを開く</h3>
+              <p>登録の前に、本物そっくりの取引画面を確認できます。</p>
             </div>
             <div class="lp-mini">無料デモ</div>
           </article>
           <article class="lp-funnel-card">
             <div>
               <div class="lp-step">STEP 02</div>
-              <h3>1回やってみる</h3>
-              <p>「上がる（High）」か「下がる（Low）」を選ぶだけ。仮のお金で、1回だけ体験できます。</p>
+              <h3>High / Low を選ぶ</h3>
+              <p>仮想資金で、1回の取引の流れをそのまま体験できます。</p>
             </div>
             <div class="lp-mini">High or Low</div>
           </article>
           <article class="lp-funnel-card">
             <div>
               <div class="lp-step">STEP 03</div>
-              <h3>納得して口座開設</h3>
-              <p>操作・リスク・出金の条件まで確かめてから、安心して口座をつくれます。</p>
+              <h3>納得したら口座開設</h3>
+              <p>入出金の条件とリスクを確認して、次のステップへ。</p>
             </div>
             <div class="lp-mini">口座開設</div>
           </article>
         </div>
-        <div class="lp-center-cta"><a class="btn-primary lg" href="the-option.html">この流れを無料デモで試す →</a></div>
+        <div class="lp-center-cta"><a class="btn-primary lg" href="the-option.html">デモ画面で流れを見る →</a></div>
       </div>
     </section>
 
@@ -400,37 +407,37 @@
         <div class="lp-sec-head">
           <div>
             <div class="lp-label">Trading options</div>
-            <h2>目的に合わせて選べる、<br>4つの取引タイプ。</h2>
+            <h2>慣れてきたら、<br>取引スタイルを選べる。</h2>
           </div>
-          <p>当たったときに受け取れる倍率（ペイアウト）は最大2.30倍。まずは、いちばんシンプルな「HighLow」から試すのがおすすめです。</p>
+          <p>最初はシンプルな HighLow から。判定時間やスプレッドの有無によって、4つの取引タイプを選べます。</p>
         </div>
         <div class="opt-grid">
           <article class="opt-card">
             <span class="opt-tag">中期 · 15分〜1日</span>
             <h3 class="opt-name">HighLow</h3>
             <div class="opt-payout">〜1.95<small> 倍</small></div>
-            <p>スタート時の価格より、<strong>上がるか・下がるか</strong>を当てるだけ。いちばん基本で、はじめての方にもわかりやすいタイプです。</p>
+            <p><strong>まず確認したい基本タイプ。</strong>スタート価格より上か下かを選ぶ、もっとも理解しやすい取引です。</p>
             <div class="opt-meta"><span class="chip">15分</span><span class="chip">1時間</span><span class="chip">1日</span></div>
           </article>
           <article class="opt-card">
             <span class="opt-tag">中期 · スプレッド</span>
             <h3 class="opt-name">HighLow スプレッド</h3>
             <div class="opt-payout">〜2.00<small> 倍</small></div>
-            <p>決められた価格の「幅」を超えるかを当てるタイプ。条件は少し厳しいぶん、もらえる倍率が高めです。</p>
+            <p><strong>条件は厳しめ、ペイアウトは高め。</strong>一定の価格差を超える必要があるため、仕組みを理解してから検討するタイプです。</p>
             <div class="opt-meta"><span class="chip">15分</span><span class="chip">1時間</span><span class="chip">1日</span></div>
           </article>
           <article class="opt-card">
             <span class="opt-tag">短期 · 30秒〜5分</span>
             <h3 class="opt-name">Turbo</h3>
             <div class="opt-payout">〜1.95<small> 倍</small></div>
-            <p>最短30秒で結果が出る、スピード重視のタイプ。すきま時間でサッと取引したい方に。</p>
+            <p><strong>30秒〜5分の短期判定。</strong>短時間で結果を確認したい方向け。ただし判断スピードが求められます。</p>
             <div class="opt-meta"><span class="chip">30秒</span><span class="chip">1分</span><span class="chip">3分</span><span class="chip">5分</span></div>
           </article>
           <article class="opt-card">
             <span class="opt-tag">短期 · スプレッド</span>
             <h3 class="opt-name">Turbo スプレッド</h3>
             <div class="opt-payout">〜2.30<small> 倍</small></div>
-            <p>Turbo に価格の「幅」の条件を加えた上級者向け。倍率は高いですが、そのぶんむずかしくなります。</p>
+            <p><strong>高ペイアウトだが、上級者向け。</strong>条件が厳しいため、デモで十分に試してから検討してください。</p>
             <div class="opt-meta"><span class="chip">30秒</span><span class="chip">1分</span><span class="chip">3分</span><span class="chip">5分</span></div>
           </article>
         </div>
@@ -444,9 +451,9 @@
         <div class="lp-sec-head">
           <div>
             <div class="lp-label">Trust &amp; security</div>
-            <h2>「大丈夫そう」と思える<br>情報を、すべて公開。</h2>
+            <h2>お金を扱うサービスだから、<br>確認できる情報を明示。</h2>
           </div>
-          <p>お金をあずけるサービスだからこそ、運営する会社・お金の管理・通信の保護・リスクの説明を、包み隠さず公開しています。</p>
+          <p>取引を始める前に、運営会社・ライセンス・入出金条件・セキュリティ・リスク開示をご確認ください。不明点を残したまま始める必要はありません。</p>
         </div>
         <div class="lp-trust">
           <article class="lp-trust-panel">
@@ -460,19 +467,19 @@
           <div class="lp-trust-list">
             <article class="lp-trust-item">
               <div class="lp-trust-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 9h.01M15 9h.01M9 13h.01M15 13h.01"/></svg></div>
-              <div><h4>運営会社・ライセンス・所在地</h4><p>会社名・所在地・ライセンス番号まで公開しています。<a href="company.html">会社情報</a>へ。</p></div>
-            </article>
-            <article class="lp-trust-item">
-              <div class="lp-trust-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="11" width="16" height="9" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></div>
-              <div><h4>あずけたお金と通信を保護</h4><p>お客様の資金は会社の資金と分けて管理。通信の暗号化（SSL）や2段階ログイン（2FA）にも対応。<a href="aml-kyc.html">AML / KYC</a>へ。</p></div>
+              <div><h4>運営会社・ライセンス</h4><p>会社情報、登録地、ライセンス番号を確認できます。<a href="company.html">会社情報</a>へ。</p></div>
             </article>
             <article class="lp-trust-item">
               <div class="lp-trust-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
-              <div><h4>出金までの早さ</h4><p>これまでの平均は約3.2時間。実績を数字で公開しています。<a href="fees.html">入出金</a>へ。</p></div>
+              <div><h4>入出金条件</h4><p>最低入金額、出金条件、処理時間の目安を事前に確認できます。<a href="fees.html">入出金</a>へ。</p></div>
             </article>
             <article class="lp-trust-item">
-              <div class="lp-trust-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l2.5 5.5L20 9l-4 4 1 6-5-3-5 3 1-6-4-4 5.5-.5z"/></svg></div>
-              <div><h4>良い面もリスクも、正直に</h4><p>利用者の声は個人の感想である旨を添えて掲載。リスクの説明も必ずご確認ください。<a href="risk-disclosure.html">リスク開示</a>へ。</p></div>
+              <div class="lp-trust-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="11" width="16" height="9" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></div>
+              <div><h4>セキュリティ</h4><p>SSL、本人確認、ログイン保護などの方針を確認できます。<a href="aml-kyc.html">AML / KYC</a>へ。</p></div>
+            </article>
+            <article class="lp-trust-item">
+              <div class="lp-trust-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v4M12 17h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg></div>
+              <div><h4>リスク開示</h4><p>元本損失の可能性、利用対象地域、取引条件を確認できます。<a href="risk-disclosure.html">リスク開示</a>へ。</p></div>
             </article>
           </div>
         </div>
@@ -507,11 +514,11 @@
       <div class="container">
         <div class="lp-final-box">
           <div class="lp-label">Start with demo</div>
-          <h2>まずは無料デモで、<br>High / Low を1回だけ試す。</h2>
-          <p>口座をつくる前に、画面の見やすさ・かかる時間・えらべる銘柄（ドル円や金など）を、その目で確認できます。納得できてから、次の一歩を進んでください。</p>
+          <h2>口座開設の前に、<br>まずは30秒だけ触ってみる。</h2>
+          <p>取引画面の見やすさ、判定時間、銘柄の選び方を、無料デモで確認できます。入金や本取引の前に、自分に合うかどうかを確かめてください。</p>
           <div class="lp-final-actions">
             <a class="btn-primary lg" href="the-option.html">無料デモを試す →</a>
-            <a class="btn-ghost" href="accounts.html">無料で口座をつくる</a>
+            <a class="btn-ghost" href="accounts.html">口座開設ページを見る</a>
           </div>
           <p class="lp-fineprint">バイナリーオプション取引は、投資した金額の全額を失う可能性があります。デモ体験は将来の利益を保証するものではありません。取引の前に、ご自身の資金状況・投資経験・リスクの許容度を必ずご確認ください。本サービスは、米国・カナダ・EU加盟国・英国・イスラエルなど一部の国・地域の居住者にはご利用いただけません。</p>
         </div>
