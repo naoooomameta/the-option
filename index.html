@@ -518,6 +518,25 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .hero-helper .txt b { color: var(--fg-0); }
 .hero-helper .txt a { color: var(--up); font-weight: 700; }
 
+/* === FV trade visual (mobile hero image + CTA) === */
+.fv-card { display: none; text-decoration: none; }
+.fv-card .fv-top { display: flex; align-items: center; gap: 10px; padding: 14px 16px 4px; }
+.fv-card .fv-pair { font-family: var(--font-mono); font-size: 14px; color: var(--fg-1); }
+.fv-card .fv-px { font-family: var(--font-mono); font-size: 18px; color: var(--up); font-weight: 600; }
+.fv-card .fv-px i { font-style: normal; font-size: 12px; }
+.fv-card .fv-pay { margin-left: auto; font-family: var(--font-mono); font-size: 11px; color: var(--gold); background: rgba(0,224,138,0.12); border: 1px solid rgba(0,224,138,0.4); padding: 3px 8px; border-radius: 999px; }
+.fv-card .fv-chart { padding: 4px 6px 0; }
+.fv-card .fv-chart svg { width: 100%; height: 120px; display: block; }
+.fv-card .fv-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; padding: 8px 16px 14px; }
+.fv-card .fv-actions span { display: flex; flex-direction: column; align-items: center; gap: 2px; padding: 12px 0; border-radius: 12px; font-weight: 800; font-size: 15px; }
+.fv-card .fv-actions .hi { background: var(--up); color: #03110a; box-shadow: 0 8px 20px -8px rgba(0,224,138,0.6); }
+.fv-card .fv-actions .lo { background: var(--down); color: #fff; box-shadow: 0 8px 20px -8px rgba(255,59,107,0.6); }
+.fv-card .fv-actions span small { font-size: 10px; font-weight: 600; opacity: .85; }
+.fv-card .fv-cta { display: flex; align-items: center; justify-content: center; gap: 6px; padding: 13px; border-top: 1px dashed var(--line); color: var(--up); font-weight: 800; font-size: 14px; background: rgba(0,224,138,0.05); }
+@media (max-width: 680px) {
+  .fv-card { display: block; margin: 8px 0 2px; background: var(--bg-1); border: 1px solid var(--line-strong); border-radius: 18px; overflow: hidden; box-shadow: 0 24px 60px -28px rgba(0,224,138,0.45), 0 12px 30px -18px rgba(0,0,0,0.6); }
+}
+
 /* === Easy / beginner steps === */
 .easy-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
 .easy-step { background: var(--bg-1); border: 1px solid var(--line); border-radius: 16px; padding: 28px 24px; text-align: center; position: relative; }
@@ -1706,6 +1725,26 @@ body::after {
               クイックデモを試す
             </a>
           </div>
+          <a class="fv-card" href="the-option.html" aria-label="無料デモを体験する">
+            <div class="fv-top">
+              <span class="fv-pair">USD/JPY</span>
+              <span class="fv-px">156.234 <i>▲</i></span>
+              <span class="fv-pay">ペイアウト 1.88倍</span>
+            </div>
+            <div class="fv-chart">
+              <svg viewBox="0 0 320 120" preserveAspectRatio="none" aria-hidden="true">
+                <defs><linearGradient id="fvg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#00e08a" stop-opacity="0.35"></stop><stop offset="1" stop-color="#00e08a" stop-opacity="0"></stop></linearGradient></defs>
+                <path d="M0,92 L30,82 L60,88 L90,64 L120,72 L150,48 L180,58 L210,34 L240,46 L270,26 L300,34 L320,20 L320,120 L0,120 Z" fill="url(#fvg)"></path>
+                <path d="M0,92 L30,82 L60,88 L90,64 L120,72 L150,48 L180,58 L210,34 L240,46 L270,26 L300,34 L320,20" fill="none" stroke="#00e08a" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"></path>
+                <circle cx="320" cy="20" r="4" fill="#00e08a"></circle>
+              </svg>
+            </div>
+            <div class="fv-actions">
+              <span class="hi">▲ HIGH<small>上がると予想</small></span>
+              <span class="lo">▼ LOW<small>下がると予想</small></span>
+            </div>
+            <div class="fv-cta">▶ タップで無料デモを体験する</div>
+          </a>
           <div class="hero-trust">
             <div class="item">
               <span class="v">¥0</span>
