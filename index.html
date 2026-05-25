@@ -2322,22 +2322,26 @@ body::after {
     }
     ctx.stroke();
 
-    // candles
-    const cw = Math.max(1.5, Math.min(8, (innerW / candles.length) * 0.65));
+    // area + line (close prices)
+    const areaGrad = ctx.createLinearGradient(0, padT, 0, padT + innerH);
+    areaGrad.addColorStop(0, "rgba(0,224,138,0.28)");
+    areaGrad.addColorStop(1, "rgba(0,224,138,0)");
+    ctx.fillStyle = areaGrad;
+    ctx.beginPath();
+    ctx.moveTo(xFor(0), padT + innerH);
+    for (let i = 0; i < candles.length; i++) ctx.lineTo(xFor(i), yFor(candles[i].c));
+    ctx.lineTo(xFor(candles.length - 1), padT + innerH);
+    ctx.closePath();
+    ctx.fill();
+    ctx.strokeStyle = "#00e08a";
+    ctx.lineWidth = 1.8;
+    ctx.lineJoin = "round";
+    ctx.beginPath();
     for (let i = 0; i < candles.length; i++) {
-      const c = candles[i];
-      const x = xFor(i);
-      const isUp = c.c >= c.o;
-      ctx.strokeStyle = isUp ? "#00e08a" : "#ff3b6b";
-      ctx.fillStyle = isUp ? "#00e08a" : "#ff3b6b";
-      ctx.lineWidth = 1;
-      ctx.beginPath();
-      ctx.moveTo(x, yFor(c.h));
-      ctx.lineTo(x, yFor(c.l));
-      ctx.stroke();
-      const yO = yFor(c.o), yC = yFor(c.c);
-      ctx.fillRect(x - cw / 2, Math.min(yO, yC), cw, Math.max(1, Math.abs(yC - yO)));
+      const x = xFor(i), y = yFor(candles[i].c);
+      if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
     }
+    ctx.stroke();
 
     // strike line
     const strike = candles[Math.floor(candles.length * 0.55)].c;

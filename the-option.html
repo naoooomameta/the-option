@@ -237,9 +237,9 @@
         </div>
         <span class="sep"></span>
         <div class="styleset" id="styleset" role="group" aria-label="チャート種類">
-          <button data-style="candle" class="on" aria-label="ローソク足" title="ローソク足"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 4v4M7 16v4M17 6v3M17 15v3"/><rect x="4" y="8" width="6" height="8" rx="1"/><rect x="14" y="9" width="6" height="6" rx="1"/></svg></button>
+          <button data-style="candle" aria-label="ローソク足" title="ローソク足"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 4v4M7 16v4M17 6v3M17 15v3"/><rect x="4" y="8" width="6" height="8" rx="1"/><rect x="14" y="9" width="6" height="6" rx="1"/></svg></button>
           <button data-style="line" aria-label="ライン" title="ライン"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 17l5-6 4 3 8-9"/></svg></button>
-          <button data-style="area" aria-label="エリア" title="エリア"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 17l5-6 4 3 8-9v15H3z"/></svg></button>
+          <button data-style="area" class="on" aria-label="エリア" title="エリア"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 17l5-6 4 3 8-9v15H3z"/></svg></button>
         </div>
       </div>
       <div class="chart-area"><canvas id="chart"></canvas></div>
@@ -337,7 +337,7 @@
 
     var state = {
       mode: "demo", balanceDemo: 1000000, balanceReal: 0, dayPnl: 0,
-      amount: 10000, expiry: 60, sel: "USDJPY", tf: "1m", style: "candle",
+      amount: 10000, expiry: 60, sel: "USDJPY", tf: "1m", style: "area",
       cat: "all", q: "", tab: "open", positions: [], history: [], series: {},
       wins: 0, losses: 0
     };
