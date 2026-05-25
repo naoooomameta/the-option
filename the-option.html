@@ -156,17 +156,22 @@
     .toast.lose .ic { background: var(--down); }
     /* Responsive */
     @media (max-width: 1080px) {
-      body { overflow: auto; }
-      .app { height: auto; grid-template-columns: 1fr; grid-template-rows: none;
+      html, body { overflow-x: hidden; max-width: 100%; }
+      body { overflow-y: auto; }
+      .app { height: auto; width: 100%; grid-template-columns: minmax(0, 1fr); grid-template-rows: none;
         grid-template-areas: "bar" "top" "rail" "chart" "panel" "pos"; }
+      .demo-bar, .top, .rail, .chart-pane, .panel, .pos { min-width: 0; max-width: 100%; }
       .rail { border-right: 0; border-bottom: 1px solid var(--line); }
       .rail .list { max-height: 230px; }
       .chart-area { height: 360px; }
       .panel { border-left: 0; border-bottom: 1px solid var(--line); }
-      .pos-body { max-height: 320px; }
+      .pos-body { max-height: 320px; overflow-x: auto; }
       .ch-head .px { font-size: 26px; }
     }
     @media (max-width: 760px) {
+      .demo-bar { flex-wrap: wrap; padding: 8px 12px; font-size: 12px; line-height: 1.45; }
+      .demo-bar .home { display: none; }
+      .demo-bar > span { min-width: 0; overflow-wrap: anywhere; }
       .top { gap: 10px; padding: 0 12px; }
       .kpis { gap: 14px; margin-left: 4px; }
       .top .kpi:nth-child(2), .top .kpi:nth-child(4) { display: none; }
