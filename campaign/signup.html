@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>口座開設 — 新規開設で¥5,000キャッシュバック | the option</title>
+  <meta name="description" content="新規口座開設で¥5,000キャッシュバック。最短3分・登録無料。初回入金¥5,000以上＋初回取引の完了で、¥5,000があなたの口座へ自動反映されます。">
+  <meta name="robots" content="noindex">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap">
+  <style>
+  :root{
+    --bg-0:#06080f; --bg-1:#0b0f1a; --bg-2:#11162a; --bg-3:#1a2233;
+    --line:#1d2638; --line-strong:#2a364f;
+    --fg-0:#f3f6fb; --fg-1:#d6dde9; --fg-2:#a6b1c4; --fg-3:#8390a6;
+    --up:#00e08a; --down:#ff3b6b; --gold:#f5c542; --info:#5eaaff;
+    --surface:rgba(255,255,255,0.05);
+    --surface-border:rgba(255,255,255,0.12);
+    --font-ui:"Noto Sans JP","Manrope",-apple-system,BlinkMacSystemFont,"Helvetica Neue",sans-serif;
+    --font-display:"Manrope","Noto Sans JP",sans-serif;
+    --font-mono:"JetBrains Mono","SFMono-Regular",ui-monospace,Menlo,monospace;
+    --max:1080px;
+  }
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{
+    margin:0; font-family:var(--font-ui); color:var(--fg-0);
+    background:var(--bg-0); font-size:16px; line-height:1.62;
+    -webkit-font-smoothing:antialiased; font-feature-settings:"palt" 1;
+    overflow-x:hidden; min-height:100vh;
+  }
+  body::before{
+    content:""; position:fixed; inset:0; z-index:-1;
+    background:
+      radial-gradient(45% 35% at 82% 12%, rgba(0,224,138,0.16), transparent 70%),
+      radial-gradient(40% 32% at 14% 84%, rgba(94,170,255,0.10), transparent 70%),
+      radial-gradient(38% 34% at 92% 92%, rgba(245,197,66,0.10), transparent 70%),
+      var(--bg-0);
+  }
+  a{ color:inherit; text-decoration:none; }
+  .container{ width:100%; max-width:var(--max); margin:0 auto; padding:0 24px; }
+
+  /* === Top bar === */
+  .topbar{
+    position:sticky; top:0; z-index:40;
+    border-bottom:1px solid var(--surface-border);
+    background:rgba(6,8,15,0.55);
+    backdrop-filter:blur(18px) saturate(160%);
+    -webkit-backdrop-filter:blur(18px) saturate(160%);
+  }
+  .topbar-inner{ height:62px; display:flex; align-items:center; justify-content:space-between; gap:16px; }
+  .brand{ display:inline-flex; align-items:center; gap:10px; font-size:18px; font-weight:600; letter-spacing:-0.02em; }
+  .brand .dot{ width:10px; height:10px; border-radius:50%; background:var(--up); box-shadow:0 0 0 3px rgba(0,224,138,0.15),0 0 14px var(--up); }
+  .brand .opt{ color:var(--fg-2); font-weight:400; }
+  .topbar .right{ display:inline-flex; align-items:center; gap:14px; font-size:14px; }
+  .topbar .right .back{ color:var(--fg-2); display:inline-flex; align-items:center; gap:6px; }
+  .topbar .right .back:hover{ color:var(--fg-0); }
+  .btn-ghost{ padding:8px 14px; font-size:14px; color:var(--fg-1); border:1px solid var(--line-strong); border-radius:9px; font-weight:500; }
+  .btn-ghost:hover{ background:var(--bg-2); color:var(--fg-0); }
+
+  /* === Layout === */
+  .wrap{ padding:44px 0 72px; }
+  .grid{ display:grid; grid-template-columns:1.05fr 0.95fr; gap:44px; align-items:start; }
+
+  .promo{
+    display:inline-flex; align-items:center; gap:10px;
+    padding:6px 12px 6px 8px; border-radius:999px;
+    border:1px solid rgba(245,197,66,0.4); background:rgba(245,197,66,0.1);
+    font-size:12.5px; color:var(--fg-1); font-weight:500; margin-bottom:18px;
+  }
+  .promo .badge{ font-family:var(--font-mono); background:var(--gold); color:#1a1206; padding:2px 9px; border-radius:999px; font-size:10px; font-weight:700; letter-spacing:0.06em; }
+
+  h1{ font-family:var(--font-display); font-weight:800; letter-spacing:-0.03em; line-height:1.08; font-size:clamp(30px,4.4vw,46px); margin:0 0 12px; word-break:keep-all; }
+  h1 .accent{ background:linear-gradient(120deg,var(--gold) 0%,#ffe9a8 55%,#fff); -webkit-background-clip:text; background-clip:text; color:transparent; }
+  .sub{ color:var(--fg-1); font-size:16px; max-width:30em; margin:0 0 26px; }
+  .sub b{ color:var(--fg-0); }
+
+  /* === Form card === */
+  .card{
+    background:var(--surface); border:1px solid var(--surface-border);
+    border-radius:18px; padding:28px;
+    backdrop-filter:blur(22px) saturate(150%); -webkit-backdrop-filter:blur(22px) saturate(150%);
+    box-shadow:0 30px 80px -30px rgba(0,0,0,0.5);
+  }
+  .field{ margin-bottom:18px; }
+  .field label{ display:block; font-size:13px; color:var(--fg-2); margin-bottom:7px; font-weight:500; }
+  .field label .req{ color:var(--gold); margin-left:4px; }
+  .field input, .field select{
+    width:100%; font:inherit; font-size:15px; color:var(--fg-0);
+    background:var(--bg-0); border:1px solid var(--line-strong); border-radius:10px;
+    padding:13px 14px; transition:border-color .15s, box-shadow .15s;
+  }
+  .field input::placeholder{ color:var(--fg-3); }
+  .field input:focus, .field select:focus{ outline:none; border-color:var(--up); box-shadow:0 0 0 3px rgba(0,224,138,0.18); }
+  .field input:user-invalid{ border-color:var(--down); }
+  .field .hint{ font-size:11.5px; color:var(--fg-3); margin-top:6px; }
+  .pw-wrap{ position:relative; }
+  .pw-wrap button{ position:absolute; right:6px; top:50%; transform:translateY(-50%); background:none; border:0; color:var(--fg-3); font:inherit; font-size:12px; cursor:pointer; padding:8px; }
+  .pw-wrap button:hover{ color:var(--fg-1); }
+
+  .agree{ display:flex; gap:10px; align-items:flex-start; font-size:13px; color:var(--fg-2); line-height:1.55; margin:6px 0 22px; }
+  .agree input{ width:18px; height:18px; margin-top:1px; accent-color:var(--up); flex-shrink:0; }
+  .agree a{ color:var(--up); text-decoration:underline; text-underline-offset:2px; }
+
+  .btn-primary{
+    width:100%; display:inline-flex; align-items:center; justify-content:center; gap:10px;
+    background:var(--up); color:#03110a; font-weight:700; font-size:16px;
+    padding:15px 22px; border:0; border-radius:11px; cursor:pointer; font-family:inherit;
+    box-shadow:0 0 0 1px rgba(0,224,138,0.45),0 14px 32px -10px rgba(0,224,138,0.55);
+    transition:transform .12s, box-shadow .18s;
+  }
+  .btn-primary:hover{ transform:translateY(-1px); box-shadow:0 0 0 1px rgba(0,224,138,0.6),0 20px 44px -10px rgba(0,224,138,0.75); }
+  .form-foot{ margin-top:16px; text-align:center; font-size:13px; color:var(--fg-2); }
+  .form-foot a{ color:var(--fg-1); text-decoration:underline; text-underline-offset:2px; }
+  .micro{ margin-top:14px; display:flex; align-items:center; justify-content:center; gap:8px; font-size:12px; color:var(--fg-3); }
+  .micro svg{ flex-shrink:0; }
+
+  /* === Success state === */
+  .success{ display:none; text-align:center; padding:14px 6px; }
+  .success.show{ display:block; }
+  .success .check{ width:64px; height:64px; border-radius:50%; background:rgba(0,224,138,0.14); color:var(--up); display:grid; place-items:center; margin:0 auto 18px; }
+  .success h2{ font-family:var(--font-display); font-size:22px; margin:0 0 10px; }
+  .success p{ color:var(--fg-1); font-size:14.5px; margin:0 auto; max-width:30em; }
+  .success .note{ margin-top:18px; font-size:11.5px; color:var(--fg-3); }
+  .form-live.hide{ display:none; }
+
+  /* === Right panel === */
+  .aside{ display:flex; flex-direction:column; gap:18px; position:sticky; top:90px; }
+  .cb-box{
+    border:1px solid rgba(245,197,66,0.28); border-radius:18px;
+    background:radial-gradient(120% 100% at 50% 0%, rgba(245,197,66,0.1), transparent 60%), linear-gradient(180deg,var(--bg-2),var(--bg-1));
+    padding:26px; text-align:center;
+  }
+  .cb-box .amt{ font-family:var(--font-display); font-weight:800; letter-spacing:-0.03em; line-height:1; background:linear-gradient(120deg,#ffe9a8,var(--gold) 50%,#c8922a); -webkit-background-clip:text; background-clip:text; color:transparent; font-size:clamp(52px,9vw,72px); filter:drop-shadow(0 6px 22px rgba(245,197,66,0.3)); }
+  .cb-box .amt .yen{ font-size:0.5em; }
+  .cb-box .cap{ font-size:13px; color:var(--fg-1); margin-top:6px; }
+
+  .steps{ display:flex; flex-direction:column; gap:0; border:1px solid var(--surface-border); border-radius:16px; overflow:hidden; background:var(--surface); backdrop-filter:blur(18px); -webkit-backdrop-filter:blur(18px); }
+  .step{ display:grid; grid-template-columns:34px 1fr; gap:14px; padding:18px 20px; align-items:start; border-bottom:1px solid var(--surface-border); }
+  .step:last-child{ border-bottom:0; }
+  .step .n{ width:34px; height:34px; border-radius:9px; display:grid; place-items:center; font-family:var(--font-mono); font-weight:600; font-size:13px; color:var(--gold); border:1px solid rgba(245,197,66,0.3); background:rgba(245,197,66,0.06); }
+  .step h3{ margin:0 0 3px; font-size:15px; font-weight:700; letter-spacing:-0.01em; }
+  .step p{ margin:0; font-size:13px; color:var(--fg-2); line-height:1.55; }
+
+  .trust{ display:grid; grid-template-columns:repeat(3,1fr); gap:1px; border:1px solid var(--surface-border); border-radius:14px; overflow:hidden; background:var(--surface-border); }
+  .trust .t{ background:var(--bg-1); padding:16px 12px; text-align:center; }
+  .trust .t .v{ font-family:var(--font-mono); font-size:15px; font-weight:600; color:var(--fg-0); }
+  .trust .t .l{ font-size:10.5px; color:var(--fg-3); margin-top:3px; letter-spacing:0.02em; }
+
+  /* === Footer === */
+  .foot{ border-top:1px solid var(--surface-border); padding:28px 0 40px; }
+  .foot .links{ display:flex; flex-wrap:wrap; gap:8px 20px; font-size:12.5px; }
+  .foot .links a{ color:var(--fg-2); }
+  .foot .links a:hover{ color:var(--fg-0); text-decoration:underline; text-underline-offset:2px; }
+  .foot .disc{ margin-top:16px; font-size:11px; color:var(--fg-3); line-height:1.65; max-width:62em; }
+  .foot .disc b{ color:var(--fg-1); }
+  .foot .copy{ margin-top:14px; font-size:11px; color:var(--fg-3); font-family:var(--font-mono); }
+
+  /* === Responsive === */
+  @media (max-width:860px){
+    .grid{ grid-template-columns:1fr; gap:32px; }
+    .aside{ position:static; }
+  }
+  @media (max-width:560px){
+    .container{ padding:0 18px; }
+    .wrap{ padding:32px 0 56px; }
+    .card{ padding:22px; }
+    .topbar .right .back span{ display:none; }
+    .trust{ grid-template-columns:1fr; }
+    .trust .t{ display:flex; align-items:baseline; justify-content:center; gap:8px; padding:13px; }
+    .trust .t .l{ margin-top:0; }
+  }
+  </style>
+</head>
+<body>
+  <!-- Top bar -->
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <a href="cashback.html" class="brand" aria-label="the option トップへ">
+        <span class="dot"></span>
+        <span><span class="opt">the</span><b>option</b></span>
+      </a>
+      <div class="right">
+        <a href="cashback.html" class="back" aria-label="キャンペーンページに戻る">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"></path></svg>
+          <span>キャンペーンに戻る</span>
+        </a>
+        <a href="#" class="btn-ghost">ログイン</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="container">
+      <div class="grid">
+        <!-- Form column -->
+        <section aria-labelledby="title">
+          <span class="promo"><span class="badge">キャンペーン</span> 新規口座開設で ¥5,000 キャッシュバック</span>
+          <h1 id="title">口座を開設して、<br><span class="accent">¥5,000</span> を受け取る。</h1>
+          <p class="sub">最短 <b>3分</b>・登録無料。メールアドレスとパスワードだけで、すぐにはじめられます。<b>初回入金 ¥5,000 以上＋初回取引</b>の完了で、¥5,000 が自動で反映されます。</p>
+
+          <div class="card">
+            <form id="signup-form" class="form-live" novalidate>
+              <div class="field">
+                <label for="email">メールアドレス<span class="req" aria-hidden="true">*</span></label>
+                <input type="email" id="email" name="email" inputmode="email" autocomplete="email" placeholder="you@example.com" required>
+              </div>
+
+              <div class="field">
+                <label for="password">パスワード<span class="req" aria-hidden="true">*</span></label>
+                <div class="pw-wrap">
+                  <input type="password" id="password" name="password" autocomplete="new-password" placeholder="8文字以上" minlength="8" required>
+                  <button type="button" id="pw-toggle" aria-label="パスワードを表示">表示</button>
+                </div>
+                <div class="hint">半角英数字を含む 8 文字以上で設定してください。</div>
+              </div>
+
+              <div class="field">
+                <label for="country">居住国<span class="req" aria-hidden="true">*</span></label>
+                <select id="country" name="country" required>
+                  <option value="JP" selected>日本</option>
+                  <option value="other">その他の国・地域</option>
+                </select>
+              </div>
+
+              <label class="agree">
+                <input type="checkbox" id="agree" name="agree" required>
+                <span><a href="../terms.html" target="_blank" rel="noopener">利用規約</a>・<a href="../privacy.html" target="_blank" rel="noopener">プライバシーポリシー</a>・<a href="../risk-disclosure.html" target="_blank" rel="noopener">リスク開示</a>に同意します。18歳以上であることを確認します。</span>
+              </label>
+
+              <button type="submit" class="btn-primary">
+                ¥5,000を受け取って口座開設
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"></path></svg>
+              </button>
+
+              <p class="form-foot">すでに口座をお持ちですか？ <a href="#">ログイン</a></p>
+              <div class="micro">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="11" width="16" height="10" rx="2"></rect><path d="M8 11V8a4 4 0 0 1 8 0v3"></path></svg>
+                SSL暗号化通信・2段階認証対応。お客様資産は分別保管されます。
+              </div>
+            </form>
+
+            <div class="success" id="success" role="status" aria-live="polite">
+              <div class="check">
+                <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"></path></svg>
+              </div>
+              <h2>仮登録を受け付けました</h2>
+              <p>ご入力のメールアドレスに確認メールをお送りしました。メール内のリンクから口座開設を完了すると、<b>¥5,000 キャッシュバック</b>の対象になります。</p>
+              <p class="note">※ 本ページはデモです。実際の口座開設・メール送信は行われません。</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Benefit column -->
+        <aside class="aside" aria-label="キャンペーン特典">
+          <div class="cb-box">
+            <div class="amt"><span class="yen">¥</span>5,000</div>
+            <div class="cap">新規口座開設キャッシュバック</div>
+          </div>
+
+          <div class="steps">
+            <div class="step"><span class="n">1</span><div><h3>口座を開設</h3><p>メールアドレスとパスワードを登録。最短3分で完了します。</p></div></div>
+            <div class="step"><span class="n">2</span><div><h3>入金して取引</h3><p>初回入金 ¥5,000 以上のうえ、初回取引を1回完了します。</p></div></div>
+            <div class="step"><span class="n">3</span><div><h3>¥5,000 が反映</h3><p>審査完了後、¥5,000 が自動であなたの口座に反映されます。</p></div></div>
+          </div>
+
+          <div class="trust">
+            <div class="t"><div class="v">¥0</div><div class="l">入金手数料・維持費</div></div>
+            <div class="t"><div class="v">24h以内</div><div class="l">出金処理（平均3.2h）</div></div>
+            <div class="t"><div class="v">95%</div><div class="l">最大ペイアウト</div></div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </main>
+
+  <footer class="foot">
+    <div class="container">
+      <nav class="links" aria-label="フッター">
+        <a href="../terms.html">利用規約</a>
+        <a href="../privacy.html">プライバシー</a>
+        <a href="../risk-disclosure.html">リスク開示</a>
+        <a href="../aml-kyc.html">AML / KYC</a>
+        <a href="../company.html">会社情報</a>
+        <a href="../the-option.html">デモを試す</a>
+        <a href="cashback.html">キャンペーン詳細</a>
+      </nav>
+      <p class="disc">
+        <b>リスク開示：</b>バイナリーオプション取引は、相場変動により投資元本を失う可能性のあるリスクの高い金融商品です。
+        将来の利益や元本を保証するものではありません。お取引はご自身の判断と責任で、余裕資金の範囲で行ってください。
+        キャッシュバックは、初回入金 ¥5,000 以上および初回取引の完了など所定の条件を満たした場合に進呈されます。
+      </p>
+      <p class="copy">© the option — Cashback Campaign</p>
+    </div>
+  </footer>
+
+  <script>
+    (function(){
+      var form = document.getElementById('signup-form');
+      var success = document.getElementById('success');
+      var toggle = document.getElementById('pw-toggle');
+      var pw = document.getElementById('password');
+
+      toggle.addEventListener('click', function(){
+        var show = pw.type === 'password';
+        pw.type = show ? 'text' : 'password';
+        toggle.textContent = show ? '隠す' : '表示';
+        toggle.setAttribute('aria-label', show ? 'パスワードを隠す' : 'パスワードを表示');
+      });
+
+      form.addEventListener('submit', function(e){
+        e.preventDefault();
+        // Native constraint validation (email format, min length, required, checkbox)
+        if (!form.checkValidity()) { form.reportValidity(); return; }
+        form.classList.add('hide');
+        success.classList.add('show');
+        success.scrollIntoView({ behavior:'smooth', block:'center' });
+      });
+    })();
+  </script>
+</body>
+</html>
