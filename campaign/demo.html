@@ -1,0 +1,2869 @@
+<!DOCTYPE html>
+<html lang="ja" data-surface="frosted" data-atmosphere="midnight" data-hero="split"><head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>the option — 無料デモ取引｜¥1,000,000の仮想資金で今すぐ練習</title>
+  <meta name="description" content="入金不要・登録最短30秒。the optionのバイナリーオプションを仮想資金¥1,000,000の無料デモで体験。本番と同じマーケット・同じ画面をノーリスクで、何度でも練習できます。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap">
+  <style>/* === the option — landing page === */
+:root {
+  --bg-0: #06080f;
+  --bg-1: #0b0f1a;
+  --bg-2: #11162a;
+  --bg-3: #1a2233;
+  --line: #1d2638;
+  --line-strong: #2a364f;
+
+  --fg-0: #f3f6fb;
+  --fg-1: #c7cfde;
+  --fg-2: #8893a8;
+  --fg-3: #5a6478;
+
+  --up: #00e08a;
+  --down: #ff3b6b;
+  --gold: #f5c542;
+  --info: #5eaaff;
+
+  --font-ui: "Noto Sans JP", "Manrope", -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
+  --font-display: "Manrope", "Noto Sans JP", sans-serif;
+  --font-mono: "JetBrains Mono", "SFMono-Regular", ui-monospace, Menlo, monospace;
+
+  --max: 1280px;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: var(--font-ui);
+  background: var(--bg-0);
+  color: var(--fg-0);
+  font-size: 15px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  font-feature-settings: "palt" 1;
+  overflow-x: hidden;
+}
+
+a { color: inherit; text-decoration: none; }
+button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
+
+.mono { font-family: var(--font-mono); font-feature-settings: "tnum" 1; letter-spacing: -0.01em; }
+.up { color: var(--up); }
+.down { color: var(--down); }
+.gold { color: var(--gold); }
+
+.container {
+  width: 100%;
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 0 28px;
+}
+
+/* === Nav === */
+.nav {
+  position: sticky; top: 0; z-index: 50;
+  backdrop-filter: blur(14px);
+  background: rgba(6, 8, 15, 0.78);
+  border-bottom: 1px solid var(--line);
+}
+.nav-inner {
+  height: 64px;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 32px;
+  white-space: nowrap;
+}
+.brand {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-size: 18px; font-weight: 600; letter-spacing: -0.02em;
+}
+.brand .dot {
+  width: 10px; height: 10px; border-radius: 50%;
+  background: var(--up);
+  box-shadow: 0 0 0 3px rgba(0,224,138,0.15), 0 0 14px var(--up);
+  position: relative;
+}
+.brand .dot::after {
+  content: ""; position: absolute; inset: 0; border-radius: 50%;
+  border: 1.5px solid var(--up);
+  animation: pulse 2.4s ease-out infinite;
+}
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 0.9; }
+  100% { transform: scale(2.4); opacity: 0; }
+}
+.brand .opt { color: var(--fg-2); font-weight: 400; }
+.brand b { font-weight: 600; }
+
+.nav-links { display: flex; gap: 6px; }
+.nav-links a {
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 13.5px;
+  color: var(--fg-2);
+  display: inline-flex; align-items: center; gap: 6px;
+  transition: color 0.15s, background 0.15s;
+  white-space: nowrap;
+}
+.nav-links a:hover { color: var(--fg-0); background: var(--bg-2); }
+.nav-links a .new {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  padding: 2px 5px;
+  border-radius: 3px;
+  background: var(--gold-soft, rgba(245,197,66,0.15));
+  color: var(--gold);
+  letter-spacing: 0.08em;
+}
+
+.nav-cta { display: inline-flex; align-items: center; gap: 10px; }
+.lang {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  padding: 6px 10px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  color: var(--fg-2);
+  display: inline-flex; align-items: center; gap: 6px;
+}
+.btn-ghost {
+  padding: 8px 14px;
+  font-size: 14px;
+  color: var(--fg-1);
+  border: 1px solid var(--line-strong);
+  border-radius: 8px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+.btn-ghost:hover { background: var(--bg-2); color: var(--fg-0); }
+.btn-primary {
+  background: var(--up);
+  color: #03110a;
+  font-weight: 700;
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-size: 14px;
+  letter-spacing: 0.01em;
+  box-shadow: 0 0 0 1px rgba(0,224,138,0.45), 0 14px 32px -10px rgba(0,224,138,0.5);
+  transition: transform 0.12s, box-shadow 0.18s;
+  display: inline-flex; align-items: center; gap: 8px;
+  white-space: nowrap;
+}
+.btn-primary:hover { transform: translateY(-1px); box-shadow: 0 0 0 1px rgba(0,224,138,0.55), 0 20px 44px -10px rgba(0,224,138,0.7); }
+.btn-primary.lg { padding: 14px 26px; font-size: 16px; }
+
+/* === Ticker bar === */
+.ticker {
+  border-bottom: 1px solid var(--line);
+  background: var(--bg-1);
+  overflow: hidden;
+  position: relative;
+}
+.ticker::before, .ticker::after {
+  content: ""; position: absolute; top: 0; bottom: 0; width: 80px; z-index: 2; pointer-events: none;
+}
+.ticker::before { left: 0; background: linear-gradient(90deg, var(--bg-1), transparent); }
+.ticker::after { right: 0; background: linear-gradient(-90deg, var(--bg-1), transparent); }
+.ticker-track {
+  display: inline-flex; gap: 0;
+  animation: scrollx 60s linear infinite;
+  white-space: nowrap;
+}
+.ticker-item {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 12px 24px;
+  border-right: 1px solid var(--line);
+  font-size: 13px;
+}
+.ticker-item .name { color: var(--fg-1); font-family: var(--font-mono); }
+.ticker-item .px { color: var(--fg-0); font-family: var(--font-mono); font-weight: 500; }
+.ticker-item .chg { font-family: var(--font-mono); font-size: 12px; padding: 2px 6px; border-radius: 4px; }
+.ticker-item .chg.up { color: var(--up); background: rgba(0,224,138,0.1); }
+.ticker-item .chg.down { color: var(--down); background: rgba(255,59,107,0.1); }
+@keyframes scrollx {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+/* === Hero === */
+.hero {
+  position: relative;
+  padding: 88px 0 64px;
+  overflow: hidden;
+}
+.hero-bg {
+  position: absolute; inset: -20% -10% auto -10%; height: 700px;
+  background:
+    radial-gradient(50% 60% at 20% 30%, rgba(0,224,138,0.14), transparent 60%),
+    radial-gradient(40% 50% at 80% 20%, rgba(94,170,255,0.10), transparent 70%),
+    radial-gradient(45% 60% at 60% 70%, rgba(245,197,66,0.07), transparent 70%);
+  pointer-events: none;
+  filter: blur(20px);
+  z-index: -1;
+}
+.hero-grid {
+  position: absolute; inset: 0; pointer-events: none; z-index: -1;
+  background-image:
+    linear-gradient(to right, rgba(255,255,255,0.025) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255,255,255,0.025) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: linear-gradient(180deg, black 0%, transparent 80%);
+  -webkit-mask-image: linear-gradient(180deg, black 0%, transparent 80%);
+}
+
+.eyebrow {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 6px 12px 6px 8px;
+  border-radius: 999px;
+  border: 1px solid var(--line-strong);
+  background: rgba(11,15,26,0.6);
+  font-size: 12px;
+  color: var(--fg-1);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+.eyebrow .badge {
+  font-family: var(--font-mono);
+  background: var(--up); color: #03110a;
+  padding: 1px 8px;
+  border-radius: 999px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+}
+
+.hero h1 {
+  margin: 28px 0 22px;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(48px, 7vw, 86px);
+  line-height: 1.0;
+  letter-spacing: -0.035em;
+}
+.hero h1 .accent {
+  background: linear-gradient(120deg, var(--up) 10%, var(--gold) 70%, #fff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-style: italic;
+  font-weight: 700;
+}
+.hero h1 .strike {
+  position: relative;
+  display: inline-block;
+  color: var(--fg-2);
+}
+.hero h1 .strike::after {
+  content: ""; position: absolute; left: -6%; right: -6%; top: 50%; height: 5px;
+  background: var(--down); transform: translateY(-50%) rotate(-4deg);
+  border-radius: 3px;
+  box-shadow: 0 0 14px rgba(255,59,107,0.6);
+}
+
+.hero-lead {
+  font-size: 19px;
+  color: var(--fg-1);
+  max-width: 580px;
+  line-height: 1.6;
+}
+
+.hero-row {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 56px;
+  align-items: center;
+}
+
+.hero-ctas {
+  display: flex; gap: 12px; margin-top: 36px; flex-wrap: wrap;
+}
+.hero-trust {
+  display: flex; gap: 28px; margin-top: 36px; flex-wrap: wrap;
+  align-items: center;
+}
+.hero-trust .item { display: flex; flex-direction: column; gap: 2px; white-space: nowrap; }
+.hero-trust .item .v { font-family: var(--font-mono); font-size: 22px; font-weight: 600; color: var(--fg-0); letter-spacing: -0.01em; }
+.hero-trust .item .l { font-size: 11px; color: var(--fg-3); letter-spacing: 0.04em; }
+.hero-trust .sep { width: 1px; height: 36px; background: var(--line); }
+
+/* Hero device mockup */
+.hero-device {
+  position: relative;
+  transform: perspective(1600px) rotateY(-8deg) rotateX(2deg) rotateZ(-1deg);
+  transform-origin: center;
+}
+.hero-device .frame {
+  background: var(--bg-1);
+  border: 1px solid var(--line-strong);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,0.04),
+    0 40px 80px -20px rgba(0,0,0,0.7),
+    0 80px 160px -30px rgba(0,224,138,0.25);
+}
+.hero-device .frame-top {
+  display: flex; align-items: center; padding: 10px 14px;
+  border-bottom: 1px solid var(--line);
+  gap: 8px;
+}
+.hero-device .frame-top .lights { display: flex; gap: 6px; }
+.hero-device .frame-top .lights span { width: 10px; height: 10px; border-radius: 50%; background: var(--line-strong); }
+.hero-device .frame-top .url {
+  flex: 1;
+  height: 22px; border-radius: 5px;
+  background: var(--bg-0); border: 1px solid var(--line);
+  display: flex; align-items: center; gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 10px; color: var(--fg-2); padding: 0 8px;
+}
+.hero-device .frame-top .url::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--up); }
+
+.hero-device .device-body {
+  height: 480px;
+  position: relative;
+  display: grid;
+  grid-template-columns: 170px 1fr 220px;
+  grid-template-rows: 38px 1fr 56px;
+  background: var(--bg-1);
+}
+.hero-device .top-row {
+  grid-column: 1 / -1;
+  border-bottom: 1px solid var(--line);
+  display: flex; align-items: center; padding: 0 14px;
+  gap: 22px;
+}
+.hero-device .top-row .brand-mini {
+  font-size: 13px; font-weight: 600;
+}
+.hero-device .top-row .brand-mini .opt { color: var(--fg-2); font-weight: 400; }
+.hero-device .top-row .kpi { font-size: 10px; color: var(--fg-3); }
+.hero-device .top-row .kpi b { color: var(--gold); font-family: var(--font-mono); margin-left: 4px; }
+.hero-device .top-row .kpi-pnl b { color: var(--up); }
+.hero-device .top-row .pill {
+  margin-left: auto;
+  font-size: 10px; padding: 3px 8px; border-radius: 4px;
+  background: var(--up); color: #03110a; font-weight: 700;
+}
+
+.hero-device .rail {
+  border-right: 1px solid var(--line);
+  padding: 8px 6px;
+  display: flex; flex-direction: column; gap: 4px;
+  font-size: 11px;
+}
+.hero-device .rail .item {
+  display: grid; grid-template-columns: 1fr auto; gap: 4px;
+  padding: 6px 8px; border-radius: 5px;
+  font-family: var(--font-mono);
+}
+.hero-device .rail .item.active { background: var(--bg-3); }
+.hero-device .rail .item .l { color: var(--fg-1); font-size: 10px; }
+.hero-device .rail .item .v { color: var(--fg-0); font-size: 10px; }
+.hero-device .rail .item .c { font-size: 9px; padding: 1px 4px; border-radius: 3px; }
+.hero-device .rail .item .c.up { background: rgba(0,224,138,0.1); color: var(--up); }
+.hero-device .rail .item .c.down { background: rgba(255,59,107,0.1); color: var(--down); }
+
+.hero-device .chart-area {
+  position: relative;
+  background:
+    linear-gradient(rgba(255,255,255,0.012) 1px, transparent 1px) 0 0/40px 40px,
+    linear-gradient(90deg, rgba(255,255,255,0.012) 1px, transparent 1px) 0 0/40px 40px,
+    var(--bg-1);
+}
+.hero-device .chart-area canvas { display: block; width: 100%; height: 100%; }
+.hero-device .chart-area .price-tag {
+  position: absolute; right: 8px;
+  background: var(--up); color: #03110a;
+  font-family: var(--font-mono); font-size: 10px; font-weight: 700;
+  padding: 2px 6px; border-radius: 3px;
+  transform: translateY(-50%);
+}
+
+.hero-device .panel {
+  border-left: 1px solid var(--line);
+  padding: 12px;
+  display: flex; flex-direction: column; gap: 10px;
+}
+.hero-device .panel .lbl { font-size: 9px; color: var(--fg-3); letter-spacing: 0.06em; }
+.hero-device .panel .val { font-family: var(--font-mono); font-size: 18px; color: var(--fg-0); }
+.hero-device .panel .row {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px;
+}
+.hero-device .panel .row button {
+  font-family: var(--font-mono); font-size: 10px;
+  padding: 6px 0;
+  background: var(--bg-0);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  color: var(--fg-1);
+}
+.hero-device .panel .row button.active { border-color: var(--gold); color: var(--gold); }
+.hero-device .panel .hi {
+  background: var(--up); color: #03110a; font-weight: 700;
+  font-size: 14px; padding: 12px 0; border-radius: 6px;
+  text-align: center; letter-spacing: 0.06em;
+  box-shadow: 0 0 0 1px var(--up);
+}
+.hero-device .panel .lo {
+  background: var(--down); color: #1c0510; font-weight: 700;
+  font-size: 14px; padding: 12px 0; border-radius: 6px;
+  text-align: center; letter-spacing: 0.06em;
+  box-shadow: 0 0 0 1px var(--down);
+}
+
+.hero-device .bottom-row {
+  grid-column: 1 / -1;
+  border-top: 1px solid var(--line);
+  display: flex; align-items: center; padding: 0 14px;
+  gap: 14px;
+  font-size: 11px;
+  white-space: nowrap;
+}
+.hero-device .bottom-row .chip {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 3px 8px; border-radius: 4px;
+  font-family: var(--font-mono); font-size: 10px;
+  background: rgba(245,197,66,0.14);
+  color: var(--gold);
+  border: 1px solid var(--gold);
+}
+.hero-device .bottom-row .chip::before {
+  content: ""; width: 5px; height: 5px; border-radius: 50%; background: var(--gold);
+  animation: blink 1s infinite;
+}
+@keyframes blink { 50% { opacity: 0.3; } }
+.hero-device .bottom-row .stat { color: var(--fg-3); }
+.hero-device .bottom-row .stat b { color: var(--fg-0); font-family: var(--font-mono); margin-left: 4px; font-weight: 500; }
+
+/* Floating glow elements */
+.float-stat {
+  position: absolute;
+  background: var(--bg-3);
+  border: 1px solid var(--line-strong);
+  border-radius: 12px;
+  padding: 12px 16px;
+  display: flex; align-items: center; gap: 12px;
+  box-shadow: 0 24px 56px -16px rgba(0,0,0,0.8);
+  z-index: 10;
+  white-space: nowrap;
+}
+.float-stat.fs-1 {
+  top: -8px; left: -36px;
+  transform: rotate(-3deg);
+}
+.float-stat.fs-2 {
+  bottom: -18px; right: 30px;
+  transform: rotate(2deg);
+}
+.float-stat .icon {
+  width: 36px; height: 36px; border-radius: 8px;
+  display: grid; place-items: center;
+  font-weight: 700; font-size: 14px;
+}
+.float-stat .icon.up { background: rgba(0,224,138,0.18); color: var(--up); }
+.float-stat .icon.gold { background: rgba(245,197,66,0.18); color: var(--gold); }
+.float-stat .text { display: flex; flex-direction: column; line-height: 1.2; }
+.float-stat .text .t { font-size: 13px; color: var(--fg-0); font-weight: 600; }
+.float-stat .text .s { font-size: 11px; color: var(--fg-2); font-family: var(--font-mono); }
+
+/* === Logo strip === */
+.logo-strip {
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  padding: 32px 0;
+  background: var(--bg-1);
+}
+.logo-strip .lbl {
+  font-size: 11px; color: var(--fg-3); letter-spacing: 0.08em; text-transform: uppercase;
+  text-align: center;
+  margin-bottom: 22px;
+}
+.logo-strip .row {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 32px; flex-wrap: wrap;
+  opacity: 0.8;
+}
+.logo-strip .logo {
+  display: inline-flex; align-items: center; gap: 8px;
+  color: var(--fg-2);
+  font-weight: 600;
+  font-size: 16px;
+  letter-spacing: -0.02em;
+}
+.logo-strip .logo svg { color: var(--fg-2); }
+
+/* === Section header === */
+.section { padding: 100px 0; position: relative; }
+.section.alt { background: var(--bg-1); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+
+.section-head { max-width: 720px; margin-bottom: 48px; }
+.section-tag {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--gold);
+  background: rgba(245,197,66,0.1);
+  border: 1px solid rgba(245,197,66,0.35);
+  padding: 4px 10px;
+  border-radius: 999px;
+  letter-spacing: 0.08em;
+  margin-bottom: 18px;
+  white-space: nowrap;
+}
+.section-tag .num { color: var(--fg-3); margin-right: 4px; }
+.section h2 {
+  font-family: var(--font-display);
+  font-size: clamp(38px, 4.5vw, 60px);
+  line-height: 1.02;
+  letter-spacing: -0.03em;
+  font-weight: 700;
+  margin: 0 0 18px;
+  text-wrap: balance;
+}
+.section h2 em { font-style: italic; color: var(--gold); font-weight: 600; }
+.section-lead { font-size: 18px; color: var(--fg-1); max-width: 640px; }
+
+/* === Features grid === */
+.features {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.feature {
+  background: var(--bg-1);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 28px;
+  display: flex; flex-direction: column;
+  gap: 14px;
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.2s, transform 0.2s;
+}
+.feature:hover { border-color: var(--line-strong); transform: translateY(-3px); }
+.feature .num {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--fg-3);
+  letter-spacing: 0.08em;
+}
+.feature h3 {
+  font-family: var(--font-display);
+  font-size: 22px;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  font-weight: 700;
+  margin: 0;
+}
+.feature p { margin: 0; font-size: 14px; color: var(--fg-2); line-height: 1.55; }
+.feature .ic {
+  width: 44px; height: 44px;
+  border-radius: 10px;
+  display: grid; place-items: center;
+  margin-bottom: 4px;
+}
+.feature.f-1 .ic { background: rgba(0,224,138,0.14); color: var(--up); }
+.feature.f-2 .ic { background: rgba(245,197,66,0.14); color: var(--gold); }
+.feature.f-3 .ic { background: rgba(94,170,255,0.14); color: var(--info); }
+.feature.f-4 .ic { background: rgba(255,59,107,0.14); color: var(--down); }
+.feature.f-5 .ic { background: rgba(167,139,250,0.14); color: #a78bfa; }
+.feature.f-6 .ic { background: rgba(255,255,255,0.06); color: var(--fg-0); }
+.feature.big {
+  grid-column: span 2;
+  background:
+    radial-gradient(80% 100% at 100% 0%, rgba(0,224,138,0.10), transparent 70%),
+    var(--bg-1);
+  padding: 40px;
+}
+.feature.big h3 { font-size: 30px; }
+.feature.big p { font-size: 16px; max-width: 460px; }
+.feature .visual {
+  margin-top: 16px;
+  height: 160px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--bg-0);
+  position: relative;
+  overflow: hidden;
+}
+
+/* === Stats === */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  overflow: hidden;
+  background:
+    radial-gradient(60% 80% at 0% 0%, rgba(0,224,138,0.08), transparent 60%),
+    radial-gradient(60% 80% at 100% 100%, rgba(245,197,66,0.06), transparent 60%),
+    var(--bg-1);
+}
+.stat-cell {
+  padding: 36px 32px;
+  border-right: 1px solid var(--line);
+}
+.stat-cell:last-child { border-right: 0; }
+.stat-cell .v {
+  font-family: var(--font-display);
+  font-size: clamp(36px, 4vw, 54px);
+  line-height: 1;
+  letter-spacing: -0.03em;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+.stat-cell .v .u { color: var(--fg-3); font-size: 0.5em; font-weight: 600; margin-left: 4px; }
+.stat-cell .l { font-size: 13px; color: var(--fg-2); }
+.stat-cell.green .v { color: var(--up); }
+.stat-cell.gold .v { color: var(--gold); }
+
+/* === Platform showcase === */
+.platform-showcase {
+  position: relative;
+}
+.showcase-stack {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 36px;
+  align-items: end;
+}
+.showcase-desktop {
+  border: 1px solid var(--line-strong);
+  border-radius: 16px;
+  overflow: hidden;
+  background: var(--bg-1);
+  box-shadow: 0 60px 120px -40px rgba(0,0,0,0.7), 0 0 0 1px rgba(255,255,255,0.04);
+  position: relative;
+}
+.showcase-desktop .chrome {
+  height: 36px;
+  display: flex; align-items: center; padding: 0 14px; gap: 8px;
+  border-bottom: 1px solid var(--line);
+  background: var(--bg-1);
+}
+.showcase-desktop .chrome .lights { display: flex; gap: 6px; }
+.showcase-desktop .chrome .lights span { width: 11px; height: 11px; border-radius: 50%; background: var(--line-strong); }
+.showcase-desktop .chrome .url {
+  margin-left: 8px;
+  font-family: var(--font-mono);
+  font-size: 11px; color: var(--fg-2);
+  background: var(--bg-0);
+  padding: 4px 10px;
+  border-radius: 5px;
+  border: 1px solid var(--line);
+  min-width: 320px;
+}
+.showcase-desktop .img-area {
+  aspect-ratio: 16/10;
+  position: relative;
+  background: var(--bg-1);
+  overflow: hidden;
+}
+
+.showcase-mobile {
+  width: 280px;
+  position: relative;
+  margin: 0 auto;
+  transform: translateY(40px);
+}
+.iphone {
+  width: 280px;
+  background: #000;
+  border-radius: 38px;
+  border: 1.5px solid #2a2a2a;
+  padding: 8px;
+  box-shadow: 0 60px 120px -40px rgba(0,0,0,0.8), 0 0 0 1px rgba(255,255,255,0.05);
+  position: relative;
+}
+.iphone::before {
+  content: "";
+  position: absolute; top: 14px; left: 50%; transform: translateX(-50%);
+  width: 100px; height: 28px;
+  background: #000;
+  border-radius: 16px;
+  z-index: 5;
+}
+.iphone .screen {
+  aspect-ratio: 9/19.5;
+  background: var(--bg-1);
+  border-radius: 30px;
+  overflow: hidden;
+  position: relative;
+}
+
+/* === Assets section === */
+.asset-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+.ag-card {
+  padding: 18px;
+  background: var(--bg-1);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  display: flex; flex-direction: column;
+  gap: 10px;
+  transition: border-color 0.2s, background 0.2s;
+}
+.ag-card:hover { border-color: var(--line-strong); background: var(--bg-2); }
+.ag-card .head {
+  display: flex; justify-content: space-between; align-items: center;
+}
+.ag-card .name {
+  font-family: var(--font-mono); font-size: 13px; color: var(--fg-0); font-weight: 500;
+}
+.ag-card .cat {
+  font-size: 9px; color: var(--fg-3); letter-spacing: 0.08em;
+}
+.ag-card .row {
+  display: flex; justify-content: space-between; align-items: baseline;
+}
+.ag-card .px {
+  font-family: var(--font-mono); font-size: 18px; color: var(--fg-0); font-weight: 500;
+}
+.ag-card .chg { font-family: var(--font-mono); font-size: 11px; padding: 2px 6px; border-radius: 4px; }
+.ag-card .chg.up { background: rgba(0,224,138,0.1); color: var(--up); }
+.ag-card .chg.down { background: rgba(255,59,107,0.1); color: var(--down); }
+.ag-card .foot {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-top: 4px; padding-top: 10px; border-top: 1px dashed var(--line);
+}
+.ag-card .foot .l { font-size: 11px; color: var(--fg-3); }
+.ag-card .foot .payout {
+  font-family: var(--font-mono); font-size: 13px; color: var(--gold); font-weight: 600;
+}
+.ag-card .spark { height: 30px; margin-top: -4px; }
+
+/* === Steps === */
+.steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  position: relative;
+}
+.step {
+  padding: 32px 28px 28px;
+  position: relative;
+  border-top: 1px solid var(--line-strong);
+}
+.step::before {
+  content: ""; position: absolute; left: 0; top: -1px; height: 1px; width: 30%;
+  background: var(--up);
+}
+.step .n {
+  font-family: var(--font-mono); font-size: 11px; color: var(--gold);
+  letter-spacing: 0.08em;
+  margin-bottom: 14px;
+}
+.step h3 {
+  font-family: var(--font-display);
+  font-size: 26px; line-height: 1.15;
+  letter-spacing: -0.02em;
+  font-weight: 700;
+  margin: 0 0 12px;
+}
+.step p { color: var(--fg-2); font-size: 14px; margin: 0 0 20px; }
+.step .visual {
+  height: 140px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--bg-0);
+  position: relative;
+  overflow: hidden;
+}
+
+/* === Trust section === */
+.trust-row {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 60px;
+  align-items: center;
+}
+.trust-points { display: flex; flex-direction: column; gap: 22px; }
+.trust-point {
+  display: grid; grid-template-columns: 36px 1fr; gap: 16px;
+  padding-bottom: 22px;
+  border-bottom: 1px solid var(--line);
+}
+.trust-point:last-child { border-bottom: 0; }
+.trust-point .ic {
+  width: 36px; height: 36px;
+  border-radius: 8px;
+  display: grid; place-items: center;
+  background: var(--bg-2); color: var(--up);
+  border: 1px solid var(--line-strong);
+}
+.trust-point h3 {
+  font-family: var(--font-display);
+  font-size: 18px;
+  margin: 0 0 6px;
+  letter-spacing: -0.01em;
+}
+.trust-point p { margin: 0; font-size: 13px; color: var(--fg-2); }
+
+.trust-card {
+  background:
+    radial-gradient(60% 80% at 100% 0%, rgba(245,197,66,0.10), transparent 60%),
+    var(--bg-1);
+  border: 1px solid var(--line-strong);
+  border-radius: 16px;
+  padding: 36px;
+  position: relative;
+}
+.trust-card .label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--gold);
+  letter-spacing: 0.1em;
+  margin-bottom: 10px;
+}
+.trust-card .seal {
+  width: 84px; height: 84px;
+  border-radius: 50%;
+  border: 2px dashed var(--gold);
+  display: grid; place-items: center;
+  font-family: var(--font-display);
+  color: var(--gold);
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  margin-bottom: 18px;
+}
+.trust-card h3 { margin: 0 0 8px; font-family: var(--font-display); font-size: 22px; }
+.trust-card p { color: var(--fg-2); margin: 0; font-size: 14px; }
+.trust-card .row {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+  margin-top: 28px;
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+}
+.trust-card .row .item .l { font-size: 10px; color: var(--fg-3); letter-spacing: 0.06em; }
+.trust-card .row .item .v { font-family: var(--font-mono); font-size: 13px; color: var(--fg-0); margin-top: 2px; }
+
+/* === Quotes === */
+.quotes {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+.quote {
+  padding: 26px;
+  background: var(--bg-1);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  display: flex; flex-direction: column;
+  gap: 18px;
+}
+.quote .stars { color: var(--gold); letter-spacing: 2px; font-size: 13px; }
+.quote p { margin: 0; font-size: 15px; color: var(--fg-1); line-height: 1.55; }
+.quote .who { display: grid; grid-template-columns: 32px 1fr; gap: 10px; align-items: center; }
+.quote .who .av {
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--gold), #b8852a);
+  color: #1a1206;
+  display: grid; place-items: center;
+  font-weight: 700; font-size: 12px;
+}
+.quote .who .nm { font-size: 13px; color: var(--fg-0); font-weight: 500; }
+.quote .who .ti { font-size: 11px; color: var(--fg-3); font-family: var(--font-mono); }
+
+/* === FAQ === */
+.faq { display: flex; flex-direction: column; gap: 0; max-width: 820px; margin: 0 auto; }
+.faq-item {
+  border-bottom: 1px solid var(--line);
+  padding: 22px 0;
+}
+.faq-item summary {
+  display: flex; justify-content: space-between; align-items: center;
+  cursor: pointer; list-style: none;
+  font-size: 17px;
+  font-weight: 500;
+  color: var(--fg-0);
+  letter-spacing: -0.01em;
+}
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary::after {
+  content: "+"; font-family: var(--font-mono);
+  font-size: 24px; color: var(--fg-1);
+  font-weight: 300;
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  border: 1px solid var(--line-strong);
+  display: inline-grid; place-items: center;
+  transition: transform 0.2s, background 0.2s;
+  flex-shrink: 0;
+  margin-left: 16px;
+}
+.faq-item summary:hover::after { background: var(--bg-2); }
+.faq-item[open] summary::after { content: "−"; color: var(--gold); border-color: var(--gold); background: rgba(245,197,66,0.1); }
+.faq-item .a { margin-top: 14px; color: var(--fg-2); font-size: 14px; line-height: 1.6; max-width: 700px; }
+
+/* === CTA banner === */
+.cta {
+  position: relative;
+  padding: 100px 0;
+  overflow: hidden;
+}
+.cta::before {
+  content: ""; position: absolute; inset: 0; z-index: -1;
+  background:
+    radial-gradient(40% 60% at 30% 50%, rgba(0,224,138,0.18), transparent 60%),
+    radial-gradient(40% 60% at 70% 50%, rgba(245,197,66,0.10), transparent 60%);
+}
+.cta-card {
+  border: 1px solid var(--line-strong);
+  background:
+    linear-gradient(180deg, rgba(0,224,138,0.04), transparent 50%),
+    var(--bg-1);
+  border-radius: 22px;
+  padding: 60px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.cta-card::before {
+  content: ""; position: absolute; inset: -1px;
+  background: linear-gradient(120deg, transparent 30%, rgba(0,224,138,0.4), transparent 70%);
+  z-index: -1;
+  filter: blur(20px);
+}
+.cta-card h2 {
+  font-family: var(--font-display);
+  font-size: clamp(36px, 5vw, 64px);
+  letter-spacing: -0.03em;
+  line-height: 1.0;
+  margin: 0 0 18px;
+  font-weight: 800;
+}
+.cta-card p { margin: 0 auto 32px; max-width: 540px; color: var(--fg-1); font-size: 17px; }
+.cta-actions { display: inline-flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
+.cta-foot { margin-top: 24px; font-size: 12px; color: var(--fg-3); }
+
+/* === Footer === */
+.footer {
+  border-top: 1px solid var(--line);
+  background: var(--bg-1);
+  padding: 64px 0 32px;
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.4fr repeat(4, 1fr);
+  gap: 40px;
+}
+.footer-grid .col h4 {
+  font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--fg-3);
+  margin: 0 0 14px;
+  font-weight: 600;
+}
+.footer-grid .col a {
+  display: block;
+  font-size: 13px;
+  color: var(--fg-1);
+  padding: 5px 0;
+}
+.footer-grid .col a:hover { color: var(--fg-0); }
+.footer-brand p {
+  margin-top: 14px;
+  font-size: 13px; color: var(--fg-2); max-width: 280px; line-height: 1.55;
+}
+.footer-social { display: flex; gap: 10px; margin-top: 18px; }
+.footer-social a {
+  width: 36px; height: 36px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  display: grid; place-items: center;
+  color: var(--fg-2);
+}
+.footer-social a:hover { color: var(--fg-0); border-color: var(--line-strong); }
+
+.footer-disclaim {
+  margin-top: 48px;
+  padding: 24px;
+  border: 1px solid var(--line);
+  background: var(--bg-0);
+  border-radius: 12px;
+  font-size: 11px;
+  color: var(--fg-3);
+  line-height: 1.6;
+}
+.footer-disclaim b { color: var(--fg-1); }
+
+.footer-bottom {
+  margin-top: 32px;
+  display: flex; align-items: center; justify-content: space-between;
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+  font-size: 12px;
+  color: var(--fg-3);
+}
+.footer-bottom .links { display: flex; gap: 18px; }
+
+/* === Scroll reveal === */
+.reveal { opacity: 1; transition: opacity 0.6s, transform 0.6s; }
+.reveal.in { opacity: 1; transform: none; }
+
+@media (max-width: 900px) {
+  .hero-row, .trust-row, .showcase-stack { grid-template-columns: 1fr; }
+  .features, .stats, .asset-grid, .steps, .quotes { grid-template-columns: 1fr 1fr; }
+  .features .feature.big { grid-column: span 2; }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+  .nav-links { display: none; }
+}
+</style>
+  <style>/* === the option — 無料デモ取引 campaign layer (reused from cashback design) === */
+
+/* --- Promo bar (above nav) --- */
+.promo-bar {
+  position: relative;
+  z-index: 60;
+  background:
+    radial-gradient(120% 180% at 12% 50%, rgba(245,197,66,0.22), transparent 60%),
+    linear-gradient(90deg, #14110a, #100d07);
+  border-bottom: 1px solid rgba(245,197,66,0.35);
+  overflow: hidden;
+}
+.promo-bar::after {
+  content: "";
+  position: absolute; inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(245,197,66,0.10), transparent);
+  transform: translateX(-100%);
+  animation: promo-sheen 6s ease-in-out infinite;
+}
+@keyframes promo-sheen { 0%,55% { transform: translateX(-100%); } 80%,100% { transform: translateX(100%); } }
+.promo-bar-inner {
+  position: relative; z-index: 1;
+  height: 44px;
+  display: flex; align-items: center; justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  text-align: center;
+}
+.promo-bar .tag {
+  font-family: var(--font-mono);
+  font-size: 10px; letter-spacing: 0.12em;
+  color: #1a1206; background: var(--gold);
+  padding: 3px 9px; border-radius: 999px; font-weight: 700;
+  white-space: nowrap;
+}
+.promo-bar .msg { font-size: 13.5px; color: var(--fg-0); white-space: nowrap; }
+.promo-bar .msg b { color: var(--gold); font-weight: 700; }
+.promo-bar .amt { font-family: var(--font-mono); font-weight: 700; }
+.promo-bar .countdown {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-family: var(--font-mono); font-size: 12px; color: var(--fg-1);
+  white-space: nowrap;
+}
+.promo-bar .countdown .u {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(245,197,66,0.3);
+  border-radius: 5px; padding: 2px 7px; color: var(--gold); font-weight: 600;
+}
+.promo-bar .cta {
+  font-size: 12.5px; font-weight: 600; color: var(--gold);
+  display: inline-flex; align-items: center; gap: 4px; white-space: nowrap;
+}
+.promo-bar .cta:hover { text-decoration: underline; }
+@media (max-width: 880px) { .promo-bar .countdown, .promo-bar .cta { display: none; } }
+
+/* --- Hero highlight chip --- */
+.cb-eyebrow {
+  background: rgba(245,197,66,0.1) !important;
+  border-color: rgba(245,197,66,0.4) !important;
+}
+.cb-eyebrow .badge { background: var(--gold) !important; color: #1a1206 !important; }
+.hero h1 .cb-amount {
+  background: linear-gradient(120deg, var(--gold) 0%, #ffe9a8 55%, #fff);
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent; color: transparent;
+}
+
+/* --- Campaign section --- */
+.campaign {
+  padding: 96px 0;
+  position: relative;
+  background:
+    radial-gradient(80% 120% at 50% -10%, rgba(245,197,66,0.10), transparent 55%),
+    var(--bg-0);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  overflow: hidden;
+}
+.campaign-grid {
+  position: absolute; inset: 0;
+  background:
+    linear-gradient(rgba(245,197,66,0.018) 1px, transparent 1px) 0 0/52px 52px,
+    linear-gradient(90deg, rgba(245,197,66,0.018) 1px, transparent 1px) 0 0/52px 52px;
+  mask-image: radial-gradient(70% 70% at 50% 30%, #000, transparent 80%);
+  pointer-events: none;
+}
+.campaign .container { position: relative; z-index: 1; }
+
+.cb-card {
+  border: 1px solid rgba(245,197,66,0.28);
+  border-radius: 24px;
+  background:
+    radial-gradient(120% 100% at 50% 0%, rgba(245,197,66,0.08), transparent 60%),
+    linear-gradient(180deg, var(--bg-2), var(--bg-1));
+  box-shadow: 0 40px 100px -40px rgba(245,197,66,0.25), inset 0 1px 0 rgba(255,255,255,0.04);
+  padding: 56px 48px;
+  text-align: center;
+}
+.cb-card .kicker {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.14em;
+  color: var(--gold); text-transform: uppercase;
+  border: 1px solid rgba(245,197,66,0.3); border-radius: 999px;
+  padding: 6px 14px; margin-bottom: 26px;
+}
+.cb-card .kicker .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--gold); box-shadow: 0 0 10px var(--gold); animation: blink 1.4s infinite; }
+
+.cb-headline {
+  font-family: var(--font-display);
+  font-weight: 800; letter-spacing: -0.03em; line-height: 1.05;
+  font-size: clamp(34px, 6vw, 60px);
+  margin: 0 0 8px;
+}
+.cb-headline .big {
+  display: inline-flex; align-items: baseline; gap: 2px;
+  background: linear-gradient(120deg, #ffe9a8, var(--gold) 50%, #c8922a);
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent; color: transparent;
+  font-size: clamp(56px, 11vw, 120px);
+  filter: drop-shadow(0 8px 30px rgba(245,197,66,0.3));
+}
+.cb-headline .yen { font-size: 0.55em; }
+.cb-headline .unit { font-size: 0.42em; -webkit-text-fill-color: var(--fg-1); color: var(--fg-1); margin-left: 8px; letter-spacing: 0; }
+.cb-sub { font-size: 18px; color: var(--fg-1); max-width: 620px; margin: 18px auto 0; line-height: 1.65; }
+.cb-sub b { color: var(--fg-0); }
+
+.cb-actions { margin-top: 36px; display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+.cb-note { margin-top: 18px; font-size: 12.5px; color: var(--fg-3); font-family: var(--font-mono); }
+
+/* steps */
+.cb-steps {
+  margin-top: 56px;
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px;
+  text-align: left;
+}
+.cb-step {
+  background: var(--bg-1);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 24px 22px;
+  position: relative;
+}
+.cb-step .n {
+  font-family: var(--font-mono); font-size: 12px; color: var(--gold);
+  border: 1px solid rgba(245,197,66,0.3); border-radius: 7px;
+  width: 32px; height: 32px; display: grid; place-items: center;
+  margin-bottom: 16px; font-weight: 600;
+}
+.cb-step h4 { margin: 0 0 6px; font-size: 16px; font-weight: 700; color: var(--fg-0); letter-spacing: -0.01em; }
+.cb-step p { margin: 0; font-size: 13px; color: var(--fg-2); line-height: 1.6; }
+.cb-step .arrow {
+  position: absolute; right: -13px; top: 50%; transform: translateY(-50%);
+  width: 22px; height: 22px; border-radius: 50%;
+  background: var(--bg-3); border: 1px solid var(--line-strong);
+  display: grid; place-items: center; color: var(--fg-3); z-index: 2;
+}
+.cb-step:last-child .arrow { display: none; }
+
+/* conditions */
+.cb-terms {
+  margin-top: 18px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--bg-1);
+  overflow: hidden;
+}
+.cb-terms .terms-head {
+  padding: 16px 22px;
+  border-bottom: 1px solid var(--line);
+  font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em;
+  color: var(--fg-2); text-transform: uppercase;
+  display: flex; align-items: center; gap: 8px;
+}
+.cb-terms .terms-grid {
+  display: grid; grid-template-columns: repeat(2, 1fr);
+}
+.cb-terms .trow {
+  display: flex; justify-content: space-between; align-items: center; gap: 16px;
+  padding: 15px 22px;
+  border-bottom: 1px solid var(--line);
+  border-right: 1px solid var(--line);
+}
+.cb-terms .trow:nth-child(2n) { border-right: 0; }
+.cb-terms .trow .k { font-size: 13px; color: var(--fg-2); }
+.cb-terms .trow .v { font-size: 13.5px; color: var(--fg-0); font-family: var(--font-mono); font-weight: 500; text-align: right; }
+.cb-terms .trow .v.gold { color: var(--gold); }
+
+@media (max-width: 860px) {
+  .cb-card { padding: 40px 22px; }
+  .cb-steps { grid-template-columns: 1fr; }
+  .cb-step .arrow { display: none; }
+  .cb-terms .terms-grid { grid-template-columns: 1fr; }
+  .cb-terms .trow { border-right: 0; }
+}
+
+/* --- final CTA highlight --- */
+.cta-cb-pill {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.08em;
+  color: var(--gold); border: 1px solid rgba(245,197,66,0.4);
+  background: rgba(245,197,66,0.08);
+  padding: 6px 14px; border-radius: 999px; margin-bottom: 22px;
+}
+</style>
+  <style>/* ============================================================
+   TRANSPARENCY / GLASS LAYER + TWEAK MODES
+   Layered ON TOP of landing.css. Surfaces become translucent
+   by default; data-surface / data-atmosphere / data-hero
+   attributes on <html> swap whole moods.
+   ============================================================ */
+
+:root {
+  /* Glass surface tokens — overridden per tweak mode */
+  --surface: rgba(255, 255, 255, 0.045);
+  --surface-strong: rgba(255, 255, 255, 0.08);
+  --surface-border: rgba(255, 255, 255, 0.10);
+  --surface-border-strong: rgba(255, 255, 255, 0.16);
+  --surface-blur: blur(22px) saturate(160%);
+  --surface-shadow: 0 30px 80px -30px rgba(0, 0, 0, 0.45);
+
+  /* Atmosphere tint colors (used by body::before blobs) */
+  --atmo-1: rgba(0, 224, 138, 0.18);
+  --atmo-2: rgba(94, 170, 255, 0.12);
+  --atmo-3: rgba(245, 197, 66, 0.10);
+  --atmo-4: rgba(167, 139, 250, 0.10);
+  --atmo-base: #06080f;
+}
+
+/* === Atmosphere: floating tint blobs behind everything === */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  background:
+    radial-gradient(45% 35% at 80% 18%, var(--atmo-1), transparent 70%),
+    radial-gradient(40% 30% at 18% 78%, var(--atmo-2), transparent 70%),
+    radial-gradient(35% 30% at 92% 88%, var(--atmo-3), transparent 70%),
+    radial-gradient(30% 25% at 35% 30%, var(--atmo-4), transparent 70%),
+    var(--atmo-base);
+  animation: drift 24s ease-in-out infinite alternate;
+}
+body::after {
+  /* Subtle noise / grain for organic feel */
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image:
+    radial-gradient(circle at 25% 25%, rgba(255,255,255,0.02) 1px, transparent 1px),
+    radial-gradient(circle at 75% 75%, rgba(255,255,255,0.015) 1px, transparent 1px);
+  background-size: 3px 3px, 5px 5px;
+  opacity: 0.6;
+}
+@keyframes drift {
+  0%   { transform: translate(0, 0) scale(1); }
+  100% { transform: translate(-2%, 1%) scale(1.05); }
+}
+
+/* Hero device: pivot from right so the left edge doesn't extend into the
+   text column. */
+.hero-device { transform-origin: right center !important; }
+
+/* Hero h1 should sit above the device when they overlap. */
+.hero-row > div:first-child { position: relative; z-index: 2; }
+
+/* === Apply glass to all major surfaces === */
+.feature,
+.ag-card,
+.quote,
+.stat-cell,
+.trust-card,
+.cta-card,
+.step,
+.faq-item,
+.float-stat {
+  background: var(--surface) !important;
+  border-color: var(--surface-border) !important;
+  backdrop-filter: var(--surface-blur);
+  -webkit-backdrop-filter: var(--surface-blur);
+}
+
+/* Device frames / showcase need more body so their inner UI stays legible.
+   Use a stronger frosted layer (still see-through) rather than full transparency. */
+.hero-device .frame,
+.showcase-desktop {
+  background: rgba(11, 15, 26, 0.65) !important;
+  border-color: var(--surface-border-strong) !important;
+  backdrop-filter: blur(20px) saturate(150%);
+  -webkit-backdrop-filter: blur(20px) saturate(150%);
+}
+.hero-device .device-body { background: transparent !important; }
+.iphone .screen { background: rgba(11, 15, 26, 0.7) !important; backdrop-filter: blur(20px); }
+
+/* Inside-cards (within frame, etc.) stay subtle */
+.feature .visual,
+.step .visual {
+  background: var(--surface) !important;
+  border-color: var(--surface-border) !important;
+}
+
+/* Sections — kill the harsh "alt" band, use very subtle wash */
+.section.alt {
+  background: linear-gradient(180deg,
+    rgba(255,255,255,0.02),
+    rgba(255,255,255,0.005)) !important;
+  border-top-color: var(--surface-border) !important;
+  border-bottom-color: var(--surface-border) !important;
+}
+
+/* Nav becomes properly translucent */
+.nav {
+  background: rgba(6, 8, 15, 0.35) !important;
+  border-bottom-color: var(--surface-border) !important;
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+}
+
+/* Ticker bar */
+.ticker {
+  background: rgba(11, 15, 26, 0.4) !important;
+  border-bottom-color: var(--surface-border) !important;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+.ticker::before { background: linear-gradient(90deg, rgba(11,15,26,0.6), transparent) !important; }
+.ticker::after { background: linear-gradient(-90deg, rgba(11,15,26,0.6), transparent) !important; }
+.ticker-item {
+  border-right-color: var(--surface-border) !important;
+}
+
+/* Logo strip */
+.logo-strip {
+  background: rgba(11, 15, 26, 0.3) !important;
+  border-color: var(--surface-border) !important;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* Footer */
+.footer {
+  background: rgba(11, 15, 26, 0.4) !important;
+  border-top-color: var(--surface-border) !important;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+.footer-disclaim {
+  background: rgba(0,0,0,0.2) !important;
+  border-color: var(--surface-border) !important;
+}
+
+/* Trust point dividers */
+.trust-point { border-bottom-color: var(--surface-border) !important; }
+.trust-card .row { border-top-color: var(--surface-border) !important; }
+
+/* FAQ items */
+.faq-item {
+  border-bottom-color: var(--surface-border) !important;
+  padding: 22px 18px;
+  border-radius: 12px;
+  margin-bottom: 8px;
+  border-bottom: 1px solid var(--surface-border) !important;
+}
+.faq-item summary::after {
+  border-color: var(--surface-border) !important;
+}
+
+/* Showcase device frames get a soft glow */
+.showcase-desktop {
+  box-shadow:
+    0 60px 120px -40px rgba(0, 0, 0, 0.55),
+    0 0 0 1px var(--surface-border-strong),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+.hero-device .frame {
+  box-shadow:
+    0 40px 80px -20px rgba(0,0,0,0.55),
+    0 80px 160px -30px var(--atmo-1),
+    0 0 0 1px var(--surface-border-strong),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+/* Inner rail items inside the hero device — give them subtle glass too */
+.hero-device .rail .item.active,
+.hero-device .panel .row button {
+  background: rgba(255, 255, 255, 0.04) !important;
+}
+
+/* CTA card glass with stronger atmosphere */
+.cta-card {
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.01)) !important;
+  border-color: var(--surface-border-strong) !important;
+  box-shadow: var(--surface-shadow), inset 0 1px 0 rgba(255,255,255,0.06);
+}
+
+/* IPhone bezel — keep solid for realism but soften */
+.iphone {
+  background: rgba(0, 0, 0, 0.8) !important;
+  border-color: rgba(255,255,255,0.08) !important;
+  backdrop-filter: blur(20px);
+}
+
+/* Hero bg shouldn't fight the atmosphere */
+.hero-bg { display: none; }
+.hero-grid {
+  opacity: 0.4;
+}
+
+/* ============================================================
+   TWEAK 1 — SURFACE (frosted | solid | vapor)
+   ============================================================ */
+
+[data-surface="solid"] {
+  --surface: var(--bg-1);
+  --surface-strong: var(--bg-2);
+  --surface-border: var(--line);
+  --surface-border-strong: var(--line-strong);
+  --surface-blur: none;
+}
+[data-surface="solid"] body::before { opacity: 0; }
+[data-surface="solid"] .nav { background: rgba(6,8,15,0.78) !important; backdrop-filter: blur(14px); }
+[data-surface="solid"] .ticker,
+[data-surface="solid"] .logo-strip,
+[data-surface="solid"] .footer { background: var(--bg-1) !important; backdrop-filter: none !important; }
+
+[data-surface="vapor"] {
+  --surface: rgba(255, 255, 255, 0.02);
+  --surface-strong: rgba(255, 255, 255, 0.045);
+  --surface-border: rgba(255, 255, 255, 0.05);
+  --surface-border-strong: rgba(255, 255, 255, 0.10);
+  --surface-blur: blur(48px) saturate(200%);
+}
+[data-surface="vapor"] body::before {
+  background:
+    radial-gradient(55% 45% at 80% 18%, var(--atmo-1), transparent 65%),
+    radial-gradient(50% 40% at 18% 78%, var(--atmo-2), transparent 65%),
+    radial-gradient(45% 40% at 92% 88%, var(--atmo-3), transparent 65%),
+    radial-gradient(40% 35% at 35% 30%, var(--atmo-4), transparent 65%),
+    var(--atmo-base);
+}
+
+/* ============================================================
+   TWEAK 2 — ATMOSPHERE (midnight | aurora | porcelain)
+   ============================================================ */
+
+/* midnight (default) — already set above */
+
+[data-atmosphere="aurora"] {
+  --atmo-1: rgba(167, 139, 250, 0.32);   /* violet */
+  --atmo-2: rgba(94, 200, 255, 0.26);    /* cyan */
+  --atmo-3: rgba(255, 90, 180, 0.20);    /* pink */
+  --atmo-4: rgba(0, 224, 138, 0.14);     /* green */
+  --atmo-base: #0a0418;
+}
+[data-atmosphere="aurora"] {
+  --gold: #ffd66b;
+}
+
+[data-atmosphere="porcelain"] {
+  /* Light mode palette */
+  --bg-0: #f4f0e6;
+  --bg-1: #ffffff;
+  --bg-2: #f9f6ee;
+  --bg-3: #efeadd;
+  --line: rgba(0, 0, 0, 0.06);
+  --line-strong: rgba(0, 0, 0, 0.12);
+
+  --fg-0: #14182a;
+  --fg-1: #2a3142;
+  --fg-2: #5a6478;
+  --fg-3: #8893a8;
+
+  --up: #0aa86b;
+  --down: #d92e58;
+  --gold: #b88210;
+  --info: #2a6fdb;
+
+  --surface: rgba(255, 255, 255, 0.55);
+  --surface-strong: rgba(255, 255, 255, 0.72);
+  --surface-border: rgba(20, 24, 42, 0.08);
+  --surface-border-strong: rgba(20, 24, 42, 0.14);
+
+  --atmo-1: rgba(245, 197, 66, 0.32);
+  --atmo-2: rgba(255, 180, 150, 0.28);
+  --atmo-3: rgba(180, 200, 255, 0.22);
+  --atmo-4: rgba(255, 220, 200, 0.20);
+  --atmo-base: #f4f0e6;
+}
+[data-atmosphere="porcelain"] body { color: var(--fg-0); }
+[data-atmosphere="porcelain"] .nav { background: rgba(244, 240, 230, 0.55) !important; }
+[data-atmosphere="porcelain"] .ticker {
+  background: rgba(255, 255, 255, 0.4) !important;
+}
+[data-atmosphere="porcelain"] .ticker::before { background: linear-gradient(90deg, rgba(244,240,230,0.8), transparent) !important; }
+[data-atmosphere="porcelain"] .ticker::after { background: linear-gradient(-90deg, rgba(244,240,230,0.8), transparent) !important; }
+[data-atmosphere="porcelain"] .logo-strip,
+[data-atmosphere="porcelain"] .footer {
+  background: rgba(255, 255, 255, 0.35) !important;
+}
+[data-atmosphere="porcelain"] .footer-disclaim {
+  background: rgba(20, 24, 42, 0.04) !important;
+}
+[data-atmosphere="porcelain"] .nav-links a:hover,
+[data-atmosphere="porcelain"] .btn-ghost:hover {
+  background: rgba(20,24,42,0.05) !important;
+}
+[data-atmosphere="porcelain"] .btn-ghost {
+  border-color: var(--line-strong);
+}
+[data-atmosphere="porcelain"] .brand b,
+[data-atmosphere="porcelain"] .brand .opt {
+  color: var(--fg-0);
+}
+[data-atmosphere="porcelain"] .brand .opt { color: var(--fg-2); }
+[data-atmosphere="porcelain"] .section h2,
+[data-atmosphere="porcelain"] .feature h3,
+[data-atmosphere="porcelain"] .step h3,
+[data-atmosphere="porcelain"] .trust-point h3,
+[data-atmosphere="porcelain"] .trust-card h3,
+[data-atmosphere="porcelain"] .cta-card h2,
+[data-atmosphere="porcelain"] .hero h1,
+[data-atmosphere="porcelain"] .faq-item summary { color: var(--fg-0); }
+[data-atmosphere="porcelain"] .hero-lead,
+[data-atmosphere="porcelain"] .section-lead,
+[data-atmosphere="porcelain"] .feature p,
+[data-atmosphere="porcelain"] .step p,
+[data-atmosphere="porcelain"] .trust-point p,
+[data-atmosphere="porcelain"] .trust-card p,
+[data-atmosphere="porcelain"] .cta-card p,
+[data-atmosphere="porcelain"] .quote p,
+[data-atmosphere="porcelain"] .faq-item .a { color: var(--fg-1); }
+[data-atmosphere="porcelain"] .hero-trust .item .v,
+[data-atmosphere="porcelain"] .stat-cell .v { color: var(--fg-0); }
+[data-atmosphere="porcelain"] .hero-trust .item .l,
+[data-atmosphere="porcelain"] .stat-cell .l,
+[data-atmosphere="porcelain"] .feature .num,
+[data-atmosphere="porcelain"] .step .n,
+[data-atmosphere="porcelain"] .quote .who .nm,
+[data-atmosphere="porcelain"] .quote .who .ti,
+[data-atmosphere="porcelain"] .ag-card .name,
+[data-atmosphere="porcelain"] .ag-card .px,
+[data-atmosphere="porcelain"] .ag-card .cat,
+[data-atmosphere="porcelain"] .ag-card .foot .l { color: var(--fg-1); }
+[data-atmosphere="porcelain"] .ag-card .name { color: var(--fg-0); }
+[data-atmosphere="porcelain"] .ag-card .foot { border-top-color: var(--line) !important; }
+[data-atmosphere="porcelain"] .ticker-item .name,
+[data-atmosphere="porcelain"] .ticker-item .px { color: var(--fg-0); }
+[data-atmosphere="porcelain"] .footer-grid .col h4 { color: var(--fg-3); }
+[data-atmosphere="porcelain"] .footer-grid .col a { color: var(--fg-1); }
+[data-atmosphere="porcelain"] .footer-grid .col a:hover { color: var(--fg-0); }
+[data-atmosphere="porcelain"] .footer-disclaim { color: var(--fg-2); }
+[data-atmosphere="porcelain"] .footer-bottom { color: var(--fg-3); border-top-color: var(--line) !important; }
+[data-atmosphere="porcelain"] .footer-social a {
+  border-color: var(--line);
+  color: var(--fg-2);
+}
+[data-atmosphere="porcelain"] .footer-brand p { color: var(--fg-2); }
+[data-atmosphere="porcelain"] .iphone { background: #1a1a1a !important; }
+[data-atmosphere="porcelain"] .iphone .screen { background: rgba(255,255,255,0.7) !important; }
+
+/* Hero accent colors — adjust gradient for light bg */
+[data-atmosphere="porcelain"] .hero h1 .accent {
+  background: linear-gradient(120deg, var(--up) 0%, var(--gold) 60%, var(--down));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+[data-atmosphere="porcelain"] .hero h1 .strike { color: var(--fg-3); }
+
+/* Aurora flourish — make h1 accent more iridescent */
+[data-atmosphere="aurora"] .hero h1 .accent {
+  background: linear-gradient(120deg, #a78bfa 0%, #5ec8ff 50%, #ff5ab4 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-style: italic;
+}
+[data-atmosphere="aurora"] .section-tag {
+  color: #c4b5fd;
+  background: rgba(167, 139, 250, 0.12);
+  border-color: rgba(167, 139, 250, 0.3);
+}
+
+/* ============================================================
+   TWEAK 3 — HERO COMPOSITION (split | cinematic | minimal)
+   ============================================================ */
+
+[data-hero="cinematic"] .hero-row {
+  grid-template-columns: 1fr !important;
+  text-align: center;
+  gap: 36px;
+}
+[data-hero="cinematic"] .hero h1 {
+  font-size: clamp(72px, 13vw, 180px) !important;
+  line-height: 0.92;
+  margin: 28px auto 24px;
+  max-width: 1100px;
+}
+[data-hero="cinematic"] .hero-lead { margin: 0 auto; max-width: 640px; }
+[data-hero="cinematic"] .hero-ctas { justify-content: center; }
+[data-hero="cinematic"] .hero-trust { justify-content: center; }
+[data-hero="cinematic"] .eyebrow { margin: 0 auto; }
+[data-hero="cinematic"] .hero-device {
+  display: block;
+  margin: 60px auto 0;
+  max-width: 1080px;
+  transform: perspective(2200px) rotateX(8deg) rotateY(-2deg) translateZ(0);
+}
+[data-hero="cinematic"] .float-stat.fs-1 { left: -8%; top: 6%; }
+[data-hero="cinematic"] .float-stat.fs-2 { right: -8%; bottom: 16%; }
+
+[data-hero="minimal"] .hero-row { grid-template-columns: 1fr !important; }
+[data-hero="minimal"] .hero-device { display: none; }
+[data-hero="minimal"] .hero h1 { font-size: clamp(60px, 10vw, 130px) !important; }
+[data-hero="minimal"] .hero {
+  padding: 120px 0 100px;
+  border-bottom: 1px solid var(--surface-border);
+}
+[data-hero="minimal"] .hero-lead { max-width: 720px; font-size: 22px; }
+/* When minimal, the hero gets a giant inline stat strip */
+[data-hero="minimal"] .hero-trust {
+  margin-top: 72px;
+  padding-top: 32px;
+  border-top: 1px solid var(--surface-border);
+  width: 100%;
+  justify-content: space-between;
+}
+[data-hero="minimal"] .hero-trust .item .v { font-size: 44px; letter-spacing: -0.02em; }
+[data-hero="minimal"] .hero-trust .item .l { font-size: 12px; }
+[data-hero="minimal"] .hero-trust .sep { height: 60px; }
+
+/* (tweaks panel UI removed — not used on this standalone page) */
+
+</style>
+  <style>/* === optimization layer — legibility + mobile responsive === */
+
+/* 1 · Legibility — lift muted text tokens above WCAG AA on the dark UI,
+        firm up the frosted-glass backing, and grow base body copy. */
+:root{
+  --fg-1:#d6dde9;
+  --fg-2:#a6b1c4;
+  --fg-3:#8390a6;
+  --surface:rgba(255,255,255,0.065);
+  --surface-strong:rgba(255,255,255,0.11);
+  --surface-border:rgba(255,255,255,0.14);
+  --surface-border-strong:rgba(255,255,255,0.20);
+}
+html{ scroll-padding-top:84px; }
+body{ font-size:16px; line-height:1.62; text-rendering:optimizeLegibility; }
+.feature p,
+.cb-step p,
+.trust-point p,
+.faq-item .a{ font-size:15px; }
+.cb-headline .big{ filter:drop-shadow(0 6px 22px rgba(245,197,66,0.35)); }
+
+/* 2 · Tablet/phone — the hero device + floating chips overflow narrow
+        viewports (fixed 170/1fr/220 grid), so retire them below 760px. */
+@media (max-width:760px){
+  .hero-device{ display:none; }
+}
+
+/* 3 · Phone — collapse every multi-column grid to one column and rescale
+        the oversized clamp() headings so nothing overflows 360px screens. */
+@media (max-width:640px){
+  .container{ padding:0 18px; }
+  .section,.campaign,.cta{ padding:64px 0; }
+
+  .features,.stats,.asset-grid,.steps,.quotes,
+  .cb-steps,.footer-grid,.trust-row,.showcase-stack,.hero-row{
+    grid-template-columns:1fr !important;
+  }
+  .features .feature.big{ grid-column:auto !important; }
+  .cb-terms .terms-grid{ grid-template-columns:1fr; }
+  .cb-terms .trow{ border-right:0; }
+
+  .stat-cell{ border-right:0; border-bottom:1px solid var(--surface-border); padding:26px 22px; }
+  .stat-cell:last-child{ border-bottom:0; }
+
+  .hero{ padding:40px 0 36px; }
+  .hero h1{ font-size:clamp(32px,8.5vw,46px); }
+  .section h2{ font-size:clamp(28px,7vw,40px); }
+  .cb-headline{ font-size:clamp(28px,8vw,40px); }
+  .cb-headline .big{ font-size:clamp(52px,17vw,84px); }
+  .cta-card h2{ font-size:clamp(30px,8vw,44px); }
+  .hero-lead,.section-lead,.cb-sub{ font-size:16px; }
+
+  .hero-trust{ gap:16px 22px; margin-top:28px; }
+  .hero-trust .sep{ display:none; }
+  .hero-trust .item{ flex:1 1 42%; }
+
+  .feature{ padding:22px; }
+  .feature.big{ padding:24px; }
+  .cta-card{ padding:36px 22px; }
+  .trust-card{ padding:26px 22px; }
+  .cb-card{ padding:36px 20px; }
+
+  .nav-inner{ gap:12px; }
+  .lang,.nav-cta .btn-ghost{ display:none; }
+  .nav-cta .btn-primary{ padding:9px 14px; font-size:13px; }
+
+  .showcase-desktop .chrome .url{ min-width:0; }
+  .showcase-mobile{ transform:none; margin-top:24px; }
+  .logo-strip .row{ justify-content:center; gap:18px 24px; }
+
+  .footer-bottom{ flex-direction:column; gap:14px; align-items:flex-start; }
+  .tw-panel{ left:16px; right:16px; width:auto; }
+}
+
+/* 4 · Very small phones — final headline trims so the amount never clips. */
+@media (max-width:420px){
+  .hero h1{ font-size:clamp(28px,9vw,38px); }
+  .cb-headline .big{ font-size:clamp(46px,18vw,66px); }
+  .promo-bar .msg{ font-size:12px; }
+  .ticker-item{ padding:10px 14px; gap:8px; }
+}
+</style>
+  <style>/* === demo layer — extra elements specific to the demo LP === */
+
+/* Promo-bar selling-point chips (replaces the cashback countdown) */
+.promo-bar .promo-chips { display: inline-flex; align-items: center; gap: 6px; white-space: nowrap; }
+.promo-bar .promo-chips .u {
+  font-family: var(--font-mono); font-size: 11px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(245,197,66,0.3);
+  border-radius: 5px; padding: 2px 8px; color: var(--gold); font-weight: 600;
+}
+@media (max-width: 880px) { .promo-bar .promo-chips { display: none; } }
+
+/* DEMO pill in the hero device top-row — gold instead of the green REAL pill */
+.hero-device .top-row .pill.pill-demo {
+  background: var(--gold); color: #1a1206;
+  box-shadow: 0 0 0 1px rgba(245,197,66,0.6), 0 0 14px rgba(245,197,66,0.4);
+}
+
+/* Big faint DEMO watermark across the hero chart */
+.hero-device .chart-area { isolation: isolate; }
+.hero-device .chart-area .demo-watermark {
+  position: absolute; inset: 0;
+  display: grid; place-items: center;
+  font-family: var(--font-display); font-weight: 800;
+  font-size: clamp(40px, 9vw, 72px);
+  letter-spacing: 0.18em;
+  color: rgba(245,197,66,0.10);
+  pointer-events: none; z-index: 1;
+  text-shadow: 0 0 30px rgba(245,197,66,0.10);
+}
+
+/* DEMO ribbon on the desktop showcase screenshot */
+.showcase-desktop .img-area { position: relative; }
+.showcase-desktop .img-area .demo-ribbon {
+  position: absolute; top: 16px; left: 16px; z-index: 3;
+  font-family: var(--font-mono); font-weight: 700; font-size: 12px;
+  letter-spacing: 0.18em;
+  color: #1a1206; background: var(--gold);
+  padding: 5px 12px; border-radius: 6px;
+  box-shadow: 0 8px 24px -8px rgba(245,197,66,0.7);
+}
+</style>
+</head>
+<body>
+
+  <!-- ============================================================ PROMO BAR -->
+  <div class="promo-bar">
+    <div class="container">
+      <div class="promo-bar-inner">
+        <span class="tag">無料デモ</span>
+        <span class="msg">入金不要・登録30秒で、<b>¥1,000,000の仮想資金</b>をいますぐ体験</span>
+        <span class="promo-chips">
+          <span class="u">入金不要</span>
+          <span class="u">期限なし</span>
+          <span class="u">全機能開放</span>
+        </span>
+        <a href="the-option.html" class="cta">無料で始める →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================ NAV -->
+  <nav class="nav">
+    <div class="container nav-inner">
+      <a href="#" class="brand">
+        <span class="dot"></span>
+        <span><span class="opt">the</span><b>option</b></span>
+      </a>
+      <div class="nav-links">
+        <a href="#demo">無料デモ <span class="new">¥0</span></a>
+        <a href="#why">デモの特徴</a>
+        <a href="#platform">プラットフォーム</a>
+        <a href="#assets">銘柄</a>
+        <a href="#how">取引の流れ</a>
+        <a href="#faq">よくある質問</a>
+      </div>
+      <div class="nav-cta">
+        <button class="lang">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"></path></svg>
+          JP
+        </button>
+        <a href="#" class="btn-ghost">ログイン</a>
+        <a href="the-option.html" class="btn-primary">無料でデモを始める</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ============================================================ TICKER -->
+  <div class="ticker">
+    <div class="ticker-track">
+      <!-- Items duplicated for seamless loop -->
+      <div class="ticker-item"><span class="name">USD/JPY</span><span class="px mono" data-v="156.234" data-vol="0.04">156.234</span><span class="chg up">+0.08%</span><span class="mono gold">+88%</span></div>
+      <div class="ticker-item"><span class="name">EUR/USD</span><span class="px mono" data-v="1.0846" data-vol="0.0004">1.0846</span><span class="chg down">−0.04%</span><span class="mono gold">+86%</span></div>
+      <div class="ticker-item"><span class="name">BTC/USD</span><span class="px mono" data-v="71240" data-vol="36">71,240.0</span><span class="chg up">+1.24%</span><span class="mono gold">+78%</span></div>
+      <div class="ticker-item"><span class="name">XAU/USD</span><span class="px mono" data-v="2342.6" data-vol="0.5">2,342.6</span><span class="chg up">+0.41%</span><span class="mono gold">+84%</span></div>
+      <div class="ticker-item"><span class="name">GBP/JPY</span><span class="px mono" data-v="198.34" data-vol="0.08">198.340</span><span class="chg down">−0.12%</span><span class="mono gold">+84%</span></div>
+      <div class="ticker-item"><span class="name">N225</span><span class="px mono" data-v="38420" data-vol="12">38,420.0</span><span class="chg up">+0.82%</span><span class="mono gold">+80%</span></div>
+      <div class="ticker-item"><span class="name">ETH/USD</span><span class="px mono" data-v="3812" data-vol="4">3,812.0</span><span class="chg up">+2.14%</span><span class="mono gold">+76%</span></div>
+      <div class="ticker-item"><span class="name">SPX500</span><span class="px mono" data-v="5286.4" data-vol="2.4">5,286.4</span><span class="chg up">+0.27%</span><span class="mono gold">+82%</span></div>
+      <div class="ticker-item"><span class="name">AUD/JPY</span><span class="px mono" data-v="101.78" data-vol="0.04">101.780</span><span class="chg down">−0.08%</span><span class="mono gold">+82%</span></div>
+      <div class="ticker-item"><span class="name">NDX100</span><span class="px mono" data-v="18632" data-vol="7">18,632.7</span><span class="chg up">+0.41%</span><span class="mono gold">+81%</span></div>
+      <!-- duplicate -->
+      <div class="ticker-item"><span class="name">USD/JPY</span><span class="px mono" data-v="156.234" data-vol="0.04">156.234</span><span class="chg up">+0.08%</span><span class="mono gold">+88%</span></div>
+      <div class="ticker-item"><span class="name">EUR/USD</span><span class="px mono" data-v="1.0846" data-vol="0.0004">1.0846</span><span class="chg down">−0.04%</span><span class="mono gold">+86%</span></div>
+      <div class="ticker-item"><span class="name">BTC/USD</span><span class="px mono" data-v="71240" data-vol="36">71,240.0</span><span class="chg up">+1.24%</span><span class="mono gold">+78%</span></div>
+      <div class="ticker-item"><span class="name">XAU/USD</span><span class="px mono" data-v="2342.6" data-vol="0.5">2,342.6</span><span class="chg up">+0.41%</span><span class="mono gold">+84%</span></div>
+      <div class="ticker-item"><span class="name">GBP/JPY</span><span class="px mono" data-v="198.34" data-vol="0.08">198.340</span><span class="chg down">−0.12%</span><span class="mono gold">+84%</span></div>
+      <div class="ticker-item"><span class="name">N225</span><span class="px mono" data-v="38420" data-vol="12">38,420.0</span><span class="chg up">+0.82%</span><span class="mono gold">+80%</span></div>
+      <div class="ticker-item"><span class="name">ETH/USD</span><span class="px mono" data-v="3812" data-vol="4">3,812.0</span><span class="chg up">+2.14%</span><span class="mono gold">+76%</span></div>
+      <div class="ticker-item"><span class="name">SPX500</span><span class="px mono" data-v="5286.4" data-vol="2.4">5,286.4</span><span class="chg up">+0.27%</span><span class="mono gold">+82%</span></div>
+      <div class="ticker-item"><span class="name">AUD/JPY</span><span class="px mono" data-v="101.78" data-vol="0.04">101.780</span><span class="chg down">−0.08%</span><span class="mono gold">+82%</span></div>
+      <div class="ticker-item"><span class="name">NDX100</span><span class="px mono" data-v="18632" data-vol="7">18,632.7</span><span class="chg up">+0.41%</span><span class="mono gold">+81%</span></div>
+    </div>
+  </div>
+
+  <!-- ============================================================ HERO -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-grid"></div>
+    <div class="container">
+      <div class="hero-row">
+        <div>
+          <span class="eyebrow cb-eyebrow"><span class="badge">DEMO</span> 完全無料・入金不要・登録30秒 — いますぐ体験</span>
+          <h1>
+            まずは <span class="accent">0円</span> で。<br>
+            仮想資金 <span class="cb-amount">¥1,000,000</span><br>で、デモ取引。
+          </h1>
+          <p class="hero-lead">
+            入金も、クレジットカードも不要。メールアドレスだけで最短 30 秒。
+            本番とまったく同じマーケット・同じ約定エンジンを、
+            <b class="gold mono">¥1,000,000</b> の仮想資金でいますぐ体験。
+            負けても失うのは“仮想”のお金だけ。気が済むまで、何度でも練習できます。
+          </p>
+          <div class="hero-ctas">
+            <a href="the-option.html" class="btn-primary lg">
+              無料でデモを始める
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"></path></svg>
+            </a>
+            <a href="#platform" class="btn-ghost" style="padding:14px 22px;font-size:15px;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 3l14 9-14 9V3z" fill="currentColor"></path></svg>
+              デモ画面を見る
+            </a>
+          </div>
+          <div class="hero-trust">
+            <div class="item">
+              <span class="v">¥0</span>
+              <span class="l">入金不要・口座維持費なし</span>
+            </div>
+            <div class="sep"></div>
+            <div class="item">
+              <span class="v">¥1,000,000</span>
+              <span class="l">デモ口座の仮想残高</span>
+            </div>
+            <div class="sep"></div>
+            <div class="item">
+              <span class="v">無期限</span>
+              <span class="l">期限なし・リセット自由</span>
+            </div>
+            <div class="sep"></div>
+            <div class="item">
+              <span class="v">30秒</span>
+              <span class="l">登録から取引開始まで</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hero device mockup -->
+        <div class="hero-device">
+          <div class="float-stat fs-1">
+            <div class="icon up">▲</div>
+            <div class="text">
+              <span class="t">+¥18,800</span>
+              <span class="s">USD/JPY · HIGH · 60s</span>
+            </div>
+          </div>
+          <div class="float-stat fs-2">
+            <div class="icon gold">¥</div>
+            <div class="text">
+              <span class="t">¥1,000,000</span>
+              <span class="s">仮想資金チャージ済み</span>
+            </div>
+          </div>
+          <div class="frame">
+            <div class="frame-top">
+              <div class="lights"><span></span><span></span><span></span></div>
+              <div class="url">
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="11" width="16" height="10" rx="2"></rect><path d="M8 11V8a4 4 0 0 1 8 0v3"></path></svg>
+                app.theoption.com/demo
+              </div>
+            </div>
+            <div class="device-body">
+              <div class="top-row">
+                <div class="brand-mini"><span class="opt">the</span><b>option</b></div>
+                <span class="kpi">仮想残高 <b>¥1,000,000</b></span>
+                <span class="kpi kpi-pnl">本日 <b>+¥24,200</b></span>
+                <span class="pill pill-demo">DEMO</span>
+              </div>
+              <div class="rail">
+                <div class="item active"><div><div class="l">USD/JPY</div><div class="v">156.234</div></div><div class="c up">+0.08%</div></div>
+                <div class="item"><div><div class="l">EUR/USD</div><div class="v">1.0846</div></div><div class="c down">−0.04%</div></div>
+                <div class="item"><div><div class="l">BTC/USD</div><div class="v">71,240</div></div><div class="c up">+1.24%</div></div>
+                <div class="item"><div><div class="l">XAU/USD</div><div class="v">2,342.6</div></div><div class="c up">+0.41%</div></div>
+                <div class="item"><div><div class="l">N225</div><div class="v">38,420</div></div><div class="c up">+0.82%</div></div>
+                <div class="item"><div><div class="l">ETH/USD</div><div class="v">3,812</div></div><div class="c up">+2.14%</div></div>
+                <div class="item"><div><div class="l">GBP/JPY</div><div class="v">198.34</div></div><div class="c down">−0.12%</div></div>
+              </div>
+              <div class="chart-area">
+                <canvas id="hero-chart"></canvas>
+                <div class="demo-watermark">DEMO</div>
+                <div class="price-tag" id="hero-price-tag" style="top:50%;">156.234</div>
+              </div>
+              <div class="panel">
+                <div>
+                  <div class="lbl">投資額（仮想）</div>
+                  <div class="val">¥10,000</div>
+                </div>
+                <div>
+                  <div class="lbl">判定時間</div>
+                  <div class="row">
+                    <button>30s</button>
+                    <button class="active">1m</button>
+                    <button>5m</button>
+                  </div>
+                </div>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:auto;">
+                  <div class="hi">▲ HIGH</div>
+                  <div class="lo">▼ LOW</div>
+                </div>
+              </div>
+              <div class="bottom-row">
+                <span class="chip">DEMO LIVE</span>
+                <span class="stat">保有 <b>2</b></span>
+                <span class="stat">勝率 <b>80%</b></span>
+                <span class="stat">ペイアウト <b style="color:var(--gold);">+88%</b></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ LOGO STRIP -->
+  <div class="logo-strip">
+    <div class="container">
+      <div class="lbl">数百万のトレーダーが、まずはデモから始めています — メディア掲載</div>
+      <div class="row">
+        <span class="logo">📰 Bloomberg JP</span>
+        <span class="logo">📈 Forbes Asia</span>
+        <span class="logo">日 日経マネー</span>
+        <span class="logo">★ ZAi 投資</span>
+        <span class="logo">◎ ダイヤモンド ZAi</span>
+        <span class="logo">⚡ FX Watcher</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================ DEMO HERO CARD -->
+  <section class="campaign" id="demo">
+    <div class="campaign-grid"></div>
+    <div class="container">
+      <div class="cb-card reveal">
+        <span class="kicker"><span class="dot"></span>無料デモ口座 — 今すぐ開設</span>
+        <h2 class="cb-headline">
+          <span class="big"><span class="yen">¥</span>1,000,000</span>
+          <span class="unit">仮想資金</span>
+        </h2>
+        <p class="cb-headline" style="font-size:clamp(20px,3vw,30px);margin-top:4px;">0円ではじめる、リアルなトレード体験。</p>
+        <p class="cb-sub">
+          デモ口座には <b>¥1,000,000 の仮想資金を即チャージ</b>。本番と同じ 50+ 銘柄・同じチャート・
+          同じ約定スピードを、<b>ノーリスクで好きなだけ</b>。残高が減ってもワンタップでリセット。
+          入金も、口座への課金も、一切ありません。
+        </p>
+
+        <div class="cb-actions">
+          <a href="the-option.html" class="btn-primary lg">
+            無料でデモを始める
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"></path></svg>
+          </a>
+          <a href="#how" class="btn-ghost" style="padding:14px 22px;font-size:15px;">取引の流れを見る</a>
+        </div>
+        <div class="cb-note">入金不要 · クレジットカード登録不要 · 利用期限なし</div>
+
+        <!-- Steps -->
+        <div class="cb-steps">
+          <div class="cb-step">
+            <div class="n">1</div>
+            <h4>メールで登録（30秒）</h4>
+            <p>必要なのはメールアドレスとパスワードだけ。本人確認書類も、入金も、クレジットカードも不要。最短 30 秒でデモ口座が完成します。</p>
+            <div class="arrow"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"></path></svg></div>
+          </div>
+          <div class="cb-step">
+            <div class="n">2</div>
+            <h4>¥1,000,000 が即チャージ</h4>
+            <p>登録した瞬間、デモ口座に仮想資金 ¥1,000,000 が自動で入金されます。残高が減ってもいつでもリセット可能。何度でも、やり直せます。</p>
+            <div class="arrow"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"></path></svg></div>
+          </div>
+          <div class="cb-step">
+            <div class="n">3</div>
+            <h4>本番と同じ画面で取引</h4>
+            <p>リアルタイムのマーケットデータで、本番とまったく同じ操作感。HIGH / LOW を選ぶだけ。失敗してもリスクゼロだから、思いきり練習できます。</p>
+          </div>
+        </div>
+
+        <!-- Demo spec -->
+        <div class="cb-terms">
+          <div class="terms-head">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"></circle><path d="M12 8h.01M11 12h1v4h1"></path></svg>
+            デモ口座スペック
+          </div>
+          <div class="terms-grid">
+            <div class="trow"><span class="k">仮想残高</span><span class="v gold">¥1,000,000</span></div>
+            <div class="trow"><span class="k">利用料</span><span class="v">無料</span></div>
+            <div class="trow"><span class="k">利用期間</span><span class="v">無期限</span></div>
+            <div class="trow"><span class="k">初回入金</span><span class="v">不要</span></div>
+            <div class="trow"><span class="k">残高リセット</span><span class="v">いつでも可能</span></div>
+            <div class="trow"><span class="k">マーケット</span><span class="v">本番と同一</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ WHY DEMO / FEATURES -->
+  <section class="section" id="why">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="section-tag"><span class="num">01</span>WHY DEMO</span>
+        <h2>デモなのに、<em>本番そのもの</em>。</h2>
+        <p class="section-lead">
+          “お試し版”ではありません。ペイアウトも、約定スピードも、銘柄数も、本番とまったく同じ。
+          違うのは、使っているお金が仮想であることだけ。だから、ノーリスクでガチの練習ができます。
+        </p>
+      </div>
+      <div class="features">
+        <div class="feature f-1 big reveal">
+          <div class="ic">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 18 9 12l4 4 8-10"></path><path d="M14 6h7v7"></path></svg>
+          </div>
+          <span class="num">/ 01</span>
+          <h3>本番と <span class="gold mono">1ミリ</span>も変わらない。<br>ペイアウトも最大 95%。</h3>
+          <p>デモだからといって性能は落としません。最大ペイアウト 95%、ミリ秒精度のチャート、50+ 銘柄。本番とまったく同一スペックを、仮想資金でそのまま体感できます。</p>
+          <div class="visual" id="payout-visual">
+            <div style="display:flex;align-items:flex-end;justify-content:space-around;height:100%;padding:14px;gap:8px;">
+              <div style="display:flex;flex-direction:column;align-items:center;gap:6px;flex:1;height:100%;justify-content:flex-end;">
+                <span style="font-size:13px;color:var(--fg-2);font-family:var(--font-mono);">78%</span>
+                <div style="height:54%;width:100%;background:linear-gradient(180deg,#00e08a,#00b870);border-radius:6px 6px 0 0;"></div>
+                <span style="font-size:10px;color:var(--fg-3);font-family:var(--font-mono);">他社A</span>
+              </div>
+              <div style="display:flex;flex-direction:column;align-items:center;gap:6px;flex:1;height:100%;justify-content:flex-end;">
+                <span style="font-size:13px;color:var(--fg-2);font-family:var(--font-mono);">82%</span>
+                <div style="height:62%;width:100%;background:linear-gradient(180deg,#00e08a,#00b870);border-radius:6px 6px 0 0;"></div>
+                <span style="font-size:10px;color:var(--fg-3);font-family:var(--font-mono);">他社B</span>
+              </div>
+              <div style="display:flex;flex-direction:column;align-items:center;gap:6px;flex:1;height:100%;justify-content:flex-end;position:relative;">
+                <div style="position:absolute;top:-2px;right:-2px;background:var(--gold);color:#1a1206;font-size:9px;padding:2px 5px;border-radius:3px;font-weight:700;letter-spacing:0.08em;">DEMO OK</div>
+                <span style="font-size:13px;color:var(--gold);font-family:var(--font-mono);font-weight:600;">95%</span>
+                <div style="height:95%;width:100%;background:linear-gradient(180deg,#f5c542,#b8852a);border-radius:6px 6px 0 0;box-shadow:0 0 16px rgba(245,197,66,0.4);"></div>
+                <span style="font-size:10px;color:var(--gold);font-family:var(--font-mono);font-weight:600;">theoption</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="feature f-2 reveal">
+          <div class="ic">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+          </div>
+          <span class="num">/ 02</span>
+          <h3>仮想資金 <span class="gold mono">¥1,000,000</span><br>本番さながらのロットで。</h3>
+          <p>小さすぎる残高では練習になりません。¥1,000,000 の仮想資金で、本番と同じ感覚の取引量を経験。資金管理の練習までしっかりできます。</p>
+        </div>
+
+        <div class="feature f-3 reveal">
+          <div class="ic">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m12 2 2.4 6.6L21 11l-6.6 2.4L12 20l-2.4-6.6L3 11l6.6-2.4z" fill="currentColor"></path></svg>
+          </div>
+          <span class="num">/ 03</span>
+          <h3>AI シグナルも<br>デモで使い放題。</h3>
+          <p>40億件の価格データで学習した AI シグナル v2.0 も、デモで制限なく利用可能。本番に進む前に、ツールの使いこなしまで練習できます。</p>
+        </div>
+
+        <div class="feature f-4 reveal">
+          <div class="ic">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"></path><path d="M3 3v5h5"></path></svg>
+          </div>
+          <span class="num">/ 04</span>
+          <h3>いつでも残高リセット。<br>失敗を恐れず、何度でも。</h3>
+          <p>仮想残高が減っても、ワンタップで ¥1,000,000 にリセット。大胆な戦略も、新しい手法も、ノーリスクで好きなだけ試せます。</p>
+        </div>
+
+        <div class="feature f-5 reveal">
+          <div class="ic">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"></path></svg>
+          </div>
+          <span class="num">/ 05</span>
+          <h3>登録 30 秒・入金不要。<br>メールアドレスだけ。</h3>
+          <p>本人確認も、クレジットカードも、初回入金も一切不要。メールアドレスとパスワードを入れるだけで、すぐにデモ取引を開始できます。</p>
+        </div>
+
+        <div class="feature f-6 reveal">
+          <div class="ic">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg>
+          </div>
+          <span class="num">/ 06</span>
+          <h3>無期限・全機能開放。<br>気が済むまで。</h3>
+          <p>お試し期間のような制限はありません。期限なし・全機能開放で、自信がつくまでじっくり練習。準備が整ったら、そのまま本番口座へ。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ PLATFORM SHOWCASE -->
+  <section class="section alt" id="platform">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="section-tag"><span class="num">02</span>PLATFORM</span>
+        <h2>デモも本番も、<br>画面はひとつ。</h2>
+        <p class="section-lead">
+          デモで覚えた操作は、そのまま本番で通用します。高速・低遅延の独自取引エンジンと、
+          WebSocket による 50ms 以下のティック更新。デモでも、すべてが常に最新。
+        </p>
+      </div>
+
+      <div class="showcase-stack reveal">
+        <!-- Desktop browser mockup with embedded trading screen -->
+        <div class="showcase-desktop">
+          <div class="chrome">
+            <div class="lights"><span></span><span></span><span></span></div>
+            <div class="url">app.theoption.com/demo/USDJPY</div>
+            <div style="margin-left:auto;display:flex;gap:4px;">
+              <span style="width:11px;height:11px;border-radius:2px;border:1px solid var(--line-strong);"></span>
+              <span style="width:11px;height:11px;border-radius:2px;border:1px solid var(--line-strong);"></span>
+              <span style="width:11px;height:11px;border-radius:2px;border:1px solid var(--line-strong);"></span>
+            </div>
+          </div>
+          <div class="img-area">
+            <img src="demo-trade.png" alt="theoption デモ取引画面" style="width:100%;height:100%;object-fit:cover;object-position:top left;display:block;">
+            <span class="demo-ribbon">DEMO</span>
+          </div>
+        </div>
+
+        <!-- iPhone mockup -->
+        <div class="showcase-mobile">
+          <div class="iphone">
+            <div class="screen">
+              <!-- Status bar -->
+              <div style="display:flex;justify-content:space-between;padding:18px 26px 0;font-family:var(--font-mono);font-size:13px;color:var(--fg-0);">
+                <span>22:38</span>
+                <span style="display:inline-flex;gap:5px;align-items:center;">
+                  <span style="display:inline-block;width:18px;height:10px;border:1px solid var(--fg-0);border-radius:3px;position:relative;"><span style="position:absolute;inset:1px;background:var(--fg-0);border-radius:1px;width:80%;"></span></span>
+                </span>
+              </div>
+              <!-- Mobile screen content -->
+              <div style="padding:36px 18px 18px;display:flex;flex-direction:column;gap:14px;">
+                <div style="display:flex;justify-content:space-between;align-items:center;">
+                  <div style="font-size:13px;color:var(--fg-2);">USD/JPY</div>
+                  <div style="font-size:11px;padding:3px 7px;border-radius:999px;background:rgba(245,197,66,0.14);color:var(--gold);border:1px solid var(--gold);font-family:var(--font-mono);">DEMO</div>
+                </div>
+                <div style="font-family:var(--font-mono);font-size:32px;color:var(--up);font-weight:500;letter-spacing:-0.02em;">156.234</div>
+                <div style="font-family:var(--font-mono);font-size:11px;color:var(--up);">▲ 0.184 (+0.12%)</div>
+                <!-- Mini chart -->
+                <div style="height:140px;background:var(--bg-0);border-radius:8px;border:1px solid var(--line);position:relative;overflow:hidden;">
+                  <canvas id="mobile-chart" style="width:100%;height:100%;display:block;"></canvas>
+                </div>
+                <!-- Expiry -->
+                <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:6px;">
+                  <div style="padding:10px 0;text-align:center;font-family:var(--font-mono);font-size:13px;border:1px solid var(--line);border-radius:6px;color:var(--fg-1);">30s</div>
+                  <div style="padding:10px 0;text-align:center;font-family:var(--font-mono);font-size:13px;border:1px solid var(--gold);background:var(--bg-3);border-radius:6px;color:var(--gold);">1m</div>
+                  <div style="padding:10px 0;text-align:center;font-family:var(--font-mono);font-size:13px;border:1px solid var(--line);border-radius:6px;color:var(--fg-1);">5m</div>
+                </div>
+                <!-- Amount -->
+                <div style="background:var(--bg-0);border:1px solid var(--line);border-radius:8px;padding:12px;text-align:center;">
+                  <div style="font-size:10px;color:var(--fg-3);letter-spacing:0.08em;">投資額（仮想）</div>
+                  <div style="font-family:var(--font-mono);font-size:22px;color:var(--fg-0);margin-top:2px;">¥10,000</div>
+                </div>
+                <!-- Big buttons -->
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:auto;">
+                  <div style="background:var(--up);color:#03110a;text-align:center;padding:16px 0;border-radius:10px;font-weight:700;font-size:15px;box-shadow:0 8px 24px -8px rgba(0,224,138,0.6);">▲ HIGH</div>
+                  <div style="background:var(--down);color:#1c0510;text-align:center;padding:16px 0;border-radius:10px;font-weight:700;font-size:15px;box-shadow:0 8px 24px -8px rgba(255,59,107,0.6);">▼ LOW</div>
+                </div>
+                <!-- Home indicator -->
+                <div style="height:5px;width:36%;background:var(--fg-1);border-radius:3px;margin:8px auto 0;"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stats row -->
+      <div class="stats reveal" style="margin-top:80px;">
+        <div class="stat-cell gold">
+          <div class="v">¥<span class="count-up" data-target="1000000">1,000,000</span></div>
+          <div class="l">デモ口座の仮想残高（即チャージ）</div>
+        </div>
+        <div class="stat-cell green">
+          <div class="v">¥<span class="count-up" data-target="0">0</span></div>
+          <div class="l">利用料・入金額（ずっと無料）</div>
+        </div>
+        <div class="stat-cell">
+          <div class="v"><span class="count-up" data-target="50" data-suffix="+">50+</span></div>
+          <div class="l">デモで練習できる銘柄数</div>
+        </div>
+        <div class="stat-cell">
+          <div class="v"><span class="count-up" data-target="30" data-suffix="秒">30秒</span></div>
+          <div class="l">登録から取引開始まで</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ ASSETS -->
+  <section class="section" id="assets">
+    <div class="container">
+      <div class="section-head reveal" style="display:flex;justify-content:space-between;align-items:flex-end;max-width:none;gap:40px;">
+        <div style="max-width:640px;">
+          <span class="section-tag"><span class="num">03</span>MARKETS</span>
+          <h2>50+ 銘柄、<em>すべてデモ</em>で。</h2>
+          <p class="section-lead">FX、暗号資産、指数、商品。本番で取引できる全銘柄を、仮想資金でそのまま練習できます。</p>
+        </div>
+        <a href="the-option.html" class="btn-ghost">デモで全銘柄を試す →</a>
+      </div>
+
+      <div class="asset-grid reveal">
+        <div class="ag-card">
+          <div class="head"><span class="name">USD/JPY</span><span class="cat">FX</span></div>
+          <div class="row"><span class="px">156.234</span><span class="chg up">+0.08%</span></div>
+          <canvas class="spark" data-trend="1"></canvas>
+          <div class="foot"><span class="l">ペイアウト</span><span class="payout">+88%</span></div>
+        </div>
+        <div class="ag-card">
+          <div class="head"><span class="name">EUR/USD</span><span class="cat">FX</span></div>
+          <div class="row"><span class="px">1.0846</span><span class="chg down">−0.04%</span></div>
+          <canvas class="spark" data-trend="-1"></canvas>
+          <div class="foot"><span class="l">ペイアウト</span><span class="payout">+86%</span></div>
+        </div>
+        <div class="ag-card">
+          <div class="head"><span class="name">BTC/USD</span><span class="cat">CRYPTO</span></div>
+          <div class="row"><span class="px">71,240</span><span class="chg up">+1.24%</span></div>
+          <canvas class="spark" data-trend="2"></canvas>
+          <div class="foot"><span class="l">ペイアウト</span><span class="payout">+78%</span></div>
+        </div>
+        <div class="ag-card">
+          <div class="head"><span class="name">XAU/USD</span><span class="cat">COMMODITY</span></div>
+          <div class="row"><span class="px">2,342.6</span><span class="chg up">+0.41%</span></div>
+          <canvas class="spark" data-trend="1"></canvas>
+          <div class="foot"><span class="l">ペイアウト</span><span class="payout">+84%</span></div>
+        </div>
+        <div class="ag-card">
+          <div class="head"><span class="name">N225</span><span class="cat">INDEX</span></div>
+          <div class="row"><span class="px">38,420</span><span class="chg up">+0.82%</span></div>
+          <canvas class="spark" data-trend="1.5"></canvas>
+          <div class="foot"><span class="l">ペイアウト</span><span class="payout">+80%</span></div>
+        </div>
+        <div class="ag-card">
+          <div class="head"><span class="name">ETH/USD</span><span class="cat">CRYPTO</span></div>
+          <div class="row"><span class="px">3,812.4</span><span class="chg up">+2.14%</span></div>
+          <canvas class="spark" data-trend="2.5"></canvas>
+          <div class="foot"><span class="l">ペイアウト</span><span class="payout">+76%</span></div>
+        </div>
+        <div class="ag-card">
+          <div class="head"><span class="name">GBP/JPY</span><span class="cat">FX</span></div>
+          <div class="row"><span class="px">198.34</span><span class="chg down">−0.12%</span></div>
+          <canvas class="spark" data-trend="-0.8"></canvas>
+          <div class="foot"><span class="l">ペイアウト</span><span class="payout">+84%</span></div>
+        </div>
+        <div class="ag-card">
+          <div class="head"><span class="name">SPX500</span><span class="cat">INDEX</span></div>
+          <div class="row"><span class="px">5,286.4</span><span class="chg up">+0.27%</span></div>
+          <canvas class="spark" data-trend="0.9"></canvas>
+          <div class="foot"><span class="l">ペイアウト</span><span class="payout">+82%</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ HOW IT WORKS -->
+  <section class="section alt" id="how">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="section-tag"><span class="num">04</span>HOW IT WORKS</span>
+        <h2>デモで、<em>この流れ</em>を体に覚えさせる。</h2>
+        <p class="section-lead">操作はたった 3 ステップ。ノーリスクの仮想資金で、本番とまったく同じ取引フローを何度でも練習できます。</p>
+      </div>
+
+      <div class="steps reveal">
+        <div class="step">
+          <div class="n">/ STEP 01</div>
+          <h3>銘柄と方向を選ぶ。</h3>
+          <p>FX、暗号資産、指数から選択。価格チャートと AI シグナルを見て、上昇（HIGH）か下降（LOW）かを予測します。間違えても、減るのは仮想残高だけ。</p>
+          <div class="visual" style="display:flex;align-items:center;justify-content:center;gap:14px;padding:20px;">
+            <div style="background:var(--up);color:#03110a;padding:14px 22px;border-radius:8px;font-weight:700;font-size:18px;box-shadow:0 8px 20px -6px rgba(0,224,138,0.6);">▲ HIGH</div>
+            <span style="color:var(--fg-3);font-family:var(--font-mono);">or</span>
+            <div style="background:var(--bg-2);color:var(--fg-2);padding:14px 22px;border-radius:8px;font-weight:700;font-size:18px;border:1px solid var(--line-strong);">▼ LOW</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="n">/ STEP 02</div>
+          <h3>判定時間と金額を設定。</h3>
+          <p>30秒・1分・3分・5分・15分・1時間から判定時間を選択。仮想資金なら ¥500 から ¥1,000,000 まで、金額を気にせず練習できます。</p>
+          <div class="visual" style="padding:18px;display:grid;grid-template-columns:repeat(3,1fr);gap:8px;align-content:center;">
+            <div style="padding:10px 0;text-align:center;font-family:var(--font-mono);font-size:13px;border:1px solid var(--line);border-radius:5px;color:var(--fg-2);">30s</div>
+            <div style="padding:10px 0;text-align:center;font-family:var(--font-mono);font-size:13px;border:1px solid var(--gold);background:rgba(245,197,66,0.1);color:var(--gold);border-radius:5px;">1m</div>
+            <div style="padding:10px 0;text-align:center;font-family:var(--font-mono);font-size:13px;border:1px solid var(--line);border-radius:5px;color:var(--fg-2);">5m</div>
+            <div style="grid-column:1/-1;padding:12px;background:var(--bg-1);border:1px solid var(--line);border-radius:6px;display:flex;justify-content:space-between;align-items:baseline;">
+              <span style="font-size:10px;color:var(--fg-3);">投資額（仮想）</span>
+              <span style="font-family:var(--font-mono);font-size:18px;color:var(--fg-0);">¥10,000</span>
+            </div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="n">/ STEP 03</div>
+          <h3>結果を見て、振り返る。</h3>
+          <p>判定時刻に予測が当たれば、仮想資金が最大 +95%。勝っても負けてもノーリスクだから、結果を冷静に分析して、自分の手法を磨けます。</p>
+          <div class="visual" style="padding:18px;display:flex;flex-direction:column;justify-content:center;gap:8px;">
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:10px;background:var(--bg-1);border:1px solid var(--line);border-radius:6px;">
+              <span style="font-family:var(--font-mono);font-size:12px;color:var(--fg-1);">USD/JPY ▲HIGH</span>
+              <span style="font-size:11px;padding:3px 8px;border-radius:999px;background:rgba(0,224,138,0.14);color:var(--up);border:1px solid rgba(0,224,138,0.4);font-weight:600;font-family:var(--font-mono);">WIN</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:10px;background:var(--bg-1);border:1px solid var(--line);border-radius:6px;">
+              <span style="font-family:var(--font-mono);font-size:12px;color:var(--fg-1);">仮想利益</span>
+              <span style="font-family:var(--font-mono);font-size:18px;color:var(--up);font-weight:600;">+¥8,800</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="text-align:center;margin-top:48px;">
+        <a href="the-option.html" class="btn-primary lg">
+          この流れを無料デモで試す
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"></path></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ DEMO = SAFE -->
+  <section class="section" id="trust">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="section-tag"><span class="num">05</span>RISK-FREE</span>
+        <h2>デモだから、<br><em>こわくない</em>。</h2>
+      </div>
+
+      <div class="trust-row">
+        <div class="trust-points reveal">
+          <div class="trust-point">
+            <div class="ic">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+            </div>
+            <div>
+              <h3>入金不要 — 金銭リスクは完全ゼロ</h3>
+              <p>デモで使うのは仮想資金だけ。あなたのお金は 1 円も動きません。どれだけ取引しても、実際の損失は発生しません。</p>
+            </div>
+          </div>
+          <div class="trust-point">
+            <div class="ic">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="M3 10h18"></path></svg>
+            </div>
+            <div>
+              <h3>クレジットカード登録なし</h3>
+              <p>カード番号も口座情報も不要。「気づいたら課金されていた」ということは一切ありません。必要なのはメールアドレスだけです。</p>
+            </div>
+          </div>
+          <div class="trust-point">
+            <div class="ic">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 18 9 12l4 4 8-10"></path><path d="M14 6h7v7"></path></svg>
+            </div>
+            <div>
+              <h3>本番と同一環境だから、正確に練習できる</h3>
+              <p>マーケットデータも約定スピードもペイアウトも本番と同じ。デモで身につけた感覚や手法は、そのまま本番で通用します。</p>
+            </div>
+          </div>
+          <div class="trust-point">
+            <div class="ic">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"></path></svg>
+            </div>
+            <div>
+              <h3>自信がついたら、そのまま本番口座へ</h3>
+              <p>デモで十分に練習したら、ワンクリックで本番口座へ移行できます。準備ができるまで、焦る必要はありません。</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="trust-card reveal">
+          <span class="label">REGULATED & SECURE</span>
+          <div class="seal">IFSC<br>2019</div>
+          <h3>本番に進んでも、安心の体制</h3>
+          <p>デモで練習したあと本番口座を開設しても、資金は分別管理・銀行水準のセキュリティで保護。IFSC 規制下で運営しています。</p>
+          <div class="row">
+            <div class="item">
+              <div class="l">デモ仮想残高</div>
+              <div class="v">¥1,000,000</div>
+            </div>
+            <div class="item">
+              <div class="l">デモ利用料</div>
+              <div class="v">無料・無期限</div>
+            </div>
+            <div class="item">
+              <div class="l">ライセンス番号</div>
+              <div class="v">IFSC/60/468/TS/19</div>
+            </div>
+            <div class="item">
+              <div class="l">資金管理</div>
+              <div class="v">分別保管 (Tier-1)</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ QUOTES -->
+  <section class="section alt">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="section-tag"><span class="num">06</span>TRADERS' VOICE</span>
+        <h2>みんな、<em>デモから</em>始めた。</h2>
+      </div>
+      <div class="quotes reveal">
+        <div class="quote">
+          <div class="stars">★ ★ ★ ★ ★</div>
+          <p>「いきなり本番はこわかったので、まずデモで 2 週間練習しました。仮想資金が ¥1,000,000 もあるので、本番と同じ感覚でロットを試せたのが大きかったです。」</p>
+          <div class="who">
+            <div class="av">SK</div>
+            <div>
+              <div class="nm">佐藤 健一</div>
+              <div class="ti">トレーダー歴 1 年 · 東京</div>
+            </div>
+          </div>
+        </div>
+        <div class="quote">
+          <div class="stars">★ ★ ★ ★ ★</div>
+          <p>「入金もカード登録も不要で、メールだけですぐ始められたのが驚き。残高をリセットしながら、いろんな判定時間を気軽に試せました。完全に無料なのもうれしい。」</p>
+          <div class="who">
+            <div class="av">MA</div>
+            <div>
+              <div class="nm">松田 麻衣</div>
+              <div class="ti">デモで練習中 · 大阪</div>
+            </div>
+          </div>
+        </div>
+        <div class="quote">
+          <div class="stars">★ ★ ★ ★ ★</div>
+          <p>「デモの画面が本番とまったく同じなので、本番に移ってもまったく戸惑いませんでした。操作を体で覚えてから始められるのは、初心者には本当にありがたい。」</p>
+          <div class="who">
+            <div class="av">YT</div>
+            <div>
+              <div class="nm">高橋 雄太</div>
+              <div class="ti">兼業トレーダー · 福岡</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ FAQ -->
+  <section class="section" id="faq">
+    <div class="container">
+      <div class="section-head reveal" style="text-align:center;margin-left:auto;margin-right:auto;">
+        <span class="section-tag"><span class="num">07</span>FAQ</span>
+        <h2>デモ取引についての、よくあるご質問。</h2>
+      </div>
+      <div class="faq reveal">
+        <details class="faq-item" open="">
+          <summary>デモ口座は本当に無料ですか？</summary>
+          <div class="a">はい、完全無料です。利用料も、初回入金も、口座維持費も一切かかりません。クレジットカードの登録も不要なので、知らないうちに課金される心配もありません。メールアドレスとパスワードだけで、すぐに始められます。</div>
+        </details>
+        <details class="faq-item">
+          <summary>デモの仮想残高はいくらですか？リセットできますか？</summary>
+          <div class="a">デモ口座には ¥1,000,000 の仮想資金が自動でチャージされます。取引で残高が増減しても、いつでもワンタップで ¥1,000,000 にリセット可能。何度でも、ゼロからやり直せます。</div>
+        </details>
+        <details class="faq-item">
+          <summary>デモに利用期限はありますか？</summary>
+          <div class="a">いいえ、利用期限はありません。無期限・全機能開放でご利用いただけます。お試し期間のような制限は設けていないので、納得いくまでじっくり練習できます。</div>
+        </details>
+        <details class="faq-item">
+          <summary>デモと本番に違いはありますか？</summary>
+          <div class="a">使うお金が「仮想」か「実際の資金」かの違いだけです。マーケットデータ、約定スピード、ペイアウト率（最大95%）、取引できる 50+ 銘柄、AI シグナルなどの機能は、すべて本番とまったく同一です。だから、デモで身につけた感覚はそのまま本番で活きます。</div>
+        </details>
+        <details class="faq-item">
+          <summary>登録には何が必要ですか？</summary>
+          <div class="a">メールアドレスとパスワードのみです。本人確認書類のアップロードも、クレジットカードの登録も、初回入金も不要。最短 30 秒でデモ取引を開始できます。</div>
+        </details>
+        <details class="faq-item">
+          <summary>スマートフォンでもデモ取引できますか？</summary>
+          <div class="a">はい。iOS / Android のネイティブアプリ、およびブラウザ版のすべてでデモ取引に対応しています。PC で練習した内容を、外出先のスマホでそのまま続けることも可能です。</div>
+        </details>
+        <details class="faq-item">
+          <summary>デモから本番口座へはどうやって移行しますか？</summary>
+          <div class="a">十分に練習して自信がついたら、画面からワンクリックで本番口座の開設に進めます。デモと同じ ID をそのまま使えるので、操作に戸惑うことはありません。本番では実際の資金で取引するため、リスク管理にご注意ください。</div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ CTA -->
+  <section class="cta">
+    <div class="container">
+      <div class="cta-card reveal">
+        <span class="cta-cb-pill"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 3l14 9-14 9V3z" fill="currentColor"></path></svg>完全無料 · 入金不要 · 登録30秒</span>
+        <h2>今日から、<span class="gold">0円</span>で。<br>デモを始めよう。</h2>
+        <p>仮想資金 <b class="gold">¥1,000,000</b> でリスクゼロのトレード練習。メールアドレスだけで、いますぐ。やめたくなったら、ただ閉じるだけ。</p>
+        <div class="cta-actions">
+          <a href="the-option.html" class="btn-primary lg">
+            無料でデモを始める
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"></path></svg>
+          </a>
+          <a href="#demo" class="btn-ghost" style="padding:14px 22px;font-size:15px;">デモ口座スペックを見る</a>
+        </div>
+        <div class="cta-foot">入金不要 · クレジットカード登録なし · 利用期限なし</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="col footer-brand">
+          <a href="#" class="brand">
+            <span class="dot"></span>
+            <span><span class="opt">the</span><b>option</b></span>
+          </a>
+          <p>次世代のバイナリーオプション。まずはノーリスクの無料デモから。世界中のトレーダーに選ばれています。</p>
+          <div class="footer-social">
+            <a href="#" aria-label="X"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="m17 3-5.2 6.5L17.5 21H14l-3.6-5.5L5.5 21H2l5.5-7L2 3h3.5l3.2 4.8L13 3z"></path></svg></a>
+            <a href="#" aria-label="YouTube"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 0 1-10 10v-7l4-3-4-3V2a10 10 0 0 1 10 10z"></path></svg></a>
+            <a href="#" aria-label="Telegram"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="m21 4-3 16-5-5-3 3v-5l9-7-11 6-4-2z"></path></svg></a>
+            <a href="#" aria-label="LINE"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="14" rx="3"></rect><path d="m7 9 2 5 2-5M14 9v5h3M19 9v5"></path></svg></a>
+          </div>
+        </div>
+        <div class="col">
+          <h4>無料デモ</h4>
+          <a href="the-option.html">デモを始める</a>
+          <a href="#demo">デモ口座スペック</a>
+          <a href="#why">デモの特徴</a>
+          <a href="#how">取引の流れ</a>
+          <a href="#faq">よくある質問</a>
+        </div>
+        <div class="col">
+          <h4>プロダクト</h4>
+          <a href="#why">機能</a>
+          <a href="#platform">プラットフォーム</a>
+          <a href="#assets">銘柄一覧</a>
+          <a href="#">モバイルアプリ</a>
+          <a href="#">API</a>
+        </div>
+        <div class="col">
+          <h4>サポート</h4>
+          <a href="#">ヘルプセンター</a>
+          <a href="#">24/7 チャット</a>
+          <a href="#">取引ガイド</a>
+          <a href="#">用語集</a>
+          <a href="#">お問い合わせ</a>
+        </div>
+        <div class="col">
+          <h4>会社情報</h4>
+          <a href="#">会社概要</a>
+          <a href="#">規制・ライセンス</a>
+          <a href="#">セキュリティ</a>
+          <a href="#">プレスリリース</a>
+          <a href="#">採用情報</a>
+        </div>
+      </div>
+
+      <div class="footer-disclaim">
+        <b>デモ取引について：</b>デモ口座は、仮想資金を用いて取引を体験していただくための無料サービスです。デモ口座での取引結果は仮想のものであり、実際の損益は発生しません。デモ取引で得られた結果は、本番（リアル口座）での取引結果を保証・示唆するものではありません。マーケットデータは本番環境と同一のものを使用していますが、実際の約定とは異なる場合があります。<br><br>
+        <b>リスク開示：</b>本番（リアル口座）でのバイナリーオプション取引は元本を失うリスクを伴います。投資元本を超える損失は発生しませんが、投資した全額を失う可能性があります。取引を行う前に、ご自身の財務状況・投資経験・リスク許容度を十分にご検討ください。本サービスは、米国・カナダ・EU 加盟国・英国・イスラエル・北朝鮮など一部の国・地域の居住者にはご利用いただけません。当社は IFSC（国際金融サービス委員会、ベリーズ）のライセンス（IFSC/60/468/TS/19）のもとで運営しています。
+      </div>
+
+      <div class="footer-bottom">
+        <span>© 2026 The Option Trading Ltd. All rights reserved.</span>
+        <div class="links">
+          <a href="#">利用規約</a>
+          <a href="#">プライバシー</a>
+          <a href="#">Cookie</a>
+          <a href="#">AML / KYC</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+  <script>
+/* === Live mini-chart in hero device + ticker live updates === */
+
+(function () {
+  // ── Hero device mini chart ─────────────────────────────────────────────
+  function makeSeries(n, start, vol) {
+    const out = [];
+    let p = start;
+    for (let i = 0; i < n; i++) {
+      const o = p;
+      p = +(p + (Math.random() - 0.5) * vol).toFixed(3);
+      const h = Math.max(o, p) + Math.random() * vol * 0.4;
+      const l = Math.min(o, p) - Math.random() * vol * 0.4;
+      out.push({ o, h, l, c: p });
+    }
+    return out;
+  }
+
+  function drawChart(cvs, candles) {
+    const ctx = cvs.getContext("2d");
+    const dpr = window.devicePixelRatio || 1;
+    const w = cvs.clientWidth, h = cvs.clientHeight;
+    if (cvs.width !== w * dpr || cvs.height !== h * dpr) {
+      cvs.width = w * dpr; cvs.height = h * dpr;
+    }
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    ctx.clearRect(0, 0, w, h);
+
+    const padL = 8, padR = 50, padT = 14, padB = 14;
+    const innerW = w - padL - padR, innerH = h - padT - padB;
+
+    let min = Infinity, max = -Infinity;
+    for (const c of candles) { if (c.l < min) min = c.l; if (c.h > max) max = c.h; }
+    const pad = (max - min) * 0.15;
+    min -= pad; max += pad;
+
+    const xFor = (i) => padL + (i + 0.5) * (innerW / candles.length);
+    const yFor = (p) => padT + (1 - (p - min) / (max - min)) * innerH;
+
+    // grid
+    ctx.strokeStyle = "rgba(255,255,255,0.04)";
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    for (let i = 1; i < 5; i++) {
+      const y = padT + (i * innerH) / 5;
+      ctx.moveTo(padL, y); ctx.lineTo(padL + innerW, y);
+    }
+    ctx.stroke();
+
+    // candles
+    const cw = Math.max(1.5, Math.min(8, (innerW / candles.length) * 0.65));
+    for (let i = 0; i < candles.length; i++) {
+      const c = candles[i];
+      const x = xFor(i);
+      const isUp = c.c >= c.o;
+      ctx.strokeStyle = isUp ? "#00e08a" : "#ff3b6b";
+      ctx.fillStyle = isUp ? "#00e08a" : "#ff3b6b";
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      ctx.moveTo(x, yFor(c.h));
+      ctx.lineTo(x, yFor(c.l));
+      ctx.stroke();
+      const yO = yFor(c.o), yC = yFor(c.c);
+      ctx.fillRect(x - cw / 2, Math.min(yO, yC), cw, Math.max(1, Math.abs(yC - yO)));
+    }
+
+    // strike line
+    const strike = candles[Math.floor(candles.length * 0.55)].c;
+    ctx.strokeStyle = "rgba(245,197,66,0.7)";
+    ctx.setLineDash([3, 3]);
+    ctx.beginPath();
+    ctx.moveTo(padL, yFor(strike));
+    ctx.lineTo(padL + innerW, yFor(strike));
+    ctx.stroke();
+    ctx.setLineDash([]);
+
+    const lastY = yFor(candles[candles.length - 1].c);
+    return { lastY, last: candles[candles.length - 1].c };
+  }
+
+  function initHeroChart() {
+    const cvs = document.getElementById("hero-chart");
+    if (!cvs) return;
+    let candles = makeSeries(50, 156.234, 0.06);
+    const tag = document.getElementById("hero-price-tag");
+
+    const update = () => {
+      const last = candles[candles.length - 1];
+      const o = last.c;
+      const c = +(o + (Math.random() - 0.5) * 0.06).toFixed(3);
+      const h = Math.max(o, c) + Math.random() * 0.02;
+      const l = Math.min(o, c) - Math.random() * 0.02;
+      candles = [...candles.slice(-49), { o, h, l, c }];
+      const info = drawChart(cvs, candles);
+      if (tag) {
+        tag.textContent = info.last.toFixed(3);
+        tag.style.top = info.lastY + "px";
+      }
+    };
+    update();
+    setInterval(update, 900);
+    new ResizeObserver(() => drawChart(cvs, candles)).observe(cvs);
+  }
+
+  // ── Mobile preview chart ────────────────────────────────────────────────
+  function initMobileChart() {
+    const cvs = document.getElementById("mobile-chart");
+    if (!cvs) return;
+    let candles = makeSeries(40, 156.234, 0.08);
+    const update = () => {
+      const last = candles[candles.length - 1];
+      const o = last.c;
+      const c = +(o + (Math.random() - 0.5) * 0.08).toFixed(3);
+      const h = Math.max(o, c) + Math.random() * 0.03;
+      const l = Math.min(o, c) - Math.random() * 0.03;
+      candles = [...candles.slice(-39), { o, h, l, c }];
+      drawChart(cvs, candles);
+    };
+    update();
+    setInterval(update, 1100);
+  }
+
+  // ── Sparklines on asset cards ───────────────────────────────────────────
+  function drawSpark(cvs, points, color) {
+    const ctx = cvs.getContext("2d");
+    const dpr = window.devicePixelRatio || 1;
+    const w = cvs.clientWidth, h = cvs.clientHeight;
+    cvs.width = w * dpr; cvs.height = h * dpr;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    ctx.clearRect(0, 0, w, h);
+    let min = Math.min(...points), max = Math.max(...points);
+    const r = max - min || 1;
+    // area
+    const grad = ctx.createLinearGradient(0, 0, 0, h);
+    grad.addColorStop(0, color + "60");
+    grad.addColorStop(1, color + "00");
+    ctx.fillStyle = grad;
+    ctx.beginPath();
+    ctx.moveTo(0, h);
+    for (let i = 0; i < points.length; i++) {
+      const x = (i / (points.length - 1)) * w;
+      const y = h - ((points[i] - min) / r) * (h - 4) - 2;
+      ctx.lineTo(x, y);
+    }
+    ctx.lineTo(w, h);
+    ctx.closePath();
+    ctx.fill();
+    // line
+    ctx.strokeStyle = color;
+    ctx.lineWidth = 1.4;
+    ctx.beginPath();
+    for (let i = 0; i < points.length; i++) {
+      const x = (i / (points.length - 1)) * w;
+      const y = h - ((points[i] - min) / r) * (h - 4) - 2;
+      if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+    }
+    ctx.stroke();
+  }
+  function initSparklines() {
+    document.querySelectorAll(".spark").forEach((cvs) => {
+      const trend = parseFloat(cvs.dataset.trend) || 0;
+      const color = trend >= 0 ? "#00e08a" : "#ff3b6b";
+      const points = [];
+      let v = 50;
+      for (let i = 0; i < 30; i++) {
+        v += (Math.random() - 0.5) * 6 + (trend * 0.4);
+        points.push(v);
+      }
+      drawSpark(cvs, points, color);
+    });
+  }
+
+  // ── Ticker live updates ────────────────────────────────────────────────
+  function initTickerUpdates() {
+    const items = document.querySelectorAll(".ticker-item .px");
+    setInterval(() => {
+      items.forEach((el) => {
+        const v = parseFloat(el.dataset.v);
+        if (isNaN(v)) return;
+        const vol = parseFloat(el.dataset.vol) || 0.01;
+        const newV = v + (Math.random() - 0.5) * vol;
+        el.dataset.v = newV;
+        const digits = v > 1000 ? 1 : 3;
+        el.textContent = newV.toLocaleString(undefined, { minimumFractionDigits: digits, maximumFractionDigits: digits });
+      });
+    }, 1500);
+  }
+
+  // ── Scroll reveal ──────────────────────────────────────────────────────
+  function initReveal() {
+    // Mark body so CSS hides .reveal items only when JS is loaded — graceful
+    // degradation prevents content from staying invisible if JS fails.
+    document.body.classList.add("js-reveal-init");
+    const io = new IntersectionObserver((entries) => {
+      for (const e of entries) {
+        if (e.isIntersecting) {
+          e.target.classList.add("in");
+          io.unobserve(e.target);
+        }
+      }
+    }, { threshold: 0.1 });
+    document.querySelectorAll(".reveal").forEach((el) => io.observe(el));
+  }
+
+  // ── Stats count-up ─────────────────────────────────────────────────────
+  function initStats() {
+    const io = new IntersectionObserver((entries) => {
+      for (const e of entries) {
+        if (!e.isIntersecting) continue;
+        const el = e.target;
+        const target = parseFloat(el.dataset.target);
+        const decimals = parseInt(el.dataset.decimals || "0", 10);
+        const prefix = el.dataset.prefix || "";
+        const suffix = el.dataset.suffix || "";
+        let start = null;
+        const dur = 1400;
+        const step = (ts) => {
+          if (!start) start = ts;
+          const p = Math.min(1, (ts - start) / dur);
+          const ease = 1 - Math.pow(1 - p, 3);
+          const v = target * ease;
+          el.firstChild.nodeValue = prefix + v.toLocaleString(undefined, { minimumFractionDigits: decimals, maximumFractionDigits: decimals }) + suffix;
+          if (p < 1) requestAnimationFrame(step);
+        };
+        requestAnimationFrame(step);
+        io.unobserve(el);
+      }
+    }, { threshold: 0.4 });
+    document.querySelectorAll(".count-up").forEach((el) => io.observe(el));
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    initHeroChart();
+    initMobileChart();
+    initSparklines();
+    initTickerUpdates();
+    initReveal();
+    initStats();
+  });
+})();
+
+  </script>
+
+</body>
+</html>
