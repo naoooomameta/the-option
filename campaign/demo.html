@@ -3,15 +3,6 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>the option — 無料デモ取引｜¥1,000,000の仮想資金で今すぐ練習</title>
-  <meta name="theme-color" content="#06080f">
-  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="the option">
-  <meta property="og:title" content="the option — 無料デモ取引｜¥1,000,000の仮想資金で今すぐ練習">
-  <meta property="og:description" content="入金不要・登録最短30秒。the optionのバイナリーオプションを仮想資金¥1,000,000の無料デモで体験。本番と同じマーケット・同じ画面をノーリスクで、何度でも練習できます。">
-  <meta property="og:url" content="https://naoooomameta.github.io/the-option/campaign/demo.html">
-  <meta property="og:locale" content="ja_JP">
-  <meta name="twitter:card" content="summary">
   <meta name="description" content="入金不要・登録最短30秒。the optionのバイナリーオプションを仮想資金¥1,000,000の無料デモで体験。本番と同じマーケット・同じ画面をノーリスクで、何度でも練習できます。">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
@@ -1839,7 +1830,7 @@ body{ font-size:16px; line-height:1.62; text-rendering:optimizeLegibility; }
   border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
 .cmp-wrap { overflow-x:auto; -webkit-overflow-scrolling:touch; margin-top:40px;
   border-radius:16px; border:1px solid var(--surface-border); }
-.cmp { width:100%; border-collapse:collapse; min-width:560px; background:var(--surface);
+.cmp { width:100%; border-collapse:collapse; min-width:720px; background:var(--surface);
   backdrop-filter:var(--surface-blur); -webkit-backdrop-filter:var(--surface-blur); }
 .cmp th,.cmp td { padding:16px 18px; text-align:left; border-bottom:1px solid var(--surface-border); font-size:14.5px; }
 .cmp thead th { font-family:var(--font-display); font-weight:700; font-size:15px; color:var(--fg-1); background:rgba(255,255,255,0.02); }
@@ -1874,7 +1865,43 @@ body{ font-size:16px; line-height:1.62; text-rendering:optimizeLegibility; }
 /* Respect reduced-motion: keep toasts/sticky usable without animation */
 @media (prefers-reduced-motion: reduce){
   .sticky-cta,.activity-toast { transition:none; }
+  .exit-overlay.show,.exit-modal { animation:none; }
 }
+
+/* (1) First-view inline secondary CTA — subtle, under the rating */
+.hero-inline-cta { display:inline-flex; align-items:center; gap:7px; margin-top:14px;
+  font-size:14px; font-weight:700; color:var(--gold);
+  border-bottom:1px dashed rgba(245,197,66,0.5); padding-bottom:2px; }
+.hero-inline-cta:hover { color:#ffe9a8; border-bottom-color:var(--gold); text-decoration:none; }
+.hero-inline-cta .arrow { transition:transform .15s; }
+.hero-inline-cta:hover .arrow { transform:translateX(3px); }
+
+/* (3) Exit-intent modal (PC) */
+.exit-overlay { position:fixed; inset:0; z-index:200; display:none;
+  align-items:center; justify-content:center; padding:24px;
+  background:rgba(3,5,10,0.72); backdrop-filter:blur(6px); -webkit-backdrop-filter:blur(6px); }
+.exit-overlay.show { display:flex; animation:exit-fade .25s ease; }
+@keyframes exit-fade { from{opacity:0} to{opacity:1} }
+.exit-modal { position:relative; max-width:460px; width:100%;
+  background:linear-gradient(180deg, var(--bg-2), var(--bg-1));
+  border:1px solid rgba(245,197,66,0.3); border-radius:20px; padding:42px 34px 32px;
+  text-align:center; box-shadow:0 40px 100px -30px rgba(0,0,0,0.8), 0 0 0 1px rgba(255,255,255,0.04);
+  animation:exit-pop .3s cubic-bezier(.2,.9,.3,1.2); }
+@keyframes exit-pop { from{transform:translateY(16px) scale(.96); opacity:0} to{transform:none; opacity:1} }
+.exit-modal .x { position:absolute; top:14px; right:16px; width:30px; height:30px; border-radius:50%;
+  border:1px solid var(--line-strong); color:var(--fg-2); font-size:18px; line-height:1;
+  display:grid; place-items:center; }
+.exit-modal .x:hover { background:var(--bg-3); color:var(--fg-0); }
+.exit-modal .pill { display:inline-block; font-family:var(--font-mono); font-size:11px; letter-spacing:0.08em;
+  color:var(--gold); border:1px solid rgba(245,197,66,0.4); background:rgba(245,197,66,0.08);
+  padding:5px 12px; border-radius:999px; margin-bottom:16px; }
+.exit-modal h3 { font-family:var(--font-display); font-weight:800; letter-spacing:-0.02em;
+  font-size:clamp(24px,4vw,32px); line-height:1.18; margin:0 0 10px; color:var(--fg-0); }
+.exit-modal h3 .big { background:linear-gradient(120deg,#ffe9a8,var(--gold) 55%,#c8922a);
+  -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; color:transparent; }
+.exit-modal p { color:var(--fg-2); font-size:14.5px; margin:0 0 24px; line-height:1.65; }
+.exit-modal .btn-primary { width:100%; justify-content:center; }
+.exit-modal .foot { margin-top:14px; font-size:12px; color:var(--fg-3); font-family:var(--font-mono); }
 </style>
 </head>
 <body>
@@ -1990,6 +2017,10 @@ body{ font-size:16px; line-height:1.62; text-rendering:optimizeLegibility; }
             <span class="dot-sep"></span>
             <span class="ppl">本日 <b id="today-count">1,238</b> 人が無料デモを開始</span>
           </div>
+          <a href="../the-option.html" class="hero-inline-cta">
+            今すぐ無料で ¥1,000,000 を受け取る
+            <span class="arrow">→</span>
+          </a>
           <div class="hero-trust">
             <div class="item">
               <span class="v">¥0</span>
@@ -2181,17 +2212,17 @@ body{ font-size:16px; line-height:1.62; text-rendering:optimizeLegibility; }
       <div class="cmp-wrap reveal">
         <table class="cmp">
           <thead>
-            <tr><th class="feat">比較項目</th><th class="us">theoption デモ<span class="us-badge">おすすめ</span></th><th>一般的な他社デモ</th></tr>
+            <tr><th class="feat">比較項目</th><th class="us">theoption デモ<span class="us-badge">おすすめ</span></th><th>他社A（海外系BO）</th><th>他社B（国内系アプリ）</th></tr>
           </thead>
           <tbody>
-            <tr><td class="feat">仮想資金</td><td class="us">¥1,000,000</td><td class="them">¥10,000〜数万円</td></tr>
-            <tr><td class="feat">利用期間</td><td class="us">無期限</td><td class="them">7〜30日で失効</td></tr>
-            <tr><td class="feat">登録</td><td class="us">メールだけ・30秒</td><td class="them">本人確認・電話番号が必要</td></tr>
-            <tr><td class="feat">初回入金</td><td class="us"><span class="ic-yes">✓</span>不要</td><td class="them"><span class="ic-no">✕</span>あとで入金を要求されがち</td></tr>
-            <tr><td class="feat">機能</td><td class="us">全機能開放（AIシグナル含む）</td><td class="them">一部機能のみ</td></tr>
-            <tr><td class="feat">残高リセット</td><td class="us"><span class="ic-yes">✓</span>いつでも</td><td class="them"><span class="ic-no">✕</span>不可／回数制限</td></tr>
-            <tr><td class="feat">マーケット</td><td class="us">本番と同一・50+銘柄</td><td class="them">遅延あり・銘柄が少ない</td></tr>
-            <tr><td class="feat">料金</td><td class="us"><span class="ic-yes">✓</span>ずっと¥0</td><td class="them">隠れた条件がある場合も</td></tr>
+            <tr><td class="feat">仮想資金</td><td class="us">¥1,000,000</td><td class="them">¥10,000</td><td class="them">¥30,000</td></tr>
+            <tr><td class="feat">利用期間</td><td class="us">無期限</td><td class="them">7日で失効</td><td class="them">30日で失効</td></tr>
+            <tr><td class="feat">登録</td><td class="us">メールだけ・30秒</td><td class="them">本人確認が必要</td><td class="them">電話番号・SMS認証</td></tr>
+            <tr><td class="feat">初回入金</td><td class="us"><span class="ic-yes">✓</span>不要</td><td class="them"><span class="ic-no">✕</span>デモ後に要求</td><td class="them"><span class="ic-no">✕</span>一部機能は入金後</td></tr>
+            <tr><td class="feat">機能</td><td class="us">全機能開放（AI含む）</td><td class="them">一部のみ</td><td class="them">AIは本番のみ</td></tr>
+            <tr><td class="feat">残高リセット</td><td class="us"><span class="ic-yes">✓</span>いつでも</td><td class="them"><span class="ic-no">✕</span>不可</td><td class="them">1日1回まで</td></tr>
+            <tr><td class="feat">マーケット</td><td class="us">本番と同一・50+銘柄</td><td class="them">遅延あり</td><td class="them">銘柄20前後</td></tr>
+            <tr><td class="feat">料金</td><td class="us"><span class="ic-yes">✓</span>ずっと¥0</td><td class="them">無料（条件あり）</td><td class="them">無料</td></tr>
           </tbody>
         </table>
       </div>
@@ -2732,6 +2763,21 @@ body{ font-size:16px; line-height:1.62; text-rendering:optimizeLegibility; }
     <div class="tx"><div class="h"></div><div class="m"></div></div>
   </div>
 
+  <!-- ============================================================ EXIT-INTENT MODAL (CV) -->
+  <div class="exit-overlay" id="exit-overlay" aria-hidden="true">
+    <div class="exit-modal" role="dialog" aria-modal="true" aria-labelledby="exit-h">
+      <button class="x" id="exit-close" aria-label="閉じる">×</button>
+      <span class="pill">⏳ まだ間に合います</span>
+      <h3 id="exit-h">まだ <span class="big">¥1,000,000</span> を<br>受け取っていません。</h3>
+      <p>無料・入金不要・登録30秒。仮想資金 ¥1,000,000 を受け取って、<br>ノーリスクでデモ取引をいますぐ体験できます。</p>
+      <a href="../the-option.html" class="btn-primary lg">
+        無料で ¥1,000,000 を受け取る
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"></path></svg>
+      </a>
+      <div class="foot">クレジットカード不要 · いつでも閉じてOK</div>
+    </div>
+  </div>
+
   <!-- ============================================================ FOOTER -->
   <footer class="footer">
     <div class="container">
@@ -3083,6 +3129,53 @@ body{ font-size:16px; line-height:1.62; text-rendering:optimizeLegibility; }
     }, 4000);
   }
 
+  // ── (2) Hero headline A/B test — client-side 50/50 split, persisted ─────
+  function initABTest() {
+    var h1 = document.querySelector(".hero h1");
+    if (!h1) return;
+    var v = null;
+    try { v = localStorage.getItem("ab_hero"); } catch (e) {}
+    if (v !== "A" && v !== "B") {
+      v = Math.random() < 0.5 ? "A" : "B";
+      try { localStorage.setItem("ab_hero", v); } catch (e) {}
+    }
+    if (v === "B") {
+      h1.innerHTML = '<span class="accent">ノーリスク</span>で、<br>本番を丸ごと体験。<br>仮想資金 <span class="cb-amount">¥1,000,000</span>。';
+    }
+    document.documentElement.setAttribute("data-ab-hero", v);
+    window.__abHero = v; // expose for analytics wiring (e.g. GA event)
+  }
+  initABTest(); // run immediately — this script sits after the hero, so no flash
+
+  // ── (3) Exit-intent modal (PC only, once per session) ───────────────────
+  function initExitIntent() {
+    var ov = document.getElementById("exit-overlay");
+    if (!ov) return;
+    var isTouch = ("ontouchstart" in window) || navigator.maxTouchPoints > 0;
+    if (isTouch || window.innerWidth < 760) return; // desktop only
+    var KEY = "exitShown";
+    try { if (sessionStorage.getItem(KEY) === "1") return; } catch (e) {}
+    function open() {
+      try {
+        if (sessionStorage.getItem(KEY) === "1") return;
+        sessionStorage.setItem(KEY, "1");
+      } catch (e) {}
+      ov.classList.add("show");
+      ov.setAttribute("aria-hidden", "false");
+    }
+    function close() {
+      ov.classList.remove("show");
+      ov.setAttribute("aria-hidden", "true");
+    }
+    document.addEventListener("mouseout", function (e) {
+      if (e.relatedTarget == null && e.clientY <= 0) open();
+    });
+    var cl = document.getElementById("exit-close");
+    if (cl) cl.addEventListener("click", close);
+    ov.addEventListener("click", function (e) { if (e.target === ov) close(); });
+    document.addEventListener("keydown", function (e) { if (e.key === "Escape") close(); });
+  }
+
   document.addEventListener("DOMContentLoaded", () => {
     initHeroChart();
     initMobileChart();
@@ -3093,6 +3186,7 @@ body{ font-size:16px; line-height:1.62; text-rendering:optimizeLegibility; }
     initStickyCta();
     initActivityToast();
     initTodayCounter();
+    initExitIntent();
   });
 })();
 
