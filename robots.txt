@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /campaign/signup.html
+
+Sitemap: https://naoooomameta.github.io/the-option/sitemap.xml
