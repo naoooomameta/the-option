@@ -1788,6 +1788,94 @@ body{ font-size:16px; line-height:1.62; text-rendering:optimizeLegibility; }
   box-shadow: 0 8px 24px -8px rgba(245,197,66,0.7);
 }
 </style>
+  <style>/* === CV optimization layer (affiliate-focused conversion boosters) === */
+
+/* CTA microcopy — friction-reducing checklist under primary buttons */
+.cta-micro { display:flex; align-items:center; gap:14px; flex-wrap:wrap; margin-top:14px;
+  font-size:12.5px; color:var(--fg-2); }
+.cta-micro .ck { display:inline-flex; align-items:center; gap:6px; white-space:nowrap; }
+.cta-micro .ck::before { content:"✓"; color:var(--up); font-weight:900; font-size:13px; }
+
+/* Hero social-proof — avatars + star rating + live counter */
+.hero-rating { display:flex; align-items:center; gap:12px; margin-top:22px; flex-wrap:wrap; }
+.hero-rating .avatars { display:inline-flex; }
+.hero-rating .avatars span { width:26px; height:26px; border-radius:50%; margin-left:-9px;
+  border:2px solid var(--bg-0); display:grid; place-items:center;
+  font-size:9px; font-weight:700; color:#03110a; font-family:var(--font-mono);
+  background:linear-gradient(135deg,var(--up),#0a8a5a); }
+.hero-rating .avatars span:first-child { margin-left:0; }
+.hero-rating .stars { color:var(--gold); letter-spacing:1px; font-size:15px; }
+.hero-rating .score { font-family:var(--font-mono); font-weight:700; color:var(--fg-0); font-size:15px; }
+.hero-rating .rev { font-size:12px; color:var(--fg-3); }
+.hero-rating .dot-sep { width:4px; height:4px; border-radius:50%; background:var(--fg-3); }
+.hero-rating .ppl { font-size:13px; color:var(--fg-1); }
+.hero-rating .ppl b { color:var(--up); font-family:var(--font-mono); font-weight:700; }
+
+/* Sticky bottom conversion bar — appears on scroll, hides over the final CTA */
+.sticky-cta { position:fixed; left:0; right:0; bottom:0; z-index:80;
+  transform:translateY(115%); transition:transform .35s cubic-bezier(.2,.8,.2,1);
+  background:rgba(8,11,16,0.9); backdrop-filter:blur(16px) saturate(160%);
+  -webkit-backdrop-filter:blur(16px) saturate(160%);
+  border-top:1px solid rgba(255,255,255,0.16);
+  box-shadow:0 -18px 50px -22px rgba(0,0,0,0.85); }
+.sticky-cta.show { transform:none; }
+.sticky-cta .in { max-width:var(--max); margin:0 auto; padding:11px 24px;
+  display:flex; align-items:center; gap:18px; }
+.sticky-cta .copy { display:flex; flex-direction:column; line-height:1.3; min-width:0; }
+.sticky-cta .copy .t { font-weight:700; color:var(--fg-0); font-size:15px; }
+.sticky-cta .copy .t .gold { color:var(--gold); }
+.sticky-cta .copy .s { font-size:11.5px; color:var(--fg-2); font-family:var(--font-mono); }
+.sticky-cta .btn-primary { margin-left:auto; white-space:nowrap; }
+@media (max-width:640px){
+  .sticky-cta .in { padding:9px 14px; gap:12px; }
+  .sticky-cta .copy .s { display:none; }
+  .sticky-cta .copy .t { font-size:13.5px; }
+  .sticky-cta .btn-primary { padding:11px 16px; font-size:14px; }
+}
+
+/* "vs other free demos" comparison table */
+.cmp-section { padding:96px 0; position:relative;
+  background:radial-gradient(80% 120% at 50% -10%, rgba(0,224,138,0.06), transparent 55%), var(--bg-0);
+  border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+.cmp-wrap { overflow-x:auto; -webkit-overflow-scrolling:touch; margin-top:40px;
+  border-radius:16px; border:1px solid var(--surface-border); }
+.cmp { width:100%; border-collapse:collapse; min-width:560px; background:var(--surface);
+  backdrop-filter:var(--surface-blur); -webkit-backdrop-filter:var(--surface-blur); }
+.cmp th,.cmp td { padding:16px 18px; text-align:left; border-bottom:1px solid var(--surface-border); font-size:14.5px; }
+.cmp thead th { font-family:var(--font-display); font-weight:700; font-size:15px; color:var(--fg-1); background:rgba(255,255,255,0.02); }
+.cmp thead th.us { color:var(--gold); }
+.cmp .feat { color:var(--fg-2); font-size:13.5px; white-space:nowrap; }
+.cmp td.us { color:var(--fg-0); font-weight:600; background:rgba(245,197,66,0.06); }
+.cmp td.them { color:var(--fg-3); }
+.cmp .us-badge { display:inline-block; font-family:var(--font-mono); font-size:9px; letter-spacing:0.1em;
+  color:#1a1206; background:var(--gold); padding:2px 7px; border-radius:999px; margin-left:6px; vertical-align:middle; }
+.cmp .ic-yes { color:var(--up); font-weight:800; margin-right:3px; }
+.cmp .ic-no { color:var(--down); font-weight:800; margin-right:3px; }
+.cmp tbody tr:last-child td { border-bottom:0; }
+@media (max-width:640px){ .cmp th,.cmp td { padding:13px 12px; font-size:13px; } }
+
+/* Live activity toast — social proof / FOMO */
+.activity-toast { position:fixed; left:18px; bottom:88px; z-index:75;
+  display:flex; align-items:center; gap:12px; max-width:300px;
+  background:rgba(11,15,26,0.92); backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px);
+  border:1px solid rgba(255,255,255,0.16); border-radius:12px; padding:11px 16px 11px 11px;
+  box-shadow:0 20px 50px -18px rgba(0,0,0,0.8);
+  opacity:0; transform:translateY(14px); transition:opacity .4s, transform .4s; pointer-events:none; }
+.activity-toast.show { opacity:1; transform:none; }
+.activity-toast .ava { width:34px; height:34px; border-radius:50%; flex:none; display:grid; place-items:center;
+  font-family:var(--font-mono); font-weight:700; font-size:12px; color:#03110a;
+  background:linear-gradient(135deg,var(--up),#0a8a5a); }
+.activity-toast .tx { line-height:1.35; min-width:0; }
+.activity-toast .tx .h { font-size:12.5px; color:var(--fg-0); }
+.activity-toast .tx .h b { color:var(--up); }
+.activity-toast .tx .m { font-size:10.5px; color:var(--fg-3); font-family:var(--font-mono); margin-top:1px; }
+@media (max-width:640px){ .activity-toast { left:10px; right:10px; bottom:74px; max-width:none; } }
+
+/* Respect reduced-motion: keep toasts/sticky usable without animation */
+@media (prefers-reduced-motion: reduce){
+  .sticky-cta,.activity-toast { transition:none; }
+}
+</style>
 </head>
 <body>
 
@@ -1888,6 +1976,19 @@ body{ font-size:16px; line-height:1.62; text-rendering:optimizeLegibility; }
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 3l14 9-14 9V3z" fill="currentColor"></path></svg>
               デモ画面を見る
             </a>
+          </div>
+          <div class="cta-micro">
+            <span class="ck">クレジットカード不要</span>
+            <span class="ck">メールアドレスだけ</span>
+            <span class="ck">30秒で完了</span>
+          </div>
+          <div class="hero-rating">
+            <span class="avatars"><span>T</span><span>K</span><span>M</span><span>S</span><span>Y</span></span>
+            <span class="stars">★★★★★</span>
+            <span class="score">4.8</span>
+            <span class="rev">（12,400件のレビュー）</span>
+            <span class="dot-sep"></span>
+            <span class="ppl">本日 <b id="today-count">1,238</b> 人が無料デモを開始</span>
           </div>
           <div class="hero-trust">
             <div class="item">
@@ -2064,6 +2165,44 @@ body{ font-size:16px; line-height:1.62; text-rendering:optimizeLegibility; }
             <div class="trow"><span class="k">残高リセット</span><span class="v">いつでも可能</span></div>
             <div class="trow"><span class="k">マーケット</span><span class="v">本番と同一</span></div>
           </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ COMPARISON (CV) -->
+  <section class="cmp-section" id="compare">
+    <div class="container">
+      <div class="section-head reveal" style="text-align:center;margin:0 auto 8px;">
+        <span class="section-tag"><span class="num">★</span>なぜ theoption のデモ？</span>
+        <h2>同じ“無料デモ”でも、<em>中身が違う</em>。</h2>
+        <p class="section-lead" style="margin:0 auto;">仮想資金の額も、使える期間も、登録の手軽さも段違い。だから、最初の一歩は theoption のデモが有利です。</p>
+      </div>
+      <div class="cmp-wrap reveal">
+        <table class="cmp">
+          <thead>
+            <tr><th class="feat">比較項目</th><th class="us">theoption デモ<span class="us-badge">おすすめ</span></th><th>一般的な他社デモ</th></tr>
+          </thead>
+          <tbody>
+            <tr><td class="feat">仮想資金</td><td class="us">¥1,000,000</td><td class="them">¥10,000〜数万円</td></tr>
+            <tr><td class="feat">利用期間</td><td class="us">無期限</td><td class="them">7〜30日で失効</td></tr>
+            <tr><td class="feat">登録</td><td class="us">メールだけ・30秒</td><td class="them">本人確認・電話番号が必要</td></tr>
+            <tr><td class="feat">初回入金</td><td class="us"><span class="ic-yes">✓</span>不要</td><td class="them"><span class="ic-no">✕</span>あとで入金を要求されがち</td></tr>
+            <tr><td class="feat">機能</td><td class="us">全機能開放（AIシグナル含む）</td><td class="them">一部機能のみ</td></tr>
+            <tr><td class="feat">残高リセット</td><td class="us"><span class="ic-yes">✓</span>いつでも</td><td class="them"><span class="ic-no">✕</span>不可／回数制限</td></tr>
+            <tr><td class="feat">マーケット</td><td class="us">本番と同一・50+銘柄</td><td class="them">遅延あり・銘柄が少ない</td></tr>
+            <tr><td class="feat">料金</td><td class="us"><span class="ic-yes">✓</span>ずっと¥0</td><td class="them">隠れた条件がある場合も</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div style="text-align:center;margin-top:32px;">
+        <a href="../the-option.html" class="btn-primary lg">
+          ¥1,000,000の無料デモを始める
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"></path></svg>
+        </a>
+        <div class="cta-micro" style="justify-content:center;">
+          <span class="ck">クレジットカード不要</span>
+          <span class="ck">メールだけ・30秒</span>
         </div>
       </div>
     </div>
@@ -2539,6 +2678,14 @@ body{ font-size:16px; line-height:1.62; text-rendering:optimizeLegibility; }
           <summary>デモから本番口座へはどうやって移行しますか？</summary>
           <div class="a">十分に練習して自信がついたら、画面からワンクリックで本番口座の開設に進めます。デモと同じ ID をそのまま使えるので、操作に戸惑うことはありません。本番では実際の資金で取引するため、リスク管理にご注意ください。</div>
         </details>
+        <details class="faq-item">
+          <summary>無料なのはなぜですか？怪しくないですか？</summary>
+          <div class="a">デモは、まず操作と取引の流れを安心して体験していただくためのものです。ノーリスクで使い心地を知っていただき、納得された方だけが本番に進めばよい——その入口として無料で提供しています。デモの利用だけで料金が発生したり、しつこい勧誘をすることはありません。</div>
+        </details>
+        <details class="faq-item">
+          <summary>デモだけ使って、本番をやらなくても大丈夫ですか？</summary>
+          <div class="a">もちろん大丈夫です。無期限・無料なので、本番に進まずデモだけを使い続けても全く問題ありません。「自分には合わない」と思えば、そのまま閉じるだけ。費用も、解約手続きも必要ありません。</div>
+        </details>
       </div>
     </div>
   </section>
@@ -2557,10 +2704,33 @@ body{ font-size:16px; line-height:1.62; text-rendering:optimizeLegibility; }
           </a>
           <a href="#demo" class="btn-ghost" style="padding:14px 22px;font-size:15px;">デモ口座スペックを見る</a>
         </div>
+        <div class="cta-micro" style="justify-content:center;">
+          <span class="ck">クレジットカード不要</span>
+          <span class="ck">メールだけ・30秒</span>
+          <span class="ck">いつでも閉じてOK</span>
+        </div>
         <div class="cta-foot">入金不要 · クレジットカード登録なし · 利用期限なし</div>
       </div>
     </div>
   </section>
+
+  <!-- ============================================================ STICKY CTA + LIVE ACTIVITY (CV) -->
+  <div class="sticky-cta" id="sticky-cta" aria-hidden="true">
+    <div class="in">
+      <div class="copy">
+        <span class="t"><span class="gold">¥1,000,000</span> の仮想資金で、無料デモ。</span>
+        <span class="s">入金不要 · クレジットカード不要 · 登録30秒</span>
+      </div>
+      <a href="../the-option.html" class="btn-primary">
+        無料でデモを始める
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"></path></svg>
+      </a>
+    </div>
+  </div>
+  <div class="activity-toast" id="activity-toast" aria-hidden="true">
+    <div class="ava">T</div>
+    <div class="tx"><div class="h"></div><div class="m"></div></div>
+  </div>
 
   <!-- ============================================================ FOOTER -->
   <footer class="footer">
@@ -2862,6 +3032,57 @@ body{ font-size:16px; line-height:1.62; text-rendering:optimizeLegibility; }
     document.querySelectorAll(".count-up").forEach((el) => io.observe(el));
   }
 
+  // ── Sticky conversion bar: show after hero, hide over the final CTA ──────
+  function initStickyCta() {
+    var bar = document.getElementById("sticky-cta");
+    if (!bar) return;
+    var hero = document.querySelector(".hero");
+    var finalCta = document.querySelector(".cta");
+    function onScroll() {
+      var y = window.scrollY || window.pageYOffset || 0;
+      var pastHero = hero ? (y > hero.offsetTop + hero.offsetHeight - 160) : (y > 560);
+      var overFinal = false;
+      if (finalCta) {
+        var r = finalCta.getBoundingClientRect();
+        overFinal = r.top < window.innerHeight * 0.9 && r.bottom > 0;
+      }
+      if (pastHero && !overFinal) bar.classList.add("show");
+      else bar.classList.remove("show");
+    }
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    onScroll();
+  }
+
+  // ── Live activity toast: rotating social proof (illustrative) ───────────
+  function initActivityToast() {
+    var el = document.getElementById("activity-toast");
+    if (!el) return;
+    var ava = el.querySelector(".ava"), h = el.querySelector(".h"), m = el.querySelector(".m");
+    var prefs = ["東京都","大阪府","神奈川県","愛知県","福岡県","北海道","埼玉県","兵庫県","千葉県","京都府","広島県","宮城県","静岡県","茨城県","新潟県"];
+    var inits = ["T","K","S","Y","M","N","H","A","R","D","J","W"];
+    var acts = ["無料デモを開始しました","デモ口座を開設しました","¥1,000,000の仮想資金を受け取りました","デモ取引を始めました"];
+    function rnd(a){ return a[Math.floor(Math.random()*a.length)]; }
+    function cycle() {
+      ava.textContent = rnd(inits);
+      h.innerHTML = "<b>" + rnd(prefs) + "</b>の方が" + rnd(acts);
+      m.textContent = (Math.floor(Math.random()*9)+1) + "分前 · 入金不要";
+      el.classList.add("show");
+      setTimeout(function(){ el.classList.remove("show"); }, 4800);
+    }
+    setTimeout(function loop(){ cycle(); setTimeout(loop, 6800); }, 3500);
+  }
+
+  // ── Live "today's signups" counter — slow drip for momentum ─────────────
+  function initTodayCounter() {
+    var el = document.getElementById("today-count");
+    if (!el) return;
+    var n = 1238;
+    setInterval(function(){
+      if (Math.random() < 0.6) { n += 1; el.textContent = n.toLocaleString(); }
+    }, 4000);
+  }
+
   document.addEventListener("DOMContentLoaded", () => {
     initHeroChart();
     initMobileChart();
@@ -2869,6 +3090,9 @@ body{ font-size:16px; line-height:1.62; text-rendering:optimizeLegibility; }
     initTickerUpdates();
     initReveal();
     initStats();
+    initStickyCta();
+    initActivityToast();
+    initTodayCounter();
   });
 })();
 
