@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>無料口座開設 — theOPTION</title>
+<meta name="description" content="最短2分・登録費用0円。theOPTIONの口座開設。メールアドレスとパスワードから、3ステップで申し込み完了。">
+<meta name="theme-color" content="#0A0B0D">
+<meta name="robots" content="noindex, follow">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700;900&family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="signup.css">
+<script>document.documentElement.classList.add('js');</script>
+</head>
+<body>
+
+<!-- ===== HEADER（集中導線：グローバルナビ排除） ===== -->
+<header class="su-head">
+  <a class="brand" href="index-v2.html">
+    <span class="brand__dot"></span>
+    <span class="brand__name">the<span class="accent">OPTION</span></span>
+  </a>
+  <span class="su-head__login">アカウントをお持ちですか？ <a href="the-option.html">ログイン</a></span>
+</header>
+
+<main class="su-shell">
+  <div class="su-intro">
+    <span class="su-intro__eyebrow">CREATE ACCOUNT</span>
+    <h1 class="su-intro__title">無料で口座開設</h1>
+    <p class="su-intro__lead">最短2分・登録費用0円。3ステップで申し込み完了します。</p>
+  </div>
+
+  <!-- ===== CARD ===== -->
+  <div class="su-card" id="suCard">
+    <!-- progress -->
+    <div class="su-prog" aria-hidden="true">
+      <div class="su-prog__step" data-state="active">
+        <span class="su-prog__dot">1</span><span class="su-prog__label">アカウント</span>
+      </div>
+      <div class="su-prog__bar"><span></span></div>
+      <div class="su-prog__step">
+        <span class="su-prog__dot">2</span><span class="su-prog__label">お客様情報</span>
+      </div>
+      <div class="su-prog__bar"><span></span></div>
+      <div class="su-prog__step">
+        <span class="su-prog__dot">3</span><span class="su-prog__label">確認</span>
+      </div>
+    </div>
+
+    <form id="suForm" novalidate>
+      <!-- STEP 1 -->
+      <section class="su-step is-active" aria-label="ステップ1 アカウント情報">
+        <h2 class="su-step__title">アカウント情報</h2>
+
+        <div class="field">
+          <label class="field__label" for="su-email">メールアドレス<span class="field__req">必須</span></label>
+          <input class="field__input" type="email" id="su-email" name="email" autocomplete="email" inputmode="email" placeholder="you@example.com" required>
+          <p class="field__error" id="err-email" role="alert"></p>
+          <p class="field__hint">フリーメール（Gmail・Yahoo!メール等）もご利用いただけます。</p>
+        </div>
+
+        <div class="field">
+          <label class="field__label" for="su-pw">パスワード<span class="field__req">必須</span></label>
+          <div class="field__pw">
+            <input class="field__input" type="password" id="su-pw" name="password" autocomplete="new-password" placeholder="8文字以上・英数を含む" required>
+            <button type="button" class="field__toggle" aria-label="パスワードを表示">表示</button>
+          </div>
+          <div class="pw-meter" data-score="0" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+          <p class="pw-label" aria-live="polite"></p>
+          <p class="field__error" id="err-pw" role="alert"></p>
+          <p class="field__hint">半角英字と数字を組み合わせた8文字以上を推奨します。</p>
+        </div>
+
+        <div class="su-nav">
+          <button type="button" class="btn btn--accent btn--lg" data-next>次へ →</button>
+        </div>
+      </section>
+
+      <!-- STEP 2 -->
+      <section class="su-step" aria-label="ステップ2 お客様情報">
+        <h2 class="su-step__title">お客様情報</h2>
+
+        <div class="field__row">
+          <div class="field">
+            <label class="field__label" for="su-sei">姓<span class="field__req">必須</span></label>
+            <input class="field__input" type="text" id="su-sei" name="lastName" autocomplete="family-name" placeholder="山田" required>
+            <p class="field__error" id="err-sei" role="alert"></p>
+          </div>
+          <div class="field">
+            <label class="field__label" for="su-mei">名<span class="field__req">必須</span></label>
+            <input class="field__input" type="text" id="su-mei" name="firstName" autocomplete="given-name" placeholder="太郎" required>
+            <p class="field__error" id="err-mei" role="alert"></p>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="field__label" for="su-tel">電話番号<span class="field__req">必須</span></label>
+          <input class="field__input" type="tel" id="su-tel" name="tel" autocomplete="tel" inputmode="tel" placeholder="09012345678" required>
+          <p class="field__error" id="err-tel" role="alert"></p>
+        </div>
+
+        <div class="field">
+          <label class="field__label" for="su-cur">基本通貨<span class="field__req">必須</span></label>
+          <select class="field__select" id="su-cur" name="currency" required>
+            <option value="JPY">JPY — 日本円</option>
+            <option value="USD">USD — 米ドル</option>
+            <option value="EUR">EUR — ユーロ</option>
+          </select>
+          <p class="field__hint">取引・入出金の基準となる通貨です。後から変更できません。</p>
+        </div>
+
+        <div class="su-nav">
+          <button type="button" class="btn btn--ghost btn--lg su-nav__back" data-back>← 戻る</button>
+          <button type="button" class="btn btn--accent btn--lg" data-next>次へ →</button>
+        </div>
+      </section>
+
+      <!-- STEP 3 -->
+      <section class="su-step" aria-label="ステップ3 確認と同意">
+        <h2 class="su-step__title">入力内容の確認</h2>
+
+        <div class="su-review" id="suReview"></div>
+
+        <label class="check">
+          <input type="checkbox" id="su-agree" name="agree" required>
+          <span class="check__box" aria-hidden="true"></span>
+          <span class="check__text"><a href="terms.html" target="_blank" rel="noopener">利用規約</a>および<a href="privacy.html" target="_blank" rel="noopener">プライバシーポリシー</a>に同意します。<span class="field__req">必須</span></span>
+        </label>
+        <label class="check">
+          <input type="checkbox" id="su-age" name="age" required>
+          <span class="check__box" aria-hidden="true"></span>
+          <span class="check__text">私は18歳以上であり、本人名義で申し込みを行います。<span class="field__req">必須</span></span>
+        </label>
+
+        <div class="su-nav">
+          <button type="button" class="btn btn--ghost btn--lg su-nav__back" data-back>← 戻る</button>
+          <button type="submit" class="btn btn--accent btn--lg">口座開設を申し込む</button>
+        </div>
+      </section>
+    </form>
+  </div>
+
+  <!-- ===== SUCCESS ===== -->
+  <div class="su-card su-done" id="suDone" hidden>
+    <div class="su-done__mark" aria-hidden="true">✓</div>
+    <h2 class="su-done__title">お申し込みを受け付けました</h2>
+    <p class="su-done__text">確認メールをお送りしました。続けて本人確認を行うと、取引を開始できます。</p>
+    <div class="su-done__next">
+      <h3>NEXT STEPS</h3>
+      <ol>
+        <li>確認メール内のリンクからメールアドレスを認証</li>
+        <li>本人確認書類（顔写真付き）と現住所確認書類をアップロード</li>
+        <li>審査完了後（通常1〜2営業日）、入金して取引開始</li>
+      </ol>
+    </div>
+    <a class="btn btn--accent btn--lg" href="lp.html">先に登録不要デモを試す →</a>
+  </div>
+
+  <!-- trust -->
+  <div class="su-trust">
+    <span class="su-trust__item"><b>◆</b> FIUライセンス <span class="mono">FFA000397</span></span>
+    <span class="su-trust__item"><b>◆</b> SSL暗号化通信</span>
+    <span class="su-trust__item"><b>◆</b> 顧客資産の分別管理</span>
+  </div>
+  <p class="su-disclaimer">※ 本ページはデザイン検証用のデモです。入力内容は送信・保存されません。バイナリーオプション取引には元本を超える損失が生じる可能性があります。</p>
+</main>
+
+<script src="signup.js"></script>
+</body>
+</html>
